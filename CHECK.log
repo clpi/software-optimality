@@ -110,3 +110,9 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'HypergraphIncremental.retracted_cycles_do_not_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
 'HypergraphIncremental.patchedInteraction_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'HypergraphIncremental.incrementalFrontier_exact' depends on axioms: [propext, Quot.sound]
+'ContextualDominance.retained_pareto_is_original' does not depend on any axioms
+'ContextualDominance.replacement_trans' does not depend on any axioms
+'ContextualDominance.monotone_context_replacement' does not depend on any axioms
+'ContextualDominance.pruning_preserves_attainable_bounds' does not depend on any axioms
+'ContextualDominance.pareto_representative_same_cost' does not depend on any axioms
+'ContextualDominance.pareto_vector_survives_pruning' does not depend on any axioms

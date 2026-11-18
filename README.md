@@ -149,3 +149,9 @@ The pilot timing gate is whole-suite wall time only: 8 of 12 O2 subprocess times
 Typed matrix cells count supporting live records by edge kind and both port roles/positions. Retained-plus-added counts and Boolean cells equal complete regeneration; alternate receipt support survives individual withdrawal. Deterministic qualification/profile projection preserves the full frontier result, including resurrection after withdrawal of a dominator.
 
 This is a semantic refinement theorem, **not a fast executable worklist or sparse-matrix performance proof**. The raw record list counts multiplicity. Unique receipt identity, deduplication, scoped admission and withdrawal precedence must be enforced before the live snapshot is supplied. The same-ID remove-and-add operation permits reintroduction; it is not a permanent tombstone protocol. See [the exact scope](HYPERGRAPH_SCOPE.md) and [independent publication checks](docs/hypergraph-incremental/VERIFICATION.md).
+
+### Contextual compositional dominance
+
+`ContextualDominance.lean` proves reflexive/transitive context-wide replacement and a sufficient local-to-contextual rule requiring **both** feasibility preservation and monotone cost composition. Representative pruning preserves all attainable componentwise bounds and exactly the Pareto objective vectors when every feasible original candidate has a feasible retained no-worse representative. It need not retain every tied candidate identity.
+
+Kernel-checked synthetic counterexamples show local speedup reversing under contention, a smaller local cost violating contextual feasibility, and strict local speedup becoming a global tie under parallel max composition. The theorem does not infer contextual obligations from hashes or isolated timings, synthesize coverage witnesses, or prove actual runtime improvements. See [scope](docs/contextual-dominance/SCOPE.md) and [checks](docs/contextual-dominance/VERIFICATION.md).
