@@ -1,0 +1,1229 @@
+{
+  "recordedPrefix": 10,
+  "queries": [
+    {
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "configuration": "demo"
+        },
+        "field": "occurrence"
+      },
+      "minimumLossGuesses": [
+        1
+      ],
+      "diagnosis": {
+        "value": 1,
+        "status": "entailed"
+      }
+    },
+    {
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "configuration": "demo"
+        },
+        "field": {
+          "attribute": {
+            "name": "process.status"
+          }
+        }
+      },
+      "minimumLossGuesses": [
+        7
+      ],
+      "diagnosis": {
+        "value": 7,
+        "status": "entailed"
+      }
+    },
+    {
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "configuration": "demo"
+        },
+        "field": {
+          "attribute": {
+            "name": "status.eq.7"
+          }
+        }
+      },
+      "minimumLossGuesses": [
+        1
+      ],
+      "diagnosis": {
+        "value": 1,
+        "status": "entailed"
+      }
+    }
+  ],
+  "prior": "prior-1",
+  "planning": {
+    "status": "complete",
+    "sensors": [
+      {
+        "question": {
+          "run": {
+            "system": "build",
+            "revision": "r1",
+            "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+            "configuration": "demo"
+          },
+          "field": "occurrence"
+        },
+        "name": "retained-start-index",
+        "equalsValue": 1,
+        "cost": 1,
+        "availability": "retainedRead"
+      },
+      {
+        "question": {
+          "run": {
+            "system": "build",
+            "revision": "r1",
+            "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+            "configuration": "demo"
+          },
+          "field": {
+            "attribute": {
+              "name": "process.status"
+            }
+          }
+        },
+        "name": "retained-status-index",
+        "equalsValue": 7,
+        "cost": 1,
+        "availability": "retainedRead"
+      }
+    ],
+    "frontier": [
+      {
+        "worstReads": 0,
+        "worstCost": 0,
+        "tree": "stop",
+        "resolvesAll": true
+      }
+    ],
+    "candidateCount": 19
+  },
+  "newEntries": [],
+  "namedRuns": [
+    {
+      "system": "build",
+      "revision": "r1",
+      "occurrenceId": "future:2cb6c897-4d29-4ecb-b738-9753fda29223",
+      "configuration": "demo"
+    },
+    {
+      "system": "build",
+      "revision": "r1",
+      "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+      "configuration": "demo"
+    },
+    {
+      "system": "build",
+      "revision": "r1",
+      "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+      "configuration": "demo"
+    }
+  ],
+  "model": "exit-schema-1",
+  "ledger": [
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "local-hook-planner",
+            "route": "hookPlan",
+            "receipt": null,
+            "parents": [],
+            "model": "exit-schema-1",
+            "id": 0,
+            "head": {
+              "value": 1,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "future:2cb6c897-4d29-4ecb-b738-9753fda29223",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "status.eq.7"
+                  }
+                }
+              }
+            },
+            "bodyId": 0,
+            "appendedAt": 1794999589984820230
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "hook:0",
+            "route": "hookSample",
+            "receipt": {
+              "source": "hook:0",
+              "hook": true,
+              "evidenceId": "ab23117dce63c3cbb8380f2a76e6ccf5f2aade8716d34b6c54f9fae129af2048",
+              "capturedAt": 1794999590069879264,
+              "atom": {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            },
+            "parents": [],
+            "model": "",
+            "id": 1,
+            "head": {
+              "value": 7,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                }
+              }
+            },
+            "bodyId": 1,
+            "appendedAt": 1794999590070207655
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "hook:0",
+            "route": "symbolic",
+            "receipt": null,
+            "parents": [
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            ],
+            "model": "exit-schema-1",
+            "id": 2,
+            "head": {
+              "value": 1,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "status.eq.7"
+                  }
+                }
+              }
+            },
+            "bodyId": 2,
+            "appendedAt": 1794999590070255129
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "independent-prior-program",
+            "route": "independentPrediction",
+            "receipt": null,
+            "parents": [],
+            "model": "prior-1",
+            "id": 3,
+            "head": {
+              "value": 9,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                }
+              }
+            },
+            "bodyId": 3,
+            "appendedAt": 1794999590265284572
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "prior-1",
+            "route": "independentPrediction",
+            "receipt": null,
+            "parents": [
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            ],
+            "model": "exit-schema-1",
+            "id": 4,
+            "head": {
+              "value": 1,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": "occurrence"
+              }
+            },
+            "bodyId": 4,
+            "appendedAt": 1794999590340716990
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "prior-1",
+            "route": "independentPrediction",
+            "receipt": null,
+            "parents": [
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            ],
+            "model": "exit-schema-1",
+            "id": 5,
+            "head": {
+              "value": 9,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                }
+              }
+            },
+            "bodyId": 5,
+            "appendedAt": 1794999590340716990
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "prior-1",
+            "route": "independentPrediction",
+            "receipt": null,
+            "parents": [
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            ],
+            "model": "exit-schema-1",
+            "id": 6,
+            "head": {
+              "value": 0,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "status.eq.7"
+                  }
+                }
+              }
+            },
+            "bodyId": 6,
+            "appendedAt": 1794999590340716990
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "hook:0",
+            "route": "backfill",
+            "receipt": {
+              "source": "hook:0",
+              "hook": true,
+              "evidenceId": "5ab20b46789f012ca37a04905d2ffc843cd62f065fdca0a303d1da6428f405e7",
+              "capturedAt": 1794999589914035908,
+              "atom": {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            },
+            "parents": [],
+            "model": "",
+            "id": 7,
+            "head": {
+              "value": 7,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                }
+              }
+            },
+            "bodyId": 7,
+            "appendedAt": 1794999590761560257
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "finite-model",
+            "route": "sparse",
+            "receipt": null,
+            "parents": [
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              },
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            ],
+            "model": "exit-schema-1",
+            "id": 8,
+            "head": {
+              "value": 1,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": "occurrence"
+              }
+            },
+            "bodyId": 8,
+            "appendedAt": 1794999590819989802
+          }
+        }
+      },
+      "authorized": true
+    },
+    {
+      "live": true,
+      "event": {
+        "put": {
+          "row": {
+            "source": "finite-model",
+            "route": "sparse",
+            "receipt": null,
+            "parents": [
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              },
+              {
+                "value": 7,
+                "question": {
+                  "run": {
+                    "system": "build",
+                    "revision": "r1",
+                    "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                    "configuration": "demo"
+                  },
+                  "field": {
+                    "attribute": {
+                      "name": "process.status"
+                    }
+                  }
+                }
+              }
+            ],
+            "model": "exit-schema-1",
+            "id": 10,
+            "head": {
+              "value": 1,
+              "question": {
+                "run": {
+                  "system": "build",
+                  "revision": "r1",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "configuration": "demo"
+                },
+                "field": {
+                  "attribute": {
+                    "name": "status.eq.7"
+                  }
+                }
+              }
+            },
+            "bodyId": 10,
+            "appendedAt": 1794999590819989802
+          }
+        }
+      },
+      "authorized": true
+    }
+  ],
+  "hyperedges": [
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": false,
+      "rawEvidenceColor": "unknown",
+      "entry": {
+        "source": "local-hook-planner",
+        "route": "hookPlan",
+        "receipt": null,
+        "parents": [],
+        "model": "exit-schema-1",
+        "id": 0,
+        "head": {
+          "value": 1,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "future:2cb6c897-4d29-4ecb-b738-9753fda29223",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "status.eq.7"
+              }
+            }
+          }
+        },
+        "bodyId": 0,
+        "appendedAt": 1794999589984820230
+      },
+      "closureColor": "unknown",
+      "channel": "advisory"
+    },
+    {
+      "validatedMeasurement": true,
+      "validatedImplication": false,
+      "rawEvidenceColor": "supported",
+      "entry": {
+        "source": "hook:0",
+        "route": "hookSample",
+        "receipt": {
+          "source": "hook:0",
+          "hook": true,
+          "evidenceId": "ab23117dce63c3cbb8380f2a76e6ccf5f2aade8716d34b6c54f9fae129af2048",
+          "capturedAt": 1794999590069879264,
+          "atom": {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        },
+        "parents": [],
+        "model": "",
+        "id": 1,
+        "head": {
+          "value": 7,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "process.status"
+              }
+            }
+          }
+        },
+        "bodyId": 1,
+        "appendedAt": 1794999590070207655
+      },
+      "closureColor": "supported",
+      "channel": "measurement"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": true,
+      "rawEvidenceColor": "unknown",
+      "entry": {
+        "source": "hook:0",
+        "route": "symbolic",
+        "receipt": null,
+        "parents": [
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        ],
+        "model": "exit-schema-1",
+        "id": 2,
+        "head": {
+          "value": 1,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "status.eq.7"
+              }
+            }
+          }
+        },
+        "bodyId": 2,
+        "appendedAt": 1794999590070255129
+      },
+      "closureColor": "supported",
+      "channel": "implication"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": false,
+      "rawEvidenceColor": "opposed",
+      "entry": {
+        "source": "independent-prior-program",
+        "route": "independentPrediction",
+        "receipt": null,
+        "parents": [],
+        "model": "prior-1",
+        "id": 3,
+        "head": {
+          "value": 9,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "process.status"
+              }
+            }
+          }
+        },
+        "bodyId": 3,
+        "appendedAt": 1794999590265284572
+      },
+      "closureColor": "opposed",
+      "channel": "advisory"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": false,
+      "rawEvidenceColor": "unknown",
+      "entry": {
+        "source": "prior-1",
+        "route": "independentPrediction",
+        "receipt": null,
+        "parents": [
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        ],
+        "model": "exit-schema-1",
+        "id": 4,
+        "head": {
+          "value": 1,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": "occurrence"
+          }
+        },
+        "bodyId": 4,
+        "appendedAt": 1794999590340716990
+      },
+      "closureColor": "supported",
+      "channel": "advisory"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": false,
+      "rawEvidenceColor": "opposed",
+      "entry": {
+        "source": "prior-1",
+        "route": "independentPrediction",
+        "receipt": null,
+        "parents": [
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        ],
+        "model": "exit-schema-1",
+        "id": 5,
+        "head": {
+          "value": 9,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "process.status"
+              }
+            }
+          }
+        },
+        "bodyId": 5,
+        "appendedAt": 1794999590340716990
+      },
+      "closureColor": "opposed",
+      "channel": "advisory"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": false,
+      "rawEvidenceColor": "unknown",
+      "entry": {
+        "source": "prior-1",
+        "route": "independentPrediction",
+        "receipt": null,
+        "parents": [
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        ],
+        "model": "exit-schema-1",
+        "id": 6,
+        "head": {
+          "value": 0,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "status.eq.7"
+              }
+            }
+          }
+        },
+        "bodyId": 6,
+        "appendedAt": 1794999590340716990
+      },
+      "closureColor": "opposed",
+      "channel": "advisory"
+    },
+    {
+      "validatedMeasurement": true,
+      "validatedImplication": false,
+      "rawEvidenceColor": "supported",
+      "entry": {
+        "source": "hook:0",
+        "route": "backfill",
+        "receipt": {
+          "source": "hook:0",
+          "hook": true,
+          "evidenceId": "5ab20b46789f012ca37a04905d2ffc843cd62f065fdca0a303d1da6428f405e7",
+          "capturedAt": 1794999589914035908,
+          "atom": {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        },
+        "parents": [],
+        "model": "",
+        "id": 7,
+        "head": {
+          "value": 7,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "process.status"
+              }
+            }
+          }
+        },
+        "bodyId": 7,
+        "appendedAt": 1794999590761560257
+      },
+      "closureColor": "supported",
+      "channel": "measurement"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": true,
+      "rawEvidenceColor": "unknown",
+      "entry": {
+        "source": "finite-model",
+        "route": "sparse",
+        "receipt": null,
+        "parents": [
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          },
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        ],
+        "model": "exit-schema-1",
+        "id": 8,
+        "head": {
+          "value": 1,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": "occurrence"
+          }
+        },
+        "bodyId": 8,
+        "appendedAt": 1794999590819989802
+      },
+      "closureColor": "supported",
+      "channel": "implication"
+    },
+    {
+      "validatedMeasurement": false,
+      "validatedImplication": true,
+      "rawEvidenceColor": "unknown",
+      "entry": {
+        "source": "finite-model",
+        "route": "sparse",
+        "receipt": null,
+        "parents": [
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          },
+          {
+            "value": 7,
+            "question": {
+              "run": {
+                "system": "build",
+                "revision": "r1",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "configuration": "demo"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            }
+          }
+        ],
+        "model": "exit-schema-1",
+        "id": 10,
+        "head": {
+          "value": 1,
+          "question": {
+            "run": {
+              "system": "build",
+              "revision": "r1",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "configuration": "demo"
+            },
+            "field": {
+              "attribute": {
+                "name": "status.eq.7"
+              }
+            }
+          }
+        },
+        "bodyId": 10,
+        "appendedAt": 1794999590819989802
+      },
+      "closureColor": "supported",
+      "channel": "implication"
+    }
+  ],
+  "compatibleWorlds": [
+    "exit-seven"
+  ],
+  "closure": [
+    {
+      "value": 1,
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+          "configuration": "demo"
+        },
+        "field": {
+          "attribute": {
+            "name": "status.eq.7"
+          }
+        }
+      }
+    },
+    {
+      "value": 1,
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "configuration": "demo"
+        },
+        "field": "occurrence"
+      }
+    },
+    {
+      "value": 1,
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "configuration": "demo"
+        },
+        "field": {
+          "attribute": {
+            "name": "status.eq.7"
+          }
+        }
+      }
+    },
+    {
+      "value": 7,
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+          "configuration": "demo"
+        },
+        "field": {
+          "attribute": {
+            "name": "process.status"
+          }
+        }
+      }
+    },
+    {
+      "value": 7,
+      "question": {
+        "run": {
+          "system": "build",
+          "revision": "r1",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "configuration": "demo"
+        },
+        "field": {
+          "attribute": {
+            "name": "process.status"
+          }
+        }
+      }
+    }
+  ]
+}

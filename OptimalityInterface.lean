@@ -24,9 +24,10 @@ import Std
      `SoftwareIsQuantifiable.Pareto.frontier_can_regress`.
    * `Optimality.not_per_execution_dominance` corresponds to
      `SoftwareIsQuantifiable.Pareto.not_per_execution_dominance`.
-   * `Optimality.retains` and `acceptsRelease` correspond to
-     `SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost` and `acceptsRelease`.
-     The joint release_gates_agree theorem checks the typed adapter.
+   * Behavior retention and the release gate are
+     `SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost` and
+     `SoftwareIsQuantifiable.Pareto.acceptsRelease`. This module does not
+     restate them.
    * `Optimality.GeneratorCoverage` does not correspond to
      `SoftwareIsQuantifiable.Coverage.PlatformPremise`. Platform mediation is
      not assumed. Generator coverage is a separate named premise for transferring
@@ -222,52 +223,6 @@ theorem not_per_execution_dominance :
   have := h (1, 0) (3, 0) (by simp) (by simp)
   simp at this
 
-/-- Corresponds to `SoftwareIsQuantifiable.Pareto.accepts`. -/
-def retains {B : Type} [DecidableEq B] (qualified candidate : List B) : Bool :=
-  qualified.all (fun b => decide (b ∈ candidate))
-
-theorem retains_iff {B : Type} [DecidableEq B] {qualified candidate : List B} :
-    retains qualified candidate = true ↔ ∀ b, b ∈ qualified → b ∈ candidate := by
-  induction qualified with
-  | nil => simp [retains]
-  | cons a q ih =>
-    constructor
-    · intro h b hb
-      have h' : (decide (a ∈ candidate) && retains q candidate) = true := by
-        simpa [retains] using h
-      have ha : decide (a ∈ candidate) = true := (Bool.and_eq_true_iff.mp h').1
-      have hq : retains q candidate = true := (Bool.and_eq_true_iff.mp h').2
-      rcases List.mem_cons.mp hb with rfl | hbm
-      · exact of_decide_eq_true ha
-      · exact ih.mp hq b hbm
-    · intro h
-      have ha : decide (a ∈ candidate) = true :=
-        decide_eq_true (h a List.mem_cons_self)
-      have hq : retains q candidate = true :=
-        ih.mpr (fun b hb => h b (List.mem_cons_of_mem a hb))
-      unfold retains
-      rw [List.all_cons, ha]
-      show (true && retains q candidate) = true
-      rw [hq]
-      rfl
-
-/-- Corresponds to `SoftwareIsQuantifiable.Pareto.acceptsRelease`.
-    Context equality, behavior retention, and componentwise no-worse cost.
-    It does not by itself assert Pareto maximality; conjoin `guardedMaximal`. -/
-def acceptsRelease {B Context : Type} [DecidableEq B] [DecidableEq Context]
-    (baselineContext candidateContext : Context)
-    (qualified candidate : List B) (inc out : Point) : Bool :=
-  decide (candidateContext = baselineContext) &&
-    retains qualified candidate && decide (noWorse out inc)
-
-theorem acceptsRelease_iff {B Context : Type} [DecidableEq B] [DecidableEq Context]
-    (baselineContext candidateContext : Context)
-    (qualified candidate : List B) (inc out : Point) :
-    acceptsRelease baselineContext candidateContext qualified candidate inc out = true ↔
-      candidateContext = baselineContext ∧
-      (∀ b, b ∈ qualified → b ∈ candidate) ∧ noWorse out inc := by
-  simp [acceptsRelease, Bool.and_eq_true_iff, retains_iff, decide_eq_true_eq, and_assoc]
-
 def releaseAccepts (inc out : Point) (candidates : List Point) : Bool :=
   decide (out ∈ guardedMaximal inc candidates)
 
@@ -304,7 +259,5 @@ theorem accept_sum_reduction : acceptSumReduction = true := by decide
 #print axioms guardedMaximal_sound
 #print axioms paretoMaximal_can_regress
 #print axioms not_per_execution_dominance
-#print axioms retains_iff
-#print axioms acceptsRelease_iff
 #print axioms refusal_regressing_frontier
 end Optimality

@@ -11,16 +11,18 @@ catalogue for an application remains a separate obligation.
 
 ## Reproduce
 
-Run `./composition/check.sh` with Lean 4.19.0. It fetches the pinned public
-qualification proof and builds both source trees in an empty directory. For
-offline verification, set `QUANTIFIABLE_SRC` to a checkout containing the
-pinned source bytes. `LEAN` can name an absolute compiler path. The script
-checks SHA-256 for all eight upstream sources, runs the full optimality suite,
-then checks the integration modules, controls, and benchmark source. Pass
-`--benchmark` to collect a new timing table. The standalone offline suite
-continues to run through `./check.sh`.
-
-Both repositories use Lean 4.19.0. The complete public package, including its interface and executable instance, compiles in the joint kernel. The checker treats warnings as errors, runs the existing admission, trace and selection controls, and audits the transitive logical dependencies of theorem declarations. Use `--exhaustive` to check all ordered pairs of two-atom snapshots against the powerset evaluator. See [checked output](CHECK.log) and [the incremental proof and receipt replay](EXECUTABLE-VERIFICATION.md).
+`lake --wfail build -R -KwarningAsError=true` on Lean 4.19.0 builds this package and
+its Lake dependency `software-is-quantifiable` at
+`d88acbdc3ba78fff994067d2c73bcc01622b3f61`. The composition modules are roots
+of the default target. The aligned identity bridge and all existing covered-frontier
+controls, executable incremental updates, selection adapter, exhaustive-edit harness,
+and expanded theorem dependency audit are included too. `./composition/check.sh` runs that build and six
+intentional false-claim rejection checks. Pass
+`--exhaustive` to execute every ordered pair of two-atom snapshots against the powerset oracle; `--benchmark` collects a new timing table. `./check.sh` still checks the
+modules that do not import the dependency. See [executable integration](EXECUTABLE-VERIFICATION.md)
+for this update and [prior interface verification](current/VERIFICATION.md)
+and its [receipt](current/RECEIPT.json) for the exact tested scope. Historical
+checker output and timing results below retain their original dependency pins.
 
 ## What the entry points establish
 
@@ -30,6 +32,7 @@ Both repositories use Lean 4.19.0. The complete public package, including its in
 | Which claims are live? | `Admission.normalized`, `LiveSelection.select`, `selected_live` | Only authorized, unwithdrawn, uncontradicted claims feed the finite decoder. Every selected behavior has positive derivation and lacks its specified contrary in the decoded graph. Scope preservation and semantic validity of the decoder require evidence. |
 | Which consequences follow? | `QualifiedClosure.checked`, `checked_exact`, `checked_none` | The list scan, public Horn coloring, private rooted derivations, semantic incremental update, and exhaustive model intersection agree in membership on bounded input. Both checked algorithms reject the same invalid inputs. Duplicate catalogue positions can survive in the output list. |
 | What does a metric measure? | Existing `MetricRelevance` and `ComparisonContract`; `LiveSelection.typed_cover_exact` | Relevance coordinates retain their denominators. Typed observations share units, direction, aggregation, workload, venue and epoch by contract. Existing transports require a proof of meaning preservation. Typed pruning retains every identity that is nondominated in the supplied finite catalogue under that contract's integer costs. Empirical causal attribution needs independent evidence. |
+| How do public profiles preserve candidate identity? | `InterfaceBridge.cover_exact`, `aligned_certificate_exact`, `public_frontier_agrees` | The existing certificate uses canonical profile dominance and explicit alignment admission. It agrees with the public frontier while preserving distinct tied candidate IDs. The two-axis specialization forwards to `CanonicalDominance`; qualification, physical data, and generator coverage remain explicit obligations. |
 | Which release may replace an incumbent? | `QualifiedSelection.select`, `selection_exact`, `release_evidence` | The incumbent first qualifies. Every selected candidate meets the same behavior vocabulary, scoped round obligations and timing limits, has a validated ledger witness for every receipt, and has no worse recorded peak on each named timing metric. Then the complete eligible frontier is returned. `none` marks invalid input or incumbent; `some []` marks a valid empty result. |
 | When may search prune a component or shard? | `FrontierComposition.checkCover`, `Cover.flatMap`, `partition_exact`, `selected_partition` | Transitive reductions and shard merges preserve frontier membership. A typed continuation may enumerate zero, one or many legal completions. Each discarded completion has to survive by identity or have a strictly superior completion. Shared capacities, effects and failure modes belong in that continuation. Repeated application handles arbitrary finite composition depth. |
 | What if costs are uncertain? | `IntervalDominance.separates_iff`, `refinement`, `paired_exact` | Testing opposite corners is necessary and sufficient for strict dominance over independent closed interval boxes on the named axes. Narrower valid boxes preserve a verdict. Shared scenario identities can certify a pairing that overlapping marginal boxes lose. Probability or confidence for unseen scenarios needs a sampling model. |
@@ -110,5 +113,5 @@ optimized external solvers are unmeasured.
 | Complete search over a deployment's implementations | An enumeration or abstraction theorem covering every admissible implementation, plus validated costs for the named hardware, workload and release window. Existing finite schedule enumeration covers its specified model. |
 | Calibrated reliability under correlated faults | A justified joint scenario model or a statistical sampling design. Paired scenarios preserve known dependence; marginals alone cannot identify it. |
 | Hard real-time response and availability | A clock, resource bounds, scheduling or fairness premises, and a progress proof that rules out the stopped-machine example. |
-| Distributed incremental operation and crash recovery | A concrete index, serialization and recovery protocol with refinement to the normalized ledger and full recomputation, including concurrent withdrawal. The list evaluator covers sequential revisions. Concurrent publication and crash recovery need a separate protocol. |
+| Distributed incremental operation and crash recovery | The executable list evaluator proves sequential revision updates agree with full recomputation. Concurrent publication, serialization, and crash recovery still require a protocol refinement. |
 | Evidence from deployed software | Independently grounded execution roster, trusted measurement and validation, binding to policy and subject, and validated translation from events to roots, rules and simulations. |

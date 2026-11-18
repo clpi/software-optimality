@@ -1,0 +1,4 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+'RangeLedger.AdaptiveReads.lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RangeLedger.AdaptiveReads.attains' depends on axioms: [propext, Classical.choice, Quot.sound]
+Rejected control: read bank 2 twice and omit bank 3.

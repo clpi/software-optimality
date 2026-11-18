@@ -1,4 +1,5 @@
 import composition.QualifiedClosure
+import ExecutableClosure
 import Std
 
 /-- Compare the two bounded, executable implementations on the same Horn

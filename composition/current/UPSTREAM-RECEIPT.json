@@ -1,0 +1,623 @@
+{
+  "commit": "f370992611d8c722e4897e67dbb8eaecf3d872ed",
+  "source": "/workspace/scratch/8ebca4442e3a/formal-certification/quantifiable-latest",
+  "work": "/workspace/scratch/8ebca4442e3a/formal-certification/quantifiable-latest-run",
+  "started_at": "2026-11-18T10:07:50.643222+00:00",
+  "commands": [
+    {
+      "name": "lean-version",
+      "argv": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "clean",
+      "argv": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "clean"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build",
+      "argv": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "--wfail",
+        "build"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "2e60b4e8e50010d91bb5f0abf75d85eed8202bfd62ba56ce623bf9145e6bc282",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pareto-controls",
+      "argv": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "verification/ParetoControls.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "ledger-example",
+      "argv": [
+        "sh",
+        "examples/check.sh"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "94cf98760ca475f189fb8b9f93a7af65aed67bfb90ec0e0c8e2a87fcca45073f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "historical-axiom-inventory",
+      "argv": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "verification/coverage/Axioms.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "fe09083cce0fa46e7fd8c29407502b77fb0ed9d5700e5cf2210d2da69d0a43b3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "current-axioms",
+      "argv": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/workspace/scratch/8ebca4442e3a/formal-certification/quantifiable-latest-verification/CurrentAxioms.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "accepted": true,
+      "stdout_sha256": "b109454d01eadc5b60f59a0975f8bdaf8482e1c608562b24547436f57ad31a02",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "historical-replay-refusal",
+      "argv": [
+        "python3",
+        "verification/coverage/verify.py",
+        "--toolchain-bin",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin",
+        "--output",
+        "/workspace/scratch/8ebca4442e3a/formal-certification/quantifiable-latest-verification/historical-refusal"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "accepted": true,
+      "stdout_sha256": "ab281aef605a32b4f9758f79430c35b9fe662bc46859833277dd46350c97cdde",
+      "stderr_sha256": "ded6d48445549af5e34109c0fed8333992546182a297374b45a6b071866888b5"
+    }
+  ],
+  "lean_version": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "lake_sha256": "5111aee5c9434ab05d4265606475ef22e8bda69aaf3a0657b61a7eec6e550bed",
+  "ledger_example_theorems": [
+    "LedgerRepair.before_after",
+    "LedgerRepair.minimum_append",
+    "LedgerRepair.duplicate_fails"
+  ],
+  "public_theorems": [
+    "SoftwareIsQuantifiable.Coloring.and_eq_true",
+    "SoftwareIsQuantifiable.Coloring.holds_eq_true",
+    "SoftwareIsQuantifiable.Coloring.any_eq_true",
+    "SoftwareIsQuantifiable.Coloring.le_step",
+    "SoftwareIsQuantifiable.Coloring.iter_eq_of_fixed",
+    "SoftwareIsQuantifiable.Coloring.le_iter",
+    "SoftwareIsQuantifiable.Coloring.count_le",
+    "SoftwareIsQuantifiable.Coloring.count_le_of_le",
+    "SoftwareIsQuantifiable.Coloring.count_lt_of_le_add",
+    "SoftwareIsQuantifiable.Coloring.exists_added",
+    "SoftwareIsQuantifiable.Coloring.count_iter_ge",
+    "SoftwareIsQuantifiable.Coloring.exists_fixed_point",
+    "SoftwareIsQuantifiable.Coloring.coloring_fixed",
+    "SoftwareIsQuantifiable.Coloring.step_sound",
+    "SoftwareIsQuantifiable.Coloring.iter_sound",
+    "SoftwareIsQuantifiable.Coloring.deriv_closed",
+    "SoftwareIsQuantifiable.Coloring.coloring_sound",
+    "SoftwareIsQuantifiable.Coloring.coloring_complete",
+    "SoftwareIsQuantifiable.Coloring.seed_le_coloring",
+    "SoftwareIsQuantifiable.Coloring.stateLe_refl",
+    "SoftwareIsQuantifiable.Coloring.stateLe_trans",
+    "SoftwareIsQuantifiable.Coloring.stateLe_antisymm",
+    "SoftwareIsQuantifiable.Coloring.step_mono",
+    "SoftwareIsQuantifiable.Coloring.iter_mono",
+    "SoftwareIsQuantifiable.Coloring.coloring_mono_seed",
+    "SoftwareIsQuantifiable.Coloring.coloring_idem",
+    "SoftwareIsQuantifiable.Coloring.stateLe_join_left",
+    "SoftwareIsQuantifiable.Coloring.stateLe_join_right",
+    "SoftwareIsQuantifiable.Coloring.stateLe_join",
+    "SoftwareIsQuantifiable.Coloring.coloring_compound",
+    "SoftwareIsQuantifiable.Coloring.deriv_embed_left",
+    "SoftwareIsQuantifiable.Coloring.deriv_embed_right",
+    "SoftwareIsQuantifiable.Coloring.deriv_segregated",
+    "SoftwareIsQuantifiable.Coloring.embed_universe_closed",
+    "SoftwareIsQuantifiable.Coloring.coloring_segregated_left",
+    "SoftwareIsQuantifiable.Coloring.coloring_segregated_right",
+    "SoftwareIsQuantifiable.Coverage.coverage_iff",
+    "SoftwareIsQuantifiable.Coverage.unrestricted_witness",
+    "SoftwareIsQuantifiable.Coverage.recorded_exact",
+    "SoftwareIsQuantifiable.Coverage.missing_exact",
+    "SoftwareIsQuantifiable.Coverage.recorded_append",
+    "SoftwareIsQuantifiable.Coverage.missing_append",
+    "SoftwareIsQuantifiable.Coverage.missing_empty",
+    "SoftwareIsQuantifiable.Coverage.coverage_missing_iff",
+    "SoftwareIsQuantifiable.Coverage.empty_roster_covered",
+    "SoftwareIsQuantifiable.Coverage.empty_ledger_has_no_platform_premise",
+    "SoftwareIsQuantifiable.Finiteness.mem_listsOfLen",
+    "SoftwareIsQuantifiable.Finiteness.mem_alphabet",
+    "SoftwareIsQuantifiable.Finiteness.schedules_finite",
+    "SoftwareIsQuantifiable.Finiteness.valid_orderings_finite",
+    "SoftwareIsQuantifiable.Finiteness.length_flatMap_const",
+    "SoftwareIsQuantifiable.Finiteness.listsOfLen_length",
+    "SoftwareIsQuantifiable.Finiteness.schedules_card",
+    "SoftwareIsQuantifiable.Finiteness.validB_iff",
+    "SoftwareIsQuantifiable.Finiteness.mem_validSchedules",
+    "SoftwareIsQuantifiable.Finiteness.validSchedules_length_le",
+    "SoftwareIsQuantifiable.Finiteness.combine_valid",
+    "SoftwareIsQuantifiable.Finiteness.not_all_valid_side_respecting",
+    "SoftwareIsQuantifiable.Finiteness.mem_composites",
+    "SoftwareIsQuantifiable.decide_false_of_not",
+    "SoftwareIsQuantifiable.Fold.join_assoc",
+    "SoftwareIsQuantifiable.Fold.join_comm",
+    "SoftwareIsQuantifiable.Fold.join_idem",
+    "SoftwareIsQuantifiable.Fold.join_empty_left",
+    "SoftwareIsQuantifiable.Fold.join_empty_right",
+    "SoftwareIsQuantifiable.Fold.account_append",
+    "SoftwareIsQuantifiable.Fold.account_eq_true_iff",
+    "SoftwareIsQuantifiable.Fold.account_ext",
+    "SoftwareIsQuantifiable.Fold.account_perm",
+    "SoftwareIsQuantifiable.Fold.account_append_self",
+    "SoftwareIsQuantifiable.Fold.account_cons_self",
+    "SoftwareIsQuantifiable.Fold.account_map_inl",
+    "SoftwareIsQuantifiable.Fold.account_map_inl_inr",
+    "SoftwareIsQuantifiable.Fold.account_map_inr",
+    "SoftwareIsQuantifiable.Fold.account_map_inr_inl",
+    "SoftwareIsQuantifiable.Fold.account_sum",
+    "SoftwareIsQuantifiable.Instance.service_schedule_card",
+    "SoftwareIsQuantifiable.Instance.service_valid_count",
+    "SoftwareIsQuantifiable.Instance.pathSchedule_valid",
+    "SoftwareIsQuantifiable.Instance.accounts_compose",
+    "SoftwareIsQuantifiable.Instance.duplicate_witness_free",
+    "SoftwareIsQuantifiable.Instance.path_universe_closed",
+    "SoftwareIsQuantifiable.Instance.gate_misses_committed",
+    "SoftwareIsQuantifiable.Instance.commit_misses_committed",
+    "SoftwareIsQuantifiable.Instance.joint_colors_committed",
+    "SoftwareIsQuantifiable.Instance.not_coloring_distributes_on_path",
+    "SoftwareIsQuantifiable.Instance.service_compounds",
+    "SoftwareIsQuantifiable.Instance.gate_separated",
+    "SoftwareIsQuantifiable.Instance.commit_separated",
+    "SoftwareIsQuantifiable.Instance.path_separated",
+    "SoftwareIsQuantifiable.Instance.deployments_frontier",
+    "SoftwareIsQuantifiable.Instance.trimmed_rejected",
+    "SoftwareIsQuantifiable.Instance.empty_submission_rejected",
+    "SoftwareIsQuantifiable.Instance.full_kept",
+    "SoftwareIsQuantifiable.Instance.cost_does_not_excuse_behavior_drop",
+    "SoftwareIsQuantifiable.Instance.request_two_uncovered",
+    "SoftwareIsQuantifiable.Instance.path_requests_covered",
+    "SoftwareIsQuantifiable.Interface.axisLe_refl",
+    "SoftwareIsQuantifiable.Interface.axisLe_trans",
+    "SoftwareIsQuantifiable.Interface.axisLe_antisymm",
+    "SoftwareIsQuantifiable.Interface.not_axisLt_self",
+    "SoftwareIsQuantifiable.Interface.axisLt_trans_le",
+    "SoftwareIsQuantifiable.Interface.axisLe_trans_lt",
+    "SoftwareIsQuantifiable.Interface.axisLt_le",
+    "SoftwareIsQuantifiable.Interface.axesLe_refl",
+    "SoftwareIsQuantifiable.Interface.axesLe_length",
+    "SoftwareIsQuantifiable.Interface.axesLe_trans",
+    "SoftwareIsQuantifiable.Interface.axesLe_antisymm",
+    "SoftwareIsQuantifiable.Interface.axesLt_le",
+    "SoftwareIsQuantifiable.Interface.axesLt_irrefl",
+    "SoftwareIsQuantifiable.Interface.not_axesLt_of_short_vector",
+    "SoftwareIsQuantifiable.Interface.axesLt_trans_le",
+    "SoftwareIsQuantifiable.Interface.axesLe_trans_lt",
+    "SoftwareIsQuantifiable.Interface.axesLe_append",
+    "SoftwareIsQuantifiable.Interface.axesLt_append",
+    "SoftwareIsQuantifiable.Interface.measuresLe_aligned",
+    "SoftwareIsQuantifiable.Interface.measuresLe_refl",
+    "SoftwareIsQuantifiable.Interface.measuresLe_trans",
+    "SoftwareIsQuantifiable.Interface.measuresLe_antisymm_readings",
+    "SoftwareIsQuantifiable.Interface.behaviorLe_refl",
+    "SoftwareIsQuantifiable.Interface.behaviorLe_trans",
+    "SoftwareIsQuantifiable.Interface.noWorse_refl",
+    "SoftwareIsQuantifiable.Interface.noWorse_trans",
+    "SoftwareIsQuantifiable.Interface.noWorse_antisymm",
+    "SoftwareIsQuantifiable.Interface.not_strictlyBetter_self",
+    "SoftwareIsQuantifiable.Interface.not_dominates_self",
+    "SoftwareIsQuantifiable.Interface.dominates_trans",
+    "SoftwareIsQuantifiable.Interface.dominates_noWorse",
+    "SoftwareIsQuantifiable.Interface.not_dominates_from_measures",
+    "SoftwareIsQuantifiable.Interface.behaviorLe_append",
+    "SoftwareIsQuantifiable.Interface.measuresLe_append_iff",
+    "SoftwareIsQuantifiable.Interface.noWorse_append",
+    "SoftwareIsQuantifiable.Interface.not_noWorse_append_converse",
+    "SoftwareIsQuantifiable.Interface.dominates_append_left",
+    "SoftwareIsQuantifiable.Interface.dominates_append_right",
+    "SoftwareIsQuantifiable.Interface.dominates_append_of_halves",
+    "SoftwareIsQuantifiable.Interface.not_dominates_append_splits",
+    "SoftwareIsQuantifiable.Interface.uniqueSymbols_append",
+    "SoftwareIsQuantifiable.Interface.profilesAligned_append",
+    "SoftwareIsQuantifiable.Interface.releaseLe_refl",
+    "SoftwareIsQuantifiable.Interface.releaseLe_trans",
+    "SoftwareIsQuantifiable.Interface.releaseLe_append",
+    "SoftwareIsQuantifiable.Interface.releaseDominates_append_left",
+    "SoftwareIsQuantifiable.Interface.releaseDominates_append_right",
+    "SoftwareIsQuantifiable.Interface.not_index_aligned_preorder",
+    "SoftwareIsQuantifiable.Interface.duplicate_candidate_not_releaseLe",
+    "SoftwareIsQuantifiable.Interface.repeated_profile_not_releaseLe",
+    "SoftwareIsQuantifiable.Interface.misaligned_addition_not_releaseLe",
+    "SoftwareIsQuantifiable.Interface.frontier_exact",
+    "SoftwareIsQuantifiable.Interface.frontier_antichain",
+    "SoftwareIsQuantifiable.Interface.misaligned_not_on_frontier",
+    "SoftwareIsQuantifiable.Pareto.dominates_trans",
+    "SoftwareIsQuantifiable.Pareto.separated_sound",
+    "SoftwareIsQuantifiable.Pareto.separated_of_refined",
+    "SoftwareIsQuantifiable.Pareto.exists_undominated_aux",
+    "SoftwareIsQuantifiable.Pareto.frontier_nonempty",
+    "SoftwareIsQuantifiable.Pareto.frontier_not_dominated",
+    "SoftwareIsQuantifiable.Pareto.and_eq_true",
+    "SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff",
+    "SoftwareIsQuantifiable.Pareto.not_per_execution_dominance",
+    "SoftwareIsQuantifiable.Pareto.max_le_max",
+    "SoftwareIsQuantifiable.Pareto.max_lt_max",
+    "SoftwareIsQuantifiable.Pareto.separated_sum",
+    "SoftwareIsQuantifiable.Pareto.separated_parallel",
+    "SoftwareIsQuantifiable.Pareto.not_scalarized",
+    "SoftwareIsQuantifiable.Pareto.weighted_strict",
+    "SoftwareIsQuantifiable.Pareto.scalar_optimum_undominated",
+    "SoftwareIsQuantifiable.Pareto.dominatesB_iff",
+    "SoftwareIsQuantifiable.Pareto.frontier_exact",
+    "SoftwareIsQuantifiable.Pareto.frontier_antichain",
+    "SoftwareIsQuantifiable.Pareto.scalar_frontier_point",
+    "SoftwareIsQuantifiable.Pareto.dominates_add_left",
+    "SoftwareIsQuantifiable.Pareto.dominates_add_right",
+    "SoftwareIsQuantifiable.Pareto.minkowski_frontier_subset",
+    "SoftwareIsQuantifiable.Pareto.not_frontier_minkowski",
+    "SoftwareIsQuantifiable.Pareto.dominates_iff_interface",
+    "SoftwareIsQuantifiable.Pareto.frontier_can_regress",
+    "SoftwareIsQuantifiable.Pareto.admitted_noWorse",
+    "SoftwareIsQuantifiable.Pareto.admitted_frontier_exists",
+    "SoftwareIsQuantifiable.Pareto.admitted_frontier_sound",
+    "SoftwareIsQuantifiable.Pareto.acceptsRelease_iff",
+    "SoftwareIsQuantifiable.Pareto.weaklySeparated_sound",
+    "SoftwareIsQuantifiable.Pareto.acceptsReplacement_iff",
+    "SoftwareIsQuantifiable.Pareto.replacement_no_regression",
+    "SoftwareIsQuantifiable.Pareto.omitted_qualified_behavior_refused",
+    "SoftwareIsQuantifiable.Pareto.empty_submission_refused_when_qualified"
+  ],
+  "module_theorem_counts": {
+    "Coloring": 36,
+    "Coverage": 10,
+    "Finiteness": 13,
+    "Fold": 17,
+    "Instance": 21,
+    "Interface": 54,
+    "Pareto": 35
+  },
+  "theorem_count": 186,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_axioms": [],
+  "historical_replayer": "Correctly refused current source: separately pinned historical 4.15 subject; not counted as a current proof failure.",
+  "sources_unchanged": true,
+  "source_blobs": [
+    {
+      "path": ".gitignore",
+      "git_blob": "01f8cdb637da2370fa79960e25efa59dd8cffd6d",
+      "git_mode": "100644",
+      "size": 7,
+      "sha256": "fde850d24186b6e99c8c0debd641fb3ab85198b109eb66f71a1fea02bd6ea1b3"
+    },
+    {
+      "path": "README.md",
+      "git_blob": "534dde33108ff862e312d03a272c2bf1345e1ff4",
+      "git_mode": "100644",
+      "size": 20060,
+      "sha256": "4cc3b94f1babbf3995fe09ab6de753715fdbfbc6b75e44b06a4e5a647c6d231c"
+    },
+    {
+      "path": "SoftwareIsQuantifiable.lean",
+      "git_blob": "1d5dcf44be6a27f853a54fc32e0cd5693ef873c1",
+      "git_mode": "100644",
+      "size": 270,
+      "sha256": "914a334d177e06c1e6ae962e25aa587abb53b397f91087bc49e44a5d6c73d8d5"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Coloring.lean",
+      "git_blob": "bcbed46f7c6be0adbb7c252727d80d850b2a3f2b",
+      "git_mode": "100644",
+      "size": 27741,
+      "sha256": "736b668a988cd4e0992381a442f4213270d463442d3601845606de6a3a9321a0"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Coverage.lean",
+      "git_blob": "a1ed68424249fd9f522b976f657f62b77e2dd8e8",
+      "git_mode": "100644",
+      "size": 7812,
+      "sha256": "9d221f58b391830a8d3202c8e045e95202dc66427ddba92cec8e0163a2d00002"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Finiteness.lean",
+      "git_blob": "eca691dd1dcd869168cffdaf718bdf09c57303ce",
+      "git_mode": "100644",
+      "size": 14162,
+      "sha256": "a12abd57bc10e2b984f865ed7d6ff3b8b4d1c987a3cb90ae0cf971d17c7cdf73"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Fold.lean",
+      "git_blob": "3b785c8788171be5a2fadff927c33579459d1330",
+      "git_mode": "100644",
+      "size": 9560,
+      "sha256": "e0e6df85309a922bc80deaa068b11f7c02248810dbb910ccf68d8009ebfa8d3b"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Instance.lean",
+      "git_blob": "a1a206ef02e12e96d792e144cc10f127580744fd",
+      "git_mode": "100644",
+      "size": 8848,
+      "sha256": "f2a9e4f0fd4be1335539f70d4d1f33c2a9c97f582a28f902aed646d5cd5af974"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Interface.lean",
+      "git_blob": "75d8cc2cd543b18870818850199ee27fd90d3eb4",
+      "git_mode": "100644",
+      "size": 45426,
+      "sha256": "715f96ff792ead977c711f0bec2d80e20d98b6125c670bdefe7e3450e87205af"
+    },
+    {
+      "path": "SoftwareIsQuantifiable/Pareto.lean",
+      "git_blob": "336d1b03dd727810886ca423cf134d8d81dda6cc",
+      "git_mode": "100644",
+      "size": 27128,
+      "sha256": "1a95b750fa9056737225fae2e769635362f6d0fe9c6bc5db251c98db72969cd4"
+    },
+    {
+      "path": "examples/LedgerRepair.lean",
+      "git_blob": "7d43ae0620e10faade44822fed4c0f0bda67337a",
+      "git_mode": "100644",
+      "size": 1879,
+      "sha256": "caca091d9d82489a73fe10a01d22c5c8a49f78ccef6f1958a46c2cd9d19a56c3"
+    },
+    {
+      "path": "examples/README.md",
+      "git_blob": "639b8bb10680ff46a921d78f298af6ed6d612e9d",
+      "git_mode": "100644",
+      "size": 1152,
+      "sha256": "a02d6da745bf1b16b43fb8c2f7bae1739c81ff899491cfe68f42cf4a3446eebe"
+    },
+    {
+      "path": "examples/check.sh",
+      "git_blob": "504be126fcfc14e179d231a6d7a186cceb520f5f",
+      "git_mode": "100755",
+      "size": 396,
+      "sha256": "ec0dac35bd017e7a0da9e45f4b8c20f4590c5a2b7f2390ecd1d08a6c410a1527"
+    },
+    {
+      "path": "examples/verification.txt",
+      "git_blob": "f00335313172349257b3b3cac39b8028478c4c18",
+      "git_mode": "100644",
+      "size": 349,
+      "sha256": "9adb690877980bb8d6f119279588f46b50503e14c3be0e5de6034ecbfe248b9a"
+    },
+    {
+      "path": "lake-manifest.json",
+      "git_blob": "d8b06d8fef7592d9a58bdc5a4c8977def64594bf",
+      "git_mode": "100644",
+      "size": 134,
+      "sha256": "f9dbff364d65356da00dd871706fa573a87e33ddce74b0046ae070e0e7b0fbdc"
+    },
+    {
+      "path": "lakefile.lean",
+      "git_blob": "a816339c28a4380dcf1d52b7ea8189420dcfe2e6",
+      "git_mode": "100644",
+      "size": 150,
+      "sha256": "c37338fd852ab251493663a094e9326812e81eab24507a6b059336aa6a3caf1f"
+    },
+    {
+      "path": "lean-toolchain",
+      "git_blob": "7aca1d8a939cc24c413eddd793671cdce7070b74",
+      "git_mode": "100644",
+      "size": 25,
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+    },
+    {
+      "path": "verification/ParetoControls.lean",
+      "git_blob": "3da699c8f215c7d9bfd04db6d80f3abf186aee37",
+      "git_mode": "100644",
+      "size": 1033,
+      "sha256": "657d8420c3a0cca34a5f98b8591dd3be3f55795d31e98210c56ff11677a6ca21"
+    },
+    {
+      "path": "verification/coverage/Axioms.lean",
+      "git_blob": "91b36a607b36505412d0e82636fa363e0eb55112",
+      "git_mode": "100644",
+      "size": 4080,
+      "sha256": "f0516ae7080238b40fd385035f56335aa27d8224f91b774acd1474ef217036c7"
+    },
+    {
+      "path": "verification/coverage/README.md",
+      "git_blob": "c311d9d653217fd6f7a5f6aa68651af029d8bfbe",
+      "git_mode": "100644",
+      "size": 2431,
+      "sha256": "5ecd60b7690b0f526a5560943787ce595184ab50cd707bd79236b9254c1118aa"
+    },
+    {
+      "path": "verification/coverage/axioms.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/axioms.stdout",
+      "git_blob": "ef207cf0770d6b0caef13ca45bed26423da64925",
+      "git_mode": "100644",
+      "size": 5644,
+      "sha256": "d917bae232a321bda0ad0173066aba6a91c907c274b98ccd014d59727c94ecc4"
+    },
+    {
+      "path": "verification/coverage/build.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/build.stdout",
+      "git_blob": "becc8bf797997ad43621dccc65ba2d123837cd06",
+      "git_mode": "100644",
+      "size": 1421,
+      "sha256": "447b25b6176ea23f5b5e21243f8176b8de42c2847293e54c0ac20eead8dfdea6"
+    },
+    {
+      "path": "verification/coverage/clean.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/clean.stdout",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/lean-version.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/lean-version.stdout",
+      "git_blob": "f807d4b1be3665555206fa44d494fe43f20af871",
+      "git_mode": "100644",
+      "size": 78,
+      "sha256": "db073805861687782e631690d1bbfe26122f2e294bb8c63320e6911c77029278"
+    },
+    {
+      "path": "verification/coverage/missing-behavior-gate.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/missing-behavior-gate.stdout",
+      "git_blob": "11133c77a88cba1b45eef008d8f9284c45d6c5bb",
+      "git_mode": "100644",
+      "size": 1474,
+      "sha256": "486e0aef0ad4ad46be2c9b84ddcab800cb95342f518a1f249b7ef3d1ccd242e7"
+    },
+    {
+      "path": "verification/coverage/missing-compute-gate.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/missing-compute-gate.stdout",
+      "git_blob": "8223dfd7cb0b19c57463c7053cefa984ed57b13d",
+      "git_mode": "100644",
+      "size": 832,
+      "sha256": "51e33bfbae0569cb223a21e06ac74214c7859c0eb25c7cdf0f524abc28f6f5d3"
+    },
+    {
+      "path": "verification/coverage/missing-validator.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/missing-validator.stdout",
+      "git_blob": "6059ca8c2eeb2fd8ce9c43379946f0983180b425",
+      "git_mode": "100644",
+      "size": 1045,
+      "sha256": "e88c7fc1fe9a405f3d38995ea5c8cdaef13c18e5f59b635e19d9ae8f3aa42aed"
+    },
+    {
+      "path": "verification/coverage/record.json",
+      "git_blob": "56d7f99343265f4cc9f16eed33a2c9b276b7d21f",
+      "git_mode": "100644",
+      "size": 10363,
+      "sha256": "2e05339a2ebbe6070ef408552296b9a3e26e1e408b06141f383585637461ab60"
+    },
+    {
+      "path": "verification/coverage/unrecorded-witness.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/unrecorded-witness.stdout",
+      "git_blob": "afa61a487aa2745aef5639e9baedf32dc72f6b84",
+      "git_mode": "100644",
+      "size": 978,
+      "sha256": "ca91829db372e9e7d28792a767b687d7d385b9838eba6ca9fa7542d277a673b8"
+    },
+    {
+      "path": "verification/coverage/upstream-pareto-controls.stderr",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/upstream-pareto-controls.stdout",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_mode": "100644",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "verification/coverage/verify.py",
+      "git_blob": "8914fd529cb1797cb1758a25644ee43866a2c829",
+      "git_mode": "100644",
+      "size": 5806,
+      "sha256": "c3d673f02ed845977be7ff98d91facfa40a3e5c14b18b045c1087637cb010e4c"
+    },
+    {
+      "path": "verification/pareto-repair.md",
+      "git_blob": "43cf4d12a6931a0d26aff510d5f7a0b12b31575f",
+      "git_mode": "100644",
+      "size": 2319,
+      "sha256": "f8beb3f9c737a468bd3d7c306ff2c06309ba1759815ba78c8d90c26d7c0acc9b"
+    }
+  ],
+  "status": "passed",
+  "finished_at": "2026-11-18T10:08:04.949728+00:00"
+}

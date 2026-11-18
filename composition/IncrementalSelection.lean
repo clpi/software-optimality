@@ -98,7 +98,7 @@ theorem replay_agrees_with_coloring (state : State F) (a : F) :
       ⟨SoftwareIsQuantifiable.Coloring.coloring_complete _ _ _ hb a,
        SoftwareIsQuantifiable.Coloring.coloring_sound _ _ _ a⟩)
 
-/-- Check both public point interfaces in one kernel, including candidate
+/-- Check both point interfaces in one kernel, including candidate
     order and ties. The implementations use different Boolean comparators. -/
 theorem point_frontiers_agree (xs : List Optimality.Point) :
     Optimality.paretoMaximal xs = SoftwareIsQuantifiable.Pareto.frontier xs := by
@@ -109,11 +109,15 @@ theorem point_frontiers_agree (xs : List Optimality.Point) :
     exact decide_eq_true_iff
   simp only [Optimality.paretoMaximal, FiniteFrontier.frontier, SoftwareIsQuantifiable.Pareto.frontier, cmp]
 
-theorem release_gates_agree {B K : Type} [DecidableEq B] [DecidableEq K] (before after : K)
+/-- The canonical public gate supplies release admission. This theorem only
+    projects its obligations through the existing local point representation. -/
+theorem release_gate_exact {B K : Type} [DecidableEq B] [DecidableEq K] (before after : K)
     (prior : SoftwareIsQuantifiable.Pareto.PriorQualification B)
     (offered : SoftwareIsQuantifiable.Pareto.BehaviorSubmission B) (inc out : Optimality.Point) :
-    Optimality.acceptsRelease before after prior.qualified offered.offered inc out =
-    SoftwareIsQuantifiable.Pareto.acceptsRelease before after prior offered inc out := rfl
+    SoftwareIsQuantifiable.Pareto.acceptsRelease before after prior offered inc out = true ↔
+      after = before ∧ (∀ b ∈ prior.qualified, b ∈ offered.offered) ∧ Optimality.noWorse out inc := by
+  simpa only [Optimality.noWorse, SoftwareIsQuantifiable.Pareto.noWorse] using
+    SoftwareIsQuantifiable.Pareto.acceptsRelease_iff before after prior offered inc out
 
 /-- Feed the actual incremental result to the existing finite-generator
     coverage certificate. Invalid universe, refused certificate, and accepted
@@ -151,7 +155,7 @@ theorem certificate_eq_full (state : State F) (u : List F) (k : ScopedFrontier.C
 
 #print axioms certificate_eq_full
 #print axioms point_frontiers_agree
-#print axioms release_gates_agree
+#print axioms release_gate_exact
 #print axioms choose_congr
 #print axioms selectCached_exact
 #print axioms live_revision

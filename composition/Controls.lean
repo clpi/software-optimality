@@ -100,6 +100,17 @@ private def rootless : Snapshot Nat := ⟨[],[([],0),([0],1)]⟩
 #guard (dirty emptyGraph rootless).contains 0 && (advance (start emptyGraph) rootless).cache.contains 1
 #guard !(advance (start rootless) emptyGraph).cache.contains 1
 
+-- Persistent caches stay unique through unchanged revisions, even when roots
+-- and rules contain duplicates. Repetition cannot grow a fixed fact set.
+private def singleton : Snapshot Nat := ⟨[0],[]⟩
+private def duplicateFacts : Snapshot Nat := ⟨[0,0],[([0],1),([0],1),([],1)]⟩
+#guard (start singleton).cache == [0]
+#guard (advance (start singleton) singleton).cache == [0]
+#guard ((List.replicate 100 singleton).foldl advance (start singleton)).cache == [0]
+#guard (start duplicateFacts).cache.length == 2
+#guard ((List.replicate 100 duplicateFacts).foldl advance (start duplicateFacts)).cache.length == 2
+#guard (update singleton singleton [0,0,0]).length == 1
+
 -- Warm-starting a withdrawn cycle keeps both facts alive. Raw calls can also
 -- retain a forged unaffected fact. The proof-carrying entry point excludes both.
 private def cycle : Snapshot Nat := ⟨[],[([0],1),([1],0)]⟩

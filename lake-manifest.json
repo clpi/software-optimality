@@ -1,5 +1,15 @@
 {"version": "1.1.0",
  "packagesDir": ".lake/packages",
- "packages": [],
+ "packages":
+ [{"url": "https://github.com/clpi/software-is-quantifiable",
+   "type": "git",
+   "subDir": null,
+   "scope": "",
+   "rev": "d88acbdc3ba78fff994067d2c73bcc01622b3f61",
+   "name": "«software-is-quantifiable»",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "d88acbdc3ba78fff994067d2c73bcc01622b3f61",
+   "inherited": false,
+   "configFile": "lakefile.lean"}],
  "name": "«software-optimality»",
  "lakeDir": ".lake"}

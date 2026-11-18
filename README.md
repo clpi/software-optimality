@@ -1,6 +1,10 @@
 # Machine-checked qualification, compounding, and finite Pareto selection
 
-Language-independent Lean proofs with executable reference algorithms. Checked with Lean 4.19.0 (release commit `6caaee842e94`). No external packages or Mathlib. These are not proofs of an unrelated production implementation.
+Language-independent Lean proofs with executable reference algorithms. Checked with Lean 4.19.0 (release commit `6caaee842e94`). The cross-repository interface uses the pinned `software-is-quantifiable` Lake dependency; no Mathlib is required. These are not proofs of an unrelated production implementation.
+
+## Historical execution and observation planning
+
+Recover every forced answer to a declared set of historical questions, retain counterexamples for ambiguous answers, and compute the Pareto frontier of adaptive observations and certified proof engines. The Lean checker and SQLite recorder support archived receipts, sparse inference, independent predictions, symbolic hooks and withdrawals. The reproducible example starts with an unlisted run and follows its status through receipt recovery and retraction. [Procedure, proofs and replay](docs/HISTORICAL-OBSERVABILITY.md).
 
 ## Reproduce
 
@@ -8,12 +12,14 @@ Install the official Lean 4.19.0 distribution and place its `bin` directory on P
 
 ```sh
 ./check.sh
+./composition/check.sh
 ```
 
 Or select a specific executable:
 
 ```sh
 LEAN=/path/to/lean ./check.sh
+LAKE=/path/to/lake LEAN=/path/to/lean ./composition/check.sh
 ```
 
 The script rejects source admissions/custom axioms, treats Lean warnings as errors, checks each compiler exit, and rejects admitted-axiom/error diagnostics. It compiles local dependencies and checks all named modules. Exit status zero is required; full captured output is in `CHECK.log`. `CHECK_CONTROLS.md` records negative controls confirming a deliberately admitted proof and an injected compiler error both stop the checker. `lean-toolchain` pins the version. Generated `.olean` files need not be committed.
@@ -42,6 +48,12 @@ The explicit assumptions are decidable equality of atoms, all roots in U, and ev
 
 This is a deliberately exponential reference algorithm, not an optimized worklist. Its purpose is a complete executable specification with a checked bridge to the general derivation semantics. No unproved iteration cap or saturation heuristic is used. Three executable guards cover cross-source consequences, withdrawn support, and an unsupported cycle.
 
+### `ExecutableIncremental.lean`: executable edits with exact cache refinement
+
+`start` evaluates a snapshot and `advance` updates its proof-carrying cache. Changed roots and changed hyperedge heads seed invalidation. The reference `dirty` projects old and new hypergraphs, while `update` materializes only the new-rule arcs. `new_arcs_suffice` proves that propagation equivalent, and `update_reference_exact` proves equality to the normalized old-and-new-arc reference. Both snapshots still supply the change seeds. Recalculation fires the original complete conjunctive rules. `update_exact` proves membership agrees with full rooted derivation when the input cache is exact, and `reachable_exact` establishes that premise for every state produced by the API. Exported `full` and `update` caches erase repeated facts; `reachable_nodup` proves uniqueness across every API history. `reachable_length_eq_full` fixes stored size to the current closure, and `advance_same_length` proves unchanged revisions preserve cache length. Raw imported caches require their own validation.
+
+`composition/IncrementalSelection.lean` passes those facts through the existing canonical release and frontier owners. `evaluate_exact` preserves the complete optional ordered selection result across every finite edit history, and `certificate_eq_full` preserves the existing covered-frontier certificate verdict, including refusal and invalid input. The projection must reread changed observations, policy, catalogue, and cost data from the current snapshot. These are reference algorithms with sequential-state proofs; no distributed publication protocol or measured performance improvement is asserted. [Verification and counterexamples](composition/EXECUTABLE-VERIFICATION.md) give the exact scope and commands.
+
 ### `FiniteQualification.lean`: exact qualification enumeration
 
 Executable enumeration of all Boolean profiles of dimension n, proved count `2^n`, complete membership iff length n, and exact filtering under the supplied total Boolean evaluator. Completeness is a membership theorem, not inferred merely from counting candidates.
@@ -50,7 +62,7 @@ Executable enumeration of all Boolean profiles of dimension n, proved count `2^n
 
 Executable filtering returns exactly candidates not dominated by any candidate in the named list. The provided strict Pareto comparator is checked against componentwise no-worse integer costs and at least one strictly better axis. Costs and finite axes are inputs; an axis to maximize must be normalized accordingly. The four-way support coloring distinguishes unknown, lawful, unlawful, and conflict; exact conflict/unknown characterizations are checked.
 
-The frontier theorem is nondominance inside the supplied finite candidate list and measurements, under the supplied integer costs. It does not assert that enumerated candidates include every possible implementation.
+The frontier theorem is nondominance inside the supplied finite candidate list and measurements, under the supplied integer costs. `ThreeValuedGate.FiniteSpace.nothingOutside` says every implementation of the candidate type is in that list. `ThreeValuedGate.FiniteSpace.noCoverageGaps` says every listed implementation has a reading on every contract axis. `frontier_no_dominator` uses both premises. `nothingOutside_counterexample` and `noCoverageGaps_counterexample` show that dropping either premise leaves a frontier member that the two-valued cost order accepts as dominated. `absent_axis_admitted_by_two_valued_dominance` shows `ComparisonContract.dominates` accepts a missing coordinate because `cost` fills it with `0`. `unknown_blocks_dominance` is the local three-valued refusal. `unknown_blocks_dominance_canonical` sends that missing reading through `toProfile`, which drops it from the canonical vector, and then `Interface.dominates` fails. For every contract and every pair of equal-length integer lists, `known_dominates_iff_bool` matches `ComparisonContract.dominates` and `known_gate_matches_bool` matches the Bool cost comparison at each axis. `known_agrees_canonical` is that statement for nonnegative readings against `Interface.dominates` on the contract's measure space. `contractMin_agrees_canonical` is the one-axis example, obtained through `CanonicalDominance.Comparison.local_dominates_iff_canonical`.
 
 ### `FiniteSchedules.lean`: test ordering and parallel schedules
 
@@ -130,7 +142,7 @@ No `sorry`, admissions, custom axioms, or `native_decide` shortcuts occur. Some 
 
 Policies, scopes, lineages, opposite polarities and evidence identities can be encoded in atoms. Their validation is an explicit input obligation, not supplied by set closure. Runtime receipts are not automatically universal semantic proofs. Old evidence does not itself qualify a changed release; a current support or valid transfer derivation is required. Withdrawal filters live roots/rules and recomputes, preserving historical events; the current projection is not monotone when withdrawals occur.
 
-Not proved here: runtime instrumentation fidelity, cryptographic hash binding, external policy authorization, complete language lowering, arbitrary test termination, universal behavior preservation, numerical confidence of measurements, efficient worklist refinement or tight complexity bounds, production ingestion and recovery of persistent incremental caches, incremental release monotonicity, or globally optimal software performance. `ImportBinding` and `GeneratorCoverage` are named premises, not theorems of those obligations. These are distinct obligations, not concealed assumptions of the proved closure/qualification results.
+Not proved here: runtime instrumentation fidelity, cryptographic hash binding, external policy authorization, complete language lowering, arbitrary test termination, universal behavior preservation, numerical confidence of measurements, efficient worklist refinement or tight complexity bounds, an incremental provenance/deletion implementation, incremental release monotonicity, or globally optimal software performance. `ImportBinding` and `GeneratorCoverage` are named premises, not theorems of those obligations. These are distinct obligations, not concealed assumptions of the proved closure/qualification results.
 
 ## Provenance
 
@@ -169,7 +181,7 @@ Downstream proofs import `OptimalityInterface` and use the `Optimality` namespac
 | A maximal point can worsen an axis | `paretoMaximal_can_regress` | DISPROVEN as a release gate |
 | Guarded maximal set is componentwise no worse and undominated | `guardedMaximal_sound`, `guardedMaximal_nonempty` | PROVEN |
 | Overlapping bounds are not per-execution dominance | `not_per_execution_dominance` | DISPROVEN |
-| Behavior retention and the release gate | `retains_iff`, `acceptsRelease_iff` | PROVEN for the recorded lists and costs; not a measurement theorem |
+| Behavior retention and the release gate | `SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff`, `SoftwareIsQuantifiable.Pareto.acceptsRelease_iff` | PROVEN in `software-is-quantifiable` at `430340295c52a015772022b2b663d01120a3a747`. This repository does not restate them |
 | Excluded candidates are dominated by a frontier member; a pruning certificate is sound | `frontier_covers`, `pruning_sound`, `pruning_sound_pareto`, `pruningOK_implies` | PROVEN. Arbitrary dominance needs the named transitivity premise; strict Pareto discharges it |
 | Componentwise-sum product: joint frontier members are locally nondominated, and checking the product of local frontiers is sound | `joint_frontier_in_local_frontiers`, `reduced_product_sound`, `scalar_frontier_iff_allMinima` | PROVEN for componentwise sum. One-axis linear selection and the Pareto filter agree |
 | Product of local frontiers is not automatically jointly nondominated | `product_of_frontiers_not_joint` | DISPROVEN |
@@ -177,6 +189,15 @@ Downstream proofs import `OptimalityInterface` and use the `Optimality` namespac
 | A complexity-class tag is not generator coverage | `class_tag_is_not_coverage`, `coverage_omission_can_dominate`, `frontier_respects_coverage` | The tag claim is DISPROVEN. Transfer to an intended set is PROVEN only from the named `GeneratorCoverage` premise |
 | Import identity transfers a frontier; a changed cost row does not | `frontier_transfers_under_import`, `import_mismatch_blocks_transfer` | Transfer is PROVEN from the named `ImportBinding` premise. Mismatch is DISPROVEN. Cryptographic binding is not proved |
 | Canonical key sort preserves frontier membership | `canonical_frontier_mem` | PROVEN for membership. Equal keys do not determine a unique order |
+| Two-valued dominance admits an absent axis | `ThreeValuedGate.absent_axis_admitted_by_two_valued_dominance` | DISPROVEN. `ComparisonContract.cost` fills a missing coordinate with `0` |
+| An unknown verdict blocks local dominance | `ThreeValuedGate.unknown_blocks_dominance` | PROVEN |
+| An unknown verdict blocks canonical dominance | `ThreeValuedGate.unknown_blocks_dominance_canonical` | PROVEN. `toProfile` drops the missing reading, so the profile does not cover `measureSpace` |
+| Equal-length known lists match the Bool dominance | `ThreeValuedGate.known_dominates_iff_bool` | PROVEN for every contract |
+| A known per-axis gate matches the Bool cost comparison | `ThreeValuedGate.known_gate_matches_bool` | PROVEN at every axis of every equal-length contract. `contractMin_gate_matches_bool` is the one-axis example |
+| Nonnegative known readings match `Interface.dominates` | `ThreeValuedGate.known_agrees_canonical` | PROVEN for every contract. `contractMin_agrees_canonical` is the one-axis example through `CanonicalDominance.Comparison.local_dominates_iff_canonical` |
+| Nothing outside the finite supplied list | `ThreeValuedGate.FiniteSpace.nothingOutside` | PREMISE of `frontier_no_dominator`. Dropping it is DISPROVEN by `nothingOutside_counterexample` |
+| Listed candidates have a reading on every axis | `ThreeValuedGate.FiniteSpace.noCoverageGaps` | PREMISE of `frontier_no_dominator`. Dropping it is DISPROVEN by `noCoverageGaps_counterexample` |
+| A frontier member is undominated by every implementation | `ThreeValuedGate.frontier_no_dominator` | PROVEN from both premises above |
 
 `tools/check_optimality.sh` runs `CompositionCheck.lean` and `tools/check_optimality.py` on the same guards. Both must report acceptance of a no-worse release and refusal of a regressing frontier point, an out-of-universe root, and a project-first product reduction. This is not a proof of incremental release monotonicity.
 
@@ -220,13 +241,39 @@ The existing `FiniteFrontier.lean` owner also now checks retained-frontier certi
 
 ### Cross-repository qualification and compositional Pareto proofs
 
-Run `./composition/check.sh` to check the public qualification proof and this
-repository together in Lean 4.19.0. The joint build connects admitted ledger
+`lake build` has one dependency, `software-is-quantifiable` at
+`430340295c52a015772022b2b663d01120a3a747`. The quantifiable package's
+lakefile lists no dependency. The composition modules are roots of the
+default target. The joint build connects admitted ledger
 events, a bounded materialized closure scan, scoped release eligibility,
 tie-preserving Pareto selection, interval and paired-scenario dominance, and
 forward simulation of finite traces. The pruning checker accepts exactly
 frontier-preserving subsets of a finite catalogue under a strict partial
 order. See [the proof map, controls, measurements and limits](composition/README.md).
+
+`SoftwareIsQuantifiable.Interface.dominates` and `Interface.noWorse`, at
+`430340295c52a015772022b2b663d01120a3a747`, are the canonical profile order.
+A reading vector that is shorter or longer than the measure space is not
+`axesLe`. `Interface.releaseLe` and `Interface.releaseDominates` are that
+order on symbol assemblies: each symbol occurs at most once, counting a
+repeated copy, and every profile has one reading per axis.
+`CanonicalDominance.lean` proves each local dominance predicate either
+equivalent to the profile order on an explicit encoding, or a one-way
+refinement together with a counterexample to the converse.
+`Pareto.dominates` and `Pareto.noWorse` agree with the canonical order on
+two nonnegative minimize axes when both profiles record observed behavior.
+A one-symbol release of those profiles agrees with the same order.
+
+Lean files under `docs/` stay out of the build. They are the negative and
+publisher controls: `docs/admission-normalization/ReviewControls.lean`,
+`docs/admission-normalization/ScopeControls.lean`,
+`docs/contextual-dominance/Controls.lean`,
+`docs/hypergraph-incremental/ReviewControls.lean`,
+`docs/metric-relevance/BoundaryChecks.lean`,
+`docs/typed-comparison/ReviewControls.lean`,
+`docs/covered-frontier/Controls.lean`,
+`docs/covered-frontier/Campaign.lean`, and
+`docs/covered-frontier/ArchiveImport.lean`.
 
 ### `GeneralPareto.lean`: the general Pareto obligations, discharged
 
@@ -236,7 +283,25 @@ Obligation 1 — bounds-derivation soundness: the derived interval for an assign
 
 The three-outcome decision on bounds is also proved: separation of the candidate's interval below the incumbent's on every axis, strict on one, implies every realized candidate vector strictly Pareto-dominates every realized incumbent vector (`separatedN_sound`, `separatedN_strictPareto`); overlap on any axis proves neither direction separated (`not_separatedN_of_overlap`) — the undecided case. `frontier_complete` proves every member of a named candidate list is in its strict-Pareto frontier or is strictly dominated by a frontier member. Not claimed: anything outside the named finite lists, anything about physical measurements, or a verdict for a non-separated pair beyond the proved overlap case.
 
-## Executable incremental qualification
+### `WorklistClosure.lean`: a verified worklist saturation
 
+`ExecutableClosure.lean`'s reference saturation enumerates the powerset of the universe (2^|U| candidate subsets), by design. `WorklistClosure.lean` proves a worklist iteration computes the same closure: one step adds exactly the rule heads whose premises are all already present (`wstep_mem`); the iteration is a membership fixed point after at most |U| + 1 steps, by a counting argument (while unfixed, the count of universe members grows by at least one per step and is bounded by |U|); membership at any stage derives in `Qualification.Derives` (`witer_sound`) and every derivation lands in the fixed stage (`witer_complete`). The fail-closed checked worklist therefore returns exactly what the checked reference returns (`worklist_agrees_checked`), so the exponential reference remains usable as a small-case differential oracle. Not claimed: any complexity bound for the worklist itself (the count bounds iterations, not step cost), duplicate-freeness, or anything about inputs the checked boundary rejects.
 
-`ExecutableIncremental.start` and `advance` maintain a checked cache from finite directed hypergraphs. `IncrementalSelection.evaluate_exact` proves that reading the new release contract from the snapshot and using this cache returns exactly the result of the existing full release selector. The guarantee includes candidate order, rejected inputs, and valid empty frontiers. `new_arcs_suffice` gives the precise condition under which propagation can omit old arcs. [Proof, counterexamples and reproduction](composition/EXECUTABLE-VERIFICATION.md).
+### `StrictSchedules.lean`: positive durations and acyclicity inside the schedule model
+
+`FiniteSchedules.lean` directs that positive durations and acyclic dependencies be enforced separately when required, and notes a zero-duration dependency cycle satisfies its feasibility predicate today. `StrictSchedules.lean` is that enforcement, carried inside the model: `feasibleStrict` conjoins feasibility with a decidable positivity check on every placed job, with exact characterizations of both (`positive_exact`, `feasibleStrict_iff`, `feasibleStrict_exact`). In a strictly feasible schedule every listed dependency is a strict precedence (`strict_precedence`), and acyclicity is then derived, not separately assumed: no strictly feasible schedule carries a dependency cycle (`no_dependency_cycle`). The zero-duration cycle stands in the guards as the control: feasible, not positive, not strictly feasible. Not claimed: anything about `feasible` alone, venues beyond the base model's homogeneous capacity, or shared and external resources, which the base model does not represent.
+### `CheckedTransfer.lean`: checked cross-lineage transfer edges
+
+The design's second proposed extension, proved against the derivation semantics. A transfer is a list of checked pairs, given as data in the same style as roots and rules; the transfer rules are exactly the pairs whose source is derivable in the source system, so an unchecked pair contributes nothing. The image of a target set under the checked pairs is exact (`image_exact`), monotone, and never exceeds the combined checked system: anything target-side reachable through checked transfers is derivable from the source roots under the source rules plus the checked transfer rules, so a transfer proves nothing the combined system does not (`transfer_never_exceeds`, resting on `Qualification.least`). Withdrawal is contained: withdrawing a source root retracts exactly the image part that loses support, and no transfer bootstraps a fact from nothing (`transfer_no_bootstrap`). The headline theorems are axiom-free. Not claimed: that any particular transfer is semantically justified — the pairs are checked data, and their justification is the same ingestion obligation as roots and rules.
+
+### `EvidenceTransport.lean`: the dedupe transport bridge for scoped evidence
+
+`ScopedEvidence.lean` names an ingestion duty: identical duplicate delivery must be deduplicated by receipt identity before its selected evidence set is constructed. This module proves that bridge in the module's own receipt types. Deduplication keeps the first delivery of each receipt identity; membership after dedupe is characterized honestly — a surviving receipt was delivered, and the first delivery of its identity survives — because conflicting duplicates (same identity, different contents) are not silently equated: the scoped qualifier already refuses them, and the bridge preserves that refusal. Dedupe is idempotent, is the identity on duplicate-free deliveries, produces duplicate-free identity lists, and the central bridge holds: qualifying the deduplicated delivery agrees exactly with qualifying the raw delivery (`qualify_dedupe_iff`), so the transport stage changes nothing the checker decides. Not claimed: anything about receipt authenticity or authorization, which stay named ingestion obligations.
+
+### `LinkedCertificate.lean`: the principal linked certificate, and the generator coverage upgrade
+
+The design's first proposed extension, proved for the eligible-schedules specialization, and its fifth (the coverage upgrade) for the one generator whose completeness is already proven. One acceptance predicate over a fixed instance yields the four clauses together (`principal`): the admission components of the eligible gate (observed-behavior bit, positive required count, exact receipt count, every elapsed value within its named limit); the scope statement — the timed-admission characterization instantiated at the instance, so the checker validated precisely the named receipt list against the named count and limits; feasibility in the finite schedule model; and membership in the declared alternative space with no gated candidate in it strictly dominating. Each clause is discharged by the earlier theorem that earned it; nothing is reproven. The boundary is stated in the module and stands: the observed-behavior predicate is a policy input, so the scope clause proven is exactness of the checked receipt list, not behavior preservation for unobserved cases. `generator_optimum` upgrades a certificate over the enumerated schedule catalogue to the absence of a dominator among all schedules of the model's shape, enumerated or not, through the enumeration's proven completeness. No upgrade is claimed for the foreign campaign's queue catalogue, whose exhaustiveness is not proven.
+
+### `ScopedCompatibility.lean`: catalogue compatibility as a checked precondition
+
+The generic selector in `ScopedSelection.lean` receives per-candidate policies and does not itself prove the candidates share one intent, metric, and policy contract; the readme has carried that restriction as an ingestion duty. This module makes it a checked precondition over the selector's own types: a catalogue is compatible when every candidate's derived policy agrees with the catalogue's reference policy on the full contract the representation carries (policy identity, intent, metric identity, and limits), the check is decidable and exact (`compatible_exact`), and over a compatible catalogue the certified optimum theorem holds in its original strength (`certified_scoped_optimum_compatible`). A mixed catalogue is refused by the check, with a two-candidate counterexample standing in the guards. The by-construction closure of the same point for the newer adapter lives in `ScopedFrontier.lean`, which derives the policy from one shared contract instead of checking submitted ones; this module closes it for the selector's existing entry point.

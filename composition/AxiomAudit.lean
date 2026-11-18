@@ -1,27 +1,26 @@
 import Lean
-import composition.Controls
-import composition.TraceSafety
-import ContextualDominance
-import AdmissionTests
-import ComparisonTests
-import FiniteQualification
-import GeneralPareto
-import OptimalityInterface
-import CompositionCheck
-import ForeignCampaign
-import ScopedCampaign
-import MetricRelevance
 import SoftwareIsQuantifiable
+import SoftwareOptimality
+import composition.InterfaceControls
+import docs.«covered-frontier».Controls
+import docs.«covered-frontier».Campaign
+import docs.«covered-frontier».ArchiveImport
+import examples.ReleaseSchedule
 open Lean Elab Command
 
--- Audit the transitive dependencies of every theorem in either source tree,
--- including private theorem names. Work from the defining module identity.
+-- Audit every theorem declaration in the named core/composition modules,
+-- including private and generated names. Examples and executable guards are
+-- checked separately by their registered build roots and runners.
 run_cmd do
   let env ← getEnv
   let modules := [`Qualification,`FiniteQualification,`ExecutableClosure,`FiniteFrontier,
     `FiniteSchedules,`ForeignCampaign,`EligibleSchedules,`ScopedEvidence,`LinearSelection,
     `EligibleCampaign,`ScopedSelection,`ScopedCampaign,`MetricRelevance,`HypergraphIncremental,
-    `ExecutableIncremental,`GeneralPareto,`Composition,`OptimalityInterface,`FrontierComposition,`ContextualDominance,`Admission,
+    `ExecutableIncremental,`CheckedTransfer,`EvidenceTransport,`WorklistClosure,`StrictSchedules,
+    `LinkedCertificate,`ScopedCompatibility,`ThreeValuedGate,`CanonicalDominance,
+    `composition.InterfaceBridge,`composition.InterfaceControls,
+    `docs.«covered-frontier».Controls,`docs.«covered-frontier».Campaign,
+    `examples.ReleaseSchedule,`GeneralPareto,`Composition,`OptimalityInterface,`FrontierComposition,`ContextualDominance,`Admission,
     `AdmissionHypergraph,`ComparisonContract,`ScopedFrontier,
     `composition.QualifiedClosure,`composition.QualifiedSelection,`composition.IntervalDominance,
     `composition.LiveSelection,`composition.IncrementalSelection,`composition.TraceSafety,`SoftwareIsQuantifiable.Finiteness,

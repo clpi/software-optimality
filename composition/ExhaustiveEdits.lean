@@ -27,7 +27,9 @@ def main : IO Unit := do
       let got := update old.snapshot new.snapshot old.cache
       unless atoms.all (fun a => got.contains a == new.oracle.contains a) do
         throw (IO.userError s!"closure mismatch old={i} new={j}")
+      unless got.length == new.oracle.length do
+        throw (IO.userError s!"duplicate stored facts old={i} new={j}")
       count := count + 1
   unless cases.size == 1024 && count == 1048576 do
     throw (IO.userError s!"incomplete enumeration: {cases.size} snapshots, {count} edits")
-  IO.println s!"{cases.size} snapshots; {count} ordered snapshot pairs agree with powerset closure."
+  IO.println s!"{cases.size} snapshots; {count} ordered snapshot pairs agree with powerset closure and unique cache size."

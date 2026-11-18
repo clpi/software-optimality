@@ -159,10 +159,63 @@ theorem new_arcs_suffice (old new : Snapshot A) (a : A) :
             ⟨(ps,x), (mem_changed _ _ _).mpr changedRule,rfl⟩)))
       · exact follow hn
 
+/-- Normalize stored fact lists without changing the set observed by selection. -/
+private theorem eraseDups_loop_mem (xs acc : List A) (a : A) :
+    a ∈ List.eraseDups.loop xs acc ↔ a ∈ xs ∨ a ∈ acc := by
+  induction xs generalizing acc with
+  | nil => simp [List.eraseDups.loop]
+  | cons x xs ih =>
+    simp only [List.eraseDups.loop, List.elem_eq_mem]
+    split
+    next yes =>
+      rw [ih]
+      have hx : x ∈ acc := of_decide_eq_true yes
+      constructor
+      · rintro (member | member)
+        · exact Or.inl (List.mem_cons_of_mem x member)
+        · exact Or.inr member
+      · rintro (member | member)
+        · rcases List.mem_cons.mp member with rfl | member
+          · exact Or.inr hx
+          · exact Or.inl member
+        · exact Or.inr member
+    next no =>
+      rw [ih]
+      simp only [List.mem_cons, or_assoc, or_left_comm]
+
+private theorem eraseDups_mem (xs : List A) (a : A) :
+    a ∈ xs.eraseDups ↔ a ∈ xs := by
+  simpa only [List.eraseDups, List.not_mem_nil, or_false] using eraseDups_loop_mem xs [] a
+
+private theorem eraseDups_loop_nodup (xs acc : List A) (h : acc.Nodup) :
+    (List.eraseDups.loop xs acc).Nodup := by
+  induction xs generalizing acc with
+  | nil => simpa only [List.eraseDups.loop, List.Nodup, List.pairwise_reverse, ne_comm] using h
+  | cons x xs ih =>
+    simp only [List.eraseDups.loop, List.elem_eq_mem]
+    split
+    next yes => exact ih acc h
+    next no =>
+      apply ih
+      exact List.nodup_cons.mpr ⟨by simpa using no, h⟩
+
+private theorem eraseDups_nodup (xs : List A) : xs.eraseDups.Nodup :=
+  eraseDups_loop_nodup xs [] List.nodup_nil
+
+
 def update (old new : Snapshot A) (cache : List A) : List A :=
-  let invalid := dirty old new
-  saturate (new.roots ++ difference cache invalid)
-    (new.rules.filter (fun r => decide (r.2 ∈ invalid)))
+  let invalid := saturate (dirtySeeds old new) (arcs new.rules)
+  (saturate (new.roots ++ difference cache invalid)
+    (new.rules.filter (fun r => decide (r.2 ∈ invalid)))).eraseDups
+
+/-- Dirtiness is consumed only by membership in the two stable filters. The
+    new-only arc projection therefore preserves the exact normalized result,
+    even before imposing the separate old-cache validity obligation. -/
+theorem update_reference_exact (old new : Snapshot A) (cache : List A) :
+    update old new cache =
+      (saturate (new.roots ++ difference cache (dirty old new))
+        (new.rules.filter (fun r => decide (r.2 ∈ dirty old new)))).eraseDups := by
+  simp only [update, difference, new_arcs_suffice]
 
 def Exact (s : Snapshot A) (cache : List A) := ∀ a, a ∈ cache ↔ derives s.graph a
 
@@ -170,8 +223,8 @@ theorem update_exact (old new : Snapshot A) (cache : List A) (hc : Exact old cac
     Exact new (update old new cache) := by
   have cache_spec : ∀ x, x ∈ cache ↔ derives old.graph x := hc
   intro a
-  unfold update
-  rw [saturate_exact, ← incremental_exact old.graph new.graph]
+  rw [update_reference_exact]
+  rw [eraseDups_mem, saturate_exact, ← incremental_exact old.graph new.graph]
   apply Iff.intro
   · apply Qualification.monotone
     · intro x hx
@@ -188,9 +241,18 @@ theorem update_exact (old new : Snapshot A) (cache : List A) (hc : Exact old cac
     · intro ps x hx
       simpa only [Snapshot.graph, List.mem_filter, decide_eq_true_eq, dirty_exact] using hx
 
-def full (s : Snapshot A) := saturate s.roots s.rules
+def full (s : Snapshot A) := (saturate s.roots s.rules).eraseDups
 
-theorem full_exact (s : Snapshot A) : Exact s (full s) := saturate_exact _ _
+theorem full_exact (s : Snapshot A) : Exact s (full s) := by
+  intro a
+  exact (eraseDups_mem _ a).trans (saturate_exact _ _ a)
+
+/-- Exported caches contain each fact at most once, even if input roots,
+    rules, or imported caches repeat it. Temporary evaluator lists may repeat. -/
+theorem full_nodup (s : Snapshot A) : (full s).Nodup := eraseDups_nodup _
+
+theorem update_nodup (old new : Snapshot A) (cache : List A) :
+    (update old new cache).Nodup := eraseDups_nodup _
 
 /-- Reachable cache states start at a full evaluation and can only advance by update. -/
 inductive Reachable : Snapshot A → List A → Prop where
@@ -214,6 +276,53 @@ theorem reachable_exact {s : Snapshot A} {cache} (h : Reachable s cache) : Exact
   | initial s => exact full_exact s
   | advance _ _ ih => exact update_exact _ _ _ ih
 
+theorem reachable_nodup {s : Snapshot A} {cache} (h : Reachable s cache) :
+    cache.Nodup := by
+  cases h with
+  | initial s => exact full_nodup s
+  | advance => exact update_nodup _ _ _
+
+private theorem nodup_length_le (xs ys : List A) (unique : xs.Nodup)
+    (subset : ∀ a ∈ xs, a ∈ ys) : xs.length ≤ ys.length := by
+  induction xs generalizing ys with
+  | nil => simp
+  | cons a xs ih =>
+    obtain ⟨absent, tailUnique⟩ := List.nodup_cons.mp unique
+    have present : a ∈ ys := subset a List.mem_cons_self
+    have tailSubset : ∀ b ∈ xs, b ∈ ys.erase a := by
+      intro b hb
+      have different : b ≠ a := by
+        intro same
+        subst b
+        exact absent hb
+      exact (List.mem_erase_of_ne different).mpr
+        (subset b (List.mem_cons_of_mem _ hb))
+    have smaller := ih (ys.erase a) tailUnique tailSubset
+    have nonempty := List.length_pos_of_mem present
+    rw [List.length_erase_of_mem present] at smaller
+    simp only [List.length_cons]
+    omega
+
+private theorem exact_unique_length {s : Snapshot A}
+    {xs ys : List A} (ux : xs.Nodup) (uy : ys.Nodup)
+    (ex : Exact s xs)
+    (ey : Exact s ys) : xs.length = ys.length := by
+  apply Nat.le_antisymm
+  · exact nodup_length_le xs ys ux (fun a ha => (ey a).mpr ((ex a).mp ha))
+  · exact nodup_length_le ys xs uy (fun a ha => (ex a).mpr ((ey a).mp ha))
+
+
+/-- A normalized reachable cache stores exactly one copy of each derivable fact.
+    Its size depends on the current closure, not the number of past revisions. -/
+theorem reachable_length_eq_full {s : Snapshot A} {cache} (h : Reachable s cache) :
+    cache.length = (full s).length :=
+  exact_unique_length (reachable_nodup h) (full_nodup s) (reachable_exact h) (full_exact s)
+
+theorem advance_same_length (s : State A) :
+    (advance s s.snapshot).cache.length = s.cache.length :=
+  (reachable_length_eq_full (Reachable.advance s.history s.snapshot)).trans
+    (reachable_length_eq_full s.history).symm
+
 theorem state_eq_full {s : Snapshot A} {cache} (h : Reachable s cache) :
     (fun a => decide (a ∈ cache)) = (fun a => decide (a ∈ full s)) := by
   funext a
@@ -231,7 +340,13 @@ theorem frontier_eq_full {C : Type} {s : Snapshot A} {cache} (h : Reachable s ca
 #print axioms saturate_exact
 #print axioms dirty_exact
 #print axioms new_arcs_suffice
+#print axioms update_reference_exact
 #print axioms update_exact
+#print axioms full_nodup
+#print axioms update_nodup
+#print axioms reachable_nodup
+#print axioms reachable_length_eq_full
+#print axioms advance_same_length
 #print axioms reachable_exact
 #print axioms frontier_eq_full
 end ExecutableIncremental
