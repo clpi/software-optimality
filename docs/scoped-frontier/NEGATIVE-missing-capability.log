@@ -1,0 +1,3 @@
+/tmp/scoped-frontier-negative-788yhyhu/missing-capability.lean:3:105: error: tactic 'decide' proved that the proposition
+  admitted fixtureContract (fixtureSubject 0) (omittedMetric (fixtureSubject 0) 12) = true
+is false

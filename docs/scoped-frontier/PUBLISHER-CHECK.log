@@ -1,0 +1,161 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+'Qualification.least' does not depend on any axioms
+'Qualification.monotone' does not depend on any axioms
+'Qualification.idempotent' does not depend on any axioms
+'Qualification.compounding' does not depend on any axioms
+'Qualification.order_independent' does not depend on any axioms
+'Qualification.soundness' does not depend on any axioms
+'Qualification.withdrawal_no_new_support' does not depend on any axioms
+'Qualification.surviving_subsystem' does not depend on any axioms
+'Qualification.no_bootstrap' does not depend on any axioms
+'FiniteQualification.candidates_length' depends on axioms: [propext]
+'FiniteQualification.candidates_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteQualification.qualify_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+[[true, false, true]]
+'ExecutableClosure.boundedOK_exact' depends on axioms: [propext, Quot.sound]
+'ExecutableClosure.checkedClose_admitted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.checkedClose_rejects' depends on axioms: [propext, Quot.sound]
+'ExecutableClosure.subsets_count' depends on axioms: [propext]
+'ExecutableClosure.executable_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_is_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_contains_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_order_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+[0, 1, 2, 3]
+'FiniteFrontier.frontier_exact' depends on axioms: [propext, Quot.sound]
+'FiniteFrontier.pareto_exact' depends on axioms: [propext, Quot.sound]
+'FiniteFrontier.conflict_exact' does not depend on any axioms
+'FiniteFrontier.unknown_exact' does not depend on any axioms
+'FiniteFrontier.certificate_exact' depends on axioms: [propext, Quot.sound]
+'FiniteFrontier.certified_frontier' depends on axioms: [propext, Quot.sound]
+'FiniteFrontier.certified_coverage' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.queueFeasible_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.improvementCertificate_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.accepted_improvement' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.tuples_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.enumerate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.feasible_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.feasibleSchedules_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.optimalCertificate_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.certified_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ForeignCampaign.chosen_accepted' does not depend on any axioms
+'ForeignCampaign.chosen_nondominated' depends on axioms: [propext, Quot.sound]
+'ForeignCampaign.modeled_improvement_exact' depends on axioms: [propext, Quot.sound]
+'ForeignCampaign.receipt_metrics_match' does not depend on any axioms
+'ForeignCampaign.complete_list_frontier' does not depend on any axioms
+'EligibleSchedules.timingOK_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.timedAdmission_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.eligible_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.optimumCertificate_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.rejected_cannot_be_optimal' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.dominator_refutes_certificate' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.checkRequirement_exact' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.accepted_receipt_is_scoped' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.qualify_exact' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.qualification_witnesses' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.duplicate_match_rejected' depends on axioms: [propext]
+'ScopedEvidence.wrong_scope_rejected' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.qualification_sound_relative' depends on axioms: [propext, Quot.sound]
+'LinearSelection.allMinima_exact' depends on axioms: [propext, Quot.sound]
+'LinearSelection.allMinima_order_independent' depends on axioms: [propext, Quot.sound]
+'LinearSelection.bestFrom_spec' depends on axioms: [propext, Quot.sound]
+'LinearSelection.selected_minimum' depends on axioms: [propext, Quot.sound]
+'LinearSelection.selected_eligible_minimum' depends on axioms: [propext, Quot.sound]
+'LinearSelection.counted_refines' depends on axioms: [propext]
+'EligibleCampaign.linear_selector_agrees' does not depend on any axioms
+'EligibleCampaign.all_admitted' does not depend on any axioms
+'EligibleCampaign.chosen_qualified_optimum' does not depend on any axioms
+'EligibleCampaign.optimum_semantics' depends on axioms: [propext, Quot.sound]
+'EligibleCampaign.exact_eligible_frontier' does not depend on any axioms
+'EligibleCampaign.counterfactual_admitted' does not depend on any axioms
+'EligibleCampaign.chosen_beats_counterfactual' does not depend on any axioms
+'EligibleCampaign.counterfactual_not_optimum' does not depend on any axioms
+'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
+'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
+'ScopedSelection.selected_all_exact' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.selected_all_order_independent' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.certified_scoped_optimum' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.selected_scoped_minimum' depends on axioms: [propext, Quot.sound]
+'ScopedCampaign.all_scoped_admitted' does not depend on any axioms
+'ScopedCampaign.scoped_optimal_certificate' does not depend on any axioms
+'ScopedCampaign.scoped_selection' does not depend on any axioms
+'ScopedCampaign.scoped_selection_reordered' does not depend on any axioms
+'ScopedCampaign.selected_obligations_have_witnesses' depends on axioms: [propext, Quot.sound]
+'ScopedCampaign.reused_round_rejected' does not depend on any axioms
+'ScopedCampaign.foreign_configuration_rejected' does not depend on any axioms
+'MetricRelevance.shared_factorization' does not depend on any axioms
+'MetricRelevance.shared_dependency_pivotal_rate' does not depend on any axioms
+'MetricRelevance.indirectRate_spec' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.exactRate_permutation' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.observedFailureRate_permutation' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.fixture_disagreement' does not depend on any axioms
+'MetricRelevance.fractionEqual_exact' depends on axioms: [propext]
+'MetricRelevance.fixture_profile_exact' does not depend on any axioms
+'MetricRelevance.fixture_indirect_rate' does not depend on any axioms
+'MetricRelevance.observedFailureRate_spec' depends on axioms: [propext]
+'MetricRelevance.direct_leaf_rate' does not depend on any axioms
+'MetricRelevance.composed_root_pivotal_rate' does not depend on any axioms
+'MetricRelevance.direct_exact' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.composition_irreducible' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.admittedSensitivity_exact' depends on axioms: [propext]
+'MetricRelevance.exactRate_spec' depends on axioms: [propext]
+'MetricRelevance.fixture_direct' does not depend on any axioms
+'MetricRelevance.fixture_composition' does not depend on any axioms
+'MetricRelevance.fixture_failure_rate' does not depend on any axioms
+'MetricRelevance.fixture_controlled' does not depend on any axioms
+'MetricRelevance.fixture_confounded_rejected' does not depend on any axioms
+'HypergraphIncremental.matrix_update_exact' depends on axioms: [propext]
+'HypergraphIncremental.matrix_bit_update_exact' depends on axioms: [propext]
+'HypergraphIncremental.executable_full_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.qualified_frontier_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.unaffected_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.incremental_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.retracted_cycles_do_not_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.patchedInteraction_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.incrementalFrontier_exact' depends on axioms: [propext, Quot.sound]
+'ContextualDominance.retained_pareto_is_original' does not depend on any axioms
+'ContextualDominance.replacement_trans' does not depend on any axioms
+'ContextualDominance.monotone_context_replacement' does not depend on any axioms
+'ContextualDominance.pruning_preserves_attainable_bounds' does not depend on any axioms
+'ContextualDominance.pareto_representative_same_cost' does not depend on any axioms
+'ContextualDominance.pareto_vector_survives_pruning' does not depend on any axioms
+'Admission.normalized_exact' depends on axioms: [propext, Quot.sound]
+'Admission.normalized_nodup' depends on axioms: [propext]
+'Admission.duplicate_idempotent' depends on axioms: [propext, Quot.sound]
+'Admission.payload_unique' does not depend on any axioms
+'Admission.withdrawal_survives_append' does not depend on any axioms
+'Admission.unauthorized_event_ignored' depends on axioms: [propext]
+'AdmissionHypergraph.scoped_root_exact' does not depend on any axioms
+'AdmissionHypergraph.lineage_isolation' does not depend on any axioms
+'AdmissionHypergraph.qualification_same' does not depend on any axioms
+'AdmissionHypergraph.replay_idempotent' depends on axioms: [propext]
+'AdmissionHypergraph.merge_order_independent' depends on axioms: [propext]
+'ComparisonContract.compareVia_semantic' does not depend on any axioms
+'ComparisonContract.direct_improvement' depends on axioms: [propext, Quot.sound]
+'ComparisonContract.mismatch_refused' depends on axioms: [propext]
+'ComparisonContract.transported_meaning' does not depend on any axioms
+'ComparisonContract.compareVia_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.expected_requirement_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.coordinate_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.admitted_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.admitted_obligation_witness' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.admitted_coordinate_witness' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.admitted_cost_witness' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.typed_cost_agrees' depends on axioms: [propext]
+'ScopedFrontier.typed_dominance_agrees' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.typed_direct_agrees' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.wrong_metric_schema_rejected' depends on axioms: [propext]
+'ScopedFrontier.wrong_scope_rejected' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.selected_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_select_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_retained_admitted' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_obligation_witness' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.selected_has_no_qualified_dominator' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.dominator_excludes' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.selected_order_independent' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.tied_member_retained' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.noRegression_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.incremental_selection_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ScopedFrontier.admitted_provenance_selection_same' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.replay_selection_idempotent' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.merge_selection_order_independent' depends on axioms: [propext, Quot.sound]

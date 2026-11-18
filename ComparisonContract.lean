@@ -33,12 +33,15 @@ structure Observation (c : Contract) where
   values : List Int
   shape : valid c values
 
+def normalize (direction : Direction) (value : Int) : Int :=
+  match direction with
+  | .minimize => value
+  | .maximize => -value
+
 def cost (c : Contract) (xs : List Int) (i : Nat) : Int :=
   let v := xs[i]?.getD 0
   match c.axes[i]? with
-  | some axis => match axis.direction with
-    | .minimize => v
-    | .maximize => -v
+  | some axis => normalize axis.direction v
   | none => 0
 
 def dominates (c : Contract) (x y : List Int) : Bool :=
