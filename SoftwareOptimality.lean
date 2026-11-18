@@ -24,6 +24,7 @@ import AdmissionHypergraph
 import AdmissionTests
 import ComparisonContract
 import ComparisonTests
+import ThreeValuedGate
 import FrontierComposition
 import ScopedFrontier
 import GeneralPareto
