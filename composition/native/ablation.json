@@ -1,0 +1,21 @@
+{
+  "candidate_commit": "ef3dbcfa847579df2c839bb73240242fe5ebdd4e",
+  "baseline_commit": "fcb056649dd63dcd58dec32602917ebfcbf44bc9",
+  "owners": [
+    {
+      "path": "lib/compiler/effect.id",
+      "candidate_sha256": "790f65cb0d5797f1629a57b4a7a8754ca5a37ed89d2ce5cb6b967bc8a4108d3a",
+      "baseline_sha256": "583ea352283b52d745cfe67150756bafe459625cebe0918a124b3793b343c48a"
+    },
+    {
+      "path": "lib/compiler/graph.id",
+      "candidate_sha256": "800a41d1711367c2f93f9c04ea845a4bbd6ea65aaed302b76c97f83c87326909",
+      "baseline_sha256": "a5aa568308158d8267d1bdb094a3eedb8364fa89021fdd1e489aeea06a18ee5b"
+    }
+  ],
+  "test_sha256": "7a9f5fed605a3a8906d337d41b279ebaea245508710802a8daf04848705123b9",
+  "compiler_sha256": "1ff13d9e4ab85b53944bcd063030972520f199f534cb876f9ba0bc54d409b244",
+  "verdict": "NOT_ESTABLISHED: candidate and baseline refused before native assertions",
+  "candidate_compile_exit": 1,
+  "baseline_compile_exit": 1
+}

@@ -1,0 +1,127 @@
+{
+  "commit": "ef3dbcfa847579df2c839bb73240242fe5ebdd4e",
+  "tree": "fffa952f1042e559441ef8cf252b847c3a3e7f02",
+  "source_archive_sha256": "1b831a99c5307f7d01226ed5638c09e0d5f53ea52689787d07e9c9bf946478c9",
+  "files": 2805,
+  "unchanged": 2805,
+  "mismatches": [],
+  "checked_at": 1795003583.4111366,
+  "owners": [
+    {
+      "path": "build.zig",
+      "bytes": 172693,
+      "git_blob": "c2515820c5aecc100b1194cd6d0df8d5133babfc",
+      "sha256": "d3eacc6a2c0bb58f7139a7fb9509d3b78800c4564f33a74e8718fd6e4178610a",
+      "unchanged": true
+    },
+    {
+      "path": "lib/compiler/effect.id",
+      "bytes": 23811,
+      "git_blob": "2f99280667d2ee089dd66119976f19729958d897",
+      "sha256": "790f65cb0d5797f1629a57b4a7a8754ca5a37ed89d2ce5cb6b967bc8a4108d3a",
+      "unchanged": true
+    },
+    {
+      "path": "lib/compiler/graph.id",
+      "bytes": 77384,
+      "git_blob": "459818ab36dde1e8db4d4d3afa397809a366fa7c",
+      "sha256": "800a41d1711367c2f93f9c04ea845a4bbd6ea65aaed302b76c97f83c87326909",
+      "unchanged": true
+    },
+    {
+      "path": "lib/compiler/policy.id",
+      "bytes": 35973,
+      "git_blob": "6e5db6785ba70743c48dadbe1c0f1cf86052db6f",
+      "sha256": "3de79f4e542a02774c4a50ba0971a4016d6af21b4fd3b6078dfdab6a1d6ec1ae",
+      "unchanged": true
+    },
+    {
+      "path": "lib/os/linux/errno.id",
+      "bytes": 248,
+      "git_blob": "652005ba2f46f142d0235e7c9e5ce165f45ed0a1",
+      "sha256": "77d2f6051b933dd2cb6314ee76020d4c1c2f55b167d240c1bb812c3987f5a23a",
+      "unchanged": true
+    },
+    {
+      "path": "lib/runtime/strruntime.id",
+      "bytes": 34623,
+      "git_blob": "2d54eeb5a3e751a0a69f8af8eac93492a2810782",
+      "sha256": "5abd6cd4ffbd8ba6604c22c063a599ebf157bae58358c03f2b5a4abda8de7412",
+      "unchanged": true
+    },
+    {
+      "path": "src/graph.zig",
+      "bytes": 1357446,
+      "git_blob": "9ad48bb46cfe63825c4644617150559e906d472a",
+      "sha256": "80a1876c992a8c412e13989626a04e401e120fb216f15a67894c074779b11f47",
+      "unchanged": true
+    },
+    {
+      "path": "src/graph/lower.zig",
+      "bytes": 3105335,
+      "git_blob": "98c7ece9a3a570a640cf26f85319d9fe379dc46b",
+      "sha256": "71632c903aed5b1b484140d7b6a4be1855e00cce0c0f88f5f8e66c1325a0ad0f",
+      "unchanged": true
+    },
+    {
+      "path": "src/idol_io_runtime.zig",
+      "bytes": 32979,
+      "git_blob": "2524e2c98859fd044db31b93dbc129c1bce96dee",
+      "sha256": "7c453ad15a42c0d7340860f1a7d728a6dcb01f4f03b0b68836b4aa90d9e73181",
+      "unchanged": true
+    },
+    {
+      "path": "src/idol_start_runtime.zig",
+      "bytes": 2849,
+      "git_blob": "e232068e22a49ab4ef44aecb404b38bac0c832fb",
+      "sha256": "542aca4b2c87472c7be7305bbf45493f73c36b628e28fb9673b33609c0cfa3cf",
+      "unchanged": true
+    },
+    {
+      "path": "src/keyword_classify.c",
+      "bytes": 3332,
+      "git_blob": "b91d2495fd8710b1edde9dbc18300add99a10b54",
+      "sha256": "6f5d91868651eccc4c4e186e047435b332dc42aac635e38cd5b873d8858ccb3f",
+      "unchanged": true
+    },
+    {
+      "path": "src/main.zig",
+      "bytes": 793134,
+      "git_blob": "71d46815cb371136c95b93899321a1a48d47f0bf",
+      "sha256": "ac72584897d7cb9955f688743a7cff20a1a08e0f60dd952ee1349ffef03a1001",
+      "unchanged": true
+    },
+    {
+      "path": "test/compiler/identity.id",
+      "bytes": 12242,
+      "git_blob": "c2a0a269c638d4090947219609ca8609fd16e338",
+      "sha256": "7a9f5fed605a3a8906d337d41b279ebaea245508710802a8daf04848705123b9",
+      "unchanged": true
+    },
+    {
+      "path": "test/compiler/topology.id",
+      "bytes": 4844,
+      "git_blob": "d5369d01947360a4c3edd01324dd6034e3d3554e",
+      "sha256": "eaf0491ae99867b662ed438b9dc23adb0e2ddd84494ec62bee3036d9365f884e",
+      "unchanged": true
+    }
+  ],
+  "baseline_owners": [
+    {
+      "path": "lib/compiler/effect.id",
+      "commit": "fcb056649dd63dcd58dec32602917ebfcbf44bc9",
+      "blob": "e16affea2009d63763ea83b3748236dc862099e8",
+      "size": 19287,
+      "sha256": "583ea352283b52d745cfe67150756bafe459625cebe0918a124b3793b343c48a"
+    },
+    {
+      "path": "lib/compiler/graph.id",
+      "commit": "fcb056649dd63dcd58dec32602917ebfcbf44bc9",
+      "blob": "5d64f827188884ce17ceaeec8a7dfaf9e7907f12",
+      "size": 77267,
+      "sha256": "a5aa568308158d8267d1bdb094a3eedb8364fa89021fdd1e489aeea06a18ee5b"
+    }
+  ],
+  "selected_manifest_sha256": "99329fe0daf6f2d5691e30906ec5a515e67c9e9e5d0bb42ccb09fb7e90d37979",
+  "selection": "All src/, lib/, test/, tests/, docs/spec/, gate/, tools/node/dev/ plus root build/law files; all2805 selected Git blob identities verified before archiving."
+}

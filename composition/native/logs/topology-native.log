@@ -1,0 +1,14 @@
+PASS grounded qualification reaches realization
+PASS unsupported cycle loses admission
+PASS equivalence partition lacks cost support
+PASS measurement partition lacks equivalence
+PASS combined evidence closes across partitions
+PASS evidence replay preserves current state
+PASS unknown root remains counterfactual
+PASS counterfactual closure cannot publish
+PASS admitted root earns current qualification
+PASS independent equivalence retains conjunction
+PASS cost withdrawal invalidates both alternatives
+PASS cost withdrawal preserves subject and proof
+PASS historical qualification cannot republish
+failures=0

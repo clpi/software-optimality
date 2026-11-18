@@ -1,0 +1,8 @@
+probe fail: RegisterExhausted home_budget=10 stack_bytes=4528 gp_used=19 fp_used=0 pressure=181
+probe fail: RegisterExhausted home_budget=6 stack_bytes=4528 gp_used=19 fp_used=0 pressure=181
+probe fail: RegisterExhausted home_budget=10 stack_bytes=19120 gp_used=23 fp_used=0 pressure=935
+probe fail: RegisterExhausted home_budget=6 stack_bytes=19120 gp_used=23 fp_used=0 pressure=935
+probe fail: RegisterExhausted home_budget=3 stack_bytes=19120 gp_used=23 fp_used=0 pressure=935
+probe fail: RegisterExhausted home_budget=0 stack_bytes=19120 gp_used=23 fp_used=0 pressure=935
+error: cannot realize the source partition this program reaches: /workspace/home/identity/baseline-repo/lib/compiler/effect.id (RegisterExhausted)
+hint: compile it on its own to see the refusal: idol compile --backend=direct --emit obj /workspace/home/identity/baseline-repo/lib/compiler/effect.id

@@ -1,0 +1,40 @@
+{
+  "box_id": "live-honeybee-60888",
+  "delete": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"message\": \"box deleted\"\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "verification": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Box API request failed (404 GET /v2/box/live-honeybee-60888/status): {\"error\":\"Box has been deleted\"}"
+      }
+    ],
+    "structuredContent": {
+      "error_code": "INVALID_ARGUMENT"
+    },
+    "isError": true
+  },
+  "private_checkpoint": {
+    "id": "6867c2ee-21c5-42e5-9d59-73f0da5e478a",
+    "name": "idol-identity-seed-ef3dbcfa-1ff13d9e",
+    "state_reported_by_parent": "ready",
+    "retained": true
+  },
+  "preview": {
+    "port": 8765,
+    "state_reported_by_parent": "deleted",
+    "seed_download": "Automatic approval review rejected export through the protected external preview endpoint as unauthorized; no retry"
+  },
+  "scope": "Only this task-owned box was selected for deletion; other task boxes untouched",
+  "recorded_at_utc": "2026-11-18T12:10:01.959088+00:00",
+  "verified_deleted": true,
+  "compute_cost_usd_observed_before_deletion": 0.05516745588888889
+}
