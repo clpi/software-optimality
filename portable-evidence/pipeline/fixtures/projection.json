@@ -1,0 +1,219 @@
+{
+  "authority_sha256": "5bec4612429888144e86aa676cacee085f0b718c494b9731ffc16c9c669253a5",
+  "context": {
+    "artifact": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "environment": "linux-fixed",
+    "harness": "runner-v1",
+    "lineage": "release-A",
+    "venue": "cpu-1",
+    "workload": "checkout-v1"
+  },
+  "incidence": {
+    "checkout_fail": {
+      "rule:observed_suite": {
+        "head": false,
+        "tail_positions": []
+      }
+    },
+    "checkout_pass": {
+      "rule:observed_suite": {
+        "head": false,
+        "tail_positions": [
+          0
+        ]
+      }
+    },
+    "measurement:checkout_latency": {
+      "rule:observed_suite": {
+        "head": false,
+        "tail_positions": [
+          1
+        ]
+      }
+    },
+    "observed_suite": {
+      "rule:observed_suite": {
+        "head": true,
+        "tail_positions": []
+      }
+    }
+  },
+  "inferred_view": {
+    "capabilities": {
+      "checkout-case": "qualified"
+    },
+    "derivation_steps": [
+      "rule:observed_suite"
+    ],
+    "derived": [
+      "checkout_pass",
+      "measurement:checkout_latency",
+      "observed_suite"
+    ],
+    "intents": {
+      "receipt-completeness": "qualified"
+    },
+    "observed": [
+      "checkout_pass",
+      "measurement:checkout_latency"
+    ],
+    "support_paths": {
+      "checkout_pass": [
+        "receipt:39fd99168767a63c3c2ba245b3964eebf9a6a779fd7bc84db2fb8604dcfe8391"
+      ],
+      "measurement:checkout_latency": [
+        "receipt:213e4c965810a48a4ffc8f31d369505e7aa7223e28b2678c0e4287b4677a91e3"
+      ],
+      "observed_suite": [
+        "receipt:213e4c965810a48a4ffc8f31d369505e7aa7223e28b2678c0e4287b4677a91e3",
+        "receipt:39fd99168767a63c3c2ba245b3964eebf9a6a779fd7bc84db2fb8604dcfe8391",
+        "rule:observed_suite"
+      ]
+    }
+  },
+  "kernel_context": {
+    "environment": "b4246c5dc938e9af4fdb846d47b115caff9235bb29804d69b64eccf72215c037",
+    "lineage": "release-A"
+  },
+  "normalized_hypergraph": {
+    "atoms": [
+      "checkout_pass",
+      "checkout_fail",
+      "measurement:checkout_latency",
+      "observed_suite"
+    ],
+    "capabilities": [
+      {
+        "id": "checkout-case",
+        "negative": "checkout_fail",
+        "positive": "checkout_pass"
+      }
+    ],
+    "edges": [
+      {
+        "conclusion": "observed_suite",
+        "context": {
+          "environment": "b4246c5dc938e9af4fdb846d47b115caff9235bb29804d69b64eccf72215c037",
+          "lineage": "release-A"
+        },
+        "id": "rule:observed_suite",
+        "premises": [
+          "checkout_pass",
+          "measurement:checkout_latency"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "atom": "measurement:checkout_latency",
+        "context": {
+          "environment": "b4246c5dc938e9af4fdb846d47b115caff9235bb29804d69b64eccf72215c037",
+          "lineage": "release-A"
+        },
+        "id": "receipt:213e4c965810a48a4ffc8f31d369505e7aa7223e28b2678c0e4287b4677a91e3",
+        "type": "observe"
+      },
+      {
+        "atom": "checkout_pass",
+        "context": {
+          "environment": "b4246c5dc938e9af4fdb846d47b115caff9235bb29804d69b64eccf72215c037",
+          "lineage": "release-A"
+        },
+        "id": "receipt:39fd99168767a63c3c2ba245b3964eebf9a6a779fd7bc84db2fb8604dcfe8391",
+        "type": "observe"
+      }
+    ],
+    "horizon": 1,
+    "intents": [
+      {
+        "id": "receipt-completeness",
+        "positive": "observed_suite"
+      }
+    ],
+    "tasks": [
+      {
+        "context": {
+          "environment": "b4246c5dc938e9af4fdb846d47b115caff9235bb29804d69b64eccf72215c037",
+          "lineage": "release-A"
+        },
+        "covers": [
+          "checkout_pass"
+        ],
+        "duration": {
+          "cpu": 1
+        },
+        "id": "rerun",
+        "kind": "test"
+      }
+    ]
+  },
+  "observed_receipts": [
+    {
+      "authority_sha256": "5bec4612429888144e86aa676cacee085f0b718c494b9731ffc16c9c669253a5",
+      "classification": "observed",
+      "context": {
+        "artifact": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "environment": "linux-fixed",
+        "harness": "runner-v1",
+        "lineage": "release-A",
+        "venue": "cpu-1",
+        "workload": "checkout-v1"
+      },
+      "id": "receipt:213e4c965810a48a4ffc8f31d369505e7aa7223e28b2678c0e4287b4677a91e3",
+      "kind": "measurement",
+      "payload": {
+        "samples_ns": [
+          110,
+          120,
+          115
+        ],
+        "subject": "checkout_latency"
+      },
+      "record_index": 0,
+      "schema": "portable-receipt/v1",
+      "source_sha256": "ea8d55fed2bf18325ed9370100f41fd837f15f74dfb783c76b3e8a3380bd2340",
+      "subject": "checkout_latency"
+    },
+    {
+      "authority_sha256": "5bec4612429888144e86aa676cacee085f0b718c494b9731ffc16c9c669253a5",
+      "classification": "observed",
+      "context": {
+        "artifact": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "environment": "linux-fixed",
+        "harness": "runner-v1",
+        "lineage": "release-A",
+        "venue": "cpu-1",
+        "workload": "checkout-v1"
+      },
+      "id": "receipt:39fd99168767a63c3c2ba245b3964eebf9a6a779fd7bc84db2fb8604dcfe8391",
+      "kind": "test",
+      "payload": {
+        "status": "pass",
+        "subject": "checkout"
+      },
+      "record_index": 0,
+      "schema": "portable-receipt/v1",
+      "source_sha256": "c27dabb3f28ee253634b30d345bf6481431866b8635d360964ff003f375da2ed",
+      "subject": "checkout"
+    }
+  ],
+  "projection_sha256": "138da001d0493b573459338e657ea671d7f74f259e8028291686bb7837f27e1c",
+  "proposed_tasks": [
+    {
+      "context": {
+        "environment": "b4246c5dc938e9af4fdb846d47b115caff9235bb29804d69b64eccf72215c037",
+        "lineage": "release-A"
+      },
+      "covers": [
+        "checkout_pass"
+      ],
+      "duration": {
+        "cpu": 1
+      },
+      "id": "rerun",
+      "kind": "test"
+    }
+  ],
+  "schema": "portable-projection/v1",
+  "withdrawn_receipts": []
+}

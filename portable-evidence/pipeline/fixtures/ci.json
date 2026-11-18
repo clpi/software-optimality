@@ -1,0 +1,17 @@
+{
+  "schema": "ci-results/v1",
+  "context": {
+    "artifact": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "lineage": "release-A",
+    "environment": "linux-fixed",
+    "harness": "runner-v1",
+    "workload": "checkout-v1",
+    "venue": "cpu-1"
+  },
+  "records": [
+    {
+      "subject": "checkout",
+      "status": "pass"
+    }
+  ]
+}

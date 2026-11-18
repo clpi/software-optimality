@@ -1,0 +1,21 @@
+Audited all 15 theorem dependency lists
+'PortableAdapter.mem_unique' depends on axioms: [propext]
+'PortableAdapter.normalize_exact' depends on axioms: [propext]
+'PortableAdapter.supports_exact' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.scope_preserved' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.no_cross_lineage' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.no_promoted_proposal' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.tombstone_blocks' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.duplicate_idempotent' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.merge_commutes' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.support_union' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.withdrawals_only_remove' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.derivation_transport' does not depend on any axioms
+'PortableAdapter.merge_derivation_preserved' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.withdrawal_derivation_subset' depends on axioms: [propext, Quot.sound]
+'PortableAdapter.measurement_not_performance' depends on axioms: [propext]
+REJECTED negative control: sorry
+REJECTED negative control: custom_axiom
+REJECTED negative control: false_proof
+REJECTED negative control: scope_removed
+REJECTED negative control: proposed_promoted

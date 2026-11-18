@@ -1,0 +1,6 @@
+import json
+from pathlib import Path
+c=dict(artifact='sha256:'+'a'*64,lineage='release-A',environment='linux-fixed',harness='runner-v1',workload='checkout-v1',venue='cpu-1')
+a={'schema':'portable-authority/v1','context':c,'tests':{'checkout':{'pass':'checkout_pass','fail':'checkout_fail'}},'benchmarks':{'checkout_latency':'measurement:checkout_latency'},'model':{'atoms':['checkout_pass','checkout_fail','measurement:checkout_latency','observed_suite'],'edges':[{'id':'rule:observed_suite','premises':['checkout_pass','measurement:checkout_latency'],'conclusion':'observed_suite'}],'events':[],'tasks':[{'id':'rerun','kind':'test','covers':['checkout_pass'],'duration':{'cpu':1}}],'horizon':1,'capabilities':[{'id':'checkout-case','positive':'checkout_pass','negative':'checkout_fail'}],'intents':[{'id':'receipt-completeness','positive':'observed_suite'}]}}
+items={'authority':a,'ci':{'schema':'ci-results/v1','context':c,'records':[{'subject':'checkout','status':'pass'}]},'benchmark':{'schema':'benchmark-samples/v1','context':c,'records':[{'subject':'checkout_latency','samples_ns':[110,120,115]}]}}
+for name,item in items.items(): Path('fixtures/'+name+'.json').write_text(json.dumps(item,indent=2)+'\n')

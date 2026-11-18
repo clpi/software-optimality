@@ -1,0 +1,26 @@
+test_authority_bound (test_pipeline.PipelineTest.test_authority_bound) ... ok
+test_authority_context_not_overridden (test_pipeline.PipelineTest.test_authority_context_not_overridden) ... ok
+test_bad_measurements (test_pipeline.PipelineTest.test_bad_measurements) ... ok
+test_conflict (test_pipeline.PipelineTest.test_conflict) ... ok
+test_context_each_field (test_pipeline.PipelineTest.test_context_each_field) ... ok
+test_duplicate_keys (test_pipeline.PipelineTest.test_duplicate_keys) ... ok
+test_duplicate_records (test_pipeline.PipelineTest.test_duplicate_records) ... ok
+test_e2e (test_pipeline.PipelineTest.test_e2e) ... ok
+test_no_benchmark_speed_inference (test_pipeline.PipelineTest.test_no_benchmark_speed_inference) ... ok
+test_no_policy_submission (test_pipeline.PipelineTest.test_no_policy_submission) ... ok
+test_nonpass_preserved_not_support (test_pipeline.PipelineTest.test_nonpass_preserved_not_support) ... ok
+test_order_and_duplicate_idempotence (test_pipeline.PipelineTest.test_order_and_duplicate_idempotence) ... ok
+test_sources_bound_exactly (test_pipeline.PipelineTest.test_sources_bound_exactly) ... ok
+test_unknown_subject (test_pipeline.PipelineTest.test_unknown_subject) ... ok
+test_withdraw_retracts_downstream (test_pipeline.PipelineTest.test_withdraw_retracts_downstream) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.009s
+
+OK
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.008s
+
+OK
+count=3 min_ns=110 max_ns=120
