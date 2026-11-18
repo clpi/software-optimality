@@ -1,0 +1,55 @@
+✔ [2/10] Built SoftwareIsQuantifiable.Fold
+ℹ [3/10] Built SoftwareIsQuantifiable.Coverage
+info: ././././SoftwareIsQuantifiable/Coverage.lean:169:0: 'SoftwareIsQuantifiable.Coverage.recorded_exact' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Coverage.lean:170:0: 'SoftwareIsQuantifiable.Coverage.missing_exact' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Coverage.lean:171:0: 'SoftwareIsQuantifiable.Coverage.missing_append' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Coverage.lean:172:0: 'SoftwareIsQuantifiable.Coverage.missing_empty' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Coverage.lean:173:0: 'SoftwareIsQuantifiable.Coverage.coverage_missing_iff' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Coverage.lean:174:0: 'SoftwareIsQuantifiable.Coverage.empty_roster_covered' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Coverage.lean:175:0: 'SoftwareIsQuantifiable.Coverage.empty_ledger_has_no_platform_premise' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Coverage.lean:176:0: 'SoftwareIsQuantifiable.Coverage.unrestricted_witness' does not depend on any axioms
+✔ [4/10] Built SoftwareIsQuantifiable.Coloring
+✔ [5/10] Built SoftwareIsQuantifiable.Finiteness
+ℹ [6/10] Built SoftwareIsQuantifiable.Interface
+info: ././././SoftwareIsQuantifiable/Interface.lean:1112:0: 'SoftwareIsQuantifiable.Interface.noWorse_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1113:0: 'SoftwareIsQuantifiable.Interface.noWorse_trans' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1114:0: 'SoftwareIsQuantifiable.Interface.noWorse_antisymm' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1115:0: 'SoftwareIsQuantifiable.Interface.not_dominates_self' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1116:0: 'SoftwareIsQuantifiable.Interface.dominates_trans' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1117:0: 'SoftwareIsQuantifiable.Interface.not_dominates_from_measures' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1118:0: 'SoftwareIsQuantifiable.Interface.measuresLe_append_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1119:0: 'SoftwareIsQuantifiable.Interface.noWorse_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1120:0: 'SoftwareIsQuantifiable.Interface.dominates_append_of_halves' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1121:0: 'SoftwareIsQuantifiable.Interface.not_noWorse_append_converse' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1122:0: 'SoftwareIsQuantifiable.Interface.releaseLe_trans' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1123:0: 'SoftwareIsQuantifiable.Interface.releaseLe_append' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1124:0: 'SoftwareIsQuantifiable.Interface.not_index_aligned_preorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1125:0: 'SoftwareIsQuantifiable.Interface.duplicate_candidate_not_releaseLe' depends on axioms: [propext]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1126:0: 'SoftwareIsQuantifiable.Interface.repeated_profile_not_releaseLe' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1127:0: 'SoftwareIsQuantifiable.Interface.misaligned_addition_not_releaseLe' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1128:0: 'SoftwareIsQuantifiable.Interface.not_axesLt_of_short_vector' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Interface.lean:1129:0: 'SoftwareIsQuantifiable.Interface.frontier_exact' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Interface.lean:1130:0: 'SoftwareIsQuantifiable.Interface.misaligned_not_on_frontier' depends on axioms: [propext, Quot.sound]
+ℹ [7/10] Built SoftwareIsQuantifiable.Pareto
+info: ././././SoftwareIsQuantifiable/Pareto.lean:488:0: false
+info: ././././SoftwareIsQuantifiable/Pareto.lean:638:0: 'SoftwareIsQuantifiable.Pareto.frontier_can_regress' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:639:0: 'SoftwareIsQuantifiable.Pareto.admitted_frontier_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:640:0: 'SoftwareIsQuantifiable.Pareto.admitted_frontier_sound' depends on axioms: [propext]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:641:0: 'SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:642:0: 'SoftwareIsQuantifiable.Pareto.omitted_qualified_behavior_refused' depends on axioms: [propext]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:643:0: 'SoftwareIsQuantifiable.Pareto.empty_submission_refused_when_qualified' depends on axioms: [propext]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:644:0: 'SoftwareIsQuantifiable.Pareto.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:645:0: 'SoftwareIsQuantifiable.Pareto.acceptsReplacement_iff' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:646:0: 'SoftwareIsQuantifiable.Pareto.replacement_no_regression' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:647:0: 'SoftwareIsQuantifiable.Pareto.separated_sum' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Pareto.lean:648:0: 'SoftwareIsQuantifiable.Pareto.separated_parallel' depends on axioms: [propext]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:649:0: 'SoftwareIsQuantifiable.Pareto.not_scalarized' depends on axioms: [propext, Quot.sound]
+info: ././././SoftwareIsQuantifiable/Pareto.lean:650:0: 'SoftwareIsQuantifiable.Pareto.scalar_optimum_undominated' does not depend on any axioms
+info: ././././SoftwareIsQuantifiable/Pareto.lean:651:0: 'SoftwareIsQuantifiable.Pareto.dominates_iff_interface' does not depend on any axioms
+✔ [8/10] Built SoftwareIsQuantifiable.Instance
+✔ [9/10] Built SoftwareIsQuantifiable
+Build completed successfully.

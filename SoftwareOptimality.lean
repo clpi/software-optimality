@@ -37,3 +37,4 @@ import composition.LiveSelection
 import composition.TraceSafety
 import composition.Controls
 import CanonicalDominance
+import composition.InterfaceBridge

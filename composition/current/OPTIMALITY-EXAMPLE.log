@@ -1,0 +1,5 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+(23, 16)
+'ReleaseSchedule.before_after' does not depend on any axioms
+'ReleaseSchedule.critical_path' depends on axioms: [propext, Quot.sound]
+'ReleaseSchedule.early_package_rejected' does not depend on any axioms
