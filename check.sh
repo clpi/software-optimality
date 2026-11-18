@@ -27,6 +27,7 @@ run_lean -o Qualification.olean Qualification.lean
 run_lean FiniteQualification.lean
 run_lean -o ExecutableClosure.olean ExecutableClosure.lean
 run_lean -o FiniteFrontier.olean FiniteFrontier.lean
+run_lean -o FrontierComposition.olean FrontierComposition.lean
 run_lean -o FiniteSchedules.olean FiniteSchedules.lean
 run_lean ForeignCampaign.lean
 run_lean -o EligibleSchedules.olean EligibleSchedules.lean
@@ -34,7 +35,7 @@ run_lean -o ScopedEvidence.olean ScopedEvidence.lean
 run_lean -o LinearSelection.olean LinearSelection.lean
 run_lean -o EligibleCampaign.olean EligibleCampaign.lean
 run_lean -o ScopedSelection.olean ScopedSelection.lean
-run_lean ScopedCampaign.lean
+run_lean -o ScopedCampaign.olean ScopedCampaign.lean
 run_lean MetricRelevance.lean
 run_lean -o HypergraphIncremental.olean HypergraphIncremental.lean
 
