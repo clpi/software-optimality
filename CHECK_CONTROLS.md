@@ -11,7 +11,7 @@ Release validation and packaging use separate checked steps under `set -eu`:
 set -eu
 LEAN=/path/to/lean ./check.sh > CHECK.log 2>&1
 if grep -Eq 'sorryAx|error:|warning:' CHECK.log; then exit 2; fi
-sha256sum *.lean check.sh lean-toolchain CHECK.log README.md CHECK_CONTROLS.md > SHA256SUMS
+sha256sum *.lean check.sh lean-toolchain CHECK.log README.md CHECK_CONTROLS.md HYPERGRAPH_SCOPE.md docs/hypergraph-incremental/* tools/check_optimality.py tools/check_optimality.sh > SHA256SUMS
 ```
 
 The rejected intermediate v11 archive exposed a shell-status reporting flaw: its compiler failure was followed by a successful packaging command, masking the failure in the outer command status. It was never eligible for publication. v12 fixes the parenthesized Boolean theorem and strengthens the checker/package boundary. The release check must succeed independently; matching hashes alone never establishes proof success.

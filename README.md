@@ -128,7 +128,7 @@ No `sorry`, admissions, custom axioms, or `native_decide` shortcuts occur. Some 
 
 Policies, scopes, lineages, opposite polarities and evidence identities can be encoded in atoms. Their validation is an explicit input obligation, not supplied by set closure. Runtime receipts are not automatically universal semantic proofs. Old evidence does not itself qualify a changed release; a current support or valid transfer derivation is required. Withdrawal filters live roots/rules and recomputes, preserving historical events; the current projection is not monotone when withdrawals occur.
 
-Not proved here: runtime instrumentation fidelity, cryptographic hash binding, external policy authorization, complete language lowering, arbitrary test termination, universal behavior preservation, numerical confidence of measurements, efficient worklist refinement or tight complexity bounds, an incremental provenance/deletion implementation, or globally optimal software performance. These are distinct obligations, not concealed assumptions of the proved closure/qualification results.
+Not proved here: runtime instrumentation fidelity, cryptographic hash binding, external policy authorization, complete language lowering, arbitrary test termination, universal behavior preservation, numerical confidence of measurements, efficient worklist refinement or tight complexity bounds, an incremental provenance/deletion implementation, incremental release monotonicity, or globally optimal software performance. `ImportBinding` and `GeneratorCoverage` are named premises, not theorems of those obligations. These are distinct obligations, not concealed assumptions of the proved closure/qualification results.
 
 ## Provenance
 
@@ -149,3 +149,31 @@ The pilot timing gate is whole-suite wall time only: 8 of 12 O2 subprocess times
 Typed matrix cells count supporting live records by edge kind and both port roles/positions. Retained-plus-added counts and Boolean cells equal complete regeneration; alternate receipt support survives individual withdrawal. Deterministic qualification/profile projection preserves the full frontier result, including resurrection after withdrawal of a dominator.
 
 This is a semantic refinement theorem, **not a fast executable worklist or sparse-matrix performance proof**. The raw record list counts multiplicity. Unique receipt identity, deduplication, scoped admission and withdrawal precedence must be enforced before the live snapshot is supplied. The same-ID remove-and-add operation permits reintroduction; it is not a permanent tombstone protocol. See [the exact scope](HYPERGRAPH_SCOPE.md) and [independent publication checks](docs/hypergraph-incremental/VERIFICATION.md).
+
+### `OptimalityInterface.lean`: stable closure and Pareto-maximal interface
+
+Downstream proofs import `OptimalityInterface` and use the `Optimality` namespace. `Composition.lean` holds the generic proofs; one import loads both. The closure operator is `Optimality.closure`, the least rooted derivation. It corresponds to `SoftwareIsQuantifiable.Coloring.Deriv`; `hornDeriv_iff_closure` is that equivalence, and `closure_operator_exact` is the snapshot computation corresponding to `SoftwareIsQuantifiable.Coloring.coloring` when every rule head lies in the named universe. `paretoMaximal` is the two-axis `Nat × Nat` frontier corresponding to `SoftwareIsQuantifiable.Pareto.dominates`. `noWorse` and `guardedMaximal` correspond to `Pareto.noWorse` and `admitted`. `GeneratorCoverage` is not `Coverage.PlatformPremise`; platform mediation is not assumed. `Fold.join` is root-set union before rules fire; `closure_compound` keeps cross-source consequences and is not that join.
+
+| Claim | Lean form | Status |
+|---|---|---|
+| Closure is extensive, least, monotone, and idempotent | `closure_extensive`, `closure_least`, `closure_monotone`, `closure_idempotent` | PROVEN |
+| Two sources and any finite family compound, keeping cross-source consequences | `closure_compound`, `closure_compound_finite` | PROVEN |
+| Naive union of closures misses a cross-source consequence | `union_misses_cross_consequence` | DISPROVEN |
+| Separated component closure factors through `sumRules`; a cross-summand rule does not | `closure_factors_left`, `closure_factors_right`, `separated_closure_conjoins`; `factorization_needs_separation` | PROVEN; separation is the `sumRules` premise. Unrestricted factoring is DISPROVEN |
+| Reclosing under a richer rule set | `reclose_under_embedded_rules` | PROVEN under the named `embed` premise |
+| Horn derivability agrees with closure; the executable close computes it inside the snapshot | `hornDeriv_iff_closure`, `closure_operator_exact` | PROVEN. The universe bound is the snapshot premise |
+| Withdrawal adds no support; a live subsystem survives; empty-premise-free cycles do not bootstrap | `withdrawal_no_new_support`, `surviving_subsystem`, `no_bootstrap` | PROVEN |
+| Two-axis maximal set matches strict Pareto, is nonempty, and excludes dominated outputs | `dominates_iff_strictPareto`, `paretoMaximal_exact`, `paretoMaximal_nonempty`, `paretoMaximal_not_dominated` | PROVEN |
+| A maximal point can worsen an axis | `paretoMaximal_can_regress` | DISPROVEN as a release gate |
+| Guarded maximal set is componentwise no worse and undominated | `guardedMaximal_sound`, `guardedMaximal_nonempty` | PROVEN |
+| Overlapping bounds are not per-execution dominance | `not_per_execution_dominance` | DISPROVEN |
+| Behavior retention and the release gate | `retains_iff`, `acceptsRelease_iff` | PROVEN for the recorded lists and costs; not a measurement theorem |
+| Excluded candidates are dominated by a frontier member; a pruning certificate is sound | `frontier_covers`, `pruning_sound`, `pruning_sound_pareto`, `pruningOK_implies` | PROVEN. Arbitrary dominance needs the named transitivity premise; strict Pareto discharges it |
+| Componentwise-sum product: joint frontier members are locally nondominated, and checking the product of local frontiers is sound | `joint_frontier_in_local_frontiers`, `reduced_product_sound`, `scalar_frontier_iff_allMinima` | PROVEN for componentwise sum. One-axis linear selection and the Pareto filter agree |
+| Product of local frontiers is not automatically jointly nondominated | `product_of_frontiers_not_joint` | DISPROVEN |
+| Strict local dominance need not lift through an aggregation that drops an axis | `strict_lift_needs_premise`; `reducedAllowed` refuses `projectFirst` | DISPROVEN without the strict-lift premise |
+| A complexity-class tag is not generator coverage | `class_tag_is_not_coverage`, `coverage_omission_can_dominate`, `frontier_respects_coverage` | The tag claim is DISPROVEN. Transfer to an intended set is PROVEN only from the named `GeneratorCoverage` premise |
+| Import identity transfers a frontier; a changed cost row does not | `frontier_transfers_under_import`, `import_mismatch_blocks_transfer` | Transfer is PROVEN from the named `ImportBinding` premise. Mismatch is DISPROVEN. Cryptographic binding is not proved |
+| Canonical key sort preserves frontier membership | `canonical_frontier_mem` | PROVEN for membership. Equal keys do not determine a unique order |
+
+`tools/check_optimality.sh` runs `CompositionCheck.lean` and `tools/check_optimality.py` on the same guards. Both must report acceptance of a no-worse release and refusal of a regressing frontier point, an out-of-universe root, and a project-first product reduction. This is not a proof of incremental release monotonicity.

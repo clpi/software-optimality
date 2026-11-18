@@ -110,3 +110,28 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'HypergraphIncremental.retracted_cycles_do_not_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
 'HypergraphIncremental.patchedInteraction_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'HypergraphIncremental.incrementalFrontier_exact' depends on axioms: [propext, Quot.sound]
+'Optimality.closure_compound_finite' depends on axioms: [propext, Quot.sound]
+'Optimality.closure_factors_left' depends on axioms: [propext, Quot.sound]
+'Optimality.closure_factors_right' depends on axioms: [propext, Quot.sound]
+'Optimality.factorization_needs_separation' depends on axioms: [propext]
+'Optimality.hornDeriv_iff_closure' does not depend on any axioms
+'Optimality.frontier_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.pruning_sound_pareto' depends on axioms: [propext, Quot.sound]
+'Optimality.joint_frontier_in_local_frontiers' depends on axioms: [propext, Quot.sound]
+'Optimality.reduced_product_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.product_of_frontiers_not_joint' does not depend on any axioms
+'Optimality.strict_lift_needs_premise' does not depend on any axioms
+'Optimality.scalar_frontier_iff_allMinima' depends on axioms: [propext, Quot.sound]
+'Optimality.frontier_respects_coverage' depends on axioms: [propext, Quot.sound]
+'Optimality.class_tag_is_not_coverage' depends on axioms: [propext]
+'Optimality.import_mismatch_blocks_transfer' does not depend on any axioms
+'Optimality.union_misses_cross_consequence' depends on axioms: [propext, Quot.sound]
+'Optimality.dominates_iff_strictPareto' depends on axioms: [propext, Quot.sound]
+'Optimality.paretoMaximal_exact' depends on axioms: [propext, Quot.sound]
+'Optimality.paretoMaximal_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.guardedMaximal_sound' depends on axioms: [propext, Quot.sound]
+'Optimality.paretoMaximal_can_regress' depends on axioms: [propext, Quot.sound]
+'Optimality.not_per_execution_dominance' depends on axioms: [propext]
+'Optimality.retains_iff' depends on axioms: [propext, Quot.sound]
+'Optimality.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
+'Optimality.refusal_regressing_frontier' depends on axioms: [propext, Quot.sound]
