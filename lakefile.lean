@@ -30,6 +30,7 @@ lean_lib SoftwareOptimality where
     `ComparisonTests,
     `FrontierComposition,
     `ScopedFrontier,
+    `GeneralPareto,
     `Composition,
     `OptimalityInterface,
     `CompositionCheck,

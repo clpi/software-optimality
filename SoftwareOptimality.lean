@@ -20,5 +20,6 @@ import ComparisonContract
 import ComparisonTests
 import FrontierComposition
 import ScopedFrontier
+import GeneralPareto
 import OptimalityInterface
 import CompositionCheck
