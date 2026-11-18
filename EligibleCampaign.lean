@@ -1,4 +1,5 @@
 import EligibleSchedules
+import LinearSelection
 import Std
 namespace EligibleCampaign
 open EligibleSchedules
@@ -74,6 +75,10 @@ theorem synthetic_one_nanosecond_over_cap_rejected :
     timedAdmission 3 [(some 10769189849,10769189848),
       (some 6128442901,7296152413),(some 6240471073,7966428370)] = false := by decide
 
+theorem linear_selector_agrees :
+    LinearSelection.select (fun c => cost c 0) (catalogue.filter gate) = some .O2 := by decide
+
+#print axioms linear_selector_agrees
 #print axioms all_admitted
 #print axioms chosen_qualified_optimum
 #print axioms optimum_semantics

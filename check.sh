@@ -11,4 +11,8 @@ export LEAN_PATH=".:${LEAN_PATH:-}"
 "$LEAN" -o FiniteSchedules.olean FiniteSchedules.lean
 "$LEAN" ForeignCampaign.lean
 "$LEAN" -o EligibleSchedules.olean EligibleSchedules.lean
-"$LEAN" EligibleCampaign.lean
+"$LEAN" -o ScopedEvidence.olean ScopedEvidence.lean
+"$LEAN" -o LinearSelection.olean LinearSelection.lean
+"$LEAN" -o EligibleCampaign.olean EligibleCampaign.lean
+"$LEAN" -o ScopedSelection.olean ScopedSelection.lean
+"$LEAN" ScopedCampaign.lean

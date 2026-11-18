@@ -46,6 +46,20 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'EligibleSchedules.optimumCertificate_exact' depends on axioms: [propext, Quot.sound]
 'EligibleSchedules.rejected_cannot_be_optimal' depends on axioms: [propext, Quot.sound]
 'EligibleSchedules.dominator_refutes_certificate' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.checkRequirement_exact' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.accepted_receipt_is_scoped' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.qualify_exact' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.qualification_witnesses' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.duplicate_match_rejected' depends on axioms: [propext]
+'ScopedEvidence.wrong_scope_rejected' depends on axioms: [propext, Quot.sound]
+'ScopedEvidence.qualification_sound_relative' depends on axioms: [propext, Quot.sound]
+'LinearSelection.allMinima_exact' depends on axioms: [propext, Quot.sound]
+'LinearSelection.allMinima_order_independent' depends on axioms: [propext, Quot.sound]
+'LinearSelection.bestFrom_spec' depends on axioms: [propext, Quot.sound]
+'LinearSelection.selected_minimum' depends on axioms: [propext, Quot.sound]
+'LinearSelection.selected_eligible_minimum' depends on axioms: [propext, Quot.sound]
+'LinearSelection.counted_refines' depends on axioms: [propext]
+'EligibleCampaign.linear_selector_agrees' does not depend on any axioms
 'EligibleCampaign.all_admitted' does not depend on any axioms
 'EligibleCampaign.chosen_qualified_optimum' does not depend on any axioms
 'EligibleCampaign.optimum_semantics' depends on axioms: [propext, Quot.sound]
@@ -55,3 +69,14 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'EligibleCampaign.counterfactual_not_optimum' does not depend on any axioms
 'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
 'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
+'ScopedSelection.selected_all_exact' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.selected_all_order_independent' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.certified_scoped_optimum' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.selected_scoped_minimum' depends on axioms: [propext, Quot.sound]
+'ScopedCampaign.all_scoped_admitted' does not depend on any axioms
+'ScopedCampaign.scoped_optimal_certificate' does not depend on any axioms
+'ScopedCampaign.scoped_selection' does not depend on any axioms
+'ScopedCampaign.scoped_selection_reordered' does not depend on any axioms
+'ScopedCampaign.selected_obligations_have_witnesses' depends on axioms: [propext, Quot.sound]
+'ScopedCampaign.reused_round_rejected' does not depend on any axioms
+'ScopedCampaign.foreign_configuration_rejected' does not depend on any axioms
