@@ -24,6 +24,8 @@ cd "$work"
 mkdir -p SoftwareIsQuantifiable composition
 cp "$repo"/*.lean "$repo/check.sh" .
 cp "$repo"/composition/*.lean composition/
+mkdir -p docs/covered-frontier
+cp "$repo"/docs/covered-frontier/*.lean docs/covered-frontier/
 cp "$upstream/SoftwareIsQuantifiable.lean" .
 # Copy precisely the source set whose content hashes pin the public dependency.
 for name in Coloring Coverage Finiteness Fold Pareto; do
