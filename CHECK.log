@@ -101,3 +101,12 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'MetricRelevance.fixture_failure_rate' does not depend on any axioms
 'MetricRelevance.fixture_controlled' does not depend on any axioms
 'MetricRelevance.fixture_confounded_rejected' does not depend on any axioms
+'HypergraphIncremental.matrix_update_exact' depends on axioms: [propext]
+'HypergraphIncremental.matrix_bit_update_exact' depends on axioms: [propext]
+'HypergraphIncremental.executable_full_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.qualified_frontier_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.unaffected_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.incremental_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.retracted_cycles_do_not_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.patchedInteraction_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HypergraphIncremental.incrementalFrontier_exact' depends on axioms: [propext, Quot.sound]

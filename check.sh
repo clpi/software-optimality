@@ -36,3 +36,4 @@ run_lean -o EligibleCampaign.olean EligibleCampaign.lean
 run_lean -o ScopedSelection.olean ScopedSelection.lean
 run_lean ScopedCampaign.lean
 run_lean MetricRelevance.lean
+run_lean HypergraphIncremental.lean

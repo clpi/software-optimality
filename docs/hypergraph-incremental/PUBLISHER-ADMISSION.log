@@ -1,0 +1,2 @@
+./Qualification.lean:115:theorem publisherForbidden : False := by sorry
+Rejected prohibited proof escape hatch

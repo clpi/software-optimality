@@ -141,3 +141,11 @@ See `SHA256SUMS` for source/check-output hashes.
 
 ## Publication scope clarification
 The pilot timing gate is whole-suite wall time only: 8 of 12 O2 subprocess times were slower than paired O1 times. Three paired rounds and recorded inputs do not establish future or per-test no-regression. R2 was admitted but dominated, not rejected. Policy revision chronology has no signed precommit or independently authenticated timestamp. Scoped checker IDs and reported pass bits do not establish external receipt authenticity, policy authorization, liveness, or raw-ingestion fidelity. `allMinima` is permutation invariant in membership, not serialized list order or multiplicity. See docs/PROOF-DESIGN.md and evidence/ for exact scope.
+
+### Hypergraph-derived incremental qualification and interaction views
+
+`HypergraphIncremental.lean` adds a single authoritative directed hypergraph, derived dependency/incidence/interaction views, exact semantic incremental recomputation under root and topology changes, and agreement with the existing executable exhaustive closure. Joint premises remain conjunctive. Old and new topology both participate in invalidation; unsupported cycles cannot bootstrap after withdrawal.
+
+Typed matrix cells count supporting live records by edge kind and both port roles/positions. Retained-plus-added counts and Boolean cells equal complete regeneration; alternate receipt support survives individual withdrawal. Deterministic qualification/profile projection preserves the full frontier result, including resurrection after withdrawal of a dominator.
+
+This is a semantic refinement theorem, **not a fast executable worklist or sparse-matrix performance proof**. The raw record list counts multiplicity. Unique receipt identity, deduplication, scoped admission and withdrawal precedence must be enforced before the live snapshot is supplied. The same-ID remove-and-add operation permits reintroduction; it is not a permanent tombstone protocol. See [the exact scope](HYPERGRAPH_SCOPE.md) and [independent publication checks](docs/hypergraph-incremental/VERIFICATION.md).
