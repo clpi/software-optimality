@@ -116,3 +116,14 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ContextualDominance.pruning_preserves_attainable_bounds' does not depend on any axioms
 'ContextualDominance.pareto_representative_same_cost' does not depend on any axioms
 'ContextualDominance.pareto_vector_survives_pruning' does not depend on any axioms
+'Admission.normalized_exact' depends on axioms: [propext, Quot.sound]
+'Admission.normalized_nodup' depends on axioms: [propext]
+'Admission.duplicate_idempotent' depends on axioms: [propext, Quot.sound]
+'Admission.payload_unique' does not depend on any axioms
+'Admission.withdrawal_survives_append' does not depend on any axioms
+'Admission.unauthorized_event_ignored' depends on axioms: [propext]
+'AdmissionHypergraph.scoped_root_exact' does not depend on any axioms
+'AdmissionHypergraph.lineage_isolation' does not depend on any axioms
+'AdmissionHypergraph.qualification_same' does not depend on any axioms
+'AdmissionHypergraph.replay_idempotent' depends on axioms: [propext]
+'AdmissionHypergraph.merge_order_independent' depends on axioms: [propext]

@@ -36,6 +36,10 @@ run_lean -o EligibleCampaign.olean EligibleCampaign.lean
 run_lean -o ScopedSelection.olean ScopedSelection.lean
 run_lean ScopedCampaign.lean
 run_lean MetricRelevance.lean
-run_lean HypergraphIncremental.lean
+run_lean -o HypergraphIncremental.olean HypergraphIncremental.lean
 
 run_lean ContextualDominance.lean
+
+run_lean -o Admission.olean Admission.lean
+run_lean -o AdmissionHypergraph.olean AdmissionHypergraph.lean
+run_lean -o AdmissionTests.olean AdmissionTests.lean

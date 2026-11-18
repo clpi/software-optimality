@@ -155,3 +155,11 @@ This is a semantic refinement theorem, **not a fast executable worklist or spars
 `ContextualDominance.lean` proves reflexive/transitive context-wide replacement and a sufficient local-to-contextual rule requiring **both** feasibility preservation and monotone cost composition. Representative pruning preserves all attainable componentwise bounds and exactly the Pareto objective vectors when every feasible original candidate has a feasible retained no-worse representative. It need not retain every tied candidate identity.
 
 Kernel-checked synthetic counterexamples show local speedup reversing under contention, a smaller local cost violating contextual feasibility, and strict local speedup becoming a global tie under parallel max composition. The theorem does not infer contextual obligations from hashes or isolated timings, synthesize coverage witnesses, or prove actual runtime improvements. See [scope](docs/contextual-dominance/SCOPE.md) and [checks](docs/contextual-dominance/VERIFICATION.md).
+
+### Live-support admission and scoped hypergraph bridge
+
+`Admission.lean` adds an executable derived live-support view: exact scoped keys, authorization-filtered events, duplicate-free support membership, conflicting-payload quarantine and withdrawal precedence. Replay and merge order preserve membership; a withdrawn key cannot resurrect, while a fresh support identity can be admitted. Raw events must be merged before normalization: unioning separately normalized live views can retain stale support.
+
+`AdmissionHypergraph.lean` derives both roots and transfer/inference edges from those same live supports. Equal admitted provenance implies equal qualification closure. The scoped constructor retains the full key/payload in roots; qualification cannot enter an otherwise unsupported lineage without an admitted entering edge.
+
+This supplies a checked reference normalization stage for the earlier hypergraph boundary, not a cryptographic/authorization service. Authorizer truth, immutable key binding, semantic transfer validity and decoder correctness remain obligations. Output membership, not list byte ordering, is canonical. See [scope](docs/admission-normalization/SCOPE.md) and [checks](docs/admission-normalization/VERIFICATION.md).

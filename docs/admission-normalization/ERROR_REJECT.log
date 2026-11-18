@@ -1,0 +1,11 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+'Qualification.least' does not depend on any axioms
+'Qualification.monotone' does not depend on any axioms
+'Qualification.idempotent' does not depend on any axioms
+'Qualification.compounding' does not depend on any axioms
+'Qualification.order_independent' does not depend on any axioms
+'Qualification.soundness' does not depend on any axioms
+'Qualification.withdrawal_no_new_support' does not depend on any axioms
+'Qualification.surviving_subsystem' does not depend on any axioms
+'Qualification.no_bootstrap' does not depend on any axioms
+Qualification.lean:115:7: error: unknown identifier 'publisher_missing_identifier'
