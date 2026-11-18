@@ -1,65 +1,53 @@
 SoftwareIsQuantifiable.lean: OK
-SoftwareIsQuantifiable/Coloring.lean: OK
-SoftwareIsQuantifiable/Coverage.lean: OK
+SoftwareIsQuantifiable/Interface.lean: OK
 SoftwareIsQuantifiable/Finiteness.lean: OK
 SoftwareIsQuantifiable/Fold.lean: OK
+SoftwareIsQuantifiable/Coloring.lean: OK
 SoftwareIsQuantifiable/Pareto.lean: OK
-SoftwareIsQuantifiable/Coloring.lean:43:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Coloring.holds_eq_true':
-  [DecidableEq F]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq F] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Coloring.lean:152:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Coloring.count_le':
-  [DecidableEq F]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq F] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Coloring.lean:162:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Coloring.count_le_of_le':
-  [DecidableEq F]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq F] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Coloring.lean:402:9: warning: unused variable `g`
-note: this linter can be disabled with `set_option linter.unusedVariables false`
-SoftwareIsQuantifiable/Coloring.lean:410:6: warning: unused variable `f`
-note: this linter can be disabled with `set_option linter.unusedVariables false`
-SoftwareIsQuantifiable/Coverage.lean:60:22: warning: unused variable `P`
-note: this linter can be disabled with `set_option linter.unusedVariables false`
-'SoftwareIsQuantifiable.Coverage.recorded_exact' depends on axioms: [propext, Quot.sound]
-'SoftwareIsQuantifiable.Coverage.missing_exact' depends on axioms: [propext, Quot.sound]
-'SoftwareIsQuantifiable.Coverage.missing_append' depends on axioms: [propext, Quot.sound]
-SoftwareIsQuantifiable/Fold.lean:45:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Fold.join_assoc':
-  [DecidableEq W]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq W] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Fold.lean:51:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Fold.join_comm':
-  [DecidableEq W]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq W] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Fold.lean:57:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Fold.join_idem':
-  [DecidableEq W]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq W] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Fold.lean:63:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Fold.join_empty_left':
-  [DecidableEq W]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq W] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Fold.lean:69:0: warning: automatically included section variable(s) unused in theorem 'SoftwareIsQuantifiable.Fold.join_empty_right':
-  [DecidableEq W]
-consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
-  omit [DecidableEq W] in theorem ...
-note: this linter can be disabled with `set_option linter.unusedSectionVars false`
-SoftwareIsQuantifiable/Fold.lean:138:19: warning: unused variable `x`
-note: this linter can be disabled with `set_option linter.unusedVariables false`
+SoftwareIsQuantifiable/Coverage.lean: OK
+SoftwareIsQuantifiable/Instance.lean: OK
+'SoftwareIsQuantifiable.Interface.noWorse_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.noWorse_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.noWorse_antisymm' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_dominates_self' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.dominates_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_dominates_from_measures' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.measuresLe_append_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.noWorse_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.dominates_append_of_halves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.not_noWorse_append_converse' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.releaseLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.releaseLe_append' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Interface.not_index_aligned_preorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.frontier_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.orderings_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 false
 'SoftwareIsQuantifiable.Pareto.frontier_can_regress' depends on axioms: [propext, Quot.sound]
 'SoftwareIsQuantifiable.Pareto.admitted_frontier_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
 'SoftwareIsQuantifiable.Pareto.admitted_frontier_sound' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.omitted_qualified_behavior_refused' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.empty_submission_refused_when_qualified' depends on axioms: [propext]
 'SoftwareIsQuantifiable.Pareto.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.acceptsReplacement_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.replacement_no_regression' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.separated_sum' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.separated_parallel' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.not_scalarized' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.scalar_optimum_undominated' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.dominates_iff_interface' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.separated_iff_all' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.replacement_iff_all' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.recorded_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.missing_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.missing_append' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.missing_empty' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.coverage_missing_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.empty_roster_covered' does not depend on any axioms
+'SoftwareIsQuantifiable.Coverage.empty_ledger_has_no_platform_premise' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.unrestricted_witness' does not depend on any axioms
+'SoftwareIsQuantifiable.Coverage.audit_complete' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.scoped_recorded_exact' depends on axioms: [propext, Quot.sound]
 Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'Qualification.least' does not depend on any axioms
 'Qualification.monotone' does not depend on any axioms
@@ -103,13 +91,15 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'FrontierComposition.pareto_irreflexive' depends on axioms: [propext, Quot.sound]
 'FiniteSchedules.queueFeasible_exact' depends on axioms: [propext, Quot.sound]
 'FiniteSchedules.improvementCertificate_exact' depends on axioms: [propext, Quot.sound]
-'FiniteSchedules.accepted_improvement' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.accepted_improvement_if_checkerSound' depends on axioms: [propext, Quot.sound]
 'FiniteSchedules.tuples_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'FiniteSchedules.enumerate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'FiniteSchedules.feasible_exact' depends on axioms: [propext, Quot.sound]
 'FiniteSchedules.feasibleSchedules_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-'FiniteSchedules.optimalCertificate_exact' depends on axioms: [propext, Quot.sound]
-'FiniteSchedules.certified_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.nondominatedInSuppliedFiniteList_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
 'ForeignCampaign.chosen_accepted' does not depend on any axioms
 'ForeignCampaign.chosen_nondominated' depends on axioms: [propext, Quot.sound]
 'ForeignCampaign.modeled_improvement_exact' depends on axioms: [propext, Quot.sound]
@@ -118,8 +108,8 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'EligibleSchedules.timingOK_exact' depends on axioms: [propext, Quot.sound]
 'EligibleSchedules.timedAdmission_exact' depends on axioms: [propext, Quot.sound]
 'EligibleSchedules.eligible_exact' depends on axioms: [propext, Quot.sound]
-'EligibleSchedules.optimumCertificate_exact' depends on axioms: [propext, Quot.sound]
-'EligibleSchedules.rejected_cannot_be_optimal' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.admittedNondominatedUnderSuppliedIntegerCost_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.rejected_not_nondominated_under_supplied_integer_cost' depends on axioms: [propext, Quot.sound]
 'EligibleSchedules.dominator_refutes_certificate' depends on axioms: [propext, Quot.sound]
 'ScopedEvidence.checkRequirement_exact' depends on axioms: [propext, Quot.sound]
 'ScopedEvidence.accepted_receipt_is_scoped' depends on axioms: [propext, Quot.sound]
@@ -136,20 +126,20 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'LinearSelection.counted_refines' depends on axioms: [propext]
 'EligibleCampaign.linear_selector_agrees' does not depend on any axioms
 'EligibleCampaign.all_admitted' does not depend on any axioms
-'EligibleCampaign.chosen_qualified_optimum' does not depend on any axioms
-'EligibleCampaign.optimum_semantics' depends on axioms: [propext, Quot.sound]
+'EligibleCampaign.chosen_nondominated_under_supplied_integer_cost' does not depend on any axioms
+'EligibleCampaign.chosen_nondominated_under_supplied_integer_cost_semantics' depends on axioms: [propext, Quot.sound]
 'EligibleCampaign.exact_eligible_frontier' does not depend on any axioms
 'EligibleCampaign.counterfactual_admitted' does not depend on any axioms
 'EligibleCampaign.chosen_beats_counterfactual' does not depend on any axioms
-'EligibleCampaign.counterfactual_not_optimum' does not depend on any axioms
+'EligibleCampaign.counterfactual_not_nondominated_under_supplied_integer_cost' does not depend on any axioms
 'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
 'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
 'ScopedSelection.selected_all_exact' depends on axioms: [propext, Quot.sound]
 'ScopedSelection.selected_all_order_independent' depends on axioms: [propext, Quot.sound]
-'ScopedSelection.certified_scoped_optimum' depends on axioms: [propext, Quot.sound]
+'ScopedSelection.certified_scoped_nondominated_under_supplied_integer_cost' depends on axioms: [propext, Quot.sound]
 'ScopedSelection.selected_scoped_minimum' depends on axioms: [propext, Quot.sound]
 'ScopedCampaign.all_scoped_admitted' does not depend on any axioms
-'ScopedCampaign.scoped_optimal_certificate' does not depend on any axioms
+'ScopedCampaign.scoped_nondominated_under_supplied_integer_cost' does not depend on any axioms
 'ScopedCampaign.scoped_selection' does not depend on any axioms
 'ScopedCampaign.scoped_selection_reordered' does not depend on any axioms
 'ScopedCampaign.selected_obligations_have_witnesses' depends on axioms: [propext, Quot.sound]
@@ -207,6 +197,20 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ComparisonContract.mismatch_refused' depends on axioms: [propext]
 'ComparisonContract.transported_meaning' does not depend on any axioms
 'ComparisonContract.compareVia_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.dominates_trans' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_generator_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.checkCoverage_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certifyCovered_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_covered_frontier' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certifyReplacement_sound' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_feasible_generator_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.checkQualification_exact' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certified_feasible_frontier' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.certifyFeasibleReplacement_sound' depends on axioms: [propext, Quot.sound]
+'ScopedFrontier.incremental_generator_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ScopedFrontier.incremental_feasible_generator_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ScopedFrontier.certifyClosed_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ScopedFrontier.certifyClosed_obligation_witness' depends on axioms: [propext, Quot.sound]
 'ScopedFrontier.expected_requirement_exact' depends on axioms: [propext, Quot.sound]
 'ScopedFrontier.coordinate_exact' depends on axioms: [propext, Quot.sound]
 'ScopedFrontier.admitted_exact' depends on axioms: [propext, Quot.sound]
@@ -231,6 +235,58 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ScopedFrontier.admitted_provenance_selection_same' depends on axioms: [propext, Quot.sound]
 'ScopedFrontier.replay_selection_idempotent' depends on axioms: [propext, Quot.sound]
 'ScopedFrontier.merge_selection_order_independent' depends on axioms: [propext, Quot.sound]
+'GeneralPareto.lmax_eq_some' depends on axioms: [propext, Quot.sound]
+'GeneralPareto.aggMax_perm' depends on axioms: [propext, Quot.sound]
+'GeneralPareto.bounds_sound' depends on axioms: [propext, Quot.sound]
+'GeneralPareto.bounds_attained' depends on axioms: [propext, Quot.sound]
+'GeneralPareto.separatedN_sound' depends on axioms: [propext, Quot.sound]
+'GeneralPareto.frontier_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.closure_compound_finite' depends on axioms: [propext, Quot.sound]
+'Optimality.closure_factors_left' depends on axioms: [propext, Quot.sound]
+'Optimality.closure_factors_right' depends on axioms: [propext, Quot.sound]
+'Optimality.factorization_needs_separation' depends on axioms: [propext]
+'Optimality.hornDeriv_iff_closure' does not depend on any axioms
+'Optimality.frontier_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.pruning_sound_pareto' depends on axioms: [propext, Quot.sound]
+'Optimality.joint_frontier_in_local_frontiers' depends on axioms: [propext, Quot.sound]
+'Optimality.reduced_product_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.product_of_frontiers_not_joint' does not depend on any axioms
+'Optimality.strict_lift_needs_premise' does not depend on any axioms
+'Optimality.scalar_frontier_iff_allMinima' depends on axioms: [propext, Quot.sound]
+'Optimality.frontier_respects_coverage' depends on axioms: [propext, Quot.sound]
+'Optimality.class_tag_is_not_coverage' depends on axioms: [propext]
+'Optimality.import_mismatch_blocks_transfer' does not depend on any axioms
+'Optimality.union_misses_cross_consequence' depends on axioms: [propext, Quot.sound]
+'Optimality.dominates_iff_strictPareto' depends on axioms: [propext, Quot.sound]
+'Optimality.paretoMaximal_exact' depends on axioms: [propext, Quot.sound]
+'Optimality.paretoMaximal_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Optimality.guardedMaximal_sound' depends on axioms: [propext, Quot.sound]
+'Optimality.paretoMaximal_can_regress' depends on axioms: [propext, Quot.sound]
+'Optimality.not_per_execution_dominance' depends on axioms: [propext]
+'Optimality.retains_iff' depends on axioms: [propext, Quot.sound]
+'Optimality.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
+'Optimality.refusal_regressing_frontier' depends on axioms: [propext, Quot.sound]
+'ExecutableIncremental.saturate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.dirty_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.new_arcs_suffice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.update_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.reachable_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.frontier_eq_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CoveredFrontierControls.strict_pruning_preserves_both_tied_identities' depends on axioms: [propext]
+'CoveredFrontierControls.missing_generator_competitor_rejected' depends on axioms: [propext]
+'CoveredFrontierControls.omitted_tied_identity_rejected' depends on axioms: [propext]
+'CoveredFrontierControls.invalid_empty_axis_contract_rejected' depends on axioms: [propext]
+'CoveredFrontierControls.strict_replacement_certified' depends on axioms: [propext]
+'CoveredFrontierControls.empty_domain_cannot_certify_replacement' depends on axioms: [propext]
+'CoveredFrontierControls.missing_cost_blocks_feasible_replacement_claim' depends on axioms: [propext]
+'CoveredFrontierControls.complete_joint_support_selects_challenger' depends on axioms: [propext]
+'CoveredFrontierControls.cyclic_support_does_not_survive_root_withdrawal' depends on axioms: [propext]
+'CoveredCampaign.declared_candidates_exhaustive' depends on axioms: [propext]
+'CoveredCampaign.all_declared_candidates_qualified' does not depend on any axioms
+'CoveredCampaign.archived_exact_certificate' does not depend on any axioms
+'CoveredCampaign.archived_frontier_exact' does not depend on any axioms
+'CoveredCampaign.archived_named_replacement' depends on axioms: [propext]
+'CoveredCampaign.archived_paired_round_nonregression' does not depend on any axioms
 'QualifiedClosure.derivations_agree' depends on axioms: [propext, Quot.sound]
 'QualifiedClosure.rounds_exact' depends on axioms: [propext, Quot.sound]
 'QualifiedClosure.checked_none' depends on axioms: [propext]
@@ -251,7 +307,54 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'LiveSelection.graph_agrees' depends on axioms: [propext, Quot.sound]
 'LiveSelection.selected_live' depends on axioms: [propext, Classical.choice, Quot.sound]
 'LiveSelection.typed_cover_exact' depends on axioms: [propext, Quot.sound]
+'IncrementalSelection.certificate_eq_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IncrementalSelection.point_frontiers_agree' depends on axioms: [propext, Quot.sound]
+'IncrementalSelection.release_gates_agree' depends on axioms: [propext]
+'IncrementalSelection.choose_congr' depends on axioms: [propext, Quot.sound]
+'IncrementalSelection.selectCached_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IncrementalSelection.live_revision' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IncrementalSelection.evaluate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IncrementalSelection.replay_agrees_with_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
 'TraceSafety.Simulation.trace' does not depend on any axioms
 'TraceSafety.Simulation.comp' does not depend on any axioms
 'TraceSafety.selected_trace_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
+Qualification: 11 theorem declarations
+FiniteQualification: 9 theorem declarations
+ExecutableClosure: 36 theorem declarations
+FiniteFrontier: 22 theorem declarations
+FiniteSchedules: 39 theorem declarations
+ForeignCampaign: 11 theorem declarations
+EligibleSchedules: 20 theorem declarations
+ScopedEvidence: 46 theorem declarations
+LinearSelection: 17 theorem declarations
+EligibleCampaign: 20 theorem declarations
+ScopedSelection: 9 theorem declarations
+ScopedCampaign: 7 theorem declarations
+MetricRelevance: 72 theorem declarations
+HypergraphIncremental: 58 theorem declarations
+ExecutableIncremental: 40 theorem declarations
+GeneralPareto: 62 theorem declarations
+Composition: 105 theorem declarations
+OptimalityInterface: 32 theorem declarations
+FrontierComposition: 17 theorem declarations
+ContextualDominance: 7 theorem declarations
+Admission: 66 theorem declarations
+AdmissionHypergraph: 12 theorem declarations
+ComparisonContract: 49 theorem declarations
+ScopedFrontier: 122 theorem declarations
+composition.QualifiedClosure: 27 theorem declarations
+composition.QualifiedSelection: 24 theorem declarations
+composition.IntervalDominance: 17 theorem declarations
+composition.LiveSelection: 7 theorem declarations
+composition.IncrementalSelection: 14 theorem declarations
+composition.TraceSafety: 13 theorem declarations
+SoftwareIsQuantifiable.Finiteness: 44 theorem declarations
+SoftwareIsQuantifiable.Fold: 24 theorem declarations
+SoftwareIsQuantifiable.Coloring: 55 theorem declarations
+SoftwareIsQuantifiable.Pareto: 98 theorem declarations
+SoftwareIsQuantifiable.Coverage: 36 theorem declarations
+SoftwareIsQuantifiable.Interface: 81 theorem declarations
+SoftwareIsQuantifiable.Instance: 62 theorem declarations
+1391 theorem declarations across 37 modules passed the foundation check
 Joint composition checks passed.
+1024 snapshots; 1048576 ordered snapshot pairs agree with powerset closure.
