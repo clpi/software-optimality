@@ -68,6 +68,24 @@ The modeled axes are makespan (maximum per-queue duration sum) and sum of all jo
 
 The concrete calculation proofs use `by decide`, checked by Lean's kernel, not `native_decide`. This proves arithmetic, feasibility and ranking **for the imported candidate list and cost model**. The generic start-tick enumeration theorem does not establish completeness of the separate queue-list generator. Physical runs, timing medians, process isolation, and semantic equivalence of foreign test suites are independently collected observations, not consequences of the Lean ranking proof. In particular the measured parallel wall-clock percentage must not be described as a proven future speedup.
 
+### `EligibleSchedules.lean`: hard observed admission before optimization
+
+Tests and intent choose the comparison axes and the admission policy. Eligibility is separate from cost ranking: the executable gate requires feasibility, the provided observed-behavior predicate, and all required timing checks. `timedAdmission_exact` proves the required count is positive, exactly that many receipts exist, and every elapsed value is present and no greater than its declared per-receipt limit. A missing timing, empty zero-round campaign, or even one over-limit result is rejected. Equality at the limit is accepted; no hidden tolerance is applied.
+
+`optimumCertificate_exact` proves both admission of the selected candidate and absence of an admitted dominator on the chosen cost axes. `rejected_cannot_be_optimal` prevents a faster cost score from overriding a failed gate. `dominator_refutes_certificate` supplies the constructive counterexample check: an admitted strict dominator invalidates the claimed optimum.
+
+Timing inputs can represent fixed ceilings or paired observed-baseline ceilings; the choice must be named by the policy. The theorem checks the recorded cases and does not predict unseen runs. A paired-baseline experiment is not presented as a user-authored absolute SLA. The observed-behavior Boolean is a policy input; validation of its underlying receipt contents is separate from treating it as evidence of universal behavior preservation.
+
+### `EligibleCampaign.lean`: measured pilot and tested alternate
+
+The concrete pilot has three plans: O1 original tests on one worker, O2 original tests on two workers, R2 reverse-collected tests on the same two-worker plan. Worker capacity is a constraint, not a quality axis. The sole objective is maximum observed wall-clock nanoseconds across three paired rounds. All three plans' imported per-job receipt flags report identical collected ids and phase/outcome/skip records plus successful exits; these Boolean receipt comparisons are inputs whose underlying raw files are audited separately.
+
+Each round's hard cap is that round's observed O1 wall time: `[10769189848,7296152413,7966428370]`. O2 observations are `[5429128102,6128442901,6240471073]`; R2 observations are `[9146680841,6480720115,6777395883]`. The kernel checks receipt counts, behavioral flag conjunctions, every cap inequality, and exact gate admission. All three pass; **none of these observed candidates is gate-rejected**.
+
+The kernel proves O2 is the singleton frontier of this admitted three-plan catalogue. Its maximum observed time is `6240471073 ns`, versus O1 `10769189848 ns` and R2 `9146680841 ns`. R2 is the actually executed alternate: admitted, but dominated, with O2 faster in every recorded paired round. That comparison is not a proof of physical causality or a forecast. A separate clearly named **synthetic** negative control exceeds one cap by one nanosecond and is proved rejected.
+
+The source qualification JSON and policy hashes appear in the module. The hard gate was specified before the runs; the objective was corrected during the run before analysis to wall time only, preserving the earlier policy revision in the empirical artifacts. Do not describe the corrected objective as preregistered before all execution, or the paired-baseline caps as an absolute SLA provided by the user.
+
 ## Trust and precise boundary
 
 No `sorry`, admissions, custom axioms, or `native_decide` shortcuts occur. Some finite-reference proofs use standard Lean foundational axioms `propext`, `Classical.choice`, and `Quot.sound` through library lemmas, as disclosed by `#print axioms` in `CHECK.log`. Classical reasoning is used in proofs, not to implement the executable algorithms.
@@ -84,3 +102,7 @@ Checked executable SHA-256:
 `92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023`
 
 See `SHA256SUMS` for source/check-output hashes.
+
+## Publication scope clarification
+
+The hard timing gate is **whole-suite wall time only**. In the pilot, 8 of 12 individual O2 subprocess times were slower than their paired O1 times, despite every whole-suite gate passing. There is no per-test, per-job, CPU, memory, future-run or universal semantic no-regression guarantee. Three paired rounds and the recorded test inputs are the scope. Policy revision chronology is reported by the experiment files; no signed precommit or independently authenticated timestamp proves that chronology. R2 is admitted but dominated, not rejected. See evidence/ for immutable receipts, source pins, and reproduction scripts.

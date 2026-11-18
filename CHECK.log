@@ -40,3 +40,18 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ForeignCampaign.modeled_improvement_exact' depends on axioms: [propext, Quot.sound]
 'ForeignCampaign.receipt_metrics_match' does not depend on any axioms
 'ForeignCampaign.complete_list_frontier' does not depend on any axioms
+'EligibleSchedules.timingOK_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.timedAdmission_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.eligible_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.optimumCertificate_exact' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.rejected_cannot_be_optimal' depends on axioms: [propext, Quot.sound]
+'EligibleSchedules.dominator_refutes_certificate' depends on axioms: [propext, Quot.sound]
+'EligibleCampaign.all_admitted' does not depend on any axioms
+'EligibleCampaign.chosen_qualified_optimum' does not depend on any axioms
+'EligibleCampaign.optimum_semantics' depends on axioms: [propext, Quot.sound]
+'EligibleCampaign.exact_eligible_frontier' does not depend on any axioms
+'EligibleCampaign.counterfactual_admitted' does not depend on any axioms
+'EligibleCampaign.chosen_beats_counterfactual' does not depend on any axioms
+'EligibleCampaign.counterfactual_not_optimum' does not depend on any axioms
+'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
+'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
