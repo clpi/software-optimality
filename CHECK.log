@@ -8,6 +8,9 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'Qualification.withdrawal_no_new_support' does not depend on any axioms
 'Qualification.surviving_subsystem' does not depend on any axioms
 'Qualification.no_bootstrap' does not depend on any axioms
+'CheckedTransfer.image_exact' does not depend on any axioms
+'CheckedTransfer.transfer_never_exceeds' does not depend on any axioms
+'CheckedTransfer.transfer_no_bootstrap' does not depend on any axioms
 'FiniteQualification.candidates_length' depends on axioms: [propext]
 'FiniteQualification.candidates_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'FiniteQualification.qualify_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -22,6 +25,8 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ExecutableClosure.close_contains_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ExecutableClosure.close_order_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
 [0, 1, 2, 3]
+'WorklistClosure.wclose_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WorklistClosure.worklist_agrees_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
 'FiniteFrontier.frontier_exact' depends on axioms: [propext, Quot.sound]
 'FiniteFrontier.pareto_exact' depends on axioms: [propext, Quot.sound]
 'FiniteFrontier.conflict_exact' does not depend on any axioms
@@ -50,6 +55,11 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'FiniteSchedules.nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
+'StrictSchedules.positive_exact' depends on axioms: [propext, Quot.sound]
+'StrictSchedules.feasibleStrict_iff' depends on axioms: [propext, Quot.sound]
+'StrictSchedules.feasibleStrict_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StrictSchedules.strict_precedence' depends on axioms: [propext, Quot.sound]
+'StrictSchedules.no_dependency_cycle' depends on axioms: [propext, Quot.sound]
 'ForeignCampaign.chosen_accepted' does not depend on any axioms
 'ForeignCampaign.chosen_nondominated' depends on axioms: [propext, Quot.sound]
 'ForeignCampaign.modeled_improvement_exact' depends on axioms: [propext, Quot.sound]
@@ -68,6 +78,8 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ScopedEvidence.duplicate_match_rejected' depends on axioms: [propext]
 'ScopedEvidence.wrong_scope_rejected' depends on axioms: [propext, Quot.sound]
 'ScopedEvidence.qualification_sound_relative' depends on axioms: [propext, Quot.sound]
+'EvidenceTransport.qualify_dedupe_iff' depends on axioms: [propext, Quot.sound]
+'EvidenceTransport.dedupe_idempotent' depends on axioms: [propext, Quot.sound]
 'LinearSelection.allMinima_exact' depends on axioms: [propext, Quot.sound]
 'LinearSelection.allMinima_order_independent' depends on axioms: [propext, Quot.sound]
 'LinearSelection.bestFrom_spec' depends on axioms: [propext, Quot.sound]
@@ -84,10 +96,19 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'EligibleCampaign.counterfactual_not_nondominated_under_supplied_integer_cost' does not depend on any axioms
 'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
 'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
+'LinkedCertificate.principal' depends on axioms: [propext, Quot.sound]
+'LinkedCertificate.generator_optimum' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ScopedSelection.selected_all_exact' depends on axioms: [propext, Quot.sound]
 'ScopedSelection.selected_all_order_independent' depends on axioms: [propext, Quot.sound]
 'ScopedSelection.certified_scoped_nondominated_under_supplied_integer_cost' depends on axioms: [propext, Quot.sound]
 'ScopedSelection.selected_scoped_minimum' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.contractOfPolicy_exact' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.contractOf_exact' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.compatible_exact' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.compatible_rejects_mixed' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.compatibleSelf_exact' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.compatibleSelf_of_compatible' depends on axioms: [propext, Quot.sound]
+'ScopedCompatibility.certified_scoped_optimum_compatible' depends on axioms: [propext, Quot.sound]
 'ScopedCampaign.all_scoped_admitted' does not depend on any axioms
 'ScopedCampaign.scoped_nondominated_under_supplied_integer_cost' does not depend on any axioms
 'ScopedCampaign.scoped_selection' does not depend on any axioms
