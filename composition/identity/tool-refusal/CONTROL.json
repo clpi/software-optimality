@@ -1,0 +1,11 @@
+{
+  "command": [
+    "python3",
+    "composition/identity/replay.py",
+    "--output",
+    "composition/identity/tool-refusal"
+  ],
+  "exit_code": 2,
+  "control": "unavailable LEAN executable must not count as a mathematical negative-control success",
+  "expected_refusal_observed": true
+}

@@ -40,6 +40,7 @@ import composition.TraceSafety
 import composition.Controls
 import CanonicalDominance
 import composition.InterfaceBridge
+import composition.IdentityRepresentation
 import HistoricalEvidence
 import HistoricalRecovery
 import HistoricalCertificates

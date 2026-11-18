@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+    "build"
+  ],
+  "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+  "start_utc": "2026-11-18T11:44:33.150242+00:00",
+  "end_utc": "2026-11-18T11:44:36.811769+00:00",
+  "elapsed_seconds": 3.661663935999968,
+  "exit_code": 0,
+  "log": "LAKE-BUILD.log"
+}

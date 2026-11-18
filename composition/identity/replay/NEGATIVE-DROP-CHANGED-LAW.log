@@ -1,0 +1,28 @@
+composition/identity/NEGATIVE-DROP-CHANGED-LAW.lean:115:84: error: unsolved goals
+case mk.changedRule
+root : Origin
+⊢ { law := FixedLaw.changedRule, origin := root }.erase.expand = { law := FixedLaw.changedRule, origin := root }
+composition/identity/NEGATIVE-DROP-CHANGED-LAW.lean:120:84: error: unsolved goals
+case mk.changedRule
+payload : I64
+⊢ { law := FixedLaw.changedRule, payload := payload }.erase.expand = { law := FixedLaw.changedRule, payload := payload }
+composition/identity/NEGATIVE-DROP-CHANGED-LAW.lean:126:90: error: unsolved goals
+case mk.changedRule
+binder : Expanded.Binding
+value : Expanded.Integer
+⊢ { law := FixedLaw.changedRule, binding := binder, value := value }.erase.expand =
+    { law := FixedLaw.changedRule, binding := binder, value := value }
+composition/identity/NEGATIVE-DROP-CHANGED-LAW.lean:139:82: error: unsolved goals
+case mk.changedRule
+root : Origin
+members : List Expanded.Member
+⊢ { law := FixedLaw.changedRule, origin := root, members := members }.erase.expand =
+    { law := FixedLaw.changedRule, origin := root, members := members }
+composition/identity/NEGATIVE-DROP-CHANGED-LAW.lean:189:14: error: unsolved goals
+case law.changedRule
+⊢ (Expanded.Record.law FixedLaw.changedRule).erase.expand = Expanded.Record.law FixedLaw.changedRule
+'IdentityRepresentation.erase_eq_iff' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.all_record_observations_preserved' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.deleting_nominal_input_loses_information' does not depend on any axioms
+'IdentityRepresentation.scoped_representation_certificate' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.dominated_expanded_frontier_refused' depends on axioms: [propext, Quot.sound]

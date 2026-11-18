@@ -1,0 +1,20 @@
+/workspace/scratch/8ebca4442e3a/origin-integration/identity-formal-verification/NEGATIVE-DROP-ORIGIN.lean:113:11: error: tactic 'rfl' failed, the left-hand side
+  { origin := origin✝ }.expand.erase
+is not definitionally equal to the right-hand side
+  { origin := origin✝ }
+case mk
+origin✝ : Origin
+⊢ { origin := origin✝ }.expand.erase = { origin := origin✝ }
+/workspace/scratch/8ebca4442e3a/origin-integration/identity-formal-verification/NEGATIVE-DROP-ORIGIN.lean:116:15: error: tactic 'rfl' failed, the left-hand side
+  { law := FixedLaw.literalBindingV1, origin := root }.erase.expand
+is not definitionally equal to the right-hand side
+  { law := FixedLaw.literalBindingV1, origin := root }
+case mk.literalBindingV1
+root : Origin
+⊢ { law := FixedLaw.literalBindingV1, origin := root }.erase.expand =
+    { law := FixedLaw.literalBindingV1, origin := root }
+'IdentityRepresentation.erase_eq_iff' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.all_record_observations_preserved' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.deleting_nominal_input_loses_information' does not depend on any axioms
+'IdentityRepresentation.scoped_representation_certificate' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.dominated_expanded_frontier_refused' depends on axioms: [propext, Quot.sound]

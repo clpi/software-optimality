@@ -1,0 +1,29 @@
+{
+  "script_sha256": "c91a74d384a1031ab3eb15558a082fbd08a35240ad4b6a15a8772ab9ecc72b77",
+  "source_sha256": "9996a284df731331863e336ef8e4eb83838598a61c762b359feb06528d9bd36d",
+  "dependency_commit": "f370992611d8c722e4897e67dbb8eaecf3d872ed",
+  "runs": [
+    {
+      "name": "TOOLCHAIN",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality/composition/identity/nonexistent-lean-control",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:53:21.641042+00:00",
+      "end_utc": "2026-11-18T11:53:22.084795+00:00",
+      "elapsed_seconds": 0.44376370299141854,
+      "exit_code": 255,
+      "expected_failure": false,
+      "expected_diagnostic_marker": null,
+      "expected_outcome_observed": false,
+      "classification": "tool_or_proof_failure",
+      "source_sha256": null,
+      "log": "TOOLCHAIN.log",
+      "log_sha256": "1965f6635ff9285f556a646978ba53058ac90de5eb466ad529495484052a53a0"
+    }
+  ],
+  "all_expected_outcomes": false
+}

@@ -57,6 +57,7 @@ lean_lib SoftwareOptimality where
     `composition.AxiomAudit,
     `CanonicalDominance,
     `composition.InterfaceBridge,
+    `composition.IdentityRepresentation,
     `composition.InterfaceControls,
     `docs.«covered-frontier».Controls,
     `docs.«covered-frontier».Campaign,
