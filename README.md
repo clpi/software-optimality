@@ -163,3 +163,9 @@ Kernel-checked synthetic counterexamples show local speedup reversing under cont
 `AdmissionHypergraph.lean` derives both roots and transfer/inference edges from those same live supports. Equal admitted provenance implies equal qualification closure. The scoped constructor retains the full key/payload in roots; qualification cannot enter an otherwise unsupported lineage without an admitted entering edge.
 
 This supplies a checked reference normalization stage for the earlier hypergraph boundary, not a cryptographic/authorization service. Authorizer truth, immutable key binding, semantic transfer validity and decoder correctness remain obligations. Output membership, not list byte ordering, is canonical. See [scope](docs/admission-normalization/SCOPE.md) and [checks](docs/admission-normalization/VERIFICATION.md).
+
+### Typed comparison contracts and composable transport
+
+`ComparisonContract.lean` rejects numerical comparisons with mismatched metric/unit/direction/aggregation, workload, venue, epoch or ordered axes, and rejects malformed value-vector shapes. Compatible comparisons return exact strict Pareto dominance, with maximize axes normalized by integer negation. Incomparable (`none`) and compatible-but-nondominating (`some false`) remain distinct.
+
+Proof-carrying transports preserve a fixed application meaning and compose into a shared target contract. `compareVia_semantic` transfers target numerical dominance to the application better-than relation only with its explicit `metricSound` theorem. Neither interpretation nor soundness may be invented by an untrusted certificate author. Synthetic unit-conversion and tradeoff controls are included. See [scope](docs/typed-comparison/SCOPE.md) and [verification](docs/typed-comparison/VERIFICATION.md).

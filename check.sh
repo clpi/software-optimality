@@ -43,3 +43,6 @@ run_lean ContextualDominance.lean
 run_lean -o Admission.olean Admission.lean
 run_lean -o AdmissionHypergraph.olean AdmissionHypergraph.lean
 run_lean -o AdmissionTests.olean AdmissionTests.lean
+
+run_lean -o ComparisonContract.olean ComparisonContract.lean
+run_lean -o ComparisonTests.olean ComparisonTests.lean

@@ -127,3 +127,8 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'AdmissionHypergraph.qualification_same' does not depend on any axioms
 'AdmissionHypergraph.replay_idempotent' depends on axioms: [propext]
 'AdmissionHypergraph.merge_order_independent' depends on axioms: [propext]
+'ComparisonContract.compareVia_semantic' does not depend on any axioms
+'ComparisonContract.direct_improvement' depends on axioms: [propext, Quot.sound]
+'ComparisonContract.mismatch_refused' depends on axioms: [propext]
+'ComparisonContract.transported_meaning' does not depend on any axioms
+'ComparisonContract.compareVia_exact' depends on axioms: [propext, Quot.sound]

@@ -1,0 +1,7 @@
+InvalidTransport.lean:6:22: error: tactic 'rfl' failed, the left-hand side
+  meaning base xs
+is not definitionally equal to the right-hand side
+  meaning micros xs
+xs : List Int
+h : valid base xs
+⊢ meaning base xs = meaning micros xs
