@@ -1,0 +1,913 @@
+{
+  "campaign": {
+    "model": "exit-schema-1",
+    "prior": "prior-1",
+    "roster": [
+      {
+        "configuration": "demo",
+        "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+        "revision": "r1",
+        "system": "build"
+      }
+    ],
+    "questions": [
+      {
+        "run": {
+          "configuration": "demo",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "revision": "r1",
+          "system": "build"
+        },
+        "field": "occurrence"
+      },
+      {
+        "run": {
+          "configuration": "demo",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "revision": "r1",
+          "system": "build"
+        },
+        "field": {
+          "attribute": {
+            "name": "process.status"
+          }
+        }
+      },
+      {
+        "run": {
+          "configuration": "demo",
+          "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+          "revision": "r1",
+          "system": "build"
+        },
+        "field": {
+          "attribute": {
+            "name": "status.eq.7"
+          }
+        }
+      }
+    ],
+    "worlds": [
+      {
+        "name": "absent",
+        "weight": 1,
+        "assignments": [
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": "occurrence"
+            },
+            "value": 0
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            },
+            "value": null
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              }
+            },
+            "value": null
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": "occurrence"
+            },
+            "value": 1
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            },
+            "value": 7
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              }
+            },
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "exit-seven",
+        "weight": 2,
+        "assignments": [
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": "occurrence"
+            },
+            "value": 1
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            },
+            "value": 7
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              }
+            },
+            "value": 1
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": "occurrence"
+            },
+            "value": 1
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            },
+            "value": 7
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              }
+            },
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "exit-nine",
+        "weight": 8,
+        "assignments": [
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": "occurrence"
+            },
+            "value": 1
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            },
+            "value": 9
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              }
+            },
+            "value": 0
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": "occurrence"
+            },
+            "value": 1
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              }
+            },
+            "value": 7
+          },
+          {
+            "question": {
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              },
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              }
+            },
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "planning": {
+      "sensors": [
+        {
+          "name": "retained-start-index",
+          "availability": "retainedRead",
+          "question": {
+            "run": {
+              "configuration": "demo",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "revision": "r1",
+              "system": "build"
+            },
+            "field": "occurrence"
+          },
+          "equalsValue": 1,
+          "cost": 1
+        },
+        {
+          "name": "retained-status-index",
+          "availability": "retainedRead",
+          "question": {
+            "run": {
+              "configuration": "demo",
+              "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+              "revision": "r1",
+              "system": "build"
+            },
+            "field": {
+              "attribute": {
+                "name": "process.status"
+              }
+            }
+          },
+          "equalsValue": 7,
+          "cost": 1
+        }
+      ],
+      "depth": 2,
+      "maxPlans": 19,
+      "maxWorstCost": 2,
+      "requireAll": true
+    }
+  },
+  "events": [
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999589984820230,
+          "bodyId": 0,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "future:2cb6c897-4d29-4ecb-b738-9753fda29223",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 1
+          },
+          "id": 0,
+          "model": "exit-schema-1",
+          "parents": [],
+          "receipt": null,
+          "route": "hookPlan",
+          "source": "local-hook-planner"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590070207655,
+          "bodyId": 1,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 7
+          },
+          "id": 1,
+          "model": "",
+          "parents": [],
+          "receipt": {
+            "atom": {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            },
+            "capturedAt": 1794999590069879264,
+            "evidenceId": "ab23117dce63c3cbb8380f2a76e6ccf5f2aade8716d34b6c54f9fae129af2048",
+            "hook": true,
+            "source": "hook:0"
+          },
+          "route": "hookSample",
+          "source": "hook:0"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590070255129,
+          "bodyId": 2,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 1
+          },
+          "id": 2,
+          "model": "exit-schema-1",
+          "parents": [
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            }
+          ],
+          "receipt": null,
+          "route": "symbolic",
+          "source": "hook:0"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590265284572,
+          "bodyId": 3,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 9
+          },
+          "id": 3,
+          "model": "prior-1",
+          "parents": [],
+          "receipt": null,
+          "route": "independentPrediction",
+          "source": "independent-prior-program"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590340716990,
+          "bodyId": 4,
+          "head": {
+            "question": {
+              "field": "occurrence",
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 1
+          },
+          "id": 4,
+          "model": "exit-schema-1",
+          "parents": [
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            }
+          ],
+          "receipt": null,
+          "route": "independentPrediction",
+          "source": "prior-1"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590340716990,
+          "bodyId": 5,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 9
+          },
+          "id": 5,
+          "model": "exit-schema-1",
+          "parents": [
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            }
+          ],
+          "receipt": null,
+          "route": "independentPrediction",
+          "source": "prior-1"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590340716990,
+          "bodyId": 6,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 0
+          },
+          "id": 6,
+          "model": "exit-schema-1",
+          "parents": [
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            }
+          ],
+          "receipt": null,
+          "route": "independentPrediction",
+          "source": "prior-1"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590761560257,
+          "bodyId": 7,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "process.status"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 7
+          },
+          "id": 7,
+          "model": "",
+          "parents": [],
+          "receipt": {
+            "atom": {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            },
+            "capturedAt": 1794999589914035908,
+            "evidenceId": "5ab20b46789f012ca37a04905d2ffc843cd62f065fdca0a303d1da6428f405e7",
+            "hook": true,
+            "source": "hook:0"
+          },
+          "route": "backfill",
+          "source": "hook:0"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590819989802,
+          "bodyId": 8,
+          "head": {
+            "question": {
+              "field": "occurrence",
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 1
+          },
+          "id": 8,
+          "model": "exit-schema-1",
+          "parents": [
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            },
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            }
+          ],
+          "receipt": null,
+          "route": "sparse",
+          "source": "finite-model"
+        }
+      }
+    },
+    {
+      "put": {
+        "row": {
+          "appendedAt": 1794999590819989802,
+          "bodyId": 10,
+          "head": {
+            "question": {
+              "field": {
+                "attribute": {
+                  "name": "status.eq.7"
+                }
+              },
+              "run": {
+                "configuration": "demo",
+                "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                "revision": "r1",
+                "system": "build"
+              }
+            },
+            "value": 1
+          },
+          "id": 10,
+          "model": "exit-schema-1",
+          "parents": [
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            },
+            {
+              "question": {
+                "field": {
+                  "attribute": {
+                    "name": "process.status"
+                  }
+                },
+                "run": {
+                  "configuration": "demo",
+                  "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+                  "revision": "r1",
+                  "system": "build"
+                }
+              },
+              "value": 7
+            }
+          ],
+          "receipt": null,
+          "route": "sparse",
+          "source": "finite-model"
+        }
+      }
+    },
+    {
+      "withdraw": {
+        "id": 7
+      }
+    }
+  ],
+  "cuts": {
+    "before": 7,
+    "after": 10,
+    "withdrawn": 11
+  },
+  "captures": [
+    {
+      "atom": {
+        "question": {
+          "field": {
+            "attribute": {
+              "name": "process.status"
+            }
+          },
+          "run": {
+            "configuration": "demo",
+            "occurrenceId": "bbfd30d3-a53c-4bd2-984c-435d5584b02e",
+            "revision": "r1",
+            "system": "build"
+          }
+        },
+        "value": 7
+      },
+      "capturedAt": 1794999589914035908,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-c",
+        "raise SystemExit(7)"
+      ],
+      "hook": true,
+      "returncode": 7,
+      "source": "hook:0"
+    },
+    {
+      "atom": {
+        "question": {
+          "field": {
+            "attribute": {
+              "name": "process.status"
+            }
+          },
+          "run": {
+            "configuration": "demo",
+            "occurrenceId": "a431e5f6-9bf7-43de-9bd4-6a773d2b8fc3",
+            "revision": "r1",
+            "system": "build"
+          }
+        },
+        "value": 7
+      },
+      "capturedAt": 1794999590069879264,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-c",
+        "raise SystemExit(7)"
+      ],
+      "hook": true,
+      "returncode": 7,
+      "source": "hook:0"
+    }
+  ]
+}

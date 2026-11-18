@@ -57,6 +57,16 @@ lean_lib SoftwareOptimality where
     `docs.«covered-frontier».Controls,
     `docs.«covered-frontier».Campaign,
     `docs.«covered-frontier».ArchiveImport,
+    `HistoricalEvidence,
+    `HistoricalRecovery,
+    `HistoricalCertificates,
+    `ObservationPlanning,
+    `ObservationPublication,
+    `examples.HistoricalRecovery,
     `examples.ReleaseSchedule,
     `SoftwareOptimality
   ]
+
+@[default_target]
+lean_exe historyaudit where
+  root := `HistoryAudit

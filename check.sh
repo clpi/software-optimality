@@ -58,3 +58,11 @@ run_lean CompositionCheck.lean
 run_lean docs/covered-frontier/Controls.lean
 run_lean docs/covered-frontier/Campaign.lean
 run_lean docs/covered-frontier/ArchiveImport.lean
+
+run_lean -o HistoricalEvidence.olean HistoricalEvidence.lean
+run_lean -o HistoricalCertificates.olean HistoricalCertificates.lean
+run_lean -o HistoricalRecovery.olean HistoricalRecovery.lean
+run_lean -o ObservationPlanning.olean ObservationPlanning.lean
+run_lean -o ObservationPublication.olean ObservationPublication.lean
+run_lean HistoryAudit.lean
+run_lean examples/HistoricalRecovery.lean

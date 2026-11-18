@@ -29,3 +29,5 @@ Inputs are fixed positive durations, homogeneous capacity-one runners, and the f
 ## Additional worked example
 
 [Four reads even with an adaptive solver](range-ledger/README.md)
+
+[Recovering a historical execution](../docs/HISTORICAL-OBSERVABILITY.md) follows two recorded child processes through prediction, backfill and withdrawal, and reproduces their observation frontier.
