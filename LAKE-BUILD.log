@@ -1,4 +1,4 @@
-ℹ [2/33] Built Qualification
+ℹ [2/49] Built Qualification
 info: ././././Qualification.lean:104:0: 'Qualification.least' does not depend on any axioms
 info: ././././Qualification.lean:105:0: 'Qualification.monotone' does not depend on any axioms
 info: ././././Qualification.lean:106:0: 'Qualification.idempotent' does not depend on any axioms
@@ -8,19 +8,111 @@ info: ././././Qualification.lean:109:0: 'Qualification.soundness' does not depen
 info: ././././Qualification.lean:110:0: 'Qualification.withdrawal_no_new_support' does not depend on any axioms
 info: ././././Qualification.lean:111:0: 'Qualification.surviving_subsystem' does not depend on any axioms
 info: ././././Qualification.lean:112:0: 'Qualification.no_bootstrap' does not depend on any axioms
-ℹ [3/33] Built FiniteQualification
-info: ././././FiniteQualification.lean:33:0: 'FiniteQualification.candidates_length' depends on axioms: [propext]
-info: ././././FiniteQualification.lean:34:0: 'FiniteQualification.candidates_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././FiniteQualification.lean:35:0: 'FiniteQualification.qualify_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././FiniteQualification.lean:36:0: [[true, false, true]]
-ℹ [4/38] Built LinearSelection
+✔ [3/49] Built SoftwareIsQuantifiable.Fold
+ℹ [4/49] Built LinearSelection
 info: ././././LinearSelection.lean:109:0: 'LinearSelection.allMinima_exact' depends on axioms: [propext, Quot.sound]
 info: ././././LinearSelection.lean:110:0: 'LinearSelection.allMinima_order_independent' depends on axioms: [propext, Quot.sound]
 info: ././././LinearSelection.lean:111:0: 'LinearSelection.bestFrom_spec' depends on axioms: [propext, Quot.sound]
 info: ././././LinearSelection.lean:112:0: 'LinearSelection.selected_minimum' depends on axioms: [propext, Quot.sound]
 info: ././././LinearSelection.lean:113:0: 'LinearSelection.selected_eligible_minimum' depends on axioms: [propext, Quot.sound]
 info: ././././LinearSelection.lean:114:0: 'LinearSelection.counted_refines' depends on axioms: [propext]
-ℹ [5/38] Replayed SoftwareIsQuantifiable.Interface
+ℹ [6/78] Built FiniteQualification
+info: ././././FiniteQualification.lean:33:0: 'FiniteQualification.candidates_length' depends on axioms: [propext]
+info: ././././FiniteQualification.lean:34:0: 'FiniteQualification.candidates_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././FiniteQualification.lean:35:0: 'FiniteQualification.qualify_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././FiniteQualification.lean:36:0: [[true, false, true]]
+ℹ [7/78] Built ContextualDominance
+info: ././././ContextualDominance.lean:145:0: 'ContextualDominance.retained_pareto_is_original' does not depend on any axioms
+info: ././././ContextualDominance.lean:146:0: 'ContextualDominance.replacement_trans' does not depend on any axioms
+info: ././././ContextualDominance.lean:147:0: 'ContextualDominance.monotone_context_replacement' does not depend on any axioms
+info: ././././ContextualDominance.lean:148:0: 'ContextualDominance.pruning_preserves_attainable_bounds' does not depend on any axioms
+info: ././././ContextualDominance.lean:149:0: 'ContextualDominance.pareto_representative_same_cost' does not depend on any axioms
+info: ././././ContextualDominance.lean:150:0: 'ContextualDominance.pareto_vector_survives_pruning' does not depend on any axioms
+ℹ [8/78] Built FiniteFrontier
+info: ././././FiniteFrontier.lean:43:0: 'FiniteFrontier.frontier_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteFrontier.lean:44:0: 'FiniteFrontier.pareto_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteFrontier.lean:45:0: 'FiniteFrontier.conflict_exact' does not depend on any axioms
+info: ././././FiniteFrontier.lean:46:0: 'FiniteFrontier.unknown_exact' does not depend on any axioms
+info: ././././FiniteFrontier.lean:105:0: 'FiniteFrontier.certificate_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteFrontier.lean:106:0: 'FiniteFrontier.certified_frontier' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteFrontier.lean:107:0: 'FiniteFrontier.certified_coverage' depends on axioms: [propext, Quot.sound]
+✔ [9/78] Built Qualification:c.o
+ℹ [10/78] Built CheckedTransfer
+info: ././././CheckedTransfer.lean:194:0: 'CheckedTransfer.image_exact' does not depend on any axioms
+info: ././././CheckedTransfer.lean:195:0: 'CheckedTransfer.transfer_never_exceeds' does not depend on any axioms
+info: ././././CheckedTransfer.lean:196:0: 'CheckedTransfer.transfer_no_bootstrap' does not depend on any axioms
+ℹ [11/78] Built Admission
+info: ././././Admission.lean:196:0: 'Admission.normalized_exact' depends on axioms: [propext, Quot.sound]
+info: ././././Admission.lean:197:0: 'Admission.normalized_nodup' depends on axioms: [propext]
+info: ././././Admission.lean:198:0: 'Admission.duplicate_idempotent' depends on axioms: [propext, Quot.sound]
+info: ././././Admission.lean:199:0: 'Admission.payload_unique' does not depend on any axioms
+info: ././././Admission.lean:200:0: 'Admission.withdrawal_survives_append' does not depend on any axioms
+info: ././././Admission.lean:201:0: 'Admission.unauthorized_event_ignored' depends on axioms: [propext]
+ℹ [12/78] Built SoftwareIsQuantifiable.Coverage
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:169:0: 'SoftwareIsQuantifiable.Coverage.recorded_exact' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:170:0: 'SoftwareIsQuantifiable.Coverage.missing_exact' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:171:0: 'SoftwareIsQuantifiable.Coverage.missing_append' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:172:0: 'SoftwareIsQuantifiable.Coverage.missing_empty' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:173:0: 'SoftwareIsQuantifiable.Coverage.coverage_missing_iff' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:174:0: 'SoftwareIsQuantifiable.Coverage.empty_roster_covered' does not depend on any axioms
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:175:0: 'SoftwareIsQuantifiable.Coverage.empty_ledger_has_no_platform_premise' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:176:0: 'SoftwareIsQuantifiable.Coverage.unrestricted_witness' does not depend on any axioms
+✔ [13/78] Built LinearSelection:c.o
+✔ [14/78] Built FiniteFrontier:c.o
+✔ [15/78] Built SoftwareIsQuantifiable.Coloring
+ℹ [16/78] Built ExecutableClosure
+info: ././././ExecutableClosure.lean:198:0: 'ExecutableClosure.boundedOK_exact' depends on axioms: [propext, Quot.sound]
+info: ././././ExecutableClosure.lean:199:0: 'ExecutableClosure.checkedClose_admitted' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././ExecutableClosure.lean:200:0: 'ExecutableClosure.checkedClose_rejects' depends on axioms: [propext, Quot.sound]
+info: ././././ExecutableClosure.lean:205:0: 'ExecutableClosure.subsets_count' depends on axioms: [propext]
+info: ././././ExecutableClosure.lean:206:0: 'ExecutableClosure.executable_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././ExecutableClosure.lean:207:0: 'ExecutableClosure.close_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././ExecutableClosure.lean:208:0: 'ExecutableClosure.close_is_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././ExecutableClosure.lean:209:0: 'ExecutableClosure.close_contains_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././ExecutableClosure.lean:210:0: 'ExecutableClosure.close_order_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././ExecutableClosure.lean:211:0: [0, 1, 2, 3]
+✔ [17/78] Built SoftwareIsQuantifiable.Finiteness
+ℹ [18/78] Built FrontierComposition
+info: ././././FrontierComposition.lean:188:0: 'FrontierComposition.checkCover_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:189:0: 'FrontierComposition.Cover.frontier_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:190:0: 'FrontierComposition.Cover.trans' does not depend on any axioms
+info: ././././FrontierComposition.lean:191:0: 'FrontierComposition.Cover.flatMap' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:192:0: 'FrontierComposition.frontier_covers' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:193:0: 'FrontierComposition.checkCover_iff_same_frontier' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:194:0: 'FrontierComposition.certificate_iff_frontier' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:195:0: 'FrontierComposition.partition_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:196:0: 'FrontierComposition.pareto_transitive' depends on axioms: [propext, Quot.sound]
+info: ././././FrontierComposition.lean:197:0: 'FrontierComposition.pareto_irreflexive' depends on axioms: [propext, Quot.sound]
+✔ [19/78] Built Admission:c.o
+ℹ [20/78] Built ComparisonContract
+info: ././././ComparisonContract.lean:144:0: 'ComparisonContract.compareVia_semantic' does not depend on any axioms
+info: ././././ComparisonContract.lean:145:0: 'ComparisonContract.direct_improvement' depends on axioms: [propext, Quot.sound]
+info: ././././ComparisonContract.lean:146:0: 'ComparisonContract.mismatch_refused' depends on axioms: [propext]
+info: ././././ComparisonContract.lean:147:0: 'ComparisonContract.transported_meaning' does not depend on any axioms
+info: ././././ComparisonContract.lean:148:0: 'ComparisonContract.compareVia_exact' depends on axioms: [propext, Quot.sound]
+✔ [21/78] Built AdmissionTests
+ℹ [22/78] Built FiniteSchedules
+info: ././././FiniteSchedules.lean:169:0: 'FiniteSchedules.queueFeasible_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteSchedules.lean:170:0: 'FiniteSchedules.improvementCertificate_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteSchedules.lean:171:0: 'FiniteSchedules.accepted_improvement_if_checkerSound' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteSchedules.lean:172:0: 'FiniteSchedules.tuples_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././FiniteSchedules.lean:173:0: 'FiniteSchedules.enumerate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././FiniteSchedules.lean:174:0: 'FiniteSchedules.feasible_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteSchedules.lean:175:0: 'FiniteSchedules.feasibleSchedules_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././FiniteSchedules.lean:176:0: 'FiniteSchedules.nondominatedInSuppliedFiniteList_exact' depends on axioms: [propext, Quot.sound]
+info: ././././FiniteSchedules.lean:177:0: 'FiniteSchedules.nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [23/78] Built ExecutableClosure:c.o
+✔ [24/78] Built FrontierComposition:c.o
+ℹ [25/78] Built GeneralPareto
+info: ././././GeneralPareto.lean:641:0: 'GeneralPareto.lmax_eq_some' depends on axioms: [propext, Quot.sound]
+info: ././././GeneralPareto.lean:642:0: 'GeneralPareto.aggMax_perm' depends on axioms: [propext, Quot.sound]
+info: ././././GeneralPareto.lean:643:0: 'GeneralPareto.bounds_sound' depends on axioms: [propext, Quot.sound]
+info: ././././GeneralPareto.lean:644:0: 'GeneralPareto.bounds_attained' depends on axioms: [propext, Quot.sound]
+info: ././././GeneralPareto.lean:645:0: 'GeneralPareto.separatedN_sound' depends on axioms: [propext, Quot.sound]
+info: ././././GeneralPareto.lean:646:0: 'GeneralPareto.frontier_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [26/78] Built SoftwareIsQuantifiable.Interface
 info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Interface.lean:1112:0: 'SoftwareIsQuantifiable.Interface.noWorse_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Interface.lean:1113:0: 'SoftwareIsQuantifiable.Interface.noWorse_trans' does not depend on any axioms
 info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Interface.lean:1114:0: 'SoftwareIsQuantifiable.Interface.noWorse_antisymm' does not depend on any axioms
@@ -44,113 +136,14 @@ info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Int
 info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Interface.lean:1128:0: 'SoftwareIsQuantifiable.Interface.not_axesLt_of_short_vector' does not depend on any axioms
 info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Interface.lean:1129:0: 'SoftwareIsQuantifiable.Interface.frontier_exact' depends on axioms: [propext, Quot.sound]
 info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Interface.lean:1130:0: 'SoftwareIsQuantifiable.Interface.misaligned_not_on_frontier' depends on axioms: [propext, Quot.sound]
-ℹ [7/51] Built FiniteFrontier
-info: ././././FiniteFrontier.lean:43:0: 'FiniteFrontier.frontier_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteFrontier.lean:44:0: 'FiniteFrontier.pareto_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteFrontier.lean:45:0: 'FiniteFrontier.conflict_exact' does not depend on any axioms
-info: ././././FiniteFrontier.lean:46:0: 'FiniteFrontier.unknown_exact' does not depend on any axioms
-info: ././././FiniteFrontier.lean:105:0: 'FiniteFrontier.certificate_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteFrontier.lean:106:0: 'FiniteFrontier.certified_frontier' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteFrontier.lean:107:0: 'FiniteFrontier.certified_coverage' depends on axioms: [propext, Quot.sound]
-ℹ [8/51] Built ContextualDominance
-info: ././././ContextualDominance.lean:145:0: 'ContextualDominance.retained_pareto_is_original' does not depend on any axioms
-info: ././././ContextualDominance.lean:146:0: 'ContextualDominance.replacement_trans' does not depend on any axioms
-info: ././././ContextualDominance.lean:147:0: 'ContextualDominance.monotone_context_replacement' does not depend on any axioms
-info: ././././ContextualDominance.lean:148:0: 'ContextualDominance.pruning_preserves_attainable_bounds' does not depend on any axioms
-info: ././././ContextualDominance.lean:149:0: 'ContextualDominance.pareto_representative_same_cost' does not depend on any axioms
-info: ././././ContextualDominance.lean:150:0: 'ContextualDominance.pareto_vector_survives_pruning' does not depend on any axioms
-ℹ [9/51] Replayed SoftwareIsQuantifiable.Pareto
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:488:0: false
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:638:0: 'SoftwareIsQuantifiable.Pareto.frontier_can_regress' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:639:0: 'SoftwareIsQuantifiable.Pareto.admitted_frontier_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:640:0: 'SoftwareIsQuantifiable.Pareto.admitted_frontier_sound' depends on axioms: [propext]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:641:0: 'SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:642:0: 'SoftwareIsQuantifiable.Pareto.omitted_qualified_behavior_refused' depends on axioms: [propext]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:643:0: 'SoftwareIsQuantifiable.Pareto.empty_submission_refused_when_qualified' depends on axioms: [propext]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:644:0: 'SoftwareIsQuantifiable.Pareto.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:645:0: 'SoftwareIsQuantifiable.Pareto.acceptsReplacement_iff' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:646:0: 'SoftwareIsQuantifiable.Pareto.replacement_no_regression' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:647:0: 'SoftwareIsQuantifiable.Pareto.separated_sum' does not depend on any axioms
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:648:0: 'SoftwareIsQuantifiable.Pareto.separated_parallel' depends on axioms: [propext]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:649:0: 'SoftwareIsQuantifiable.Pareto.not_scalarized' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:650:0: 'SoftwareIsQuantifiable.Pareto.scalar_optimum_undominated' does not depend on any axioms
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:651:0: 'SoftwareIsQuantifiable.Pareto.dominates_iff_interface' does not depend on any axioms
-ℹ [10/51] Built CheckedTransfer
-info: ././././CheckedTransfer.lean:194:0: 'CheckedTransfer.image_exact' does not depend on any axioms
-info: ././././CheckedTransfer.lean:195:0: 'CheckedTransfer.transfer_never_exceeds' does not depend on any axioms
-info: ././././CheckedTransfer.lean:196:0: 'CheckedTransfer.transfer_no_bootstrap' does not depend on any axioms
-ℹ [11/51] Built Admission
-info: ././././Admission.lean:196:0: 'Admission.normalized_exact' depends on axioms: [propext, Quot.sound]
-info: ././././Admission.lean:197:0: 'Admission.normalized_nodup' depends on axioms: [propext]
-info: ././././Admission.lean:198:0: 'Admission.duplicate_idempotent' depends on axioms: [propext, Quot.sound]
-info: ././././Admission.lean:199:0: 'Admission.payload_unique' does not depend on any axioms
-info: ././././Admission.lean:200:0: 'Admission.withdrawal_survives_append' does not depend on any axioms
-info: ././././Admission.lean:201:0: 'Admission.unauthorized_event_ignored' depends on axioms: [propext]
-ℹ [12/51] Built FrontierComposition
-info: ././././FrontierComposition.lean:188:0: 'FrontierComposition.checkCover_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:189:0: 'FrontierComposition.Cover.frontier_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:190:0: 'FrontierComposition.Cover.trans' does not depend on any axioms
-info: ././././FrontierComposition.lean:191:0: 'FrontierComposition.Cover.flatMap' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:192:0: 'FrontierComposition.frontier_covers' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:193:0: 'FrontierComposition.checkCover_iff_same_frontier' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:194:0: 'FrontierComposition.certificate_iff_frontier' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:195:0: 'FrontierComposition.partition_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:196:0: 'FrontierComposition.pareto_transitive' depends on axioms: [propext, Quot.sound]
-info: ././././FrontierComposition.lean:197:0: 'FrontierComposition.pareto_irreflexive' depends on axioms: [propext, Quot.sound]
-ℹ [13/51] Built ExecutableClosure
-info: ././././ExecutableClosure.lean:198:0: 'ExecutableClosure.boundedOK_exact' depends on axioms: [propext, Quot.sound]
-info: ././././ExecutableClosure.lean:199:0: 'ExecutableClosure.checkedClose_admitted' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././ExecutableClosure.lean:200:0: 'ExecutableClosure.checkedClose_rejects' depends on axioms: [propext, Quot.sound]
-info: ././././ExecutableClosure.lean:205:0: 'ExecutableClosure.subsets_count' depends on axioms: [propext]
-info: ././././ExecutableClosure.lean:206:0: 'ExecutableClosure.executable_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././ExecutableClosure.lean:207:0: 'ExecutableClosure.close_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././ExecutableClosure.lean:208:0: 'ExecutableClosure.close_is_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././ExecutableClosure.lean:209:0: 'ExecutableClosure.close_contains_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././ExecutableClosure.lean:210:0: 'ExecutableClosure.close_order_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././ExecutableClosure.lean:211:0: [0, 1, 2, 3]
-ℹ [16/51] Replayed SoftwareIsQuantifiable.Coverage
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:169:0: 'SoftwareIsQuantifiable.Coverage.recorded_exact' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:170:0: 'SoftwareIsQuantifiable.Coverage.missing_exact' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:171:0: 'SoftwareIsQuantifiable.Coverage.missing_append' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:172:0: 'SoftwareIsQuantifiable.Coverage.missing_empty' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:173:0: 'SoftwareIsQuantifiable.Coverage.coverage_missing_iff' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:174:0: 'SoftwareIsQuantifiable.Coverage.empty_roster_covered' does not depend on any axioms
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:175:0: 'SoftwareIsQuantifiable.Coverage.empty_ledger_has_no_platform_premise' depends on axioms: [propext, Quot.sound]
-info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Coverage.lean:176:0: 'SoftwareIsQuantifiable.Coverage.unrestricted_witness' does not depend on any axioms
-✔ [17/51] Built AdmissionTests
-ℹ [18/51] Built ComparisonContract
-info: ././././ComparisonContract.lean:144:0: 'ComparisonContract.compareVia_semantic' does not depend on any axioms
-info: ././././ComparisonContract.lean:145:0: 'ComparisonContract.direct_improvement' depends on axioms: [propext, Quot.sound]
-info: ././././ComparisonContract.lean:146:0: 'ComparisonContract.mismatch_refused' depends on axioms: [propext]
-info: ././././ComparisonContract.lean:147:0: 'ComparisonContract.transported_meaning' does not depend on any axioms
-info: ././././ComparisonContract.lean:148:0: 'ComparisonContract.compareVia_exact' depends on axioms: [propext, Quot.sound]
-ℹ [19/51] Built FiniteSchedules
-info: ././././FiniteSchedules.lean:169:0: 'FiniteSchedules.queueFeasible_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteSchedules.lean:170:0: 'FiniteSchedules.improvementCertificate_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteSchedules.lean:171:0: 'FiniteSchedules.accepted_improvement_if_checkerSound' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteSchedules.lean:172:0: 'FiniteSchedules.tuples_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././FiniteSchedules.lean:173:0: 'FiniteSchedules.enumerate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././FiniteSchedules.lean:174:0: 'FiniteSchedules.feasible_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteSchedules.lean:175:0: 'FiniteSchedules.feasibleSchedules_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././FiniteSchedules.lean:176:0: 'FiniteSchedules.nondominatedInSuppliedFiniteList_exact' depends on axioms: [propext, Quot.sound]
-info: ././././FiniteSchedules.lean:177:0: 'FiniteSchedules.nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost' depends on axioms: [propext,
- Classical.choice,
- Quot.sound]
-ℹ [20/51] Built GeneralPareto
-info: ././././GeneralPareto.lean:641:0: 'GeneralPareto.lmax_eq_some' depends on axioms: [propext, Quot.sound]
-info: ././././GeneralPareto.lean:642:0: 'GeneralPareto.aggMax_perm' depends on axioms: [propext, Quot.sound]
-info: ././././GeneralPareto.lean:643:0: 'GeneralPareto.bounds_sound' depends on axioms: [propext, Quot.sound]
-info: ././././GeneralPareto.lean:644:0: 'GeneralPareto.bounds_attained' depends on axioms: [propext, Quot.sound]
-info: ././././GeneralPareto.lean:645:0: 'GeneralPareto.separatedN_sound' depends on axioms: [propext, Quot.sound]
-info: ././././GeneralPareto.lean:646:0: 'GeneralPareto.frontier_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [21/51] Built composition.IntervalDominance
-info: ././././composition/IntervalDominance.lean:85:0: 'IntervalDominance.separates_iff' depends on axioms: [propext, Quot.sound]
-info: ././././composition/IntervalDominance.lean:86:0: 'IntervalDominance.paired_exact' depends on axioms: [propext, Quot.sound]
-info: ././././composition/IntervalDominance.lean:87:0: 'IntervalDominance.separates_transitive' depends on axioms: [propext, Quot.sound]
-info: ././././composition/IntervalDominance.lean:88:0: 'IntervalDominance.separates_irreflexive' depends on axioms: [propext, Quot.sound]
-info: ././././composition/IntervalDominance.lean:89:0: 'IntervalDominance.refinement' depends on axioms: [propext, Quot.sound]
-info: ././././composition/IntervalDominance.lean:90:0: 'IntervalDominance.two_axis_agreement' depends on axioms: [propext, Quot.sound]
-ℹ [22/51] Built HypergraphIncremental
+ℹ [27/78] Built EligibleSchedules
+info: ././././EligibleSchedules.lean:99:0: 'EligibleSchedules.timingOK_exact' depends on axioms: [propext, Quot.sound]
+info: ././././EligibleSchedules.lean:100:0: 'EligibleSchedules.timedAdmission_exact' depends on axioms: [propext, Quot.sound]
+info: ././././EligibleSchedules.lean:101:0: 'EligibleSchedules.eligible_exact' depends on axioms: [propext, Quot.sound]
+info: ././././EligibleSchedules.lean:102:0: 'EligibleSchedules.admittedNondominatedUnderSuppliedIntegerCost_exact' depends on axioms: [propext, Quot.sound]
+info: ././././EligibleSchedules.lean:103:0: 'EligibleSchedules.rejected_not_nondominated_under_supplied_integer_cost' depends on axioms: [propext, Quot.sound]
+info: ././././EligibleSchedules.lean:104:0: 'EligibleSchedules.dominator_refutes_certificate' depends on axioms: [propext, Quot.sound]
+ℹ [28/78] Built HypergraphIncremental
 info: ././././HypergraphIncremental.lean:301:0: 'HypergraphIncremental.matrix_update_exact' depends on axioms: [propext]
 info: ././././HypergraphIncremental.lean:302:0: 'HypergraphIncremental.matrix_bit_update_exact' depends on axioms: [propext]
 info: ././././HypergraphIncremental.lean:303:0: 'HypergraphIncremental.executable_full_agrees' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -160,10 +153,17 @@ info: ././././HypergraphIncremental.lean:306:0: 'HypergraphIncremental.increment
 info: ././././HypergraphIncremental.lean:307:0: 'HypergraphIncremental.retracted_cycles_do_not_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: ././././HypergraphIncremental.lean:308:0: 'HypergraphIncremental.patchedInteraction_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: ././././HypergraphIncremental.lean:309:0: 'HypergraphIncremental.incrementalFrontier_exact' depends on axioms: [propext, Quot.sound]
-ℹ [23/51] Built WorklistClosure
+ℹ [29/78] Built examples.ReleaseSchedule
+info: ././././examples/ReleaseSchedule.lean:34:0: (23, 16)
+info: ././././examples/ReleaseSchedule.lean:35:0: 'ReleaseSchedule.before_after' does not depend on any axioms
+info: ././././examples/ReleaseSchedule.lean:36:0: 'ReleaseSchedule.critical_path' depends on axioms: [propext, Quot.sound]
+info: ././././examples/ReleaseSchedule.lean:37:0: 'ReleaseSchedule.early_package_rejected' does not depend on any axioms
+✔ [30/78] Built ComparisonTests
+ℹ [31/78] Built WorklistClosure
 info: ././././WorklistClosure.lean:411:0: 'WorklistClosure.wclose_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: ././././WorklistClosure.lean:412:0: 'WorklistClosure.worklist_agrees_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [24/51] Built Composition
+✔ [32/78] Built HypergraphIncremental:c.o
+ℹ [33/78] Built Composition
 info: ././././Composition.lean:820:0: 'Optimality.closure_compound_finite' depends on axioms: [propext, Quot.sound]
 info: ././././Composition.lean:821:0: 'Optimality.closure_factors_left' depends on axioms: [propext, Quot.sound]
 info: ././././Composition.lean:822:0: 'Optimality.closure_factors_right' depends on axioms: [propext, Quot.sound]
@@ -180,20 +180,37 @@ info: ././././Composition.lean:832:0: 'Optimality.frontier_respects_coverage' de
 info: ././././Composition.lean:833:0: 'Optimality.class_tag_is_not_coverage' depends on axioms: [propext]
 info: ././././Composition.lean:834:0: 'Optimality.import_mismatch_blocks_transfer' does not depend on any axioms
 info: ././././Composition.lean:835:0: 'Optimality.union_misses_cross_consequence' depends on axioms: [propext, Quot.sound]
-✔ [25/51] Built ComparisonTests
-ℹ [26/51] Built examples.ReleaseSchedule
-info: ././././examples/ReleaseSchedule.lean:34:0: (23, 16)
-info: ././././examples/ReleaseSchedule.lean:35:0: 'ReleaseSchedule.before_after' does not depend on any axioms
-info: ././././examples/ReleaseSchedule.lean:36:0: 'ReleaseSchedule.critical_path' depends on axioms: [propext, Quot.sound]
-info: ././././examples/ReleaseSchedule.lean:37:0: 'ReleaseSchedule.early_package_rejected' does not depend on any axioms
-ℹ [27/51] Built EligibleSchedules
-info: ././././EligibleSchedules.lean:99:0: 'EligibleSchedules.timingOK_exact' depends on axioms: [propext, Quot.sound]
-info: ././././EligibleSchedules.lean:100:0: 'EligibleSchedules.timedAdmission_exact' depends on axioms: [propext, Quot.sound]
-info: ././././EligibleSchedules.lean:101:0: 'EligibleSchedules.eligible_exact' depends on axioms: [propext, Quot.sound]
-info: ././././EligibleSchedules.lean:102:0: 'EligibleSchedules.admittedNondominatedUnderSuppliedIntegerCost_exact' depends on axioms: [propext, Quot.sound]
-info: ././././EligibleSchedules.lean:103:0: 'EligibleSchedules.rejected_not_nondominated_under_supplied_integer_cost' depends on axioms: [propext, Quot.sound]
-info: ././././EligibleSchedules.lean:104:0: 'EligibleSchedules.dominator_refutes_certificate' depends on axioms: [propext, Quot.sound]
-ℹ [28/51] Built MetricRelevance
+ℹ [34/78] Built composition.QualifiedClosure
+info: ././././composition/QualifiedClosure.lean:129:0: 'QualifiedClosure.derivations_agree' depends on axioms: [propext, Quot.sound]
+info: ././././composition/QualifiedClosure.lean:130:0: 'QualifiedClosure.rounds_exact' depends on axioms: [propext, Quot.sound]
+info: ././././composition/QualifiedClosure.lean:131:0: 'QualifiedClosure.checked_none' depends on axioms: [propext]
+info: ././././composition/QualifiedClosure.lean:132:0: 'QualifiedClosure.checked_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././composition/QualifiedClosure.lean:133:0: 'QualifiedClosure.materialized_bound' depends on axioms: [propext]
+ℹ [35/78] Built StrictSchedules
+info: ././././StrictSchedules.lean:208:0: 'StrictSchedules.positive_exact' depends on axioms: [propext, Quot.sound]
+info: ././././StrictSchedules.lean:209:0: 'StrictSchedules.feasibleStrict_iff' depends on axioms: [propext, Quot.sound]
+info: ././././StrictSchedules.lean:210:0: 'StrictSchedules.feasibleStrict_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././StrictSchedules.lean:211:0: 'StrictSchedules.strict_precedence' depends on axioms: [propext, Quot.sound]
+info: ././././StrictSchedules.lean:212:0: 'StrictSchedules.no_dependency_cycle' depends on axioms: [propext, Quot.sound]
+✔ [36/78] Built WorklistClosure:c.o
+ℹ [37/78] Built EligibleCampaign
+info: ././././EligibleCampaign.lean:84:0: 'EligibleCampaign.linear_selector_agrees' does not depend on any axioms
+info: ././././EligibleCampaign.lean:85:0: 'EligibleCampaign.all_admitted' does not depend on any axioms
+info: ././././EligibleCampaign.lean:86:0: 'EligibleCampaign.chosen_nondominated_under_supplied_integer_cost' does not depend on any axioms
+info: ././././EligibleCampaign.lean:87:0: 'EligibleCampaign.chosen_nondominated_under_supplied_integer_cost_semantics' depends on axioms: [propext, Quot.sound]
+info: ././././EligibleCampaign.lean:88:0: 'EligibleCampaign.exact_eligible_frontier' does not depend on any axioms
+info: ././././EligibleCampaign.lean:89:0: 'EligibleCampaign.counterfactual_admitted' does not depend on any axioms
+info: ././././EligibleCampaign.lean:90:0: 'EligibleCampaign.chosen_beats_counterfactual' does not depend on any axioms
+info: ././././EligibleCampaign.lean:91:0: 'EligibleCampaign.counterfactual_not_nondominated_under_supplied_integer_cost' does not depend on any axioms
+info: ././././EligibleCampaign.lean:92:0: 'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
+info: ././././EligibleCampaign.lean:93:0: 'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
+ℹ [38/78] Built AdmissionHypergraph
+info: ././././AdmissionHypergraph.lean:103:0: 'AdmissionHypergraph.scoped_root_exact' does not depend on any axioms
+info: ././././AdmissionHypergraph.lean:104:0: 'AdmissionHypergraph.lineage_isolation' does not depend on any axioms
+info: ././././AdmissionHypergraph.lean:105:0: 'AdmissionHypergraph.qualification_same' does not depend on any axioms
+info: ././././AdmissionHypergraph.lean:106:0: 'AdmissionHypergraph.replay_idempotent' depends on axioms: [propext]
+info: ././././AdmissionHypergraph.lean:107:0: 'AdmissionHypergraph.merge_order_independent' depends on axioms: [propext]
+ℹ [39/78] Built MetricRelevance
 info: ././././MetricRelevance.lean:300:0: 'MetricRelevance.shared_factorization' does not depend on any axioms
 info: ././././MetricRelevance.lean:301:0: 'MetricRelevance.shared_dependency_pivotal_rate' does not depend on any axioms
 info: ././././MetricRelevance.lean:302:0: 'MetricRelevance.indirectRate_spec' depends on axioms: [propext, Quot.sound]
@@ -215,45 +232,7 @@ info: ././././MetricRelevance.lean:317:0: 'MetricRelevance.fixture_composition' 
 info: ././././MetricRelevance.lean:318:0: 'MetricRelevance.fixture_failure_rate' does not depend on any axioms
 info: ././././MetricRelevance.lean:319:0: 'MetricRelevance.fixture_controlled' does not depend on any axioms
 info: ././././MetricRelevance.lean:320:0: 'MetricRelevance.fixture_confounded_rejected' does not depend on any axioms
-ℹ [29/51] Built StrictSchedules
-info: ././././StrictSchedules.lean:208:0: 'StrictSchedules.positive_exact' depends on axioms: [propext, Quot.sound]
-info: ././././StrictSchedules.lean:209:0: 'StrictSchedules.feasibleStrict_iff' depends on axioms: [propext, Quot.sound]
-info: ././././StrictSchedules.lean:210:0: 'StrictSchedules.feasibleStrict_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././StrictSchedules.lean:211:0: 'StrictSchedules.strict_precedence' depends on axioms: [propext, Quot.sound]
-info: ././././StrictSchedules.lean:212:0: 'StrictSchedules.no_dependency_cycle' depends on axioms: [propext, Quot.sound]
-ℹ [30/51] Built composition.QualifiedClosure
-info: ././././composition/QualifiedClosure.lean:129:0: 'QualifiedClosure.derivations_agree' depends on axioms: [propext, Quot.sound]
-info: ././././composition/QualifiedClosure.lean:130:0: 'QualifiedClosure.rounds_exact' depends on axioms: [propext, Quot.sound]
-info: ././././composition/QualifiedClosure.lean:131:0: 'QualifiedClosure.checked_none' depends on axioms: [propext]
-info: ././././composition/QualifiedClosure.lean:132:0: 'QualifiedClosure.checked_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././composition/QualifiedClosure.lean:133:0: 'QualifiedClosure.materialized_bound' depends on axioms: [propext]
-ℹ [31/51] Built AdmissionHypergraph
-info: ././././AdmissionHypergraph.lean:103:0: 'AdmissionHypergraph.scoped_root_exact' does not depend on any axioms
-info: ././././AdmissionHypergraph.lean:104:0: 'AdmissionHypergraph.lineage_isolation' does not depend on any axioms
-info: ././././AdmissionHypergraph.lean:105:0: 'AdmissionHypergraph.qualification_same' does not depend on any axioms
-info: ././././AdmissionHypergraph.lean:106:0: 'AdmissionHypergraph.replay_idempotent' depends on axioms: [propext]
-info: ././././AdmissionHypergraph.lean:107:0: 'AdmissionHypergraph.merge_order_independent' depends on axioms: [propext]
-ℹ [32/51] Built EligibleCampaign
-info: ././././EligibleCampaign.lean:84:0: 'EligibleCampaign.linear_selector_agrees' does not depend on any axioms
-info: ././././EligibleCampaign.lean:85:0: 'EligibleCampaign.all_admitted' does not depend on any axioms
-info: ././././EligibleCampaign.lean:86:0: 'EligibleCampaign.chosen_nondominated_under_supplied_integer_cost' does not depend on any axioms
-info: ././././EligibleCampaign.lean:87:0: 'EligibleCampaign.chosen_nondominated_under_supplied_integer_cost_semantics' depends on axioms: [propext, Quot.sound]
-info: ././././EligibleCampaign.lean:88:0: 'EligibleCampaign.exact_eligible_frontier' does not depend on any axioms
-info: ././././EligibleCampaign.lean:89:0: 'EligibleCampaign.counterfactual_admitted' does not depend on any axioms
-info: ././././EligibleCampaign.lean:90:0: 'EligibleCampaign.chosen_beats_counterfactual' does not depend on any axioms
-info: ././././EligibleCampaign.lean:91:0: 'EligibleCampaign.counterfactual_not_nondominated_under_supplied_integer_cost' does not depend on any axioms
-info: ././././EligibleCampaign.lean:92:0: 'EligibleCampaign.every_paired_counterfactual_slower' does not depend on any axioms
-info: ././././EligibleCampaign.lean:93:0: 'EligibleCampaign.synthetic_one_nanosecond_over_cap_rejected' does not depend on any axioms
-ℹ [33/51] Built OptimalityInterface
-info: ././././OptimalityInterface.lean:256:0: 'Optimality.dominates_iff_strictPareto' depends on axioms: [propext, Quot.sound]
-info: ././././OptimalityInterface.lean:257:0: 'Optimality.paretoMaximal_exact' depends on axioms: [propext, Quot.sound]
-info: ././././OptimalityInterface.lean:258:0: 'Optimality.paretoMaximal_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././OptimalityInterface.lean:259:0: 'Optimality.guardedMaximal_sound' depends on axioms: [propext, Quot.sound]
-info: ././././OptimalityInterface.lean:260:0: 'Optimality.paretoMaximal_can_regress' depends on axioms: [propext, Quot.sound]
-info: ././././OptimalityInterface.lean:261:0: 'Optimality.not_per_execution_dominance' depends on axioms: [propext]
-info: ././././OptimalityInterface.lean:262:0: 'Optimality.refusal_regressing_frontier' depends on axioms: [propext, Quot.sound]
-✔ [34/51] Built CompositionCheck
-ℹ [35/51] Built ScopedEvidence
+ℹ [40/78] Built ScopedEvidence
 info: ././././ScopedEvidence.lean:139:0: 'ScopedEvidence.checkRequirement_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedEvidence.lean:140:0: 'ScopedEvidence.accepted_receipt_is_scoped' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedEvidence.lean:141:0: 'ScopedEvidence.qualify_exact' depends on axioms: [propext, Quot.sound]
@@ -261,27 +240,52 @@ info: ././././ScopedEvidence.lean:142:0: 'ScopedEvidence.qualification_witnesses
 info: ././././ScopedEvidence.lean:143:0: 'ScopedEvidence.duplicate_match_rejected' depends on axioms: [propext]
 info: ././././ScopedEvidence.lean:144:0: 'ScopedEvidence.wrong_scope_rejected' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedEvidence.lean:145:0: 'ScopedEvidence.qualification_sound_relative' depends on axioms: [propext, Quot.sound]
-✔ [36/51] Built composition.Benchmark
-ℹ [37/51] Built ScopedSelection
+✔ [41/78] Built composition.Benchmark
+ℹ [42/78] Built OptimalityInterface
+info: ././././OptimalityInterface.lean:256:0: 'Optimality.dominates_iff_strictPareto' depends on axioms: [propext, Quot.sound]
+info: ././././OptimalityInterface.lean:257:0: 'Optimality.paretoMaximal_exact' depends on axioms: [propext, Quot.sound]
+info: ././././OptimalityInterface.lean:258:0: 'Optimality.paretoMaximal_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././OptimalityInterface.lean:259:0: 'Optimality.guardedMaximal_sound' depends on axioms: [propext, Quot.sound]
+info: ././././OptimalityInterface.lean:260:0: 'Optimality.paretoMaximal_can_regress' depends on axioms: [propext, Quot.sound]
+info: ././././OptimalityInterface.lean:261:0: 'Optimality.not_per_execution_dominance' depends on axioms: [propext]
+info: ././././OptimalityInterface.lean:262:0: 'Optimality.refusal_regressing_frontier' depends on axioms: [propext, Quot.sound]
+✔ [43/78] Built docs.«covered-frontier».ArchiveImport
+ℹ [44/78] Built LinkedCertificate
+info: ././././LinkedCertificate.lean:308:0: 'LinkedCertificate.principal' depends on axioms: [propext, Quot.sound]
+info: ././././LinkedCertificate.lean:309:0: 'LinkedCertificate.generator_optimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [45/78] Built CompositionCheck
+ℹ [46/78] Built ScopedSelection
 info: ././././ScopedSelection.lean:71:0: 'ScopedSelection.selected_all_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedSelection.lean:72:0: 'ScopedSelection.selected_all_order_independent' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedSelection.lean:73:0: 'ScopedSelection.certified_scoped_nondominated_under_supplied_integer_cost' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedSelection.lean:74:0: 'ScopedSelection.selected_scoped_minimum' depends on axioms: [propext, Quot.sound]
-ℹ [38/51] Built LinkedCertificate
-info: ././././LinkedCertificate.lean:308:0: 'LinkedCertificate.principal' depends on axioms: [propext, Quot.sound]
-info: ././././LinkedCertificate.lean:309:0: 'LinkedCertificate.generator_optimum' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [39/51] Built EvidenceTransport
+ℹ [47/78] Built EvidenceTransport
 info: ././././EvidenceTransport.lean:434:0: 'EvidenceTransport.qualify_dedupe_iff' depends on axioms: [propext, Quot.sound]
 info: ././././EvidenceTransport.lean:435:0: 'EvidenceTransport.dedupe_idempotent' depends on axioms: [propext, Quot.sound]
-ℹ [40/51] Built ScopedCampaign
-info: ././././ScopedCampaign.lean:61:0: 'ScopedCampaign.all_scoped_admitted' does not depend on any axioms
-info: ././././ScopedCampaign.lean:62:0: 'ScopedCampaign.scoped_nondominated_under_supplied_integer_cost' does not depend on any axioms
-info: ././././ScopedCampaign.lean:63:0: 'ScopedCampaign.scoped_selection' does not depend on any axioms
-info: ././././ScopedCampaign.lean:64:0: 'ScopedCampaign.scoped_selection_reordered' does not depend on any axioms
-info: ././././ScopedCampaign.lean:65:0: 'ScopedCampaign.selected_obligations_have_witnesses' depends on axioms: [propext, Quot.sound]
-info: ././././ScopedCampaign.lean:66:0: 'ScopedCampaign.reused_round_rejected' does not depend on any axioms
-info: ././././ScopedCampaign.lean:67:0: 'ScopedCampaign.foreign_configuration_rejected' does not depend on any axioms
-ℹ [41/51] Built ScopedCompatibility
+ℹ [48/78] Built SoftwareIsQuantifiable.Pareto
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:488:0: false
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:638:0: 'SoftwareIsQuantifiable.Pareto.frontier_can_regress' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:639:0: 'SoftwareIsQuantifiable.Pareto.admitted_frontier_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:640:0: 'SoftwareIsQuantifiable.Pareto.admitted_frontier_sound' depends on axioms: [propext]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:641:0: 'SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:642:0: 'SoftwareIsQuantifiable.Pareto.omitted_qualified_behavior_refused' depends on axioms: [propext]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:643:0: 'SoftwareIsQuantifiable.Pareto.empty_submission_refused_when_qualified' depends on axioms: [propext]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:644:0: 'SoftwareIsQuantifiable.Pareto.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:645:0: 'SoftwareIsQuantifiable.Pareto.acceptsReplacement_iff' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:646:0: 'SoftwareIsQuantifiable.Pareto.replacement_no_regression' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:647:0: 'SoftwareIsQuantifiable.Pareto.separated_sum' does not depend on any axioms
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:648:0: 'SoftwareIsQuantifiable.Pareto.separated_parallel' depends on axioms: [propext]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:649:0: 'SoftwareIsQuantifiable.Pareto.not_scalarized' depends on axioms: [propext, Quot.sound]
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:650:0: 'SoftwareIsQuantifiable.Pareto.scalar_optimum_undominated' does not depend on any axioms
+info: ././.lake/packages/software-is-quantifiable/././SoftwareIsQuantifiable/Pareto.lean:651:0: 'SoftwareIsQuantifiable.Pareto.dominates_iff_interface' does not depend on any axioms
+ℹ [49/78] Built docs.«covered-frontier».Campaign
+info: ././././docs/covered-frontier/Campaign.lean:52:0: 'CoveredCampaign.declared_candidates_exhaustive' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Campaign.lean:53:0: 'CoveredCampaign.all_declared_candidates_qualified' does not depend on any axioms
+info: ././././docs/covered-frontier/Campaign.lean:54:0: 'CoveredCampaign.archived_exact_certificate' does not depend on any axioms
+info: ././././docs/covered-frontier/Campaign.lean:55:0: 'CoveredCampaign.archived_frontier_exact' does not depend on any axioms
+info: ././././docs/covered-frontier/Campaign.lean:56:0: 'CoveredCampaign.archived_named_replacement' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Campaign.lean:57:0: 'CoveredCampaign.archived_paired_round_nonregression' does not depend on any axioms
+ℹ [50/78] Built ScopedCompatibility
 info: ././././ScopedCompatibility.lean:249:0: 'ScopedCompatibility.contractOfPolicy_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedCompatibility.lean:250:0: 'ScopedCompatibility.contractOf_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedCompatibility.lean:251:0: 'ScopedCompatibility.compatible_exact' depends on axioms: [propext, Quot.sound]
@@ -289,7 +293,25 @@ info: ././././ScopedCompatibility.lean:252:0: 'ScopedCompatibility.compatible_re
 info: ././././ScopedCompatibility.lean:253:0: 'ScopedCompatibility.compatibleSelf_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedCompatibility.lean:254:0: 'ScopedCompatibility.compatibleSelf_of_compatible' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedCompatibility.lean:255:0: 'ScopedCompatibility.certified_scoped_optimum_compatible' depends on axioms: [propext, Quot.sound]
-ℹ [42/51] Built ScopedFrontier
+ℹ [51/78] Built ScopedCampaign
+info: ././././ScopedCampaign.lean:61:0: 'ScopedCampaign.all_scoped_admitted' does not depend on any axioms
+info: ././././ScopedCampaign.lean:62:0: 'ScopedCampaign.scoped_nondominated_under_supplied_integer_cost' does not depend on any axioms
+info: ././././ScopedCampaign.lean:63:0: 'ScopedCampaign.scoped_selection' does not depend on any axioms
+info: ././././ScopedCampaign.lean:64:0: 'ScopedCampaign.scoped_selection_reordered' does not depend on any axioms
+info: ././././ScopedCampaign.lean:65:0: 'ScopedCampaign.selected_obligations_have_witnesses' depends on axioms: [propext, Quot.sound]
+info: ././././ScopedCampaign.lean:66:0: 'ScopedCampaign.reused_round_rejected' does not depend on any axioms
+info: ././././ScopedCampaign.lean:67:0: 'ScopedCampaign.foreign_configuration_rejected' does not depend on any axioms
+ℹ [52/78] Built composition.IntervalDominance
+info: ././././composition/IntervalDominance.lean:85:0: 'IntervalDominance.separates_iff' depends on axioms: [propext, Quot.sound]
+info: ././././composition/IntervalDominance.lean:86:0: 'IntervalDominance.paired_exact' depends on axioms: [propext, Quot.sound]
+info: ././././composition/IntervalDominance.lean:87:0: 'IntervalDominance.separates_transitive' depends on axioms: [propext, Quot.sound]
+info: ././././composition/IntervalDominance.lean:88:0: 'IntervalDominance.separates_irreflexive' depends on axioms: [propext, Quot.sound]
+info: ././././composition/IntervalDominance.lean:89:0: 'IntervalDominance.refinement' depends on axioms: [propext, Quot.sound]
+info: ././././composition/IntervalDominance.lean:90:0: 'IntervalDominance.two_axis_agreement' depends on axioms: [propext, Quot.sound]
+✔ [53/78] Built SoftwareIsQuantifiable.Instance
+✔ [54/78] Built HistoricalEvidence
+✔ [55/78] Built HistoricalCertificates
+ℹ [56/78] Built ScopedFrontier
 info: ././././ScopedFrontier.lean:744:0: 'ScopedFrontier.dominates_trans' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedFrontier.lean:745:0: 'ScopedFrontier.certified_generator_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedFrontier.lean:746:0: 'ScopedFrontier.checkCoverage_exact' depends on axioms: [propext, Quot.sound]
@@ -328,29 +350,65 @@ info: ././././ScopedFrontier.lean:878:0: 'ScopedFrontier.incremental_selection_e
 info: ././././ScopedFrontier.lean:879:0: 'ScopedFrontier.admitted_provenance_selection_same' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedFrontier.lean:880:0: 'ScopedFrontier.replay_selection_idempotent' depends on axioms: [propext, Quot.sound]
 info: ././././ScopedFrontier.lean:881:0: 'ScopedFrontier.merge_selection_order_independent' depends on axioms: [propext, Quot.sound]
-ℹ [43/51] Built composition.QualifiedSelection
+✔ [57/78] Built HistoricalRecovery
+✔ [58/78] Built HistoricalRecovery:c.o
+ℹ [59/78] Built composition.QualifiedSelection
 info: ././././composition/QualifiedSelection.lean:175:0: 'QualifiedSelection.selected_partition' depends on axioms: [propext, Quot.sound]
 info: ././././composition/QualifiedSelection.lean:176:0: 'QualifiedSelection.gate_exact' depends on axioms: [propext, Quot.sound]
 info: ././././composition/QualifiedSelection.lean:177:0: 'QualifiedSelection.peak_le_iff' depends on axioms: [propext, Quot.sound]
 info: ././././composition/QualifiedSelection.lean:178:0: 'QualifiedSelection.observation' depends on axioms: [propext, Quot.sound]
 info: ././././composition/QualifiedSelection.lean:179:0: 'QualifiedSelection.selection_exact' depends on axioms: [propext, Quot.sound]
 info: ././././composition/QualifiedSelection.lean:180:0: 'QualifiedSelection.release_evidence' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [44/51] Built composition.LiveSelection
-info: ././././composition/LiveSelection.lean:72:0: 'LiveSelection.graph_agrees' depends on axioms: [propext, Quot.sound]
-info: ././././composition/LiveSelection.lean:73:0: 'LiveSelection.selected_live' depends on axioms: [propext, Classical.choice, Quot.sound]
-info: ././././composition/LiveSelection.lean:74:0: 'LiveSelection.typed_cover_exact' depends on axioms: [propext, Quot.sound]
-ℹ [45/51] Built composition.TraceSafety
+ℹ [60/78] Built composition.TraceSafety
 info: ././././composition/TraceSafety.lean:86:0: 'TraceSafety.Simulation.trace' does not depend on any axioms
 info: ././././composition/TraceSafety.lean:87:0: 'TraceSafety.Simulation.comp' does not depend on any axioms
 info: ././././composition/TraceSafety.lean:88:0: 'TraceSafety.selected_trace_safety' depends on axioms: [propext, Classical.choice, Quot.sound]
-ℹ [46/51] Built ForeignCampaign
+ℹ [61/78] Built composition.LiveSelection
+info: ././././composition/LiveSelection.lean:72:0: 'LiveSelection.graph_agrees' depends on axioms: [propext, Quot.sound]
+info: ././././composition/LiveSelection.lean:73:0: 'LiveSelection.selected_live' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././composition/LiveSelection.lean:74:0: 'LiveSelection.typed_cover_exact' depends on axioms: [propext, Quot.sound]
+✔ [62/78] Built HistoricalEvidence:c.o
+✔ [63/78] Built ObservationPlanning
+✔ [64/78] Built ObservationPublication
+ℹ [65/78] Built docs.«covered-frontier».Controls
+info: ././././docs/covered-frontier/Controls.lean:95:0: 'CoveredFrontierControls.strict_pruning_preserves_both_tied_identities' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:96:0: 'CoveredFrontierControls.missing_generator_competitor_rejected' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:97:0: 'CoveredFrontierControls.omitted_tied_identity_rejected' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:98:0: 'CoveredFrontierControls.invalid_empty_axis_contract_rejected' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:99:0: 'CoveredFrontierControls.strict_replacement_certified' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:100:0: 'CoveredFrontierControls.empty_domain_cannot_certify_replacement' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:101:0: 'CoveredFrontierControls.missing_cost_blocks_feasible_replacement_claim' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:102:0: 'CoveredFrontierControls.complete_joint_support_selects_challenger' depends on axioms: [propext]
+info: ././././docs/covered-frontier/Controls.lean:103:0: 'CoveredFrontierControls.cyclic_support_does_not_survive_root_withdrawal' depends on axioms: [propext]
+✔ [66/78] Built ObservationPlanning:c.o
+✔ [67/78] Built HistoryAudit
+ℹ [68/78] Built examples.HistoricalRecovery
+info: ././././examples/HistoricalRecovery.lean:103:0: 'HistoricalEvidence.registered_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:104:0: 'HistoricalEvidence.live_exact' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:105:0: 'HistoricalEvidence.derive_iff' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:106:0: 'HistoricalEvidence.batch_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:107:0: 'HistoricalEvidence.published_batch_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:108:0: 'HistoricalEvidence.backfill_publishes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:109:0: 'HistoricalEvidence.advisory_inert' depends on axioms: [propext]
+info: ././././examples/HistoricalRecovery.lean:110:0: 'HistoricalEvidence.certified_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:111:0: 'HistoricalEvidence.transport_recovery' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:112:0: 'HistoricalEvidence.bet_exact' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:113:0: 'ObservationPlanning.factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:114:0: 'ObservationPlanning.full_observability_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:115:0: 'ObservationPlanning.boundedCount_exact' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:116:0: 'ObservationPlanning.dominates_axes' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:117:0: 'ObservationPlanning.optimal_exact' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:118:0: 'ObservationPlanning.joint_exact' depends on axioms: [propext, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:119:0: 'ObservationPlanning.joint_publication' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: ././././examples/HistoricalRecovery.lean:120:0: 'ObservationPlanning.engine_instantiates_exactly' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [69/78] Built ForeignCampaign
 info: ././././ForeignCampaign.lean:304:0: 'ForeignCampaign.chosen_accepted' does not depend on any axioms
 info: ././././ForeignCampaign.lean:305:0: 'ForeignCampaign.chosen_nondominated' depends on axioms: [propext, Quot.sound]
 info: ././././ForeignCampaign.lean:306:0: 'ForeignCampaign.modeled_improvement_exact' depends on axioms: [propext, Quot.sound]
 info: ././././ForeignCampaign.lean:307:0: 'ForeignCampaign.receipt_metrics_match' does not depend on any axioms
 info: ././././ForeignCampaign.lean:308:0: 'ForeignCampaign.complete_list_frontier' does not depend on any axioms
-✔ [47/51] Built composition.Controls
-ℹ [48/51] Built CanonicalDominance
+✔ [70/78] Built composition.Controls
+ℹ [71/78] Built CanonicalDominance
 info: ././././CanonicalDominance.lean:308:0: 'CanonicalDominance.one_iff' does not depend on any axioms
 info: ././././CanonicalDominance.lean:309:0: 'CanonicalDominance.one_releaseLe_iff' depends on axioms: [propext]
 info: ././././CanonicalDominance.lean:310:0: 'CanonicalDominance.one_release_iff' depends on axioms: [propext]
@@ -371,11 +429,25 @@ info: ././././CanonicalDominance.lean:324:0: 'CanonicalDominance.Comparison.nega
 info: ././././CanonicalDominance.lean:325:0: 'CanonicalDominance.Comparison.maximize_not_raw' does not depend on any axioms
 info: ././././CanonicalDominance.lean:326:0: 'CanonicalDominance.Scoped.minimize_iff_canonical' does not depend on any axioms
 info: ././././CanonicalDominance.lean:327:0: 'CanonicalDominance.Scoped.maximize_not_minimize' does not depend on any axioms
-ℹ [49/51] Built ThreeValuedGate
-info: ././././ThreeValuedGate.lean:119:0: 'ThreeValuedGate.absent_axis_admitted_by_two_valued_dominance' does not depend on any axioms
-info: ././././ThreeValuedGate.lean:120:0: 'ThreeValuedGate.unknown_blocks_dominance' depends on axioms: [propext]
-info: ././././ThreeValuedGate.lean:121:0: 'ThreeValuedGate.known_agrees_canonical' depends on axioms: [propext, Quot.sound]
-info: ././././ThreeValuedGate.lean:122:0: 'ThreeValuedGate.known_gate_matches_bool' depends on axioms: [propext]
-info: ././././ThreeValuedGate.lean:123:0: 'ThreeValuedGate.supplied_space_known_dominance' depends on axioms: [propext, Quot.sound]
-✔ [50/51] Built SoftwareOptimality
+✔ [72/78] Built HistoryAudit:c.o
+ℹ [73/78] Built composition.InterfaceBridge
+info: ././././composition/InterfaceBridge.lean:130:0: 'InterfaceBridge.dominates_transitive' depends on axioms: [propext]
+info: ././././composition/InterfaceBridge.lean:131:0: 'InterfaceBridge.cover_exact' depends on axioms: [propext, Quot.sound]
+info: ././././composition/InterfaceBridge.lean:132:0: 'InterfaceBridge.certificate_exact' depends on axioms: [propext, Quot.sound]
+info: ././././composition/InterfaceBridge.lean:133:0: 'InterfaceBridge.public_frontier_agrees' depends on axioms: [propext, Quot.sound]
+info: ././././composition/InterfaceBridge.lean:134:0: 'InterfaceBridge.aligned_certificate_exact' depends on axioms: [propext, Quot.sound]
+info: ././././composition/InterfaceBridge.lean:135:0: 'InterfaceBridge.two_axis_agrees' depends on axioms: [propext]
+ℹ [74/78] Built composition.InterfaceControls
+info: ././././composition/InterfaceControls.lean:92:0: 'InterfaceControls.exact_identity_frontier' does not depend on any axioms
+info: ././././composition/InterfaceControls.lean:93:0: 'InterfaceControls.discarded_tie_refused' depends on axioms: [propext]
+info: ././././composition/InterfaceControls.lean:94:0: 'InterfaceControls.aligned_identity_frontier' does not depend on any axioms
+info: ././././composition/InterfaceControls.lean:95:0: 'InterfaceControls.malformed_frontier_member_refused' does not depend on any axioms
+info: ././././composition/InterfaceControls.lean:96:0: 'InterfaceControls.duplicate_symbol_release_refused' depends on axioms: [propext]
+info: ././././composition/InterfaceControls.lean:97:0: 'InterfaceControls.joined_path_qualified' depends on axioms: [propext]
+info: ././././composition/InterfaceControls.lean:98:0: 'InterfaceControls.missing_joint_premise_refused' depends on axioms: [propext]
+info: ././././composition/InterfaceControls.lean:99:0: 'InterfaceControls.separate_colorings_miss_join' does not depend on any axioms
+info: ././././composition/InterfaceControls.lean:100:0: 'InterfaceControls.omitted_qualified_behavior_refused' depends on axioms: [propext]
+✔ [75/78] Built historyaudit
+✔ [76/78] Built ThreeValuedGate
+✔ [77/78] Built SoftwareOptimality
 Build completed successfully.

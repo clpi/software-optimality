@@ -2,6 +2,10 @@
 
 Language-independent Lean proofs with executable reference algorithms. Checked with Lean 4.19.0 (release commit `6caaee842e94`). No external packages or Mathlib. These are not proofs of an unrelated production implementation.
 
+## Historical execution and observation planning
+
+Recover every forced answer to a declared set of historical questions, retain counterexamples for ambiguous answers, and compute the Pareto frontier of adaptive observations and certified proof engines. The Lean checker and SQLite recorder support archived receipts, sparse inference, independent predictions, symbolic hooks and withdrawals. The reproducible example starts with an unlisted run and follows its status through receipt recovery and retraction. [Procedure, proofs and replay](docs/HISTORICAL-OBSERVABILITY.md).
+
 ## Reproduce
 
 Install the official Lean 4.19.0 distribution and place its `bin` directory on PATH, then:

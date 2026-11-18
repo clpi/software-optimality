@@ -38,3 +38,8 @@ import composition.TraceSafety
 import composition.Controls
 import CanonicalDominance
 import composition.InterfaceBridge
+import HistoricalEvidence
+import HistoricalRecovery
+import HistoricalCertificates
+import ObservationPlanning
+import ObservationPublication
