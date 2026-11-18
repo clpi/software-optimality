@@ -78,7 +78,7 @@ def gate (data : Campaign C F) (facts : List F) (c : C) : Bool :=
   (peakPolicy data.contract && ScopedFrontier.admitted data.contract (data.subject c) (data.inputs c)) &&
   records.all (fun r => Coverage.recorded data.valid data.ledger (data.execution r)) &&
   decide ((records.map (fun r => ((data.execution r).id, r.scope.metric))).Nodup) &&
-  Pareto.accepts (data.requires c) facts &&
+  Pareto.noQualifiedBehaviorLost ⟨data.requires c⟩ ⟨facts⟩ &&
   (data.excludes c).all (fun f => decide (f ∉ facts))
 
 def admitted (data : Campaign C F) (facts : List F) (inc c : C) : Bool :=
@@ -102,7 +102,7 @@ theorem gate_exact (data : Campaign C F) (facts : List F) (c : C) :
       ((data.receipts c).map (fun r => ((data.execution r).id, r.scope.metric))).Nodup ∧
       (∀ f ∈ data.requires c, f ∈ facts) ∧ (∀ f ∈ data.excludes c, f ∉ facts) := by
   simp only [gate, Bool.and_eq_true, List.all_eq_true, Coverage.recorded_exact,
-    decide_eq_true_eq, Pareto.accepts_iff, and_assoc]
+    decide_eq_true_eq, Pareto.noQualifiedBehaviorLost_iff, and_assoc]
 
 /-- A timed requirement yields both a scoped receipt and an accepted witness
     from the supplied ledger for that receipt's mapped execution. -/

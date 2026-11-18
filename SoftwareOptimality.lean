@@ -23,3 +23,10 @@ import ScopedFrontier
 import GeneralPareto
 import OptimalityInterface
 import CompositionCheck
+import composition.QualifiedClosure
+import composition.QualifiedSelection
+import composition.IntervalDominance
+import composition.LiveSelection
+import composition.TraceSafety
+import composition.Controls
+import CanonicalDominance

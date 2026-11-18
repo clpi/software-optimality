@@ -199,6 +199,4 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'Optimality.guardedMaximal_sound' depends on axioms: [propext, Quot.sound]
 'Optimality.paretoMaximal_can_regress' depends on axioms: [propext, Quot.sound]
 'Optimality.not_per_execution_dominance' depends on axioms: [propext]
-'Optimality.retains_iff' depends on axioms: [propext, Quot.sound]
-'Optimality.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
 'Optimality.refusal_regressing_frontier' depends on axioms: [propext, Quot.sound]
