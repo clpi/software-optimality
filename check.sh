@@ -24,6 +24,7 @@ run_lean() {
 }
 "$LEAN" --version
 run_lean -o Qualification.olean Qualification.lean
+run_lean -o CheckedTransfer.olean CheckedTransfer.lean
 run_lean FiniteQualification.lean
 run_lean -o ExecutableClosure.olean ExecutableClosure.lean
 run_lean -o WorklistClosure.olean WorklistClosure.lean
@@ -34,9 +35,12 @@ run_lean -o StrictSchedules.olean StrictSchedules.lean
 run_lean ForeignCampaign.lean
 run_lean -o EligibleSchedules.olean EligibleSchedules.lean
 run_lean -o ScopedEvidence.olean ScopedEvidence.lean
+run_lean -o EvidenceTransport.olean EvidenceTransport.lean
 run_lean -o LinearSelection.olean LinearSelection.lean
 run_lean -o EligibleCampaign.olean EligibleCampaign.lean
+run_lean -o LinkedCertificate.olean LinkedCertificate.lean
 run_lean -o ScopedSelection.olean ScopedSelection.lean
+run_lean -o ScopedCompatibility.olean ScopedCompatibility.lean
 run_lean -o ScopedCampaign.olean ScopedCampaign.lean
 run_lean MetricRelevance.lean
 run_lean -o HypergraphIncremental.olean HypergraphIncremental.lean
