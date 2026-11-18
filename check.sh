@@ -26,6 +26,7 @@ run_lean() {
 run_lean -o Qualification.olean Qualification.lean
 run_lean FiniteQualification.lean
 run_lean -o ExecutableClosure.olean ExecutableClosure.lean
+run_lean -o WorklistClosure.olean WorklistClosure.lean
 run_lean -o FiniteFrontier.olean FiniteFrontier.lean
 run_lean -o FrontierComposition.olean FrontierComposition.lean
 run_lean -o FiniteSchedules.olean FiniteSchedules.lean
