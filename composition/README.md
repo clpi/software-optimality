@@ -13,12 +13,14 @@ catalogue for an application remains a separate obligation.
 
 `lake --wfail build -R -KwarningAsError=true` on Lean 4.19.0 builds this package and
 its Lake dependency `software-is-quantifiable` at
-`f370992611d8c722e4897e67dbb8eaecf3d872ed`. The composition modules are roots
+`d88acbdc3ba78fff994067d2c73bcc01622b3f61`. The composition modules are roots
 of the default target. The aligned identity bridge and all existing covered-frontier
-controls are included too. `./composition/check.sh` runs that build and six
+controls, executable incremental updates, selection adapter, exhaustive-edit harness,
+and expanded theorem dependency audit are included too. `./composition/check.sh` runs that build and six
 intentional false-claim rejection checks. Pass
-`--benchmark` to collect a new timing table. `./check.sh` still checks the
-modules that do not import the dependency. See [current verification](current/VERIFICATION.md)
+`--exhaustive` to execute every ordered pair of two-atom snapshots against the powerset oracle; `--benchmark` collects a new timing table. `./check.sh` still checks the
+modules that do not import the dependency. See [executable integration](EXECUTABLE-VERIFICATION.md)
+for this update and [prior interface verification](current/VERIFICATION.md)
 and its [receipt](current/RECEIPT.json) for the exact tested scope. Historical
 checker output and timing results below retain their original dependency pins.
 
@@ -111,5 +113,5 @@ optimized external solvers are unmeasured.
 | Complete search over a deployment's implementations | An enumeration or abstraction theorem covering every admissible implementation, plus validated costs for the named hardware, workload and release window. Existing finite schedule enumeration covers its specified model. |
 | Calibrated reliability under correlated faults | A justified joint scenario model or a statistical sampling design. Paired scenarios preserve known dependence; marginals alone cannot identify it. |
 | Hard real-time response and availability | A clock, resource bounds, scheduling or fairness premises, and a progress proof that rules out the stopped-machine example. |
-| Distributed incremental operation and crash recovery | A concrete index, serialization and recovery protocol with refinement to the normalized ledger and full recomputation, including concurrent withdrawal. The scan here recomputes. |
+| Distributed incremental operation and crash recovery | The executable list evaluator proves sequential revision updates agree with full recomputation. Concurrent publication, serialization, and crash recovery still require a protocol refinement. |
 | Evidence from deployed software | Independently grounded execution roster, trusted measurement and validation, binding to policy and subject, and validated translation from events to roots, rules and simulations. |

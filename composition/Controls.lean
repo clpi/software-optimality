@@ -1,6 +1,6 @@
 import composition.QualifiedSelection
 import composition.IntervalDominance
-import composition.LiveSelection
+import composition.IncrementalSelection
 import ScopedCampaign
 
 namespace CompositionControls
@@ -73,6 +73,58 @@ private def liveRun (xs : List Admission.Event) :=
 example : liveRun (events ++ events) = some [1,2] := by decide
 example : liveRun (events ++ [.withdraw (key 2)]) = some [2] := by decide
 example : liveRun (events ++ [.claim (key 2) (payload 7)]) = some [2] := by decide
+
+section
+open ExecutableIncremental
+-- Execute cache updates on the same campaign and test all three output states.
+private def state := ExecutableIncremental.start (IncrementalSelection.snapshot decoder (fun _ => true) events)
+private def next (xs : List Admission.Event) :=
+  ExecutableIncremental.advance state (IncrementalSelection.snapshot decoder (fun _ => true) xs)
+#guard IncrementalSelection.selectCached data u (next events) [0,1,2,3] 0 == some [1,2]
+#guard IncrementalSelection.selectCached data u (next (events ++ [.withdraw (key 2)])) [0,1,2,3] 0 == some [2]
+#guard IncrementalSelection.selectCached data u (next events) [] 0 == some []
+#guard IncrementalSelection.selectCached data [] (next events) [] 0 == none
+#guard IncrementalSelection.selectCached {data with ledger := []} u state [0,1,2,3] 0 == none
+
+-- Same binary projection, different inference. The oracle may derive goal 2
+-- from root 0 only in the alternative-support snapshot.
+private def joint : Snapshot Nat := ⟨[0],[([0,1],2)]⟩
+private def alternatives : Snapshot Nat := ⟨[0],[([0],2),([1],2)]⟩
+#guard arcs joint.rules == arcs alternatives.rules
+#guard !(full joint).contains 2 && (advance (start joint) alternatives).cache.contains 2
+#guard !(advance (start alternatives) joint).cache.contains 2
+
+-- Mutating an edge with no premises has no incoming arc to invalidate it.
+private def emptyGraph : Snapshot Nat := ⟨[],[]⟩
+private def rootless : Snapshot Nat := ⟨[],[([],0),([0],1)]⟩
+#guard (dirty emptyGraph rootless).contains 0 && (advance (start emptyGraph) rootless).cache.contains 1
+#guard !(advance (start rootless) emptyGraph).cache.contains 1
+
+-- Persistent caches stay unique through unchanged revisions, even when roots
+-- and rules contain duplicates. Repetition cannot grow a fixed fact set.
+private def singleton : Snapshot Nat := ⟨[0],[]⟩
+private def duplicateFacts : Snapshot Nat := ⟨[0,0],[([0],1),([0],1),([],1)]⟩
+#guard (start singleton).cache == [0]
+#guard (advance (start singleton) singleton).cache == [0]
+#guard ((List.replicate 100 singleton).foldl advance (start singleton)).cache == [0]
+#guard (start duplicateFacts).cache.length == 2
+#guard ((List.replicate 100 duplicateFacts).foldl advance (start duplicateFacts)).cache.length == 2
+#guard (update singleton singleton [0,0,0]).length == 1
+
+-- Warm-starting a withdrawn cycle keeps both facts alive. Raw calls can also
+-- retain a forged unaffected fact. The proof-carrying entry point excludes both.
+private def cycle : Snapshot Nat := ⟨[],[([0],1),([1],0)]⟩
+private def live : Snapshot Nat := {cycle with roots := [0]}
+#guard (saturate (full live) cycle.rules).contains 1
+#guard (advance (start live) cycle).cache.isEmpty
+#guard (update emptyGraph emptyGraph [99]).contains 99
+example : ¬ Reachable emptyGraph [99] := by
+  intro bad
+  have eq := congrFun (state_eq_full bad) 99
+  have hempty : full emptyGraph = [] := by unfold full emptyGraph; rw [saturate]; rfl
+  simp [hempty] at eq
+
+end
 
 -- With one timing metric across two rounds, a lower maximum can conceal
 -- a regression in a particular round. Per-round caps remain independent.

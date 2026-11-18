@@ -44,6 +44,7 @@ run_lean -o ScopedCompatibility.olean ScopedCompatibility.lean
 run_lean -o ScopedCampaign.olean ScopedCampaign.lean
 run_lean MetricRelevance.lean
 run_lean -o HypergraphIncremental.olean HypergraphIncremental.lean
+run_lean -o ExecutableIncremental.olean ExecutableIncremental.lean
 run_lean ContextualDominance.lean
 run_lean -o Admission.olean Admission.lean
 run_lean -o AdmissionHypergraph.olean AdmissionHypergraph.lean

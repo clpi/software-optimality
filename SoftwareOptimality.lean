@@ -18,6 +18,7 @@ import ScopedCompatibility
 import ScopedCampaign
 import MetricRelevance
 import HypergraphIncremental
+import ExecutableIncremental
 import ContextualDominance
 import Admission
 import AdmissionHypergraph
@@ -34,6 +35,7 @@ import composition.QualifiedClosure
 import composition.QualifiedSelection
 import composition.IntervalDominance
 import composition.LiveSelection
+import composition.IncrementalSelection
 import composition.TraceSafety
 import composition.Controls
 import CanonicalDominance

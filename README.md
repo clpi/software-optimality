@@ -1,6 +1,6 @@
 # Machine-checked qualification, compounding, and finite Pareto selection
 
-Language-independent Lean proofs with executable reference algorithms. Checked with Lean 4.19.0 (release commit `6caaee842e94`). No external packages or Mathlib. These are not proofs of an unrelated production implementation.
+Language-independent Lean proofs with executable reference algorithms. Checked with Lean 4.19.0 (release commit `6caaee842e94`). The cross-repository interface uses the pinned `software-is-quantifiable` Lake dependency; no Mathlib is required. These are not proofs of an unrelated production implementation.
 
 ## Historical execution and observation planning
 
@@ -12,12 +12,14 @@ Install the official Lean 4.19.0 distribution and place its `bin` directory on P
 
 ```sh
 ./check.sh
+./composition/check.sh
 ```
 
 Or select a specific executable:
 
 ```sh
 LEAN=/path/to/lean ./check.sh
+LAKE=/path/to/lake LEAN=/path/to/lean ./composition/check.sh
 ```
 
 The script rejects source admissions/custom axioms, treats Lean warnings as errors, checks each compiler exit, and rejects admitted-axiom/error diagnostics. It compiles local dependencies and checks all named modules. Exit status zero is required; full captured output is in `CHECK.log`. `CHECK_CONTROLS.md` records negative controls confirming a deliberately admitted proof and an injected compiler error both stop the checker. `lean-toolchain` pins the version. Generated `.olean` files need not be committed.
@@ -45,6 +47,12 @@ The explicit assumptions are decidable equality of atoms, all roots in U, and ev
 **Use `checkedClose` at runtime, not raw `close`.** `checkedClose` validates that every root and rule head belongs to the named universe and returns `none` when invalid. `checkedClose_admitted` proves every `some out` satisfies the bounds and has exactly the inductively derivable members. `checkedClose_rejects` proves rejection iff those bounds fail. Executable regression guards cover both out-of-universe roots and heads. Raw `close` is a mathematical implementation under explicit preconditions: outside them its model list can be empty and its intersection vacuously return the entire universe, so it must not be exposed as a fail-closed API.
 
 This is a deliberately exponential reference algorithm, not an optimized worklist. Its purpose is a complete executable specification with a checked bridge to the general derivation semantics. No unproved iteration cap or saturation heuristic is used. Three executable guards cover cross-source consequences, withdrawn support, and an unsupported cycle.
+
+### `ExecutableIncremental.lean`: executable edits with exact cache refinement
+
+`start` evaluates a snapshot and `advance` updates its proof-carrying cache. Changed roots and changed hyperedge heads seed invalidation. The reference `dirty` projects old and new hypergraphs, while `update` materializes only the new-rule arcs. `new_arcs_suffice` proves that propagation equivalent, and `update_reference_exact` proves equality to the normalized old-and-new-arc reference. Both snapshots still supply the change seeds. Recalculation fires the original complete conjunctive rules. `update_exact` proves membership agrees with full rooted derivation when the input cache is exact, and `reachable_exact` establishes that premise for every state produced by the API. Exported `full` and `update` caches erase repeated facts; `reachable_nodup` proves uniqueness across every API history. `reachable_length_eq_full` fixes stored size to the current closure, and `advance_same_length` proves unchanged revisions preserve cache length. Raw imported caches require their own validation.
+
+`composition/IncrementalSelection.lean` passes those facts through the existing canonical release and frontier owners. `evaluate_exact` preserves the complete optional ordered selection result across every finite edit history, and `certificate_eq_full` preserves the existing covered-frontier certificate verdict, including refusal and invalid input. The projection must reread changed observations, policy, catalogue, and cost data from the current snapshot. These are reference algorithms with sequential-state proofs; no distributed publication protocol or measured performance improvement is asserted. [Verification and counterexamples](composition/EXECUTABLE-VERIFICATION.md) give the exact scope and commands.
 
 ### `FiniteQualification.lean`: exact qualification enumeration
 

@@ -6,7 +6,7 @@ package «software-optimality» where
   moreLeanArgs := #["-DwarningAsError=true"]
 
 require «software-is-quantifiable» from git
-  "https://github.com/clpi/software-is-quantifiable" @ "f370992611d8c722e4897e67dbb8eaecf3d872ed"
+  "https://github.com/clpi/software-is-quantifiable" @ "d88acbdc3ba78fff994067d2c73bcc01622b3f61"
 
 @[default_target]
 lean_lib SoftwareOptimality where
@@ -14,6 +14,7 @@ lean_lib SoftwareOptimality where
     `Qualification,
     `FiniteQualification,
     `ExecutableClosure,
+    `ExecutableIncremental,
     `WorklistClosure,
     `FiniteFrontier,
     `FiniteSchedules,
@@ -48,9 +49,12 @@ lean_lib SoftwareOptimality where
     `composition.QualifiedSelection,
     `composition.IntervalDominance,
     `composition.LiveSelection,
+    `composition.IncrementalSelection,
     `composition.TraceSafety,
     `composition.Controls,
     `composition.Benchmark,
+    `composition.ExhaustiveEdits,
+    `composition.AxiomAudit,
     `CanonicalDominance,
     `composition.InterfaceBridge,
     `composition.InterfaceControls,

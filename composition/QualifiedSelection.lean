@@ -84,15 +84,19 @@ def gate (data : Campaign C F) (facts : List F) (c : C) : Bool :=
 def admitted (data : Campaign C F) (facts : List F) (inc c : C) : Bool :=
   gate data facts c && (axes data.contract).all (fun i => decide (peak data c i ≤ peak data inc i))
 
+/-- Rank admitted candidates using the qualified facts of one snapshot. -/
+def choose (data : Campaign C F) (facts : List F) (catalogue : List C) (inc : C) : Option (List C) :=
+  if gate data facts inc then
+    some (FiniteFrontier.frontier (catalogue.filter (admitted data facts inc))
+      (FiniteFrontier.strictPareto (axes data.contract) (peak data)))
+  else none
+
 /-- none means invalid closure input or an unqualified comparison baseline.
     some [] is a valid comparison with no admissible catalogue entries. -/
 def select (data : Campaign C F) (u roots : List F) (rules : QualifiedClosure.Rules F)
     (catalogue : List C) (inc : C) : Option (List C) := do
   let facts ← QualifiedClosure.checked u roots rules
-  if gate data facts inc then
-    return FiniteFrontier.frontier (catalogue.filter (admitted data facts inc))
-      (FiniteFrontier.strictPareto (axes data.contract) (peak data))
-  else none
+  choose data facts catalogue inc
 
 theorem gate_exact (data : Campaign C F) (facts : List F) (c : C) :
     gate data facts c = true ↔
@@ -128,9 +132,9 @@ theorem selection_exact (data : Campaign C F) (u roots : List F)
   | none => simp [select, hc] at success
   | some facts =>
     cases hi : gate data facts inc with
-    | false => simp [select, hc, hi] at success
+    | false => simp [select, choose, hc, hi] at success
     | true =>
-      simp [select, hc, hi] at success
+      simp [select, choose, hc, hi] at success
       subst out
       refine ⟨facts, rfl, hi, ?_⟩
       simp [FiniteFrontier.frontier_exact, List.mem_filter]
