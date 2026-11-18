@@ -38,14 +38,14 @@ run_lean -o ScopedSelection.olean ScopedSelection.lean
 run_lean -o ScopedCampaign.olean ScopedCampaign.lean
 run_lean MetricRelevance.lean
 run_lean -o HypergraphIncremental.olean HypergraphIncremental.lean
-
 run_lean ContextualDominance.lean
-
 run_lean -o Admission.olean Admission.lean
 run_lean -o AdmissionHypergraph.olean AdmissionHypergraph.lean
 run_lean -o AdmissionTests.olean AdmissionTests.lean
-
 run_lean -o ComparisonContract.olean ComparisonContract.lean
 run_lean -o ComparisonTests.olean ComparisonTests.lean
 run_lean -o ScopedFrontier.olean ScopedFrontier.lean
 run_lean -o GeneralPareto.olean GeneralPareto.lean
+run_lean -o Composition.olean Composition.lean
+run_lean -o OptimalityInterface.olean OptimalityInterface.lean
+run_lean CompositionCheck.lean

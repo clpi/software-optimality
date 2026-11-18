@@ -20,6 +20,8 @@ The script rejects source admissions/custom axioms, treats Lean warnings as erro
 
 ## Checked theorem inventory
 
+**What a nondominance certificate means.** A result in this repository is nondominance inside a supplied finite candidate list under a supplied integer cost model: the candidate belongs to that list, and no member of the same list is componentwise no worse and strictly better on one of the supplied axes. It is not a claim that the candidate is optimal among implementations outside the list, or that the cost model is the only relevant one. `accepted_improvement_if_checkerSound` concludes behavior preservation only by applying the passed-through hypothesis `checkerSound`; the theorem does not prove that checker.
+
 ### `Qualification.lean`: general derivation semantics
 
 Exact scoped support atoms and finite-premise inference/transfer rules define rooted derivations. The kernel proves leastness, monotonicity, idempotence, exact cross-input compounding, order independence of sound exhaustive saturations, semantic soundness conditional on valid roots/rules, withdrawal containment, preservation of any surviving derivation subsystem, and impossibility of unsupported cyclic bootstrap. Each printed theorem in this module has an empty axiom dependency list.
@@ -48,15 +50,15 @@ Executable enumeration of all Boolean profiles of dimension n, proved count `2^n
 
 Executable filtering returns exactly candidates not dominated by any candidate in the named list. The provided strict Pareto comparator is checked against componentwise no-worse integer costs and at least one strictly better axis. Costs and finite axes are inputs; an axis to maximize must be normalized accordingly. The four-way support coloring distinguishes unknown, lawful, unlawful, and conflict; exact conflict/unknown characterizations are checked.
 
-The frontier theorem is relative to the supplied candidate universe and measurements. It does not assert that enumerated candidates include every possible implementation, or that the reference algorithm itself is Pareto optimal.
+The frontier theorem is nondominance inside the supplied finite candidate list and measurements, under the supplied integer costs. It does not assert that enumerated candidates include every possible implementation.
 
 ### `FiniteSchedules.lean`: test ordering and parallel schedules
 
 `enumerate` lists every assignment of one venue and one nonnegative integer start tick to each of the named jobs, up to the specified start horizon. Its completeness is proved by exact membership, not by assuming a generator sampled everything. `feasible` verifies list size, placement bounds, nonoverlap for each pair of jobs on the same capacity-one venue, and every listed dependency including endpoint bounds. `feasibleSchedules_exact` proves filtering returns exactly all schedules meeting this model. Durations are nonnegative integer inputs; the horizon bounds **start times**, not completion times. Venues are homogeneous in this model; shared/external resources need additional constraints. The pairwise ordering predicate treats zero-duration jobs literally and does not model every empty-interval convention; zero-duration dependency cycles can satisfy its non-strict precedence inequalities. Positive durations and acyclic dependencies should be enforced separately when required by a deployment.
 
-`certified_optimal` proves an accepted certificate designates a feasible schedule with no strict Pareto dominator among **all schedules of this enumerated model**, on the named axes and supplied total integer cost function. The generic `optimalCertificate` can also certify any supplied finite candidate list, but completeness of an externally generated candidate list must be established separately.
+`nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost` proves an accepted certificate designates a feasible schedule with no strict Pareto dominator among **all schedules of this enumerated model**, on the named axes and the supplied total integer cost function. `nondominatedInSuppliedFiniteList` is the same check for any supplied finite candidate list. Completeness of an externally generated candidate list must be established separately.
 
-`queueFeasible_exact` supports external test runners with one ordered queue per venue: every numbered job occurs exactly once, there are no extra job ids, and the queue count matches the venue count. It does not assert arbitrary queue ordering preserves side effects. `accepted_improvement` proves feasibility and strict Pareto improvement plus behavioral preservation **when a supplied preservation certificate checker is sound**. This makes the separate preservation obligation explicit for test rewrites/reordering; lower measured times alone never discharge it.
+`queueFeasible_exact` supports external test runners with one ordered queue per venue: every numbered job occurs exactly once, there are no extra job ids, and the queue count matches the venue count. It does not assert arbitrary queue ordering preserves side effects. `accepted_improvement_if_checkerSound` proves feasibility and strict Pareto improvement on the supplied integer costs. Its behavior-preservation conjunct is exactly the passed-through hypothesis `checkerSound` applied to the certificate's Boolean; lower measured times do not discharge that hypothesis.
 
 These theorems apply to schedules of foreign software tests without lowering their programs into an IR. They do not prove the foreign tests' semantic independence, their completeness as program specifications, or the empirical durations' future stability. Physical benchmark measurements and external queue enumeration remain separately qualified evidence.
 
@@ -72,7 +74,7 @@ The concrete calculation proofs use `by decide`, checked by Lean's kernel, not `
 
 Tests and intent choose the comparison axes and the admission policy. Eligibility is separate from cost ranking: the executable gate requires feasibility, the provided observed-behavior predicate, and all required timing checks. `timedAdmission_exact` proves the required count is positive, exactly that many receipts exist, and every elapsed value is present and no greater than its declared per-receipt limit. A missing timing, empty zero-round campaign, or even one over-limit result is rejected. Equality at the limit is accepted; no hidden tolerance is applied.
 
-`optimumCertificate_exact` proves both admission of the selected candidate and absence of an admitted dominator on the chosen cost axes. `rejected_cannot_be_optimal` prevents a faster cost score from overriding a failed gate. `dominator_refutes_certificate` supplies the constructive counterexample check: an admitted strict dominator invalidates the claimed optimum.
+`admittedNondominatedUnderSuppliedIntegerCost_exact` proves both admission of the selected candidate and absence of an admitted dominator on the supplied integer cost axes, inside the supplied finite list. `rejected_not_nondominated_under_supplied_integer_cost` prevents a lower cost from overriding a failed gate. `dominator_refutes_certificate` supplies the constructive counterexample check: an admitted strict dominator invalidates the claimed nondominance certificate.
 
 Timing inputs can represent fixed ceilings or paired observed-baseline ceilings; the choice must be named by the policy. The theorem checks the recorded cases and does not predict unseen runs. A paired-baseline experiment is not presented as a user-authored absolute SLA. The observed-behavior Boolean is a policy input; validation of its underlying receipt contents is separate from treating it as evidence of universal behavior preservation.
 
@@ -102,7 +104,7 @@ The internal one-winner helper retains the earlier candidate on equal costs and 
 
 ### `ScopedSelection.lean` and `ScopedCampaign.lean`: the integration bridge
 
-The final selection entry point **directly** uses `ScopedEvidence.qualify` as its gate; an unbound observed-pass Boolean cannot bypass scoped evidence validation. `certified_scoped_optimum` connects accepted optimum certificates to actual witnesses for every selected candidate obligation and absence of any qualified dominator. `selected_all_exact` and `selected_all_order_independent` connect the efficient all-ties scalar selection to qualification and prove membership invariant under equivalent catalogue order.
+The final selection entry point **directly** uses `ScopedEvidence.qualify` as its gate; an unbound observed-pass Boolean cannot bypass scoped evidence validation. `certified_scoped_nondominated_under_supplied_integer_cost` connects an accepted certificate to actual witnesses for every selected candidate obligation and to absence of any qualified dominator inside that supplied list under the supplied integer costs. `selected_all_exact` and `selected_all_order_independent` connect the efficient all-ties scalar selection to qualification and prove membership invariant under equivalent catalogue order.
 
 The concrete `ScopedCampaign` constructs identified, round-keyed obligations/receipts from the recorded three-plan pilot, including capacity and exact per-round job flags. Its policy ID is the imported policy digest represented as a natural number; the other scope IDs identify the pinned campaign fixture. The kernel checks all scoped admissions, O2's optimum certificate, singleton `selectAll` output, reordered-catalogue agreement, and witness extraction for every O2 requirement. Reused rounds and receipts from R2 presented against O2's configuration are concretely proved rejected.
 
@@ -128,7 +130,7 @@ No `sorry`, admissions, custom axioms, or `native_decide` shortcuts occur. Some 
 
 Policies, scopes, lineages, opposite polarities and evidence identities can be encoded in atoms. Their validation is an explicit input obligation, not supplied by set closure. Runtime receipts are not automatically universal semantic proofs. Old evidence does not itself qualify a changed release; a current support or valid transfer derivation is required. Withdrawal filters live roots/rules and recomputes, preserving historical events; the current projection is not monotone when withdrawals occur.
 
-Not proved here: runtime instrumentation fidelity, cryptographic hash binding, external policy authorization, complete language lowering, arbitrary test termination, universal behavior preservation, numerical confidence of measurements, efficient worklist refinement or tight complexity bounds, an incremental provenance/deletion implementation, or globally optimal software performance. These are distinct obligations, not concealed assumptions of the proved closure/qualification results.
+Not proved here: runtime instrumentation fidelity, cryptographic hash binding, external policy authorization, complete language lowering, arbitrary test termination, universal behavior preservation, numerical confidence of measurements, efficient worklist refinement or tight complexity bounds, an incremental provenance/deletion implementation, incremental release monotonicity, or globally optimal software performance. `ImportBinding` and `GeneratorCoverage` are named premises, not theorems of those obligations. These are distinct obligations, not concealed assumptions of the proved closure/qualification results.
 
 ## Provenance
 
@@ -149,6 +151,36 @@ The pilot timing gate is whole-suite wall time only: 8 of 12 O2 subprocess times
 Typed matrix cells count supporting live records by edge kind and both port roles/positions. Retained-plus-added counts and Boolean cells equal complete regeneration; alternate receipt support survives individual withdrawal. Deterministic qualification/profile projection preserves the full frontier result, including resurrection after withdrawal of a dominator.
 
 This is a semantic refinement theorem, **not a fast executable worklist or sparse-matrix performance proof**. The raw record list counts multiplicity. Unique receipt identity, deduplication, scoped admission and withdrawal precedence must be enforced before the live snapshot is supplied. The same-ID remove-and-add operation permits reintroduction; it is not a permanent tombstone protocol. See [the exact scope](HYPERGRAPH_SCOPE.md) and [independent publication checks](docs/hypergraph-incremental/VERIFICATION.md).
+
+### `OptimalityInterface.lean`: stable closure and Pareto-maximal interface
+
+Downstream proofs import `OptimalityInterface` and use the `Optimality` namespace. `Composition.lean` holds the generic proofs; one import loads both. The closure operator is `Optimality.closure`, the least rooted derivation. It corresponds to `SoftwareIsQuantifiable.Coloring.Deriv`; `hornDeriv_iff_closure` is that equivalence, and `closure_operator_exact` is the snapshot computation corresponding to `SoftwareIsQuantifiable.Coloring.coloring` when every rule head lies in the named universe. `paretoMaximal` is the two-axis `Nat × Nat` frontier corresponding to `SoftwareIsQuantifiable.Pareto.dominates`. `noWorse` and `guardedMaximal` correspond to `Pareto.noWorse` and `admitted`. `GeneratorCoverage` is not `Coverage.PlatformPremise`; platform mediation is not assumed. `Fold.join` is root-set union before rules fire; `closure_compound` keeps cross-source consequences and is not that join.
+
+| Claim | Lean form | Status |
+|---|---|---|
+| Closure is extensive, least, monotone, and idempotent | `closure_extensive`, `closure_least`, `closure_monotone`, `closure_idempotent` | PROVEN |
+| Two sources and any finite family compound, keeping cross-source consequences | `closure_compound`, `closure_compound_finite` | PROVEN |
+| Naive union of closures misses a cross-source consequence | `union_misses_cross_consequence` | DISPROVEN |
+| Separated component closure factors through `sumRules`; a cross-summand rule does not | `closure_factors_left`, `closure_factors_right`, `separated_closure_conjoins`; `factorization_needs_separation` | PROVEN; separation is the `sumRules` premise. Unrestricted factoring is DISPROVEN |
+| Reclosing under a richer rule set | `reclose_under_embedded_rules` | PROVEN under the named `embed` premise |
+| Horn derivability agrees with closure; the executable close computes it inside the snapshot | `hornDeriv_iff_closure`, `closure_operator_exact` | PROVEN. The universe bound is the snapshot premise |
+| Withdrawal adds no support; a live subsystem survives; empty-premise-free cycles do not bootstrap | `withdrawal_no_new_support`, `surviving_subsystem`, `no_bootstrap` | PROVEN |
+| Two-axis maximal set matches strict Pareto, is nonempty, and excludes dominated outputs | `dominates_iff_strictPareto`, `paretoMaximal_exact`, `paretoMaximal_nonempty`, `paretoMaximal_not_dominated` | PROVEN |
+| A maximal point can worsen an axis | `paretoMaximal_can_regress` | DISPROVEN as a release gate |
+| Guarded maximal set is componentwise no worse and undominated | `guardedMaximal_sound`, `guardedMaximal_nonempty` | PROVEN |
+| Overlapping bounds are not per-execution dominance | `not_per_execution_dominance` | DISPROVEN |
+| Behavior retention and the release gate | `retains_iff`, `acceptsRelease_iff` | PROVEN for the recorded lists and costs; not a measurement theorem |
+| Excluded candidates are dominated by a frontier member; a pruning certificate is sound | `frontier_covers`, `pruning_sound`, `pruning_sound_pareto`, `pruningOK_implies` | PROVEN. Arbitrary dominance needs the named transitivity premise; strict Pareto discharges it |
+| Componentwise-sum product: joint frontier members are locally nondominated, and checking the product of local frontiers is sound | `joint_frontier_in_local_frontiers`, `reduced_product_sound`, `scalar_frontier_iff_allMinima` | PROVEN for componentwise sum. One-axis linear selection and the Pareto filter agree |
+| Product of local frontiers is not automatically jointly nondominated | `product_of_frontiers_not_joint` | DISPROVEN |
+| Strict local dominance need not lift through an aggregation that drops an axis | `strict_lift_needs_premise`; `reducedAllowed` refuses `projectFirst` | DISPROVEN without the strict-lift premise |
+| A complexity-class tag is not generator coverage | `class_tag_is_not_coverage`, `coverage_omission_can_dominate`, `frontier_respects_coverage` | The tag claim is DISPROVEN. Transfer to an intended set is PROVEN only from the named `GeneratorCoverage` premise |
+| Import identity transfers a frontier; a changed cost row does not | `frontier_transfers_under_import`, `import_mismatch_blocks_transfer` | Transfer is PROVEN from the named `ImportBinding` premise. Mismatch is DISPROVEN. Cryptographic binding is not proved |
+| Canonical key sort preserves frontier membership | `canonical_frontier_mem` | PROVEN for membership. Equal keys do not determine a unique order |
+
+`tools/check_optimality.sh` runs `CompositionCheck.lean` and `tools/check_optimality.py` on the same guards. Both must report acceptance of a no-worse release and refusal of a regressing frontier point, an out-of-universe root, and a project-first product reduction. This is not a proof of incremental release monotonicity.
+
+Third-party scan checks are not a Lean build. The Lean build is `lake build` with warnings as errors, and `./check.sh`; their logs are `LAKE-BUILD.log` and `CHECK.log`.
 
 ### Contextual compositional dominance
 

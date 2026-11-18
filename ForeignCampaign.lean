@@ -281,11 +281,12 @@ theorem all_candidates_feasible : candidates.all (queueFeasible 4 2) = true := b
 theorem receipt_metrics_match : receiptRows.all (fun r =>
     [cost r.1 0, cost r.1 1] == r.2) = true := by decide
 
-theorem chosen_accepted : optimalCertificate candidates dominates chosen = true := by decide
+theorem chosen_accepted :
+    nondominatedInSuppliedFiniteList candidates dominates chosen = true := by decide
 
 theorem chosen_nondominated : chosen ∈ candidates ∧
     ∀ q, q ∈ candidates → dominates q chosen = false :=
-  (optimalCertificate_exact candidates dominates chosen).mp chosen_accepted
+  (nondominatedInSuppliedFiniteList_exact candidates dominates chosen).mp chosen_accepted
 
 theorem modeled_improvement : dominates chosen baseline = true := by decide
 

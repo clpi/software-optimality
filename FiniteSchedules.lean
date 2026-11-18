@@ -84,28 +84,31 @@ theorem feasibleSchedules_exact (jobs venues horizon : Nat) (duration : Nat → 
   · exact fun h => h.2
   · intro h; exact ⟨⟨h.1, h.2.1⟩, h⟩
 
--- A finite complete certificate checker: membership and every competitor comparison.
-def optimalCertificate {T : Type} [DecidableEq T] (candidates : List T)
+-- Membership in the supplied finite list, with no dominator inside that same list.
+-- The dominance predicate is an input. It is not a claim of global optimality.
+def nondominatedInSuppliedFiniteList {T : Type} [DecidableEq T] (candidates : List T)
     (dominates : T → T → Bool) (s : T) : Bool :=
   candidates.contains s && !(candidates.any (fun t => dominates t s))
 
-theorem optimalCertificate_exact {T : Type} [DecidableEq T] (candidates : List T)
+theorem nondominatedInSuppliedFiniteList_exact {T : Type} [DecidableEq T] (candidates : List T)
     (dominates : T → T → Bool) (s : T) :
-    optimalCertificate candidates dominates s = true ↔
+    nondominatedInSuppliedFiniteList candidates dominates s = true ↔
       s ∈ candidates ∧ ∀ t, t ∈ candidates → dominates t s = false := by
-  simp [optimalCertificate, List.any_eq_true]
+  simp [nondominatedInSuppliedFiniteList, List.any_eq_true]
 
--- Uses the complete finite enumerator, not a sample of observed schedules.
-theorem certified_optimal (jobs venues horizon : Nat) (duration : Nat → Nat)
+-- Nondominated among every feasible schedule of this enumerated model, under the
+-- supplied integer cost on the supplied axes. The list is the enumerator's output.
+theorem nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost
+    (jobs venues horizon : Nat) (duration : Nat → Nat)
     (deps : List (Nat × Nat)) (axes : List Nat) (cost : Schedule → Nat → Int)
     (s : Schedule)
-    (h : optimalCertificate (feasibleSchedules jobs venues horizon duration deps)
+    (h : nondominatedInSuppliedFiniteList (feasibleSchedules jobs venues horizon duration deps)
       (FiniteFrontier.strictPareto axes cost) s = true) :
     Feasible jobs venues horizon duration deps s ∧
     ∀ t, Feasible jobs venues horizon duration deps t →
       ¬ ((∀ i, i ∈ axes → cost t i ≤ cost s i) ∧
          (∃ i, i ∈ axes ∧ cost t i < cost s i)) := by
-  obtain ⟨hs, hn⟩ := (optimalCertificate_exact _ _ s).mp h
+  obtain ⟨hs, hn⟩ := (nondominatedInSuppliedFiniteList_exact _ _ s).mp h
   refine ⟨(feasibleSchedules_exact _ _ _ _ _ s).mp hs, ?_⟩
   intro t ht hd
   have hf := hn t ((feasibleSchedules_exact _ _ _ _ _ t).mpr ht)
@@ -143,7 +146,9 @@ theorem improvementCertificate_exact {T : Type} (feasible : T → Bool)
   simp only [improvementCertificate, Bool.and_eq_true,
     FiniteFrontier.pareto_exact, and_assoc]
 
-theorem accepted_improvement {T : Type} (feasible : T → Bool)
+-- Behavior preservation in the conclusion is only `checkerSound` applied to the
+-- Boolean the certificate already required. This theorem does not prove the checker.
+theorem accepted_improvement_if_checkerSound {T : Type} (feasible : T → Bool)
     (preserves : T → T → Bool) (BehaviorPreserved : T → T → Prop)
     (checkerSound : ∀ old new, preserves old new = true → BehaviorPreserved old new)
     (axes : List Nat) (cost : T → Nat → Int) (old new : T)
@@ -163,11 +168,11 @@ theorem accepted_improvement {T : Type} (feasible : T → Bool)
 
 #print axioms queueFeasible_exact
 #print axioms improvementCertificate_exact
-#print axioms accepted_improvement
+#print axioms accepted_improvement_if_checkerSound
 #print axioms tuples_exact
 #print axioms enumerate_exact
 #print axioms feasible_exact
 #print axioms feasibleSchedules_exact
-#print axioms optimalCertificate_exact
-#print axioms certified_optimal
+#print axioms nondominatedInSuppliedFiniteList_exact
+#print axioms nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost
 end FiniteSchedules

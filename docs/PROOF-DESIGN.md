@@ -4,7 +4,7 @@
 
 Make qualification-preserving improvement mechanically checkable for existing software, its tests and stated intent, independent of language and independent of Idol. The selected axes come from those tests and intent. Behavioral qualification and declared timing invariants are admission conditions, never costs that a planner may trade away.
 
-This document distinguishes independently checked v9 results from proposed extensions. All twelve v9 Lean modules were independently replayed successfully. Proposed theorems below are not claimed as checked.
+This document distinguishes independently checked results from proposed extensions. The v9 modules and the later hypergraph module were checked by `check.sh`. The closure, compounding, and Pareto-composition theorems in `OptimalityInterface.lean` are now checked as well; the table in `README.md` is the claim status. Text below that still says "propose" was the design note for those theorems and is not a second claim. Incremental release monotonicity is not proved here.
 
 ## 1. Replace one large optimality claim with a linked certificate
 
@@ -125,11 +125,14 @@ A deterministic display total order can be supplied by canonical identifiers for
 
 Exact ID comparison does not authenticate the referenced policy or receipt bytes. Policy authorization, liveness, raw-observation ingestion, compatible cross-policy cost definitions and semantic truth of imported pass bits remain external obligations. Repeated transport duplicates must be normalized upstream when ledger idempotence is desired; the selected-receipt checker rejects duplicate IDs.
 
-**Next proof additions (not yet checked):**
-1. General multi-axis frontier coverage and a certified pruning interface.
-2. Separable composition of local objective-frontier representatives with coupling interfaces.
-3. Performant worklist refinement of closure, including deletion/recomputation semantics.
-4. Canonical serialized output refinement and authenticated import-to-model binding.
+**Proof additions now checked in `OptimalityInterface.lean`:**
+1. General multi-axis frontier coverage (`frontier_covers`) and a pruning certificate (`pruning_sound_pareto`). Transitivity of an arbitrary dominance predicate stays a named premise.
+2. Separable composition: `sumRules` factors closure across components; componentwise-sum aggregation sends joint frontier members into the local frontiers (`joint_frontier_in_local_frontiers`) and makes a check against the product of local frontiers sound (`reduced_product_sound`). The product of local frontiers is not jointly nondominated (`product_of_frontiers_not_joint`). An aggregation that drops an axis need not lift strict dominance (`strict_lift_needs_premise`).
+3. One-axis linear selection and the Pareto filter agree (`scalar_frontier_iff_allMinima`). A complexity-class tag does not discharge generator coverage.
+
+**Still not checked:**
+1. Performant worklist refinement. `HypergraphIncremental` is a semantic incremental equality, not a complexity bound.
+2. Authenticated import-to-model binding. `ImportBinding` is a named byte/row premise. `canonical_frontier_mem` preserves membership under key sort and does not make equal keys produce one list order. Cryptographic authenticity remains unproved.
 
 **Next engineering additions:**
 1. Canonical receipt importer with schema/version, policy and source hashes; exact per-test requirements where the policy calls for them.

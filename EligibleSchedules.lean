@@ -41,20 +41,22 @@ theorem eligible_exact (feasible observed : T → Bool) (required : Nat)
 
 def admitted (candidates : List T) (gate : T → Bool) := candidates.filter gate
 
-def optimumCertificate (candidates : List T) (gate : T → Bool)
+-- Nondominated in the supplied finite candidate list after the gate, under the
+-- supplied integer cost on the supplied axes.
+def admittedNondominatedUnderSuppliedIntegerCost (candidates : List T) (gate : T → Bool)
     (axes : List Nat) (cost : T → Nat → Int) (x : T) : Bool :=
-  FiniteSchedules.optimalCertificate (admitted candidates gate)
+  FiniteSchedules.nondominatedInSuppliedFiniteList (admitted candidates gate)
     (FiniteFrontier.strictPareto axes cost) x
 
--- Optimality is ONLY over eligible candidates; cost cannot override rejection.
-theorem optimumCertificate_exact (candidates : List T) (gate : T → Bool)
+-- The certificate ranges only over candidates the gate accepts.
+theorem admittedNondominatedUnderSuppliedIntegerCost_exact (candidates : List T) (gate : T → Bool)
     (axes : List Nat) (cost : T → Nat → Int) (x : T) :
-    optimumCertificate candidates gate axes cost x = true ↔
+    admittedNondominatedUnderSuppliedIntegerCost candidates gate axes cost x = true ↔
       (x ∈ candidates ∧ gate x = true) ∧
       ∀ y, y ∈ candidates → gate y = true →
         ¬ ((∀ i, i ∈ axes → cost y i ≤ cost x i) ∧
            (∃ i, i ∈ axes ∧ cost y i < cost x i)) := by
-  rw [optimumCertificate, FiniteSchedules.optimalCertificate_exact]
+  rw [admittedNondominatedUnderSuppliedIntegerCost, FiniteSchedules.nondominatedInSuppliedFiniteList_exact]
   simp only [admitted, List.mem_filter]
   constructor
   · rintro ⟨hx, hn⟩
@@ -70,22 +72,22 @@ theorem optimumCertificate_exact (candidates : List T) (gate : T → Bool)
     · rfl
     · exact False.elim (hn y hy.1 hy.2 ((FiniteFrontier.pareto_exact axes cost y x).mp h))
 
-theorem rejected_cannot_be_optimal (candidates : List T) (gate : T → Bool)
+theorem rejected_not_nondominated_under_supplied_integer_cost (candidates : List T) (gate : T → Bool)
     (axes : List Nat) (cost : T → Nat → Int) (x : T) (h : gate x = false) :
-    optimumCertificate candidates gate axes cost x = false := by
-  cases hc : optimumCertificate candidates gate axes cost x
+    admittedNondominatedUnderSuppliedIntegerCost candidates gate axes cost x = false := by
+  cases hc : admittedNondominatedUnderSuppliedIntegerCost candidates gate axes cost x
   · rfl
-  · have hg := ((optimumCertificate_exact candidates gate axes cost x).mp hc).1.2
+  · have hg := ((admittedNondominatedUnderSuppliedIntegerCost_exact candidates gate axes cost x).mp hc).1.2
     simp [h] at hg
 
 theorem dominator_refutes_certificate (candidates : List T) (gate : T → Bool)
     (axes : List Nat) (cost : T → Nat → Int) (x y : T)
     (hy : y ∈ candidates) (hg : gate y = true)
     (hd : FiniteFrontier.strictPareto axes cost y x = true) :
-    optimumCertificate candidates gate axes cost x = false := by
-  cases hc : optimumCertificate candidates gate axes cost x
+    admittedNondominatedUnderSuppliedIntegerCost candidates gate axes cost x = false := by
+  cases hc : admittedNondominatedUnderSuppliedIntegerCost candidates gate axes cost x
   · rfl
-  · exact False.elim (((optimumCertificate_exact candidates gate axes cost x).mp hc).2
+  · exact False.elim (((admittedNondominatedUnderSuppliedIntegerCost_exact candidates gate axes cost x).mp hc).2
       y hy hg ((FiniteFrontier.pareto_exact axes cost y x).mp hd))
 
 #guard timingOK (some 101) 100 == false
@@ -97,7 +99,7 @@ theorem dominator_refutes_certificate (candidates : List T) (gate : T → Bool)
 #print axioms timingOK_exact
 #print axioms timedAdmission_exact
 #print axioms eligible_exact
-#print axioms optimumCertificate_exact
-#print axioms rejected_cannot_be_optimal
+#print axioms admittedNondominatedUnderSuppliedIntegerCost_exact
+#print axioms rejected_not_nondominated_under_supplied_integer_cost
 #print axioms dominator_refutes_certificate
 end EligibleSchedules
