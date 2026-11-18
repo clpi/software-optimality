@@ -25,7 +25,8 @@ import Std
    * `Optimality.not_per_execution_dominance` corresponds to
      `SoftwareIsQuantifiable.Pareto.not_per_execution_dominance`.
    * `Optimality.retains` and `acceptsRelease` correspond to
-     `SoftwareIsQuantifiable.Pareto.accepts` and `acceptsRelease`.
+     `SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost` and `acceptsRelease`.
+     The joint release_gates_agree theorem checks the typed adapter.
    * `Optimality.GeneratorCoverage` does not correspond to
      `SoftwareIsQuantifiable.Coverage.PlatformPremise`. Platform mediation is
      not assumed. Generator coverage is a separate named premise for transferring

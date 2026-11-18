@@ -11,6 +11,7 @@ lean_lib SoftwareOptimality where
     `Qualification,
     `FiniteQualification,
     `ExecutableClosure,
+    `ExecutableIncremental,
     `FiniteFrontier,
     `FiniteSchedules,
     `ForeignCampaign,

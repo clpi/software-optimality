@@ -15,17 +15,12 @@ Run `./composition/check.sh` with Lean 4.19.0. It fetches the pinned public
 qualification proof and builds both source trees in an empty directory. For
 offline verification, set `QUANTIFIABLE_SRC` to a checkout containing the
 pinned source bytes. `LEAN` can name an absolute compiler path. The script
-checks SHA-256 for all six upstream sources, runs the full optimality suite,
+checks SHA-256 for all eight upstream sources, runs the full optimality suite,
 then checks the integration modules, controls, and benchmark source. Pass
 `--benchmark` to collect a new timing table. The standalone offline suite
 continues to run through `./check.sh`.
 
-The public proof at `61de9b7364e0a8c5ddc2ab8d0a633d2920aa38cf` builds on its
-own pinned Lean 4.15.0 and also compiles under the joint 4.19.0 kernel.
-The upstream unused-variable warnings are present in the log. The new proof
-modules and the private suite compile with warnings treated as errors.
-Dependency prints for the joint theorems contain only the standard foundational
-axioms. See [the checker output](CHECK.log) and [the source hashes](quantifiable.sha256).
+Both repositories use Lean 4.19.0. The complete public package, including its interface and executable instance, compiles in the joint kernel. The checker treats warnings as errors, runs the existing admission, trace and selection controls, and audits the transitive logical dependencies of theorem declarations. Use `--exhaustive` to check all ordered pairs of two-atom snapshots against the powerset evaluator. See [checked output](CHECK.log) and [the incremental proof and receipt replay](EXECUTABLE-VERIFICATION.md).
 
 ## What the entry points establish
 
@@ -115,5 +110,5 @@ optimized external solvers are unmeasured.
 | Complete search over a deployment's implementations | An enumeration or abstraction theorem covering every admissible implementation, plus validated costs for the named hardware, workload and release window. Existing finite schedule enumeration covers its specified model. |
 | Calibrated reliability under correlated faults | A justified joint scenario model or a statistical sampling design. Paired scenarios preserve known dependence; marginals alone cannot identify it. |
 | Hard real-time response and availability | A clock, resource bounds, scheduling or fairness premises, and a progress proof that rules out the stopped-machine example. |
-| Distributed incremental operation and crash recovery | A concrete index, serialization and recovery protocol with refinement to the normalized ledger and full recomputation, including concurrent withdrawal. The scan here recomputes. |
+| Distributed incremental operation and crash recovery | A concrete index, serialization and recovery protocol with refinement to the normalized ledger and full recomputation, including concurrent withdrawal. The list evaluator covers sequential revisions. Concurrent publication and crash recovery need a separate protocol. |
 | Evidence from deployed software | Independently grounded execution roster, trusted measurement and validation, binding to policy and subject, and validated translation from events to roots, rules and simulations. |

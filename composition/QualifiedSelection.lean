@@ -78,21 +78,25 @@ def gate (data : Campaign C F) (facts : List F) (c : C) : Bool :=
   (peakPolicy data.contract && ScopedFrontier.admitted data.contract (data.subject c) (data.inputs c)) &&
   records.all (fun r => Coverage.recorded data.valid data.ledger (data.execution r)) &&
   decide ((records.map (fun r => ((data.execution r).id, r.scope.metric))).Nodup) &&
-  Pareto.accepts (data.requires c) facts &&
+  Pareto.noQualifiedBehaviorLost ⟨data.requires c⟩ ⟨facts⟩ &&
   (data.excludes c).all (fun f => decide (f ∉ facts))
 
 def admitted (data : Campaign C F) (facts : List F) (inc c : C) : Bool :=
   gate data facts c && (axes data.contract).all (fun i => decide (peak data c i ≤ peak data inc i))
+
+/-- Rank admitted candidates using the qualified facts of one snapshot. -/
+def choose (data : Campaign C F) (facts : List F) (catalogue : List C) (inc : C) : Option (List C) :=
+  if gate data facts inc then
+    some (FiniteFrontier.frontier (catalogue.filter (admitted data facts inc))
+      (FiniteFrontier.strictPareto (axes data.contract) (peak data)))
+  else none
 
 /-- none means invalid closure input or an unqualified comparison baseline.
     some [] is a valid comparison with no admissible catalogue entries. -/
 def select (data : Campaign C F) (u roots : List F) (rules : QualifiedClosure.Rules F)
     (catalogue : List C) (inc : C) : Option (List C) := do
   let facts ← QualifiedClosure.checked u roots rules
-  if gate data facts inc then
-    return FiniteFrontier.frontier (catalogue.filter (admitted data facts inc))
-      (FiniteFrontier.strictPareto (axes data.contract) (peak data))
-  else none
+  choose data facts catalogue inc
 
 theorem gate_exact (data : Campaign C F) (facts : List F) (c : C) :
     gate data facts c = true ↔
@@ -102,7 +106,7 @@ theorem gate_exact (data : Campaign C F) (facts : List F) (c : C) :
       ((data.receipts c).map (fun r => ((data.execution r).id, r.scope.metric))).Nodup ∧
       (∀ f ∈ data.requires c, f ∈ facts) ∧ (∀ f ∈ data.excludes c, f ∉ facts) := by
   simp only [gate, Bool.and_eq_true, List.all_eq_true, Coverage.recorded_exact,
-    decide_eq_true_eq, Pareto.accepts_iff, and_assoc]
+    decide_eq_true_eq, Pareto.noQualifiedBehaviorLost_iff, and_assoc]
 
 /-- A timed requirement yields both a scoped receipt and an accepted witness
     from the supplied ledger for that receipt's mapped execution. -/
@@ -128,9 +132,9 @@ theorem selection_exact (data : Campaign C F) (u roots : List F)
   | none => simp [select, hc] at success
   | some facts =>
     cases hi : gate data facts inc with
-    | false => simp [select, hc, hi] at success
+    | false => simp [select, choose, hc, hi] at success
     | true =>
-      simp [select, hc, hi] at success
+      simp [select, choose, hc, hi] at success
       subst out
       refine ⟨facts, rfl, hi, ?_⟩
       simp [FiniteFrontier.frontier_exact, List.mem_filter]
