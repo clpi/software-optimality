@@ -1,0 +1,7 @@
+/tmp/scoped-frontier-negative-788yhyhu/foreign-venue.lean:3:132: error: tactic 'decide' proved that the proposition
+  admitted fixtureContract (fixtureSubject 0)
+      (changedScope (fixtureSubject 0) fun s =>
+        { artifact := s.artifact, configuration := s.configuration, lineage := s.lineage, venue := 2,
+          harness := s.harness, intent := s.intent, policy := s.policy, metric := s.metric }) =
+    true
+is false

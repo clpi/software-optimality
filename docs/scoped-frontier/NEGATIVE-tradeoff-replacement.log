@@ -1,0 +1,3 @@
+/tmp/scoped-frontier-negative-788yhyhu/tradeoff-replacement.lean:3:98: error: tactic 'decide' proved that the proposition
+  noRegression fixtureContract (fixtureSubject 0) (fixtureSubject 1) fixture = true
+is false
