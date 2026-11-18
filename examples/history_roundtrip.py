@@ -120,7 +120,7 @@ def run_demo(directory, save=None):
                 optimumAfter="stop", possibleAfterWithdrawal=withdrawn["compatibleWorlds"])
 
 
-def replay(source):
+def replay(source, cut=None):
     rec = json.loads(source.read_text())
     receipts = []
     for packet in rec["captures"]:
@@ -130,11 +130,24 @@ def replay(source):
     outcomes = {}
     with tempfile.TemporaryDirectory() as work:
         bundle = Path(work) / "input.json"
-        for name, stop in rec["cuts"].items():
+        def at_prefix(stop):
+            if type(stop) is not int or not 0 <= stop <= len(rec["events"]):
+                raise ValueError("cut must lie within the recording")
             events = rec["events"][:stop]
-            bundle.write_text(json.dumps(dict(rec["campaign"], stamp=0, ledger=events, authorized=events,
-                                               verifiedReceipts=receipts)))
-            out = json.loads(subprocess.check_output([ROOT/".lake/build/bin/historyaudit",bundle],text=True))
+            rows = [event["put"]["row"] for event in events if "put" in event]
+            known = {r["receipt"]["evidenceId"] for r in rows if r["receipt"] is not None}
+            bundle.write_text(json.dumps(dict(rec["campaign"], stamp=max((r["appendedAt"] for r in rows), default=0),
+                                               ledger=events, authorized=events,
+                                               verifiedReceipts=[r for r in receipts if r["evidenceId"] in known])))
+            return json.loads(subprocess.check_output([ROOT/".lake/build/bin/historyaudit",bundle],text=True))
+
+        if cut is not None:
+            stop = int(cut) if cut.isdecimal() else rec["cuts"].get(cut)
+            report = at_prefix(stop)
+            print(json.dumps(dict(recordedPrefix=stop, **report), indent=2))
+            return
+        for name, stop in rec["cuts"].items():
+            out = at_prefix(stop)
             assert not out["newEntries"]
             outcomes[name] = (out["compatibleWorlds"], [q["diagnosis"] for q in out["queries"]])
         # With zero receipts, a model invariant still yields an empty-premise
@@ -169,9 +182,12 @@ if __name__ == "__main__":
     args = parser.add_mutually_exclusive_group()
     args.add_argument("--save", type=Path)
     args.add_argument("--replay", type=Path)
+    parser.add_argument("--cut", help="print the colored report at a named cut or an event count")
     options = parser.parse_args()
+    if options.cut is not None and not options.replay:
+        parser.error("--cut requires --replay")
     if options.replay:
-        replay(options.replay)
+        replay(options.replay, options.cut)
     else:
         with tempfile.TemporaryDirectory() as folder:
             print(json.dumps(run_demo(Path(folder), options.save),indent=2))
