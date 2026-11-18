@@ -37,6 +37,7 @@ lean_lib SoftwareOptimality where
     `AdmissionTests,
     `ComparisonContract,
     `ComparisonTests,
+    `ThreeValuedGate,
     `FrontierComposition,
     `ScopedFrontier,
     `GeneralPareto,
