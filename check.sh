@@ -48,3 +48,4 @@ run_lean -o AdmissionTests.olean AdmissionTests.lean
 run_lean -o ComparisonContract.olean ComparisonContract.lean
 run_lean -o ComparisonTests.olean ComparisonTests.lean
 run_lean -o ScopedFrontier.olean ScopedFrontier.lean
+run_lean -o GeneralPareto.olean GeneralPareto.lean

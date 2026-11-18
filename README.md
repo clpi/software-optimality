@@ -195,3 +195,11 @@ tie-preserving Pareto selection, interval and paired-scenario dominance, and
 forward simulation of finite traces. The pruning checker accepts exactly
 frontier-preserving subsets of a finite catalogue under a strict partial
 order. See [the proof map, controls, measurements and limits](composition/README.md).
+
+### `GeneralPareto.lean`: the general Pareto obligations, discharged
+
+The general Pareto definition (named finite sets of assignments, workloads, venues; each execution carries a cost vector; a named aggregation per axis reduces a workload's executions under one assignment to one value; interval bounds are derived per assignment and axis; dominance is decided on bounds with three outcomes) carried two open proof obligations. This module discharges both, for integer costs.
+
+Obligation 1 — bounds-derivation soundness: the derived interval for an assignment and axis is the minimum and maximum of the per-workload aggregated values; `bounds_sound` proves every collected value lies inside it, and `bounds_attained` proves each end of a nonempty interval is the aggregated value of a named workload (the discharge condition). `execution_le_bhi` extends the upper side to individual executions under the worst-case aggregation. Obligation 2 — aggregation well-definedness: `aggMax_perm`, `aggMin_perm`, and `aggSum_perm` prove the maximum, minimum, and sum aggregations are independent of the execution list's order, and the maximum/minimum characterizations prove each is a total function into `Option`, returning `none` exactly on the empty list — the unwitnessed cell.
+
+The three-outcome decision on bounds is also proved: separation of the candidate's interval below the incumbent's on every axis, strict on one, implies every realized candidate vector strictly Pareto-dominates every realized incumbent vector (`separatedN_sound`, `separatedN_strictPareto`); overlap on any axis proves neither direction separated (`not_separatedN_of_overlap`) — the undecided case. `frontier_complete` proves every member of a named candidate list is in its strict-Pareto frontier or is strictly dominated by a frontier member. Not claimed: anything outside the named finite lists, anything about physical measurements, or a verdict for a non-separated pair beyond the proved overlap case.
