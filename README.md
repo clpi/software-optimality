@@ -185,3 +185,13 @@ The same adapter also composes with the existing `AdmissionHypergraph`: equal ad
 Synthetic controls cover declared ms/ns mismatch, missing objective/non-objective receipts, omitted hard requirements, raised caps, changed venue/harness/lineage/intent/policy, foreign/mixed subjects, duplicate receipts, failed capability evidence, maximizing direction, empty/duplicate axes, ties, reorder, and a runtime/space tradeoff. Full contract contents and caps are checked, rather than trusting a candidate's unchanged policy ID. Unit and preservation IDs still require authenticated schema/content binding and validated semantics. The legacy `Receipt.elapsed` field supplies nonnegative measured quantities under an explicit metric schema; elapsed observations do not become memory/capability observations by relabeling them. See [the exact adapter scope](docs/SCOPED-FRONTIER.md).
 
 The existing `FiniteFrontier.lean` owner also now checks retained-frontier certificates: every retained member is nondominated in the full named catalogue, and every omitted member has a retained strict dominator. `certified_frontier` proves exact frontier membership; `certified_coverage` supplies a no-worse retained representative for every catalogue point. `ScopedFrontier.certify` supplies the qualified consumer: it checks against the same admitted catalogue and measured cost contract, proves exact membership agreement with scoped selection, and exposes each retained point's hard-obligation witnesses. Unqualified retained points and omitted tied identities refuse. General contextual composition remains owned by `ContextualDominance.lean`, with feasibility preservation and objective monotonicity stated separately.
+
+### Cross-repository qualification and compositional Pareto proofs
+
+Run `./composition/check.sh` to check the public qualification proof and this
+repository together in Lean 4.19.0. The joint build connects admitted ledger
+events, a bounded materialized closure scan, scoped release eligibility,
+tie-preserving Pareto selection, interval and paired-scenario dominance, and
+forward simulation of finite traces. The pruning checker accepts exactly
+frontier-preserving subsets of a finite catalogue under a strict partial
+order. See [the proof map, controls, measurements and limits](composition/README.md).
