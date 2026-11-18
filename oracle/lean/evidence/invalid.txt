@@ -1,0 +1,6 @@
+fixtures/Invalid.lean:1:22: error: type mismatch
+  True.intro
+has type
+  True : Prop
+but is expected to have type
+  False : Prop

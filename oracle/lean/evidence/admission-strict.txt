@@ -1,0 +1,2 @@
+fixtures/Admission.lean:1:8: error: declaration uses 'sorry'
+'intentionallyAdmitted' depends on axioms: [sorryAx]
