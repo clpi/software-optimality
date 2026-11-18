@@ -84,6 +84,12 @@ The first Python command rechecks a saved real capture at three ledger prefixes.
 
 Two concurrent audits publish respectively two and zero new proof rows, in either order. The test also checks malformed archive digests, byte-exact export of differently formatted captures, idempotent retry and refusal when the enumeration cap is reduced to 18. The retained-index probes and their costs are modeled. Only the child executions and capture operations were exercised physically.
 
+To inspect the actual colored hyperedges and their supporting rows at the archived cut, run the following command. The cut can also be `before`, `withdrawn`, or a numeric event count. For an intermediate prefix, `newEntries` are proposed publications computed from that prefix.
+
+```sh
+python3 examples/history_roundtrip.py --replay examples/history-recording.json --cut after
+```
+
 To collect a new receipt, arm a hook, then pass its returned numeric plan ID to the recorder. For example, on a fresh database the first ID is zero.
 
 ```sh
