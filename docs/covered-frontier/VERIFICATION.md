@@ -31,7 +31,15 @@ theorems' logical dependencies; no custom assumptions or admitted proof escapes
 are accepted by the runner. The usual Lean `propext`, `Quot.sound`, and, for the
 existing classical incremental semantics, `Classical.choice` remain explicit.
 `JOINT-RECEIPT.json` binds the successful cross-repository run and the existing
-composition runner's content-pinned quantifiable dependency. That runner retains
+composition runner's content-pinned quantifiable dependency at commit
+`61de9b7364e0a8c5ddc2ab8d0a633d2920aa38cf`. Its checked dependency is precisely the
+root `SoftwareIsQuantifiable.lean` and the `Coloring`, `Coverage`, `Finiteness`,
+`Fold`, and `Pareto` files named in `composition/quantifiable.sha256`. This run does
+not cover later quantifiable commits or their new `Interface` and `Instance`
+modules. On the optimality side, the full root and joint gates retain the
+`Composition`, `OptimalityInterface`, and `CompositionCheck` owners at the pinned
+base above, as well as `FrontierComposition` and `GeneralPareto`.
+The joint runner retains
 its pre-existing allowance for unused-variable diagnostics in upstream sources;
 the owned optimality sources still compile with warnings as errors.
 

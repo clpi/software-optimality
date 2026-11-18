@@ -1,5 +1,8 @@
 {
   "base_commit": "97a5d7f3e68de47cd9eb26221b83e713121673fd",
+  "quantifiable_repository": "clpi/software-is-quantifiable",
+  "quantifiable_commit": "61de9b7364e0a8c5ddc2ab8d0a633d2920aa38cf",
+  "quantifiable_scope": "The six files in the content manifest below, at the joint runner's historical dependency pin. This run does not cover later quantifiable commits or their Interface/Instance modules.",
   "command": "LEAN=/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean QUANTIFIABLE_SRC=/workspace/scratch/090045ce7c0d/software-is-quantifiable sh composition/check.sh",
   "exit_code": 0,
   "log_sha256": "20e52614bbe3b0d395bf4dd90a29006f9f52b669cd85b93fbf1481987d6248dc",
