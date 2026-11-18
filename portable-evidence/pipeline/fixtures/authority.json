@@ -1,0 +1,65 @@
+{
+  "schema": "portable-authority/v1",
+  "context": {
+    "artifact": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "lineage": "release-A",
+    "environment": "linux-fixed",
+    "harness": "runner-v1",
+    "workload": "checkout-v1",
+    "venue": "cpu-1"
+  },
+  "tests": {
+    "checkout": {
+      "pass": "checkout_pass",
+      "fail": "checkout_fail"
+    }
+  },
+  "benchmarks": {
+    "checkout_latency": "measurement:checkout_latency"
+  },
+  "model": {
+    "atoms": [
+      "checkout_pass",
+      "checkout_fail",
+      "measurement:checkout_latency",
+      "observed_suite"
+    ],
+    "edges": [
+      {
+        "id": "rule:observed_suite",
+        "premises": [
+          "checkout_pass",
+          "measurement:checkout_latency"
+        ],
+        "conclusion": "observed_suite"
+      }
+    ],
+    "events": [],
+    "tasks": [
+      {
+        "id": "rerun",
+        "kind": "test",
+        "covers": [
+          "checkout_pass"
+        ],
+        "duration": {
+          "cpu": 1
+        }
+      }
+    ],
+    "horizon": 1,
+    "capabilities": [
+      {
+        "id": "checkout-case",
+        "positive": "checkout_pass",
+        "negative": "checkout_fail"
+      }
+    ],
+    "intents": [
+      {
+        "id": "receipt-completeness",
+        "positive": "observed_suite"
+      }
+    ]
+  }
+}
