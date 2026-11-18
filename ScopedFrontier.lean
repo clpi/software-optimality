@@ -2,6 +2,7 @@ import ScopedSelection
 import HypergraphIncremental
 import AdmissionHypergraph
 import ComparisonContract
+import FrontierComposition
 import Std
 
 /- One comparison authority: the contract owns every obligation and its cap.
@@ -436,6 +437,324 @@ theorem merge_selection_order_independent {A : Type} (decoder : AdmissionHypergr
   apply admitted_provenance_selection_same
   intro e
   simp [Admission.admitted, or_comm]
+
+-- A catalogue can cover a larger declared generator without enumerating it:
+-- every omitted qualified identity needs a STRICT qualified catalogue
+-- dominator. The witness lands in the catalogue, not an ungrounded chain of
+-- further omitted points. Equal-cost identities cannot be discarded this way.
+def covers (k : Contract) (generator : Subject → Prop)
+    (catalogue : List Subject) (input : Subject → Input) : Prop :=
+  (∀ x, x ∈ catalogue → generator x) ∧
+  (∀ x, generator x → admitted k x (input x) = true →
+    x ∈ catalogue ∨ ∃ y, y ∈ catalogue ∧ admitted k y (input y) = true ∧
+      dominates k input y x = true)
+
+def generatorFrontier (k : Contract) (generator : Subject → Prop)
+    (input : Subject → Input) (x : Subject) : Prop :=
+  generator x ∧ admitted k x (input x) = true ∧
+    ∀ y, generator y → admitted k y (input y) = true → dominates k input y x = false
+
+theorem dominates_trans (k : Contract) (input : Subject → Input) (z y x : Subject)
+    (hzy : dominates k input z y = true) (hyx : dominates k input y x = true) :
+    dominates k input z x = true :=
+  FrontierComposition.pareto_transitive (List.range k.axes.length)
+    (fun t => cost k t (input t)) hzy hyx
+
+-- The generator need not be finite. Coverage is a theorem premise, never a
+-- conclusion inferred from search exhaustion or missing measurements.
+theorem certified_generator_exact (k : Contract) (generator : Subject → Prop)
+    (catalogue retained : List Subject) (input : Subject → Input)
+    (coverage : covers k generator catalogue input)
+    (valid : certify k catalogue retained input = true) (x : Subject) :
+    x ∈ retained ↔ generatorFrontier k generator input x := by
+  constructor
+  · intro hx
+    have selected := (selected_exact k catalogue input x).mp
+      ((certified_select_exact k catalogue retained input valid x).mp hx)
+    refine ⟨coverage.1 x selected.1.1, selected.1.2, ?_⟩
+    intro y hy qualified
+    rcases coverage.2 y hy qualified with member | ⟨z, hz, qualifiedZ, beats⟩
+    · exact selected.2 y member qualified
+    · cases h : dominates k input y x
+      · rfl
+      · have zx := dominates_trans k input z y x beats h
+        have no := selected.2 z hz qualifiedZ
+        rw [no] at zx
+        contradiction
+  · rintro ⟨hx, qualified, no⟩
+    have member : x ∈ catalogue := by
+      rcases coverage.2 x hx qualified with member | ⟨y, hy, qualifiedY, beats⟩
+      · exact member
+      · have excluded := no y (coverage.1 y hy) qualifiedY
+        rw [excluded] at beats
+        contradiction
+    apply (certified_select_exact k catalogue retained input valid x).mpr
+    exact (selected_exact k catalogue input x).mpr
+      ⟨⟨member, qualified⟩, fun y hy hq => no y (coverage.1 y hy) hq⟩
+
+-- Finite coverage is executable. This checks the declared domain as well as
+-- the retained catalogue; checking only the latter cannot establish coverage.
+def checkCoverage (k : Contract) (domain catalogue : List Subject)
+    (input : Subject → Input) : Bool :=
+  catalogue.all (fun x => domain.contains x) &&
+  FrontierComposition.checkCover (dominates k input)
+    (domain.filter (fun x => admitted k x (input x)))
+    (catalogue.filter (fun x => admitted k x (input x)))
+
+theorem checkCoverage_exact (k : Contract) (domain catalogue : List Subject)
+    (input : Subject → Input) :
+    checkCoverage k domain catalogue input = true ↔
+      covers k (fun x => x ∈ domain) catalogue input := by
+  simp only [checkCoverage, Bool.and_eq_true, List.all_eq_true, List.contains_iff,
+    FrontierComposition.checkCover_exact]
+  constructor
+  · rintro ⟨sound, covered⟩
+    refine ⟨sound, ?_⟩
+    intro x hx qualified
+    rcases covered.replaces x (List.mem_filter.mpr ⟨hx, qualified⟩) with kept | ⟨y, hy, beats⟩
+    · exact Or.inl (List.mem_filter.mp kept).1
+    · have member := List.mem_filter.mp hy
+      exact Or.inr ⟨y, member.1, member.2, beats⟩
+  · rintro ⟨sound, covered⟩
+    refine ⟨sound, ⟨?_, ?_⟩⟩
+    · intro x hx
+      have member := List.mem_filter.mp hx
+      exact List.mem_filter.mpr ⟨sound x member.1, member.2⟩
+    · intro x hx
+      have member := List.mem_filter.mp hx
+      rcases covered x member.1 member.2 with kept | ⟨y, hy, qualified, beats⟩
+      · exact Or.inl (List.mem_filter.mpr ⟨kept, member.2⟩)
+      · exact Or.inr ⟨y, List.mem_filter.mpr ⟨hy, qualified⟩, beats⟩
+
+def certifyCovered (k : Contract) (domain catalogue retained : List Subject)
+    (input : Subject → Input) : Bool :=
+  contractOK k && checkCoverage k domain catalogue input &&
+    certify k catalogue retained input
+
+theorem certifyCovered_exact (k : Contract) (domain catalogue retained : List Subject)
+    (input : Subject → Input) :
+    certifyCovered k domain catalogue retained input = true ↔
+      contractOK k = true ∧ covers k (fun x => x ∈ domain) catalogue input ∧
+        certify k catalogue retained input = true := by
+  simp only [certifyCovered, Bool.and_eq_true, checkCoverage_exact, and_assoc]
+
+theorem certified_covered_frontier (k : Contract)
+    (domain catalogue retained : List Subject) (input : Subject → Input)
+    (valid : certifyCovered k domain catalogue retained input = true) (x : Subject) :
+    x ∈ retained ↔ generatorFrontier k (fun x => x ∈ domain) input x := by
+  have checked := (certifyCovered_exact k domain catalogue retained input).mp valid
+  exact certified_generator_exact k _ catalogue retained input checked.2.1 checked.2.2 x
+
+-- A complete frontier can be empty and can contain incomparable tradeoffs.
+-- Replacing a named incumbent additionally needs membership, qualification,
+-- no regression on every declared axis, and at least one strict improvement.
+def certifyReplacement (k : Contract) (domain catalogue retained : List Subject)
+    (input : Subject → Input) (incumbent candidate : Subject) : Bool :=
+  certifyCovered k domain catalogue retained input && decide (incumbent ∈ domain) &&
+    decide (candidate ∈ retained) && noRegression k incumbent candidate input &&
+    dominates k input candidate incumbent
+
+theorem certifyReplacement_sound (k : Contract) (domain catalogue retained : List Subject)
+    (input : Subject → Input) (incumbent candidate : Subject)
+    (valid : certifyReplacement k domain catalogue retained input incumbent candidate = true) :
+    incumbent ∈ domain ∧ admitted k incumbent (input incumbent) = true ∧
+      generatorFrontier k (fun x => x ∈ domain) input candidate ∧
+      (∀ i, i ∈ List.range k.axes.length →
+        cost k candidate (input candidate) i ≤ cost k incumbent (input incumbent) i) ∧
+      (∃ i, i ∈ List.range k.axes.length ∧
+        cost k candidate (input candidate) i < cost k incumbent (input incumbent) i) := by
+  simp only [certifyReplacement, Bool.and_eq_true, decide_eq_true_eq, and_assoc] at valid
+  have replacement := (noRegression_exact k incumbent candidate input).mp valid.2.2.2.1
+  have improvement := (FiniteFrontier.pareto_exact (List.range k.axes.length)
+    (fun t => cost k t (input t)) candidate incumbent).mp valid.2.2.2.2
+  exact ⟨valid.2.1, replacement.1,
+    (certified_covered_frontier k domain catalogue retained input valid.1 candidate).mp valid.2.2.1,
+    replacement.2.2, improvement.2⟩
+
+-- A feasible-generator claim is stronger than an admitted-generator claim.
+-- Feasibility is independently specified: missing receipts do not establish
+-- infeasibility. Soundness AND completeness of qualification are required.
+def feasibleFrontier (k : Contract) (generator feasible : Subject → Prop)
+    (input : Subject → Input) (x : Subject) : Prop :=
+  generator x ∧ feasible x ∧
+    ∀ y, generator y → feasible y → dominates k input y x = false
+
+theorem certified_feasible_generator_exact (k : Contract)
+    (generator feasible : Subject → Prop) (catalogue retained : List Subject)
+    (input : Subject → Input)
+    (qualification : ∀ x, generator x → (admitted k x (input x) = true ↔ feasible x))
+    (coverage : covers k generator catalogue input)
+    (valid : certify k catalogue retained input = true) (x : Subject) :
+    x ∈ retained ↔ feasibleFrontier k generator feasible input x := by
+  have exact := certified_generator_exact k generator catalogue retained input coverage valid x
+  constructor
+  · intro hx
+    obtain ⟨member, qualified, noneBetter⟩ := exact.mp hx
+    exact ⟨member, (qualification x member).mp qualified,
+      fun y hy feasibleY => noneBetter y hy ((qualification y hy).mpr feasibleY)⟩
+  · rintro ⟨member, feasibleX, noneBetter⟩
+    exact exact.mpr ⟨member, (qualification x member).mpr feasibleX,
+      fun y hy qualified => noneBetter y hy ((qualification y hy).mp qualified)⟩
+
+def checkQualification (k : Contract) (domain : List Subject)
+    (feasible : Subject → Bool) (input : Subject → Input) : Bool :=
+  domain.all (fun x => decide (admitted k x (input x) = feasible x))
+
+theorem checkQualification_exact (k : Contract) (domain : List Subject)
+    (feasible : Subject → Bool) (input : Subject → Input) :
+    checkQualification k domain feasible input = true ↔
+      ∀ x, x ∈ domain → (admitted k x (input x) = true ↔ feasible x = true) := by
+  simp only [checkQualification, List.all_eq_true, decide_eq_true_eq]
+  constructor
+  · intro same x hx
+    rw [same x hx]
+  · intro same x hx
+    have agrees := same x hx
+    cases qualified : admitted k x (input x) <;> cases possible : feasible x <;> simp_all
+
+def certifyFeasible (k : Contract) (domain catalogue retained : List Subject)
+    (feasible : Subject → Bool) (input : Subject → Input) : Bool :=
+  certifyCovered k domain catalogue retained input &&
+    checkQualification k domain feasible input
+
+theorem certified_feasible_frontier (k : Contract)
+    (domain catalogue retained : List Subject) (feasible : Subject → Bool)
+    (input : Subject → Input)
+    (valid : certifyFeasible k domain catalogue retained feasible input = true) (x : Subject) :
+    x ∈ retained ↔ feasibleFrontier k (fun x => x ∈ domain) (fun x => feasible x = true) input x := by
+  have checked : certifyCovered k domain catalogue retained input = true ∧
+      checkQualification k domain feasible input = true := by
+    simpa only [certifyFeasible, Bool.and_eq_true] using valid
+  have covered := (certifyCovered_exact k domain catalogue retained input).mp checked.1
+  exact certified_feasible_generator_exact k _ _ catalogue retained input
+    ((checkQualification_exact k domain feasible input).mp checked.2) covered.2.1 covered.2.2 x
+
+def certifyFeasibleReplacement (k : Contract) (domain catalogue retained : List Subject)
+    (feasible : Subject → Bool) (input : Subject → Input) (incumbent candidate : Subject) : Bool :=
+  certifyReplacement k domain catalogue retained input incumbent candidate &&
+    checkQualification k domain feasible input
+
+theorem certifyFeasibleReplacement_sound (k : Contract)
+    (domain catalogue retained : List Subject) (feasible : Subject → Bool)
+    (input : Subject → Input) (incumbent candidate : Subject)
+    (valid : certifyFeasibleReplacement k domain catalogue retained feasible input incumbent candidate = true) :
+    incumbent ∈ domain ∧ feasible incumbent = true ∧
+      feasibleFrontier k (fun x => x ∈ domain) (fun x => feasible x = true) input candidate ∧
+      (∀ i, i ∈ List.range k.axes.length →
+        cost k candidate (input candidate) i ≤ cost k incumbent (input incumbent) i) ∧
+      (∃ i, i ∈ List.range k.axes.length ∧
+        cost k candidate (input candidate) i < cost k incumbent (input incumbent) i) := by
+  have checked : certifyReplacement k domain catalogue retained input incumbent candidate = true ∧
+      checkQualification k domain feasible input = true := by
+    simpa only [certifyFeasibleReplacement, Bool.and_eq_true] using valid
+  have qualified := (checkQualification_exact k domain feasible input).mp checked.2
+  have replacement := certifyReplacement_sound k domain catalogue retained input incumbent candidate checked.1
+  refine ⟨replacement.1, (qualified incumbent replacement.1).mp replacement.2.1,
+    ?_, replacement.2.2.2⟩
+  have selected := replacement.2.2.1
+  exact ⟨selected.1, (qualified candidate selected.1).mp selected.2.1,
+    fun y hy possible => selected.2.2 y hy ((qualified y hy).mpr possible)⟩
+
+theorem incremental_generator_exact {A : Type}
+    (old new : HypergraphIncremental.Hypergraph A) (k : Contract)
+    (generator : Subject → Prop) (catalogue retained : List Subject)
+    (project : (A → Prop) → Subject → Input)
+    (coverage : covers k generator catalogue (project (HypergraphIncremental.incremental old new)))
+    (valid : certify k catalogue retained (project (HypergraphIncremental.incremental old new)) = true)
+    (x : Subject) :
+    x ∈ retained ↔
+      generatorFrontier k generator (project (HypergraphIncremental.derives new)) x := by
+  have same : HypergraphIncremental.incremental old new = HypergraphIncremental.derives new := by
+    funext a
+    exact propext (HypergraphIncremental.incremental_exact old new a)
+  rw [← same]
+  exact certified_generator_exact k generator catalogue retained _ coverage valid x
+
+theorem incremental_feasible_generator_exact {A : Type}
+    (old new : HypergraphIncremental.Hypergraph A) (k : Contract)
+    (generator feasible : Subject → Prop) (catalogue retained : List Subject)
+    (project : (A → Prop) → Subject → Input)
+    (qualification : ∀ x, generator x →
+      (admitted k x (project (HypergraphIncremental.derives new) x) = true ↔ feasible x))
+    (coverage : covers k generator catalogue (project (HypergraphIncremental.incremental old new)))
+    (valid : certify k catalogue retained (project (HypergraphIncremental.incremental old new)) = true)
+    (x : Subject) :
+    x ∈ retained ↔ feasibleFrontier k generator feasible
+      (project (HypergraphIncremental.derives new)) x := by
+  have same : HypergraphIncremental.incremental old new = HypergraphIncremental.derives new := by
+    funext a
+    exact propext (HypergraphIncremental.incremental_exact old new a)
+  rw [same] at coverage valid
+  exact certified_feasible_generator_exact k generator feasible catalogue retained _
+    qualification coverage valid x
+
+-- Executable adapter to the existing bounded full-premise closure and scoped
+-- certificate. Projection consumes exactly the computed membership predicate.
+-- This is a reference checker, not a new worklist or a runtime speed claim.
+def certifyClosed {A : Type} [DecidableEq A] (U B : List A)
+    (rules : List (List A × A)) (k : Contract)
+    (domain catalogue retained : List Subject)
+    (project : (A → Bool) → Subject → Input) : Option Bool :=
+  (ExecutableClosure.checkedClose U B rules).map (fun out =>
+    certifyCovered k domain catalogue retained (project (fun a => decide (a ∈ out))))
+
+theorem certifyClosed_exact {A : Type} [DecidableEq A] (old : HypergraphIncremental.Hypergraph A)
+    (U B : List A) (rules : List (List A × A)) (k : Contract)
+    (domain catalogue retained : List Subject) (project : (A → Bool) → Subject → Input)
+    (valid : certifyClosed U B rules k domain catalogue retained project = some true) :
+    ∃ out, ExecutableClosure.checkedClose U B rules = some out ∧ contractOK k = true ∧
+      (∀ a, decide (a ∈ out) = true ↔ HypergraphIncremental.incremental old
+        ⟨fun a => a ∈ B, fun ps a => (ps,a) ∈ rules⟩ a) ∧
+      (∀ x, x ∈ retained ↔ generatorFrontier k (fun x => x ∈ domain)
+        (project (fun a => decide (a ∈ out))) x) := by
+  cases closed : ExecutableClosure.checkedClose U B rules with
+  | none => simp [certifyClosed, closed] at valid
+  | some out =>
+    have certified : certifyCovered k domain catalogue retained
+        (project (fun a => decide (a ∈ out))) = true := by
+      simpa only [certifyClosed, closed, Option.map_some', Option.some.injEq] using valid
+    have checked := (certifyCovered_exact k domain catalogue retained _).mp certified
+    have derived := ExecutableClosure.checkedClose_admitted U B rules out closed
+    refine ⟨out, rfl, checked.1, ?_, certified_covered_frontier k _ _ _ _ certified⟩
+    intro a
+    rw [decide_eq_true_eq]
+    exact (derived.2.2 a).trans (HypergraphIncremental.incremental_exact old
+      ⟨fun a => a ∈ B, fun ps a => (ps,a) ∈ rules⟩ a).symm
+
+theorem certifyClosed_obligation_witness {A : Type} [DecidableEq A]
+    (U B : List A) (rules : List (List A × A)) (k : Contract)
+    (domain catalogue retained : List Subject) (project : (A → Bool) → Subject → Input)
+    (valid : certifyClosed U B rules k domain catalogue retained project = some true)
+    (x : Subject) (hx : x ∈ retained) (o : Obligation) (ho : o ∈ k.required) :
+    ∃ out r, ExecutableClosure.checkedClose U B rules = some out ∧
+      r ∈ (project (fun a => decide (a ∈ out)) x).receipts ∧
+      r.scope = expectedScope k x o.metric ∧ r.round = o.round ∧ r.observedPass = true ∧
+      ∃ v, r.elapsed = some v ∧ v ≤ o.limit := by
+  cases closed : ExecutableClosure.checkedClose U B rules with
+  | none => simp [certifyClosed, closed] at valid
+  | some out =>
+    have certified : certifyCovered k domain catalogue retained
+        (project (fun a => decide (a ∈ out))) = true := by
+      simpa only [certifyClosed, closed, Option.map_some', Option.some.injEq] using valid
+    have checked := (certifyCovered_exact k domain catalogue retained _).mp certified
+    obtain ⟨r, hr, hs, hd, hp, time⟩ := certified_obligation_witness
+      k catalogue retained _ checked.2.2 x hx o ho
+    exact ⟨out, r, rfl, hr, hs, hd, hp, time⟩
+
+#print axioms dominates_trans
+#print axioms certified_generator_exact
+#print axioms checkCoverage_exact
+#print axioms certifyCovered_exact
+#print axioms certified_covered_frontier
+#print axioms certifyReplacement_sound
+#print axioms certified_feasible_generator_exact
+#print axioms checkQualification_exact
+#print axioms certified_feasible_frontier
+#print axioms certifyFeasibleReplacement_sound
+#print axioms incremental_generator_exact
+#print axioms incremental_feasible_generator_exact
+#print axioms certifyClosed_exact
+#print axioms certifyClosed_obligation_witness
 
 -- Synthetic controls; no physical measurement or universe-completeness claims.
 def fixtureContract : Contract :=

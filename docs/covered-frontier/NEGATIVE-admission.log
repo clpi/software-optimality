@@ -1,0 +1,2 @@
+./FiniteQualification.lean:39:example : False := by sorry
+Rejected prohibited proof escape hatch

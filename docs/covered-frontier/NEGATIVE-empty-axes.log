@@ -1,0 +1,9 @@
+/tmp/covered-frontier-unifdaj9/FalseClaim.lean:3:89: error: tactic 'decide' proved that the proposition
+  certifyCovered
+      (let __src := fixtureContract;
+      { scope := __src.scope, intent := __src.intent, policy := __src.policy, preservation := __src.preservation,
+        venue := __src.venue, harness := __src.harness, metrics := __src.metrics, required := __src.required,
+        axes := [] })
+      [] [] [] fixture =
+    true
+is false

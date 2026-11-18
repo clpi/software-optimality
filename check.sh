@@ -49,3 +49,6 @@ run_lean -o GeneralPareto.olean GeneralPareto.lean
 run_lean -o Composition.olean Composition.lean
 run_lean -o OptimalityInterface.olean OptimalityInterface.lean
 run_lean CompositionCheck.lean
+run_lean docs/covered-frontier/Controls.lean
+run_lean docs/covered-frontier/Campaign.lean
+run_lean docs/covered-frontier/ArchiveImport.lean

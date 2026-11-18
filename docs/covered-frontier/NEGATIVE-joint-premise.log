@@ -1,0 +1,5 @@
+/tmp/covered-frontier-unifdaj9/FalseClaim.lean:4:163: error: tactic 'decide' proved that the proposition
+  certifyClosed [0, 1, 2] [0] [([0, 1], 2)] fixtureContract (List.map fixtureSubject [0, 2])
+      (List.map fixtureSubject [0, 2]) [fixtureSubject 2] project =
+    some true
+is false
