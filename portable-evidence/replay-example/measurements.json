@@ -1,0 +1,124 @@
+{
+  "cases": {
+    "mixed_1000": {
+      "deliveries": 1000,
+      "distinct_byte_documents": 10,
+      "logical_import_calls": {
+        "baseline": 1000,
+        "deduplicated": 10
+      },
+      "median_ns": {
+        "baseline": 96966558,
+        "deduplicated": 1399261
+      },
+      "median_ratio_baseline_over_deduplicated": 69.29840680187613,
+      "projection_sha256": "6513ad2bed9962052fc9c4ed2164cfe160ac8fa794974449114862fa99dfd7f1",
+      "samples_ns": {
+        "baseline": [
+          129770389,
+          91391819,
+          99638345,
+          85916301,
+          106340062,
+          90419505,
+          93515746,
+          96966558,
+          113555510
+        ],
+        "deduplicated": [
+          1243612,
+          1312319,
+          2599981,
+          2585580,
+          3152222,
+          1399261,
+          1190015,
+          1119344,
+          1442232
+        ]
+      }
+    },
+    "replayed_1000": {
+      "deliveries": 1000,
+      "distinct_byte_documents": 1,
+      "logical_import_calls": {
+        "baseline": 1000,
+        "deduplicated": 1
+      },
+      "median_ns": {
+        "baseline": 92102694,
+        "deduplicated": 309315
+      },
+      "median_ratio_baseline_over_deduplicated": 297.76342563406234,
+      "projection_sha256": "3bda79ec347ff583cb8c99c90fdb566bb3dc16cdfb6904edbc40d943f4caf8a5",
+      "samples_ns": {
+        "baseline": [
+          89307277,
+          88647953,
+          92765306,
+          127152892,
+          92102694,
+          89507746,
+          110588994,
+          88014828,
+          100361315
+        ],
+        "deduplicated": [
+          322296,
+          375360,
+          261795,
+          468705,
+          540268,
+          270299,
+          299429,
+          309315,
+          264024
+        ]
+      }
+    },
+    "unique_100": {
+      "deliveries": 100,
+      "distinct_byte_documents": 100,
+      "logical_import_calls": {
+        "baseline": 100,
+        "deduplicated": 100
+      },
+      "median_ns": {
+        "baseline": 10718872,
+        "deduplicated": 9967687
+      },
+      "median_ratio_baseline_over_deduplicated": 1.0753620172864577,
+      "projection_sha256": "7412e1ca2f540e8e5ff743373e77129c30b86ada29eeba6bfbc2ba8b1a9c8d9a",
+      "samples_ns": {
+        "baseline": [
+          9874283,
+          9003444,
+          9915301,
+          11832719,
+          9282152,
+          21191025,
+          15474553,
+          10718872,
+          12838104
+        ],
+        "deduplicated": [
+          9911244,
+          13901917,
+          9563275,
+          9673411,
+          10520060,
+          15872031,
+          9889695,
+          9967687,
+          11140727
+        ]
+      }
+    }
+  },
+  "clock": "perf_counter_ns",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "repetitions": 9,
+  "schema": "replay-measurements/v1",
+  "timed_region": "complete build, excluding input construction and equality check"
+}

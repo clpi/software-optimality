@@ -1,0 +1,19 @@
+test_all_short_delivery_words (test_replay.ReplayTests.test_all_short_delivery_words) ... ok
+test_bad_subject_cache_control (test_replay.ReplayTests.test_bad_subject_cache_control) ... ok
+test_conflict_retained (test_replay.ReplayTests.test_conflict_retained) ... ok
+test_invalid_not_hidden (test_replay.ReplayTests.test_invalid_not_hidden) ... ok
+test_no_cross_authority_cache (test_replay.ReplayTests.test_no_cross_authority_cache) ... ok
+test_reject_mutable_input (test_replay.ReplayTests.test_reject_mutable_input) ... ok
+test_retains_byte_distinct_provenance (test_replay.ReplayTests.test_retains_byte_distinct_provenance) ... ok
+test_unknown_withdrawal_fails (test_replay.ReplayTests.test_unknown_withdrawal_fails) ... ok
+test_withdrawal (test_replay.ReplayTests.test_withdrawal) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.139s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.120s
+
+OK
