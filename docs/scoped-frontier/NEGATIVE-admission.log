@@ -1,0 +1,2 @@
+./Admission.lean:1:example : False := by sorry
+Rejected prohibited proof escape hatch

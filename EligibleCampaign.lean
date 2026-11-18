@@ -48,14 +48,16 @@ theorem all_observations_pass : catalogue.all observed = true := by decide
 theorem all_hard_timing_pass : catalogue.all (fun c => timedAdmission 3 (timingChecks c)) = true := by decide
 theorem all_admitted : catalogue.all gate = true := by decide
 
-theorem chosen_qualified_optimum : optimumCertificate catalogue gate [0] cost .O2 = true := by decide
+theorem chosen_nondominated_under_supplied_integer_cost :
+    admittedNondominatedUnderSuppliedIntegerCost catalogue gate [0] cost .O2 = true := by decide
 
-theorem optimum_semantics :
+theorem chosen_nondominated_under_supplied_integer_cost_semantics :
     (Candidate.O2 ∈ catalogue ∧ gate .O2 = true) ∧
     ∀ c, c ∈ catalogue → gate c = true →
       ¬ ((∀ i, i ∈ [0] → cost c i ≤ cost .O2 i) ∧
          (∃ i, i ∈ [0] ∧ cost c i < cost .O2 i)) :=
-  (optimumCertificate_exact catalogue gate [0] cost .O2).mp chosen_qualified_optimum
+  (admittedNondominatedUnderSuppliedIntegerCost_exact catalogue gate [0] cost .O2).mp
+    chosen_nondominated_under_supplied_integer_cost
 
 theorem exact_eligible_frontier :
     FiniteFrontier.frontier (admitted catalogue gate) dominates = [.O2] := by decide
@@ -63,7 +65,8 @@ theorem exact_eligible_frontier :
 -- The actually executed reverse-order alternative passes the gate, but loses ranking.
 theorem counterfactual_admitted : gate .R2 = true := by decide
 theorem chosen_beats_counterfactual : dominates .O2 .R2 = true := by decide
-theorem counterfactual_not_optimum : optimumCertificate catalogue gate [0] cost .R2 = false := by decide
+theorem counterfactual_not_nondominated_under_supplied_integer_cost :
+    admittedNondominatedUnderSuppliedIntegerCost catalogue gate [0] cost .R2 = false := by decide
 theorem every_paired_counterfactual_slower :
     ((times .O2).zip (times .R2)).all (fun p => decide (p.1 < p.2)) = true := by decide
 
@@ -80,12 +83,12 @@ theorem linear_selector_agrees :
 
 #print axioms linear_selector_agrees
 #print axioms all_admitted
-#print axioms chosen_qualified_optimum
-#print axioms optimum_semantics
+#print axioms chosen_nondominated_under_supplied_integer_cost
+#print axioms chosen_nondominated_under_supplied_integer_cost_semantics
 #print axioms exact_eligible_frontier
 #print axioms counterfactual_admitted
 #print axioms chosen_beats_counterfactual
-#print axioms counterfactual_not_optimum
+#print axioms counterfactual_not_nondominated_under_supplied_integer_cost
 #print axioms every_paired_counterfactual_slower
 #print axioms synthetic_one_nanosecond_over_cap_rejected
 end EligibleCampaign

@@ -27,6 +27,7 @@ run_lean -o Qualification.olean Qualification.lean
 run_lean FiniteQualification.lean
 run_lean -o ExecutableClosure.olean ExecutableClosure.lean
 run_lean -o FiniteFrontier.olean FiniteFrontier.lean
+run_lean -o FrontierComposition.olean FrontierComposition.lean
 run_lean -o FiniteSchedules.olean FiniteSchedules.lean
 run_lean ForeignCampaign.lean
 run_lean -o EligibleSchedules.olean EligibleSchedules.lean
@@ -34,9 +35,16 @@ run_lean -o ScopedEvidence.olean ScopedEvidence.lean
 run_lean -o LinearSelection.olean LinearSelection.lean
 run_lean -o EligibleCampaign.olean EligibleCampaign.lean
 run_lean -o ScopedSelection.olean ScopedSelection.lean
-run_lean ScopedCampaign.lean
+run_lean -o ScopedCampaign.olean ScopedCampaign.lean
 run_lean MetricRelevance.lean
-run_lean HypergraphIncremental.lean
+run_lean -o HypergraphIncremental.olean HypergraphIncremental.lean
+run_lean ContextualDominance.lean
+run_lean -o Admission.olean Admission.lean
+run_lean -o AdmissionHypergraph.olean AdmissionHypergraph.lean
+run_lean -o AdmissionTests.olean AdmissionTests.lean
+run_lean -o ComparisonContract.olean ComparisonContract.lean
+run_lean -o ComparisonTests.olean ComparisonTests.lean
+run_lean -o ScopedFrontier.olean ScopedFrontier.lean
 run_lean -o Composition.olean Composition.lean
 run_lean -o OptimalityInterface.olean OptimalityInterface.lean
 run_lean CompositionCheck.lean

@@ -20,6 +20,8 @@ The script rejects source admissions/custom axioms, treats Lean warnings as erro
 
 ## Checked theorem inventory
 
+**What a nondominance certificate means.** A result in this repository is nondominance inside a supplied finite candidate list under a supplied integer cost model: the candidate belongs to that list, and no member of the same list is componentwise no worse and strictly better on one of the supplied axes. It is not a claim that the candidate is optimal among implementations outside the list, or that the cost model is the only relevant one. `accepted_improvement_if_checkerSound` concludes behavior preservation only by applying the passed-through hypothesis `checkerSound`; the theorem does not prove that checker.
+
 ### `Qualification.lean`: general derivation semantics
 
 Exact scoped support atoms and finite-premise inference/transfer rules define rooted derivations. The kernel proves leastness, monotonicity, idempotence, exact cross-input compounding, order independence of sound exhaustive saturations, semantic soundness conditional on valid roots/rules, withdrawal containment, preservation of any surviving derivation subsystem, and impossibility of unsupported cyclic bootstrap. Each printed theorem in this module has an empty axiom dependency list.
@@ -48,15 +50,15 @@ Executable enumeration of all Boolean profiles of dimension n, proved count `2^n
 
 Executable filtering returns exactly candidates not dominated by any candidate in the named list. The provided strict Pareto comparator is checked against componentwise no-worse integer costs and at least one strictly better axis. Costs and finite axes are inputs; an axis to maximize must be normalized accordingly. The four-way support coloring distinguishes unknown, lawful, unlawful, and conflict; exact conflict/unknown characterizations are checked.
 
-The frontier theorem is relative to the supplied candidate universe and measurements. It does not assert that enumerated candidates include every possible implementation, or that the reference algorithm itself is Pareto optimal.
+The frontier theorem is nondominance inside the supplied finite candidate list and measurements, under the supplied integer costs. It does not assert that enumerated candidates include every possible implementation.
 
 ### `FiniteSchedules.lean`: test ordering and parallel schedules
 
 `enumerate` lists every assignment of one venue and one nonnegative integer start tick to each of the named jobs, up to the specified start horizon. Its completeness is proved by exact membership, not by assuming a generator sampled everything. `feasible` verifies list size, placement bounds, nonoverlap for each pair of jobs on the same capacity-one venue, and every listed dependency including endpoint bounds. `feasibleSchedules_exact` proves filtering returns exactly all schedules meeting this model. Durations are nonnegative integer inputs; the horizon bounds **start times**, not completion times. Venues are homogeneous in this model; shared/external resources need additional constraints. The pairwise ordering predicate treats zero-duration jobs literally and does not model every empty-interval convention; zero-duration dependency cycles can satisfy its non-strict precedence inequalities. Positive durations and acyclic dependencies should be enforced separately when required by a deployment.
 
-`certified_optimal` proves an accepted certificate designates a feasible schedule with no strict Pareto dominator among **all schedules of this enumerated model**, on the named axes and supplied total integer cost function. The generic `optimalCertificate` can also certify any supplied finite candidate list, but completeness of an externally generated candidate list must be established separately.
+`nondominatedInEnumeratedSchedulesUnderSuppliedIntegerCost` proves an accepted certificate designates a feasible schedule with no strict Pareto dominator among **all schedules of this enumerated model**, on the named axes and the supplied total integer cost function. `nondominatedInSuppliedFiniteList` is the same check for any supplied finite candidate list. Completeness of an externally generated candidate list must be established separately.
 
-`queueFeasible_exact` supports external test runners with one ordered queue per venue: every numbered job occurs exactly once, there are no extra job ids, and the queue count matches the venue count. It does not assert arbitrary queue ordering preserves side effects. `accepted_improvement` proves feasibility and strict Pareto improvement plus behavioral preservation **when a supplied preservation certificate checker is sound**. This makes the separate preservation obligation explicit for test rewrites/reordering; lower measured times alone never discharge it.
+`queueFeasible_exact` supports external test runners with one ordered queue per venue: every numbered job occurs exactly once, there are no extra job ids, and the queue count matches the venue count. It does not assert arbitrary queue ordering preserves side effects. `accepted_improvement_if_checkerSound` proves feasibility and strict Pareto improvement on the supplied integer costs. Its behavior-preservation conjunct is exactly the passed-through hypothesis `checkerSound` applied to the certificate's Boolean; lower measured times do not discharge that hypothesis.
 
 These theorems apply to schedules of foreign software tests without lowering their programs into an IR. They do not prove the foreign tests' semantic independence, their completeness as program specifications, or the empirical durations' future stability. Physical benchmark measurements and external queue enumeration remain separately qualified evidence.
 
@@ -72,7 +74,7 @@ The concrete calculation proofs use `by decide`, checked by Lean's kernel, not `
 
 Tests and intent choose the comparison axes and the admission policy. Eligibility is separate from cost ranking: the executable gate requires feasibility, the provided observed-behavior predicate, and all required timing checks. `timedAdmission_exact` proves the required count is positive, exactly that many receipts exist, and every elapsed value is present and no greater than its declared per-receipt limit. A missing timing, empty zero-round campaign, or even one over-limit result is rejected. Equality at the limit is accepted; no hidden tolerance is applied.
 
-`optimumCertificate_exact` proves both admission of the selected candidate and absence of an admitted dominator on the chosen cost axes. `rejected_cannot_be_optimal` prevents a faster cost score from overriding a failed gate. `dominator_refutes_certificate` supplies the constructive counterexample check: an admitted strict dominator invalidates the claimed optimum.
+`admittedNondominatedUnderSuppliedIntegerCost_exact` proves both admission of the selected candidate and absence of an admitted dominator on the supplied integer cost axes, inside the supplied finite list. `rejected_not_nondominated_under_supplied_integer_cost` prevents a lower cost from overriding a failed gate. `dominator_refutes_certificate` supplies the constructive counterexample check: an admitted strict dominator invalidates the claimed nondominance certificate.
 
 Timing inputs can represent fixed ceilings or paired observed-baseline ceilings; the choice must be named by the policy. The theorem checks the recorded cases and does not predict unseen runs. A paired-baseline experiment is not presented as a user-authored absolute SLA. The observed-behavior Boolean is a policy input; validation of its underlying receipt contents is separate from treating it as evidence of universal behavior preservation.
 
@@ -102,11 +104,11 @@ The internal one-winner helper retains the earlier candidate on equal costs and 
 
 ### `ScopedSelection.lean` and `ScopedCampaign.lean`: the integration bridge
 
-The final selection entry point **directly** uses `ScopedEvidence.qualify` as its gate; an unbound observed-pass Boolean cannot bypass scoped evidence validation. `certified_scoped_optimum` connects accepted optimum certificates to actual witnesses for every selected candidate obligation and absence of any qualified dominator. `selected_all_exact` and `selected_all_order_independent` connect the efficient all-ties scalar selection to qualification and prove membership invariant under equivalent catalogue order.
+The final selection entry point **directly** uses `ScopedEvidence.qualify` as its gate; an unbound observed-pass Boolean cannot bypass scoped evidence validation. `certified_scoped_nondominated_under_supplied_integer_cost` connects an accepted certificate to actual witnesses for every selected candidate obligation and to absence of any qualified dominator inside that supplied list under the supplied integer costs. `selected_all_exact` and `selected_all_order_independent` connect the efficient all-ties scalar selection to qualification and prove membership invariant under equivalent catalogue order.
 
 The concrete `ScopedCampaign` constructs identified, round-keyed obligations/receipts from the recorded three-plan pilot, including capacity and exact per-round job flags. Its policy ID is the imported policy digest represented as a natural number; the other scope IDs identify the pinned campaign fixture. The kernel checks all scoped admissions, O2's optimum certificate, singleton `selectAll` output, reordered-catalogue agreement, and witness extraction for every O2 requirement. Reused rounds and receipts from R2 presented against O2's configuration are concretely proved rejected.
 
-The generic selector receives per-candidate policies and a numeric cost function; it does not itself prove those candidates share the same intent/metric/comparison contract. Ingestion must restrict a comparison catalogue to compatible policies and units. The concrete pilot does so by its single documented wall-time policy.
+The generic selector receives per-candidate policies and a numeric cost function; it does not itself prove those candidates share the same intent/metric/comparison contract. Ingestion must restrict a comparison catalogue to compatible policies and units. The concrete pilot does so by its single documented wall-time policy. `ScopedFrontier.lean` below derives its policy from a complete contract and named subject, and derives costs from the resulting qualified receipts.
 
 This is a selected-evidence checker, not the raw append-only transport layer. Identical duplicate delivery must be deduplicated by receipt identity before constructing its selected evidence set. Policy digest authenticity, digest-to-content binding and current authorization/liveness still require trusted or separately checked ingestion. For example, changing a cap while reusing the same opaque policy identifier is not detected solely by identifier equality; the ingestion bridge must validate the committed policy bytes. No cryptographic correctness or live-policy lookup theorem is claimed here.
 
@@ -177,3 +179,51 @@ Downstream proofs import `OptimalityInterface` and use the `Optimality` namespac
 | Canonical key sort preserves frontier membership | `canonical_frontier_mem` | PROVEN for membership. Equal keys do not determine a unique order |
 
 `tools/check_optimality.sh` runs `CompositionCheck.lean` and `tools/check_optimality.py` on the same guards. Both must report acceptance of a no-worse release and refusal of a regressing frontier point, an out-of-universe root, and a project-first product reduction. This is not a proof of incremental release monotonicity.
+
+Third-party scan checks are not a Lean build. The Lean build is `lake build` with warnings as errors, and `./check.sh`; their logs are `LAKE-BUILD.log` and `CHECK.log`.
+
+### Contextual compositional dominance
+
+`ContextualDominance.lean` proves reflexive/transitive context-wide replacement and a sufficient local-to-contextual rule requiring **both** feasibility preservation and monotone cost composition. Representative pruning preserves all attainable componentwise bounds and exactly the Pareto objective vectors when every feasible original candidate has a feasible retained no-worse representative. It need not retain every tied candidate identity.
+
+Kernel-checked synthetic counterexamples show local speedup reversing under contention, a smaller local cost violating contextual feasibility, and strict local speedup becoming a global tie under parallel max composition. The theorem does not infer contextual obligations from hashes or isolated timings, synthesize coverage witnesses, or prove actual runtime improvements. See [scope](docs/contextual-dominance/SCOPE.md) and [checks](docs/contextual-dominance/VERIFICATION.md).
+
+### Live-support admission and scoped hypergraph bridge
+
+`Admission.lean` adds an executable derived live-support view: exact scoped keys, authorization-filtered events, duplicate-free support membership, conflicting-payload quarantine and withdrawal precedence. Replay and merge order preserve membership; a withdrawn key cannot resurrect, while a fresh support identity can be admitted. Raw events must be merged before normalization: unioning separately normalized live views can retain stale support.
+
+`AdmissionHypergraph.lean` derives both roots and transfer/inference edges from those same live supports. Equal admitted provenance implies equal qualification closure. The scoped constructor retains the full key/payload in roots; qualification cannot enter an otherwise unsupported lineage without an admitted entering edge.
+
+This supplies a checked reference normalization stage for the earlier hypergraph boundary, not a cryptographic/authorization service. Authorizer truth, immutable key binding, semantic transfer validity and decoder correctness remain obligations. Output membership, not list byte ordering, is canonical. See [scope](docs/admission-normalization/SCOPE.md) and [checks](docs/admission-normalization/VERIFICATION.md).
+
+### Typed comparison contracts and composable transport
+
+`ComparisonContract.lean` rejects numerical comparisons with mismatched metric/unit/direction/aggregation, workload, venue, epoch or ordered axes, and rejects malformed value-vector shapes. Compatible comparisons return exact strict Pareto dominance, with maximize axes normalized by integer negation. Incomparable (`none`) and compatible-but-nondominating (`some false`) remain distinct.
+
+Proof-carrying transports preserve a fixed application meaning and compose into a shared target contract. `compareVia_semantic` transfers target numerical dominance to the application better-than relation only with its explicit `metricSound` theorem. Neither interpretation nor soundness may be invented by an untrusted certificate author. Synthetic unit-conversion and tradeoff controls are included. See [scope](docs/typed-comparison/SCOPE.md) and [verification](docs/typed-comparison/VERIFICATION.md).
+
+### `ScopedFrontier.lean`: compatible contracts and evidence-derived objective coordinates
+
+The selection adapter requires one shared immutable comparison contract: instance/alternative-space scope, intent, qualification policy, preservation contract, fixed venue/harness, metric IDs/units, every required obligation/round/exact limit, and ordered objective axes with directions. Subjects are named independently by the candidate catalogue (artifact, configuration, lineage). The expected policy is derived solely from that contract and subject; submitted input carries no separately editable policy. Hard qualification metrics may be outside the objective list. `admitted_obligation_witness` proves that all contract obligations have their exact scoped successful bounded receipts through the existing `ScopedEvidence.qualify` checker.
+
+Each objective resolves one policy obligation and its exact matching qualified receipt; the measured value supplies that coordinate. Missing or ambiguous coordinates reject. There is no independent numeric vector or truncating zip. Maximized coordinates are negated once for the existing minimizing Pareto comparator. `admitted_cost_witness` proves every compared axis normalizes an actual scoped, observed-pass, bounded receipt value: the total accessor's fallback cannot stand in for missing admitted evidence.
+
+Direction normalization is shared with the existing `ComparisonContract` owner. For an explicitly supplied typed contract with aligned metric IDs, units, directions, axis count and venue, `typedObservation` builds a shape-valid numeric observation from admitted receipts; the typed cost, dominance and direct-comparison results are proved equal to their scoped counterparts. Its admission proof qualifies the scoped contract, not arbitrary additional workload/epoch/aggregation labels in the supplied typed contract. Their semantic applicability remains a separate premise; intent/scope/round are not silently substituted for them. This adapter grants no automatic transport or cross-context qualification.
+
+`selected_exact` characterizes the complete admitted catalogue frontier. A qualified strict dominator excludes a candidate; tied vectors retain every admitted candidate identity. Membership is invariant under equivalent reordered/duplicated catalogues; serialization and multiplicity remain list-dependent. `noRegression` separately checks every axis against a named qualified incumbent: a faster, larger nondominated candidate can still fail this replacement condition. The complete deterministic selection adapter has the same output when projected from incremental or full hypergraph qualification.
+
+The same adapter also composes with the existing `AdmissionHypergraph`: equal admitted provenance gives the same selected catalogue under a deterministic qualification-to-input projection. Duplicate raw event replay and branch merge order therefore preserve selection. This reuses the live-support normalization and single hypergraph authority; decoder validity and interpretation of measurement receipts remain explicit premises.
+
+Synthetic controls cover declared ms/ns mismatch, missing objective/non-objective receipts, omitted hard requirements, raised caps, changed venue/harness/lineage/intent/policy, foreign/mixed subjects, duplicate receipts, failed capability evidence, maximizing direction, empty/duplicate axes, ties, reorder, and a runtime/space tradeoff. Full contract contents and caps are checked, rather than trusting a candidate's unchanged policy ID. Unit and preservation IDs still require authenticated schema/content binding and validated semantics. The legacy `Receipt.elapsed` field supplies nonnegative measured quantities under an explicit metric schema; elapsed observations do not become memory/capability observations by relabeling them. See [the exact adapter scope](docs/SCOPED-FRONTIER.md).
+
+The existing `FiniteFrontier.lean` owner also now checks retained-frontier certificates: every retained member is nondominated in the full named catalogue, and every omitted member has a retained strict dominator. `certified_frontier` proves exact frontier membership; `certified_coverage` supplies a no-worse retained representative for every catalogue point. `ScopedFrontier.certify` supplies the qualified consumer: it checks against the same admitted catalogue and measured cost contract, proves exact membership agreement with scoped selection, and exposes each retained point's hard-obligation witnesses. Unqualified retained points and omitted tied identities refuse. General contextual composition remains owned by `ContextualDominance.lean`, with feasibility preservation and objective monotonicity stated separately.
+
+### Cross-repository qualification and compositional Pareto proofs
+
+Run `./composition/check.sh` to check the public qualification proof and this
+repository together in Lean 4.19.0. The joint build connects admitted ledger
+events, a bounded materialized closure scan, scoped release eligibility,
+tie-preserving Pareto selection, interval and paired-scenario dominance, and
+forward simulation of finite traces. The pruning checker accepts exactly
+frontier-preserving subsets of a finite catalogue under a strict partial
+order. See [the proof map, controls, measurements and limits](composition/README.md).

@@ -1,0 +1,3 @@
+/tmp/scoped-frontier-negative-788yhyhu/raised-cap.lean:3:98: error: tactic 'decide' proved that the proposition
+  admitted fixtureContract (fixtureSubject 0) (raisedCap (fixtureSubject 0)) = true
+is false

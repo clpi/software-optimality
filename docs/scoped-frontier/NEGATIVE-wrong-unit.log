@@ -1,0 +1,3 @@
+/tmp/scoped-frontier-negative-788yhyhu/wrong-unit.lean:3:101: error: tactic 'decide' proved that the proposition
+  admitted fixtureContract (fixtureSubject 4) (milliseconds (fixtureSubject 4)) = true
+is false

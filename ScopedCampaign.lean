@@ -33,7 +33,7 @@ def scalarCost (c : Candidate) := EligibleCampaign.cost c 0
 theorem all_scoped_admitted : catalogue.all (fun c =>
     qualify (scopedPolicy c) (scopedReceipts c)) = true := by decide
 
-theorem scoped_optimal_certificate :
+theorem scoped_nondominated_under_supplied_integer_cost :
     ScopedSelection.certificate catalogue scopedPolicy scopedReceipts [0]
       EligibleCampaign.cost .O2 = true := by decide
 
@@ -48,8 +48,9 @@ theorem selected_obligations_have_witnesses :
     ∀ q, q ∈ (scopedPolicy .O2).required →
       ∃ r, r ∈ scopedReceipts .O2 ∧ r.scope = q.scope ∧ r.round = q.round ∧
         r.observedPass = true ∧ ∃ t, r.elapsed = some t ∧ t ≤ q.limit :=
-  (ScopedSelection.certified_scoped_optimum catalogue scopedPolicy scopedReceipts [0]
-    EligibleCampaign.cost .O2 scoped_optimal_certificate).2.2.1
+  (ScopedSelection.certified_scoped_nondominated_under_supplied_integer_cost
+    catalogue scopedPolicy scopedReceipts [0]
+    EligibleCampaign.cost .O2 scoped_nondominated_under_supplied_integer_cost).2.2.1
 
 theorem reused_round_rejected :
     qualify (scopedPolicy .O2) ((scopedReceipts .O2).map (fun r => {r with round := 0})) = false := by decide
@@ -58,7 +59,7 @@ theorem foreign_configuration_rejected :
     qualify (scopedPolicy .O2) (scopedReceipts .R2) = false := by decide
 
 #print axioms all_scoped_admitted
-#print axioms scoped_optimal_certificate
+#print axioms scoped_nondominated_under_supplied_integer_cost
 #print axioms scoped_selection
 #print axioms scoped_selection_reordered
 #print axioms selected_obligations_have_witnesses

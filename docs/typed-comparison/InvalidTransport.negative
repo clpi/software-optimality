@@ -1,0 +1,6 @@
+import ComparisonTests
+open ComparisonContract ComparisonTests
+def bad : Transport meaning base micros where
+ convert xs := xs
+ shape xs h := by simpa [valid,base,micros] using h
+ preserves xs h := by rfl

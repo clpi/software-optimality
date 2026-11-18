@@ -12,5 +12,13 @@ import ScopedSelection
 import ScopedCampaign
 import MetricRelevance
 import HypergraphIncremental
+import ContextualDominance
+import Admission
+import AdmissionHypergraph
+import AdmissionTests
+import ComparisonContract
+import ComparisonTests
+import FrontierComposition
+import ScopedFrontier
 import OptimalityInterface
 import CompositionCheck

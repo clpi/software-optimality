@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "name": "wrong-unit",
+      "expected": "proof of false claim rejected",
+      "exit": 1,
+      "passed": true,
+      "source": "import ScopedFrontier\nopen ScopedFrontier\nexample : admitted fixtureContract (fixtureSubject 4) (milliseconds (fixtureSubject 4)) = true := by decide\n",
+      "source_sha256": "6df37e316f435f6faa67d9a355acb6620597294bfd7357f3146c162dd39c30cc",
+      "output_sha256": "dbef7d0bd0f2f9538c78ca1acef1f130db3535371a9d88160c09400077ffed92"
+    },
+    {
+      "name": "missing-capability",
+      "expected": "proof of false claim rejected",
+      "exit": 1,
+      "passed": true,
+      "source": "import ScopedFrontier\nopen ScopedFrontier\nexample : admitted fixtureContract (fixtureSubject 0) (omittedMetric (fixtureSubject 0) 12) = true := by decide\n",
+      "source_sha256": "0cce8f25b489f31588634757408bba7900838aeb5c3f55cb6700435cbd5f1ee3",
+      "output_sha256": "af219779f644f8b7bc43aaad7206dc21d71e2f9285cc6bb97ce007613702b25f"
+    },
+    {
+      "name": "raised-cap",
+      "expected": "proof of false claim rejected",
+      "exit": 1,
+      "passed": true,
+      "source": "import ScopedFrontier\nopen ScopedFrontier\nexample : admitted fixtureContract (fixtureSubject 0) (raisedCap (fixtureSubject 0)) = true := by decide\n",
+      "source_sha256": "417b737d1e19b9264064786fa68a7a8996f5faeb4744616c28d1ec7538152842",
+      "output_sha256": "9f0ca92090593cafe7be6dd7cb176a33973ba088909e6129ab0163c98c97481a"
+    },
+    {
+      "name": "foreign-venue",
+      "expected": "proof of false claim rejected",
+      "exit": 1,
+      "passed": true,
+      "source": "import ScopedFrontier\nopen ScopedFrontier\nexample : admitted fixtureContract (fixtureSubject 0) (changedScope (fixtureSubject 0) (fun s => {s with venue := 2})) = true := by decide\n",
+      "source_sha256": "c351becfe71e604fc594c8893b957d2a424dc271cb33aca22b6c358702d6be58",
+      "output_sha256": "fc9022398065dc20581f024bd43b89f8f501611f8acd566f7c3c590a9bd27e07"
+    },
+    {
+      "name": "mixed-subject",
+      "expected": "proof of false claim rejected",
+      "exit": 1,
+      "passed": true,
+      "source": "import ScopedFrontier\nopen ScopedFrontier\nexample : admitted fixtureContract (fixtureSubject 0) (mixedSubject (fixtureSubject 0)) = true := by decide\n",
+      "source_sha256": "f4fc27cf86782889c23977faf8120b5767605d3761f37467e362e66825c64ab5",
+      "output_sha256": "316507aeb17127b4290c7aaad14ccf331361764d438ff8a53708288d4035eb2f"
+    },
+    {
+      "name": "tradeoff-replacement",
+      "expected": "proof of false claim rejected",
+      "exit": 1,
+      "passed": true,
+      "source": "import ScopedFrontier\nopen ScopedFrontier\nexample : noRegression fixtureContract (fixtureSubject 0) (fixtureSubject 1) fixture = true := by decide\n",
+      "source_sha256": "c48c652bf40e66b4efda8ccba8bce1f732c355007556d03dcf2f06265d941d67",
+      "output_sha256": "5d5a36df30f69e68f61fe22563958c64bcf9b60008868d8280ad066e8a55184f"
+    },
+    {
+      "name": "admission",
+      "expected": "check.sh rejects admission",
+      "exit": 1,
+      "passed": true,
+      "output_sha256": "1ad55e6bf7c4c045ee0f129a762fb2545f78e655a83a57c77f3e76ecb6c900b3"
+    },
+    {
+      "name": "compiler-error",
+      "expected": "check.sh rejects compiler-error",
+      "exit": 1,
+      "passed": true,
+      "output_sha256": "73033914d7287cae5acb42c4db22af662a58a8c53dc1e347e265ab717cdad46d"
+    }
+  ],
+  "lean_sha256": "92c3d35b5bfaa5e0fea413a775d504cf46cd95e1345df61c2274f76779e7e023",
+  "module_sha256": "bcd5ca586da39280c59c8f8ebfa74fbdf5f8dc6ed9305c181c3b41ca5a177bfa",
+  "checker_sha256": "80725aec24b356595f7a194459ae9bd4d64a401f11f7dbc59184dbc4dd07706d",
+  "replay_sha256": "b6145619ab170abe506acf8b1074bb00b66a664abee9b1485437212caaa21eb4",
+  "source_sha256": {
+    "Admission.lean": "2a4bfc44f7e5343ff01b2d253300d0240893c4686c8607eeca611dc1ce9dfe51",
+    "AdmissionHypergraph.lean": "d3377acc9cbac053dc5f24c8f60b86cd977083372223d32179a95ac60815f2c0",
+    "AdmissionTests.lean": "46d4b392a705807d79cc699304bf32fa255b0e0f3837b41aa2aad09607c52146",
+    "ComparisonContract.lean": "1e4e7a4598cacda992d1f5162252fe62a927436aa644d1af76f7dc1b7f203b59",
+    "ComparisonTests.lean": "b32c5203a078ad950317ccd8c1ade8c35f3b30233eac6f3ebc4494aaf06ece7b",
+    "ContextualDominance.lean": "c7d84c02a5252341c4b9ce712409f75ce5248b6f524d4f4988bec86cd3754b38",
+    "EligibleCampaign.lean": "1bc3dfdbf81ffe1b20f7f67d4040f2d75faa639ab86c6e3d105251db078fd4c9",
+    "EligibleSchedules.lean": "b88ccc6b0e7784149f2fa92afe42d96d353ae9130bec8771d650a58a3d66375d",
+    "ExecutableClosure.lean": "fe533a245b11156be673649c880e12f2e9edb623534d7757f4ff6673f2b6796f",
+    "FiniteFrontier.lean": "eac31642af138ea2aa6c95abe256de3b16b5ae565c94e46ba94893692665696b",
+    "FiniteQualification.lean": "73e8cefef32d91764eb619e1349851badfdecc759df88632334cb47940633790",
+    "FiniteSchedules.lean": "c6f268a695ccc50504a86719464ad07a9f6df8d78166e0b0a19a876b5120cb60",
+    "ForeignCampaign.lean": "b12c413cfcdcec81cc2c4b39d5606c14a2502b7de64f87ea24bd33f625d33974",
+    "HypergraphIncremental.lean": "57d63384979e1fc78cf5ec0fb8fb7d58a60a1e04d3a74eed966b8d9e36d24ee1",
+    "LinearSelection.lean": "aaf4c23fccf4180c51003a17f41f5d67eca069e5db9779a3af642adae6b02a57",
+    "MetricRelevance.lean": "2e31e6af39f90bedabffeaf4d1142841227089bd101e08887a6e9fe14e15a3ea",
+    "Qualification.lean": "a96ebcd998e1cd3703b9cc1fb6b3f2d73f6df8610bd0b34b3199afbb78f42f65",
+    "ScopedCampaign.lean": "7824ce2cc7048915f82a3874d86fdcb990bf8c8b202b4691c70d427bf1bb9649",
+    "ScopedEvidence.lean": "d948005f2d036dbe4ce591795565cb36f6fddeb8ad5a81becb404b58f0f0527d",
+    "ScopedFrontier.lean": "bcd5ca586da39280c59c8f8ebfa74fbdf5f8dc6ed9305c181c3b41ca5a177bfa",
+    "ScopedSelection.lean": "4d4f42c135103426a4b65d54e31b3aa6b5086eaed5ee76cb2e2fc394fbbe8b73"
+  }
+}

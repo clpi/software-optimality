@@ -3,6 +3,7 @@ open Lake DSL
 
 package «software-optimality» where
   version := v!"0.1.0"
+  moreLeanArgs := #["-DwarningAsError=true"]
 
 @[default_target]
 lean_lib SoftwareOptimality where
@@ -21,6 +22,14 @@ lean_lib SoftwareOptimality where
     `ScopedCampaign,
     `MetricRelevance,
     `HypergraphIncremental,
+    `ContextualDominance,
+    `Admission,
+    `AdmissionHypergraph,
+    `AdmissionTests,
+    `ComparisonContract,
+    `ComparisonTests,
+    `FrontierComposition,
+    `ScopedFrontier,
     `Composition,
     `OptimalityInterface,
     `CompositionCheck,

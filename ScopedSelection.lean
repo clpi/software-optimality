@@ -11,9 +11,11 @@ def gate (policies : T → ScopedEvidence.Policy)
 def certificate (candidates : List T) (policies : T → ScopedEvidence.Policy)
     (evidence : T → List ScopedEvidence.Receipt) (axes : List Nat)
     (cost : T → Nat → Int) (x : T) :=
-  EligibleSchedules.optimumCertificate candidates (gate policies evidence) axes cost x
+  EligibleSchedules.admittedNondominatedUnderSuppliedIntegerCost
+    candidates (gate policies evidence) axes cost x
 
-theorem certified_scoped_optimum (candidates : List T) (policies : T → ScopedEvidence.Policy)
+theorem certified_scoped_nondominated_under_supplied_integer_cost
+    (candidates : List T) (policies : T → ScopedEvidence.Policy)
     (evidence : T → List ScopedEvidence.Receipt) (axes : List Nat)
     (cost : T → Nat → Int) (x : T)
     (h : certificate candidates policies evidence axes cost x = true) :
@@ -24,7 +26,7 @@ theorem certified_scoped_optimum (candidates : List T) (policies : T → ScopedE
     ∀ y, y ∈ candidates → ScopedEvidence.qualify (policies y) (evidence y) = true →
       ¬ ((∀ i, i ∈ axes → cost y i ≤ cost x i) ∧
          (∃ i, i ∈ axes ∧ cost y i < cost x i)) := by
-  obtain ⟨⟨hm,hq⟩,hn⟩ := (EligibleSchedules.optimumCertificate_exact candidates
+  obtain ⟨⟨hm,hq⟩,hn⟩ := (EligibleSchedules.admittedNondominatedUnderSuppliedIntegerCost_exact candidates
     (gate policies evidence) axes cost x).mp h
   exact ⟨hm,hq,ScopedEvidence.qualification_witnesses (policies x) (evidence x) hq,hn⟩
 
@@ -68,6 +70,6 @@ theorem selected_all_order_independent (xs ys : List T)
 
 #print axioms selected_all_exact
 #print axioms selected_all_order_independent
-#print axioms certified_scoped_optimum
+#print axioms certified_scoped_nondominated_under_supplied_integer_cost
 #print axioms selected_scoped_minimum
 end ScopedSelection
