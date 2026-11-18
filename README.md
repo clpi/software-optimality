@@ -50,7 +50,7 @@ Executable enumeration of all Boolean profiles of dimension n, proved count `2^n
 
 Executable filtering returns exactly candidates not dominated by any candidate in the named list. The provided strict Pareto comparator is checked against componentwise no-worse integer costs and at least one strictly better axis. Costs and finite axes are inputs; an axis to maximize must be normalized accordingly. The four-way support coloring distinguishes unknown, lawful, unlawful, and conflict; exact conflict/unknown characterizations are checked.
 
-The frontier theorem is nondominance inside the supplied finite candidate list and measurements, under the supplied integer costs. It does not assert that enumerated candidates include every possible implementation.
+The frontier theorem is nondominance inside the supplied finite candidate list and measurements, under the supplied integer costs. That the list contains every implementation, and that the measurements have no coverage gaps, are the premises `ThreeValuedGate.FiniteSpace.nothingOutside` and `ThreeValuedGate.FiniteSpace.noCoverageGaps`. They are arguments of `supplied_space_known_dominance`, not theorems. `absent_axis_admitted_by_two_valued_dominance` shows `ComparisonContract.dominates` accepts a missing coordinate because `cost` fills it with `0`. `unknown_blocks_dominance` is the three-valued gate: an `unknown` verdict blocks both `ThreeValuedGate.dominates` and `Interface.dominates`. When every axis is known, `known_agrees_canonical` matches `CanonicalDominance`, and `known_gate_matches_bool` matches the existing Bool cost comparison.
 
 ### `FiniteSchedules.lean`: test ordering and parallel schedules
 
@@ -177,6 +177,12 @@ Downstream proofs import `OptimalityInterface` and use the `Optimality` namespac
 | A complexity-class tag is not generator coverage | `class_tag_is_not_coverage`, `coverage_omission_can_dominate`, `frontier_respects_coverage` | The tag claim is DISPROVEN. Transfer to an intended set is PROVEN only from the named `GeneratorCoverage` premise |
 | Import identity transfers a frontier; a changed cost row does not | `frontier_transfers_under_import`, `import_mismatch_blocks_transfer` | Transfer is PROVEN from the named `ImportBinding` premise. Mismatch is DISPROVEN. Cryptographic binding is not proved |
 | Canonical key sort preserves frontier membership | `canonical_frontier_mem` | PROVEN for membership. Equal keys do not determine a unique order |
+| Two-valued dominance admits an absent axis | `ThreeValuedGate.absent_axis_admitted_by_two_valued_dominance` | DISPROVEN. `ComparisonContract.cost` fills a missing coordinate with `0` |
+| An unknown axis blocks local and canonical dominance | `ThreeValuedGate.unknown_blocks_dominance` | PROVEN |
+| Known axes agree with canonical dominance | `ThreeValuedGate.known_agrees_canonical` | PROVEN |
+| A known per-axis gate matches the existing Bool cost gate | `ThreeValuedGate.known_gate_matches_bool` | PROVEN |
+| Nothing outside the finite supplied space | `ThreeValuedGate.FiniteSpace.nothingOutside` | PREMISE. `supplied_space_known_dominance` takes it as an argument |
+| The supplied space has no coverage gaps | `ThreeValuedGate.FiniteSpace.noCoverageGaps` | PREMISE. `supplied_space_known_dominance` takes it as an argument |
 
 `tools/check_optimality.sh` runs `CompositionCheck.lean` and `tools/check_optimality.py` on the same guards. Both must report acceptance of a no-worse release and refusal of a regressing frontier point, an out-of-universe root, and a project-first product reduction. This is not a proof of incremental release monotonicity.
 
