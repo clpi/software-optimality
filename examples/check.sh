@@ -9,3 +9,4 @@ export LEAN_PATH="$build"
 "$lean_bin" -DwarningAsError=true -o "$build/FiniteSchedules.olean" "FiniteSchedules.lean" >/dev/null
 "$lean_bin" --version
 "$lean_bin" -DwarningAsError=true examples/ReleaseSchedule.lean
+sh examples/range-ledger/check.sh

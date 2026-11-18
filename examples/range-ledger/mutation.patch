@@ -1,0 +1,11 @@
+--- AdaptiveReads.lean
++++ AdaptiveReads.lean
+@@ -66,7 +66,7 @@
+ 
+ def whole (b : Fin 4) : Page := ⟨b,0,1024⟩
+ def four := Plan.ask (whole 0) fun a => .ask (whole 1) fun b =>
+-  .ask (whole 2) fun c => .ask (whole 3) fun d => .done (a+b+c+d)
++  .ask (whole 2) fun c => .ask (whole 2) fun d => .done (a+b+c+d)
+ 
+ theorem attains (p : World) :
+     (run p four).1 = p 4096 - p 0 ∧ (run p four).2.length = 4 := by

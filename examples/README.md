@@ -25,3 +25,7 @@ The [verification transcript](verification.txt) includes the observed outputs an
 ## Scope
 
 Inputs are fixed positive durations, homogeneous capacity-one runners, and the four listed jobs. This measures schedule length in model ticks. Machine timing and resource contention need their own observations.
+
+## Additional worked example
+
+[Four reads even with an adaptive solver](range-ledger/README.md)
