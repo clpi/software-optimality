@@ -1,0 +1,42 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+'Qualification.least' does not depend on any axioms
+'Qualification.monotone' does not depend on any axioms
+'Qualification.idempotent' does not depend on any axioms
+'Qualification.compounding' does not depend on any axioms
+'Qualification.order_independent' does not depend on any axioms
+'Qualification.soundness' does not depend on any axioms
+'Qualification.withdrawal_no_new_support' does not depend on any axioms
+'Qualification.surviving_subsystem' does not depend on any axioms
+'Qualification.no_bootstrap' does not depend on any axioms
+'FiniteQualification.candidates_length' depends on axioms: [propext]
+'FiniteQualification.candidates_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteQualification.qualify_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+[[true, false, true]]
+'ExecutableClosure.boundedOK_exact' depends on axioms: [propext, Quot.sound]
+'ExecutableClosure.checkedClose_admitted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.checkedClose_rejects' depends on axioms: [propext, Quot.sound]
+'ExecutableClosure.subsets_count' depends on axioms: [propext]
+'ExecutableClosure.executable_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_is_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_contains_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableClosure.close_order_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+[0, 1, 2, 3]
+'FiniteFrontier.frontier_exact' depends on axioms: [propext, Quot.sound]
+'FiniteFrontier.pareto_exact' depends on axioms: [propext, Quot.sound]
+'FiniteFrontier.conflict_exact' does not depend on any axioms
+'FiniteFrontier.unknown_exact' does not depend on any axioms
+'FiniteSchedules.queueFeasible_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.improvementCertificate_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.accepted_improvement' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.tuples_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.enumerate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.feasible_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.feasibleSchedules_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteSchedules.optimalCertificate_exact' depends on axioms: [propext, Quot.sound]
+'FiniteSchedules.certified_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ForeignCampaign.chosen_accepted' does not depend on any axioms
+'ForeignCampaign.chosen_nondominated' depends on axioms: [propext, Quot.sound]
+'ForeignCampaign.modeled_improvement_exact' depends on axioms: [propext, Quot.sound]
+'ForeignCampaign.receipt_metrics_match' does not depend on any axioms
+'ForeignCampaign.complete_list_frontier' does not depend on any axioms
