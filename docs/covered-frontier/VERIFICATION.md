@@ -12,6 +12,11 @@ registered controls into its temporary source tree.
 
 ## Reproduce
 
+The joint receipt below is historical and can be replayed from optimality merge
+`064852fb7a83c7a17950a78b77860175f95e1290`. Later updates to the joint dependency
+are recorded separately in `composition/current/VERIFICATION.md`; they do not
+change this receipt's source or dependency hashes.
+
 Use the repository's `lean-toolchain` (Lean 4.19.0):
 
 ```sh
