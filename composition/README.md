@@ -11,21 +11,12 @@ catalogue for an application remains a separate obligation.
 
 ## Reproduce
 
-Run `./composition/check.sh` with Lean 4.19.0. It fetches the pinned public
-qualification proof and builds both source trees in an empty directory. For
-offline verification, set `QUANTIFIABLE_SRC` to a checkout containing the
-pinned source bytes. `LEAN` can name an absolute compiler path. The script
-checks SHA-256 for all six upstream sources, runs the full optimality suite,
-then checks the integration modules, controls, and benchmark source. Pass
-`--benchmark` to collect a new timing table. The standalone offline suite
-continues to run through `./check.sh`.
-
-The public proof at `61de9b7364e0a8c5ddc2ab8d0a633d2920aa38cf` builds on its
-own pinned Lean 4.15.0 and also compiles under the joint 4.19.0 kernel.
-The upstream unused-variable warnings are present in the log. The new proof
-modules and the private suite compile with warnings treated as errors.
-Dependency prints for the joint theorems contain only the standard foundational
-axioms. See [the checker output](CHECK.log) and [the source hashes](quantifiable.sha256).
+`lake build -R -KwarningAsError=true` on Lean 4.19.0 builds this package and
+its Lake dependency `software-is-quantifiable` at
+`430340295c52a015772022b2b663d01120a3a747`. The composition modules are roots
+of the default target. `./composition/check.sh` runs that build. Pass
+`--benchmark` to collect a new timing table. `./check.sh` still checks the
+modules that do not import the dependency.
 
 ## What the entry points establish
 

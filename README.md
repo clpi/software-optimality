@@ -169,7 +169,7 @@ Downstream proofs import `OptimalityInterface` and use the `Optimality` namespac
 | A maximal point can worsen an axis | `paretoMaximal_can_regress` | DISPROVEN as a release gate |
 | Guarded maximal set is componentwise no worse and undominated | `guardedMaximal_sound`, `guardedMaximal_nonempty` | PROVEN |
 | Overlapping bounds are not per-execution dominance | `not_per_execution_dominance` | DISPROVEN |
-| Behavior retention and the release gate | `retains_iff`, `acceptsRelease_iff` | PROVEN for the recorded lists and costs; not a measurement theorem |
+| Behavior retention and the release gate | `SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff`, `SoftwareIsQuantifiable.Pareto.acceptsRelease_iff` | PROVEN in `software-is-quantifiable` at `430340295c52a015772022b2b663d01120a3a747`. This repository does not restate them |
 | Excluded candidates are dominated by a frontier member; a pruning certificate is sound | `frontier_covers`, `pruning_sound`, `pruning_sound_pareto`, `pruningOK_implies` | PROVEN. Arbitrary dominance needs the named transitivity premise; strict Pareto discharges it |
 | Componentwise-sum product: joint frontier members are locally nondominated, and checking the product of local frontiers is sound | `joint_frontier_in_local_frontiers`, `reduced_product_sound`, `scalar_frontier_iff_allMinima` | PROVEN for componentwise sum. One-axis linear selection and the Pareto filter agree |
 | Product of local frontiers is not automatically jointly nondominated | `product_of_frontiers_not_joint` | DISPROVEN |
@@ -220,13 +220,39 @@ The existing `FiniteFrontier.lean` owner also now checks retained-frontier certi
 
 ### Cross-repository qualification and compositional Pareto proofs
 
-Run `./composition/check.sh` to check the public qualification proof and this
-repository together in Lean 4.19.0. The joint build connects admitted ledger
+`lake build` has one dependency, `software-is-quantifiable` at
+`430340295c52a015772022b2b663d01120a3a747`. The quantifiable package's
+lakefile lists no dependency. The composition modules are roots of the
+default target. The joint build connects admitted ledger
 events, a bounded materialized closure scan, scoped release eligibility,
 tie-preserving Pareto selection, interval and paired-scenario dominance, and
 forward simulation of finite traces. The pruning checker accepts exactly
 frontier-preserving subsets of a finite catalogue under a strict partial
 order. See [the proof map, controls, measurements and limits](composition/README.md).
+
+`SoftwareIsQuantifiable.Interface.dominates` and `Interface.noWorse`, at
+`430340295c52a015772022b2b663d01120a3a747`, are the canonical profile order.
+A reading vector that is shorter or longer than the measure space is not
+`axesLe`. `Interface.releaseLe` and `Interface.releaseDominates` are that
+order on symbol assemblies: each symbol occurs at most once, counting a
+repeated copy, and every profile has one reading per axis.
+`CanonicalDominance.lean` proves each local dominance predicate either
+equivalent to the profile order on an explicit encoding, or a one-way
+refinement together with a counterexample to the converse.
+`Pareto.dominates` and `Pareto.noWorse` agree with the canonical order on
+two nonnegative minimize axes when both profiles record observed behavior.
+A one-symbol release of those profiles agrees with the same order.
+
+Lean files under `docs/` stay out of the build. They are the negative and
+publisher controls: `docs/admission-normalization/ReviewControls.lean`,
+`docs/admission-normalization/ScopeControls.lean`,
+`docs/contextual-dominance/Controls.lean`,
+`docs/hypergraph-incremental/ReviewControls.lean`,
+`docs/metric-relevance/BoundaryChecks.lean`,
+`docs/typed-comparison/ReviewControls.lean`,
+`docs/covered-frontier/Controls.lean`,
+`docs/covered-frontier/Campaign.lean`, and
+`docs/covered-frontier/ArchiveImport.lean`.
 
 ### `GeneralPareto.lean`: the general Pareto obligations, discharged
 
