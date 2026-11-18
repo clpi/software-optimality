@@ -16,7 +16,7 @@ Or select a specific executable:
 LEAN=/path/to/lean ./check.sh
 ```
 
-The script compiles `Qualification.olean` locally, then checks every file. Exit status zero is required; full captured output is in `CHECK.log`. `lean-toolchain` pins the version. Generated `.olean` files need not be committed.
+The script rejects source admissions/custom axioms, treats Lean warnings as errors, checks each compiler exit, and rejects admitted-axiom/error diagnostics. It compiles local dependencies and checks all named modules. Exit status zero is required; full captured output is in `CHECK.log`. `CHECK_CONTROLS.md` records negative controls confirming a deliberately admitted proof and an injected compiler error both stop the checker. `lean-toolchain` pins the version. Generated `.olean` files need not be committed.
 
 ## Checked theorem inventory
 
@@ -110,6 +110,18 @@ The generic selector receives per-candidate policies and a numeric cost function
 
 This is a selected-evidence checker, not the raw append-only transport layer. Identical duplicate delivery must be deduplicated by receipt identity before constructing its selected evidence set. Policy digest authenticity, digest-to-content binding and current authorization/liveness still require trusted or separately checked ingestion. For example, changing a cap while reusing the same opaque policy identifier is not detected solely by identifier equality; the ingestion bridge must validate the committed policy bytes. No cryptographic correctness or live-policy lookup theorem is claimed here.
 
+### `MetricRelevance.lean`: exact nonaggregated relevance profiles
+
+A profile retains separate per-intent-part coordinates for direct contrast, composed-result change, admissible indirect mutation sensitivity, and observed outcome variability. `buildProfile` assembles these coordinates without inventing weights or a scalar quality score. Model-pair catalogues are deduplicated and filtered by an explicit per-part admissibility predicate **before** computing denominators.
+
+`direct_exact` identifies single-metric contrasts in the supplied deterministic model: only that metric may change among the named metric coordinates, and the chosen intent part changes. `composition_irreducible` checks a multi-metric group changes the selected part while no proper subgroup has a changing alternative among the named states. Both are claims about the named model/functions, not proofs that every relevant real-world variable has been modeled or that hidden physical causes are absent.
+
+`indirectRate_spec` restricts the denominator to admitted mutation records in the requested comparison scope and matched context, with unique comparison identities; confounded/unadmitted rows do not dilute the denominator, other scopes do not leak into it, and duplicate identities reject. Context matching is recorded comparison attribution, not proof that all physical nuisance variables were controlled.
+
+Fractions are exact unreduced natural numerator/positive-denominator pairs, not floating estimates. `exactRate_spec` proves their exact counts, positive denominator and numerator bound. Empty evidence returns `none`, not zero. Rational equality uses cross multiplication and rejects zero denominators. Scoped failure counts are proved permutation invariant. Observed failure/disagreement rates and mixed-outcome labels reject duplicate observation identities; mixed labels are `none` for absent/conflicting evidence. Observation IDs identify repeats, whereas deduplicated model pairs identify model edges, not additional independent trials.
+
+All new examples are **synthetic**, distinct from the foreign-code campaign. For intent `(latency ≤ 10 AND correct) OR fallback`, four named contexts yield direct latency-clause change `4/4` for 8→12, but composed-root pivotality `1/4`. A shared-dependency fixture `(m AND a) OR (m AND b) = m AND (a OR b)` is proved exactly, and changing m changes the root in `3/4` of the four named contexts, without double-counting its two syntax occurrences. Counting each named context once is the fixture sampling measure, not an imposed user preference weight. A separately named admitted mutation catalogue yields `1/2`; five same-scope observations yield failure `2/5` and unordered-pair disagreement `6/10`. These retain their different denominators and attribution types. They are not population probabilities, weighted utility or a causal-effect estimate. The exact profile and every fixture result are kernel-checked. No generic permutation theorem for pair-disagreement enumeration, normalization theorem for reduced rationals, or general statistical uncertainty theorem is claimed.
+
 ## Trust and precise boundary
 
 No `sorry`, admissions, custom axioms, or `native_decide` shortcuts occur. Some finite-reference proofs use standard Lean foundational axioms `propext`, `Classical.choice`, and `Quot.sound` through library lemmas, as disclosed by `#print axioms` in `CHECK.log`. Classical reasoning is used in proofs, not to implement the executable algorithms.
@@ -128,5 +140,4 @@ Checked executable SHA-256:
 See `SHA256SUMS` for source/check-output hashes.
 
 ## Publication scope clarification
-
 The pilot timing gate is whole-suite wall time only: 8 of 12 O2 subprocess times were slower than paired O1 times. Three paired rounds and recorded inputs do not establish future or per-test no-regression. R2 was admitted but dominated, not rejected. Policy revision chronology has no signed precommit or independently authenticated timestamp. Scoped checker IDs and reported pass bits do not establish external receipt authenticity, policy authorization, liveness, or raw-ingestion fidelity. `allMinima` is permutation invariant in membership, not serialized list order or multiplicity. See docs/PROOF-DESIGN.md and evidence/ for exact scope.

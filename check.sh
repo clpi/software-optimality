@@ -3,16 +3,36 @@ set -eu
 cd "$(dirname "$0")"
 LEAN="${LEAN:-lean}"
 export LEAN_PATH=".:${LEAN_PATH:-}"
+# Reject source admissions/custom axioms, including those Lean would only warn about.
+if grep -En '(^|[^[:alnum:]_])(sorry|admit|axiom|native_decide)([^[:alnum:]_]|$)' ./*.lean; then
+  echo "Rejected prohibited proof escape hatch" >&2
+  exit 1
+fi
+CHECK_TMP="$(mktemp)"
+trap 'rm -f "$CHECK_TMP"' EXIT HUP INT TERM
+run_lean() {
+  if "$LEAN" -DwarningAsError=true "$@" >"$CHECK_TMP" 2>&1; then
+    cat "$CHECK_TMP"
+  else
+    cat "$CHECK_TMP"
+    return 1
+  fi
+  if grep -Eq 'sorryAx|error:|warning:' "$CHECK_TMP"; then
+    echo "Rejected checker diagnostics/admitted axiom" >&2
+    return 1
+  fi
+}
 "$LEAN" --version
-"$LEAN" -o Qualification.olean Qualification.lean
-"$LEAN" FiniteQualification.lean
-"$LEAN" ExecutableClosure.lean
-"$LEAN" -o FiniteFrontier.olean FiniteFrontier.lean
-"$LEAN" -o FiniteSchedules.olean FiniteSchedules.lean
-"$LEAN" ForeignCampaign.lean
-"$LEAN" -o EligibleSchedules.olean EligibleSchedules.lean
-"$LEAN" -o ScopedEvidence.olean ScopedEvidence.lean
-"$LEAN" -o LinearSelection.olean LinearSelection.lean
-"$LEAN" -o EligibleCampaign.olean EligibleCampaign.lean
-"$LEAN" -o ScopedSelection.olean ScopedSelection.lean
-"$LEAN" ScopedCampaign.lean
+run_lean -o Qualification.olean Qualification.lean
+run_lean FiniteQualification.lean
+run_lean -o ExecutableClosure.olean ExecutableClosure.lean
+run_lean -o FiniteFrontier.olean FiniteFrontier.lean
+run_lean -o FiniteSchedules.olean FiniteSchedules.lean
+run_lean ForeignCampaign.lean
+run_lean -o EligibleSchedules.olean EligibleSchedules.lean
+run_lean -o ScopedEvidence.olean ScopedEvidence.lean
+run_lean -o LinearSelection.olean LinearSelection.lean
+run_lean -o EligibleCampaign.olean EligibleCampaign.lean
+run_lean -o ScopedSelection.olean ScopedSelection.lean
+run_lean ScopedCampaign.lean
+run_lean MetricRelevance.lean

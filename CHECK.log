@@ -80,3 +80,24 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ScopedCampaign.selected_obligations_have_witnesses' depends on axioms: [propext, Quot.sound]
 'ScopedCampaign.reused_round_rejected' does not depend on any axioms
 'ScopedCampaign.foreign_configuration_rejected' does not depend on any axioms
+'MetricRelevance.shared_factorization' does not depend on any axioms
+'MetricRelevance.shared_dependency_pivotal_rate' does not depend on any axioms
+'MetricRelevance.indirectRate_spec' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.exactRate_permutation' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.observedFailureRate_permutation' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.fixture_disagreement' does not depend on any axioms
+'MetricRelevance.fractionEqual_exact' depends on axioms: [propext]
+'MetricRelevance.fixture_profile_exact' does not depend on any axioms
+'MetricRelevance.fixture_indirect_rate' does not depend on any axioms
+'MetricRelevance.observedFailureRate_spec' depends on axioms: [propext]
+'MetricRelevance.direct_leaf_rate' does not depend on any axioms
+'MetricRelevance.composed_root_pivotal_rate' does not depend on any axioms
+'MetricRelevance.direct_exact' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.composition_irreducible' depends on axioms: [propext, Quot.sound]
+'MetricRelevance.admittedSensitivity_exact' depends on axioms: [propext]
+'MetricRelevance.exactRate_spec' depends on axioms: [propext]
+'MetricRelevance.fixture_direct' does not depend on any axioms
+'MetricRelevance.fixture_composition' does not depend on any axioms
+'MetricRelevance.fixture_failure_rate' does not depend on any axioms
+'MetricRelevance.fixture_controlled' does not depend on any axioms
+'MetricRelevance.fixture_confounded_rejected' does not depend on any axioms

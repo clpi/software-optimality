@@ -1,0 +1,2 @@
+1:theorem deliberateEscape : False := by sorry
+Rejected prohibited proof escape hatch
