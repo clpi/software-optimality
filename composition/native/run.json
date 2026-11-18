@@ -1,0 +1,209 @@
+{
+  "schema": "idol.identity.native-validation.v1",
+  "candidate_commit": "ef3dbcfa847579df2c839bb73240242fe5ebdd4e",
+  "candidate_tree": "fffa952f1042e559441ef8cf252b847c3a3e7f02",
+  "summary": "Topology 13 assertions passed natively. Identity candidate and baseline were refused before assertions; no identity sensitivity evidence.",
+  "seed": {
+    "path": "/workspace/home/identity/artifacts/idol-seed",
+    "bytes": 74770288,
+    "sha256": "1ff13d9e4ab85b53944bcd063030972520f199f534cb876f9ba0bc54d409b244",
+    "elf_machine": 183
+  },
+  "toolchain": {
+    "platform": "Linux-7.0.0-1011-aws-aarch64-with-glibc2.41",
+    "toolchain": {
+      "zig.tar.xz": {
+        "bytes": 57070564,
+        "sha256": "337b81a6e89e8289d31311fd7cfdd53c8bfcb1b8c4b5cfadf3363eabfb9a6daa"
+      },
+      "zig-x86_64-linux-0.17.0-dev.1567+f0354179a/zig": {
+        "bytes": 184076080,
+        "sha256": "718bb64754baeeb18b5c1e46df051136ae95f882b53ec3269d0b88894ac04994"
+      },
+      "source.tar.xz": {
+        "bytes": 7560848,
+        "sha256": "1b831a99c5307f7d01226ed5638c09e0d5f53ea52689787d07e9c9bf946478c9"
+      },
+      "baseline.tar.xz": {
+        "bytes": 23936,
+        "sha256": "ab9dc0d7ada7c973b2441e74617cb8fd02150304ff8785f0845855244b42153b"
+      }
+    },
+    "qemu_version": "qemu-x86_64 version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)\nCopyright (c) 2003-2025 Fabrice Bellard and the QEMU Project developers\n",
+    "gcc_version": "gcc (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+  },
+  "candidate_source_unchanged": true,
+  "cases": [
+    {
+      "label": "identity",
+      "source": "test/compiler/identity.id",
+      "source_sha256": "7a9f5fed605a3a8906d337d41b279ebaea245508710802a8daf04848705123b9",
+      "compiler_sha256": "1ff13d9e4ab85b53944bcd063030972520f199f534cb876f9ba0bc54d409b244",
+      "expected_assertions": 58,
+      "scratch": "/workspace/home/identity/scratch-identity",
+      "compile_exit": 1,
+      "verdict": "compile_refused_before_assertions"
+    },
+    {
+      "label": "identity-ablation",
+      "source": "test/compiler/identity.id",
+      "source_sha256": "7a9f5fed605a3a8906d337d41b279ebaea245508710802a8daf04848705123b9",
+      "compiler_sha256": "1ff13d9e4ab85b53944bcd063030972520f199f534cb876f9ba0bc54d409b244",
+      "expected_assertions": 58,
+      "scratch": "/workspace/home/identity/scratch-identity-ablation",
+      "compile_exit": 1,
+      "verdict": "compile_refused_before_assertions"
+    },
+    {
+      "label": "topology",
+      "source": "test/compiler/topology.id",
+      "source_sha256": "eaf0491ae99867b662ed438b9dc23adb0e2ddd84494ec62bee3036d9365f884e",
+      "compiler_sha256": "1ff13d9e4ab85b53944bcd063030972520f199f534cb876f9ba0bc54d409b244",
+      "expected_assertions": 13,
+      "scratch": "/workspace/home/identity/scratch-topology",
+      "compile_exit": 0,
+      "selected_bootstrap_units": [
+        {
+          "logical": "idol_str_runtime.o",
+          "placeholder": "/workspace/home/identity/scratch-topology/idol-boot-e3b0c44298fc1c14-idol_str_runtime.o",
+          "actual": "/workspace/home/identity/artifacts/str.o"
+        },
+        {
+          "logical": "idol_errno_runtime.o",
+          "placeholder": "/workspace/home/identity/scratch-topology/idol-boot-e3b0c44298fc1c14-idol_errno_runtime.o",
+          "actual": "/workspace/home/identity/artifacts/errno.o"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "/workspace/home/identity/artifacts/start.o",
+          "bytes": 2264,
+          "sha256": "ccfe6bc3f9a0d903c49a15192083cec4bde4fefdbf56a2fa0d546494082d45ad",
+          "elf_machine": 183,
+          "elf_type": 1
+        },
+        {
+          "path": "/workspace/home/identity/artifacts/topology.o",
+          "bytes": 16024,
+          "sha256": "f5c57dcae217bdc7b6168963ff7a2a38a8c07156d0ae601c9b3b6fcd1426019b",
+          "elf_machine": 183,
+          "elf_type": 1
+        },
+        {
+          "path": "/workspace/home/identity/artifacts/str.o",
+          "bytes": 60856,
+          "sha256": "7ecba5fa0a86063f97926fb0ff9c7a704476eaaa30a901fb4d046003418e9643",
+          "elf_machine": 183,
+          "elf_type": 1
+        },
+        {
+          "path": "/workspace/home/identity/artifacts/errno.o",
+          "bytes": 1400,
+          "sha256": "5c7d3b591bf1ce470e220565c2e4685c1a084b48c0ad12d56cbf8e8deaf120e8",
+          "elf_machine": 183,
+          "elf_type": 1
+        },
+        {
+          "path": "/workspace/home/identity/scratch-topology/idol-home-7fa053998580837b-policy.o",
+          "bytes": 146960,
+          "sha256": "7fa053998580837b9292aa074f72f395c9d720d2e82a5118f8e7241ec13e529e",
+          "elf_machine": 183,
+          "elf_type": 1
+        },
+        {
+          "path": "/workspace/home/identity/scratch-topology/idol-home-94fe7ed946a98fdd-envelope.o",
+          "bytes": 101672,
+          "sha256": "94fe7ed946a98fdd02f9b4a9a7211c9eda2707757e1fad11b0d26ba491f33795",
+          "elf_machine": 183,
+          "elf_type": 1
+        },
+        {
+          "path": "/workspace/home/identity/scratch-topology/idol-home-fadb06c3e2e859b7-witness.o",
+          "bytes": 66776,
+          "sha256": "fadb06c3e2e859b7c1bff96cfe00d536a9d42ab1b0bd1690a06c2d0cbc71deae",
+          "elf_machine": 183,
+          "elf_type": 1
+        }
+      ],
+      "link_exit": 0,
+      "artifact": {
+        "path": "/workspace/home/identity/artifacts/topology.native",
+        "bytes": 293304,
+        "sha256": "d27e2fe4237e36605e96c5bb320f49440e825e0b1150cdd8c28ddc224412688d",
+        "elf_machine": 183,
+        "elf_type": 2
+      },
+      "native_exit": 0,
+      "pass_lines": 13,
+      "fail_lines": 0,
+      "assertion_lines": 13,
+      "failure_summaries": [
+        0
+      ],
+      "control_summaries": [],
+      "verdict": "pass"
+    },
+    {
+      "label": "effects",
+      "verdict": "not_run_preserve_receipt_and_cleanup_margin"
+    },
+    {
+      "label": "graph",
+      "verdict": "not_run_preserve_receipt_and_cleanup_margin"
+    },
+    {
+      "label": "policy",
+      "verdict": "not_run_preserve_receipt_and_cleanup_margin"
+    },
+    {
+      "label": "policycone",
+      "verdict": "not_run_preserve_receipt_and_cleanup_margin"
+    }
+  ],
+  "owner_diagnostic": {
+    "name": "effect-diagnostic",
+    "command": [
+      "sh",
+      "/workspace/home/identity/idol/tools/node/dev/idol-lock",
+      "--timeout",
+      "0",
+      "--",
+      "/workspace/home/identity/artifacts/idol-seed",
+      "compile",
+      "--no-cache",
+      "--backend=direct",
+      "--emit",
+      "obj",
+      "lib/compiler/effect.id",
+      "-o",
+      "/workspace/home/identity/artifacts/effect-diagnostic.o"
+    ],
+    "cwd": "/workspace/home/identity/idol",
+    "environment_overrides": {
+      "TMPDIR": "/workspace/home/identity/scratch-effect-diagnostic"
+    },
+    "exit": 1,
+    "timeout": false,
+    "seconds": 3.7683439143002033,
+    "log_sha256": "71eee7eb6c6f9acf35233219ce6675a9473623cc18889247b69d321382b85265",
+    "bytes": 573,
+    "output": "error: direct backend: DNB001 application: 336 relation: get missing: expression-not-lowered:sequence consumer: native realization producer: dnir lower\nhint: DNB001: program is outside the current direct-native subset. Auto reports the same direct refusal and never falls back to C. Explicit graph-backed C99 source is an orthogonal physical realization and cannot qualify direct-native support; C foreign interop is a separate capability.\nhint: refused with: UnsupportedProgram\nhint: bail site: lowerExprCons() at graph/lower.zig:41561 \u2014 expression-not-lowered:sequence\n"
+  },
+  "raw_harness_completion": {
+    "status": "COMPLETED",
+    "cases": 7
+  },
+  "harness_completion_interpretation": "COMPLETED means the planned attempt loop ended. It is not a pass; inspect every inner result. Four optional controls were skipped and are included explicitly here.",
+  "claims_not_established": [
+    "Identity 58 native assertion outcomes",
+    "Same-compiler baseline sensitivity",
+    "Full final Idol host build or pre-commit admission",
+    "Full derivation-stable producer migration",
+    "Global Pareto optimality"
+  ],
+  "remote_lock_after": {
+    "observed": "FREE\n",
+    "time": 1795003583.4128878
+  },
+  "shared_local_lock": "untouched"
+}

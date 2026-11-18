@@ -1,0 +1,23 @@
+{
+  "metrics": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"box_id\": \"live-honeybee-60888\",\n  \"status\": \"idle\",\n  \"size\": \"small\",\n  \"cpu_cores\": 2,\n  \"memory_limit\": 4294967296,\n  \"disk_limit\": 10737418240,\n  \"stats\": {\n    \"cpu_total_ns\": 1990692365000,\n    \"memory_usage\": 848318464,\n    \"memory_peak\": 0,\n    \"memory_limit\": 4294967296,\n    \"disk_usage\": 1200150378,\n    \"disk_limit\": 10737418240,\n    \"collected_at\": 1795003611\n  }\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  },
+  "box": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"id\": \"live-honeybee-60888\",\n  \"name\": \"idol-identity-validation\",\n  \"labels\": [\n    \"idol-identity\"\n  ],\n  \"model\": \"\",\n  \"runtime\": \"python\",\n  \"status\": \"idle\",\n  \"total_cpu_ns\": 1986028412000,\n  \"total_compute_cost_usd\": 0.05516745588888889,\n  \"size\": \"small\",\n  \"storage_gb\": 10,\n  \"ephemeral\": true,\n  \"expires_at\": 1795003709,\n  \"last_activity_at\": 1795003582,\n  \"created_at\": 1795001009,\n  \"updated_at\": 1795003500\n}"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}
+

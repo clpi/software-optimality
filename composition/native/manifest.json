@@ -1,0 +1,120 @@
+{
+  "schema": "file-sha256-manifest.v1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7079,
+      "sha256": "c0f0fe748cc272877e61714d9988930e490adbed1dbfee10d3f028c4df50302d"
+    },
+    {
+      "path": "ablation.json",
+      "bytes": 953,
+      "sha256": "ee1bc6bb4da5d0bd1d29a338da580f86e3f033edceb92913193bf05a85e330b6"
+    },
+    {
+      "path": "attempts.json",
+      "bytes": 29932,
+      "sha256": "dec759dd949d3cd9b1aa0152f7bf57f38519bbefdd6c30fc8c94f43ee69efc4b"
+    },
+    {
+      "path": "cleanup.json",
+      "bytes": 1195,
+      "sha256": "504032fa0482372954aa20dc8ac252afc865df862fd5b593a6f9dcdcd67a80e7"
+    },
+    {
+      "path": "harness/continue.py",
+      "bytes": 596,
+      "sha256": "5b41678f9eb0033828ccb1f9423edceba6d1aca7ce603b9db96dec85e10558a5"
+    },
+    {
+      "path": "harness/deadline.py",
+      "bytes": 814,
+      "sha256": "80921ee42af9d34104f7120c88a8d6d3752557ff29c685006afb84bc00824ce9"
+    },
+    {
+      "path": "harness/libc.conf",
+      "bytes": 181,
+      "sha256": "371ee4a2eb2a5861f627da5e022820806c3369d51331ded9597ac7d98de10e81"
+    },
+    {
+      "path": "harness/orchestrate.py",
+      "bytes": 1791,
+      "sha256": "0983453e86b02aeeb7742897b119f215756a9ed4e027b4cb30cdca64befaa30b"
+    },
+    {
+      "path": "harness/run-libc.py",
+      "bytes": 6866,
+      "sha256": "e5f367bc0bba04696582fc4fe0648c9891dd55b0aa20cdc5d72e72518d6e1526"
+    },
+    {
+      "path": "harness/run-objects.py",
+      "bytes": 8089,
+      "sha256": "8ab527f455d913ac6eb68d96644bba065a0345f348191885cd1f2d5f5ecc16cf"
+    },
+    {
+      "path": "harness/run-strip.py",
+      "bytes": 6877,
+      "sha256": "37f0b775f4177a854936fadd4fd541364eccc1ca37fab146387652c9606f1c8a"
+    },
+    {
+      "path": "harness/run.py",
+      "bytes": 6809,
+      "sha256": "7f222bc3f52c19c9d51b77ce60bbd6f9925841e4aeb29a2b92920ee65c2485c6"
+    },
+    {
+      "path": "harness/runtime-continue.py",
+      "bytes": 4150,
+      "sha256": "49f8abd8160eed9ee9fd4bdad5e042d59f6a57a49ad0aafeece2fa1ba3b22539"
+    },
+    {
+      "path": "logs/effect-diagnostic.log",
+      "bytes": 573,
+      "sha256": "71eee7eb6c6f9acf35233219ce6675a9473623cc18889247b69d321382b85265"
+    },
+    {
+      "path": "logs/identity-ablation-compile.log",
+      "bytes": 874,
+      "sha256": "779221521063b2ae103d04cac36f906abc20617e71aa3e0597cfed4934af4fd4"
+    },
+    {
+      "path": "logs/identity-compile.log",
+      "bytes": 472,
+      "sha256": "8775df3733eb6f735759da68f0dabc2161fd73ae177d15c27d57f510ed4c954c"
+    },
+    {
+      "path": "logs/topology-compile.log",
+      "bytes": 382,
+      "sha256": "4be30f78e377b5c984982620244af05aa8d7bd6c0f41abf14d719270319566f2"
+    },
+    {
+      "path": "logs/topology-link.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/topology-native.log",
+      "bytes": 609,
+      "sha256": "f95ddea0e962e4d4525b9a116cf135fc78a2cd5b2da01c092823eb492f62b047"
+    },
+    {
+      "path": "raw.json",
+      "bytes": 158582,
+      "sha256": "79527fc3d46d7041b6ebb21e9388364635740a13b8af446eeb347f038d58ffb5"
+    },
+    {
+      "path": "resources.json",
+      "bytes": 1233,
+      "sha256": "156b9e02dd1e6f51cbdfe8c35d54e070402315a4dbd824c428ef28f76bdf8953"
+    },
+    {
+      "path": "run.json",
+      "bytes": 8410,
+      "sha256": "255eb9eca49f838761e1d899acaf50c0aba1d308694a8dba929cbe836b60e634"
+    },
+    {
+      "path": "source.json",
+      "bytes": 4577,
+      "sha256": "1a6c63b0fc5f35dc1e8fce2fde98c02d80d5901ede8253d0d1860e37544ec6e1"
+    }
+  ]
+}

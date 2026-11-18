@@ -1,0 +1,4 @@
+probe fail: RegisterExhausted home_budget=10 stack_bytes=4528 gp_used=19 fp_used=0 pressure=181
+probe fail: RegisterExhausted home_budget=6 stack_bytes=4528 gp_used=19 fp_used=0 pressure=181
+error: cannot realize the source partition this program reaches: /workspace/home/identity/idol/lib/compiler/effect.id (UnsupportedProgram)
+hint: compile it on its own to see the refusal: idol compile --backend=direct --emit obj /workspace/home/identity/idol/lib/compiler/effect.id
