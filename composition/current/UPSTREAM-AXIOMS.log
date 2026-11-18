@@ -1,0 +1,190 @@
+'SoftwareIsQuantifiable.Coloring.and_eq_true' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Coloring.holds_eq_true' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Coloring.any_eq_true' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.le_step' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.iter_eq_of_fixed' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.le_iter' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.count_le' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.count_le_of_le' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.count_lt_of_le_add' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.exists_added' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.count_iter_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.exists_fixed_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.step_sound' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.iter_sound' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.deriv_closed' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_sound' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.seed_le_coloring' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.stateLe_refl' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.stateLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.stateLe_antisymm' depends on axioms: [Quot.sound]
+'SoftwareIsQuantifiable.Coloring.step_mono' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.iter_mono' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_mono_seed' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_idem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.stateLe_join_left' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.stateLe_join_right' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.stateLe_join' does not depend on any axioms
+'SoftwareIsQuantifiable.Coloring.coloring_compound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.deriv_embed_left' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.deriv_embed_right' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.deriv_segregated' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.embed_universe_closed' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_segregated_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coloring.coloring_segregated_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.coverage_iff' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Coverage.unrestricted_witness' does not depend on any axioms
+'SoftwareIsQuantifiable.Coverage.recorded_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.missing_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.recorded_append' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Coverage.missing_append' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.missing_empty' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.coverage_missing_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Coverage.empty_roster_covered' does not depend on any axioms
+'SoftwareIsQuantifiable.Coverage.empty_ledger_has_no_platform_premise' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.mem_listsOfLen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.mem_alphabet' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.schedules_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.valid_orderings_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.length_flatMap_const' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Finiteness.listsOfLen_length' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Finiteness.schedules_card' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Finiteness.validB_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.mem_validSchedules' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.validSchedules_length_le' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Finiteness.combine_valid' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Finiteness.not_all_valid_side_respecting' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Finiteness.mem_composites' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.decide_false_of_not' does not depend on any axioms
+'SoftwareIsQuantifiable.Fold.join_assoc' depends on axioms: [Quot.sound]
+'SoftwareIsQuantifiable.Fold.join_comm' depends on axioms: [Quot.sound]
+'SoftwareIsQuantifiable.Fold.join_idem' depends on axioms: [Quot.sound]
+'SoftwareIsQuantifiable.Fold.join_empty_left' depends on axioms: [Quot.sound]
+'SoftwareIsQuantifiable.Fold.join_empty_right' depends on axioms: [Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_append' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_eq_true_iff' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Fold.account_ext' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_perm' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_append_self' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_cons_self' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_map_inl' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_map_inl_inr' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_map_inr' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_map_inr_inl' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Fold.account_sum' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Instance.service_schedule_card' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.service_valid_count' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Instance.pathSchedule_valid' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Instance.accounts_compose' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Instance.duplicate_witness_free' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Instance.path_universe_closed' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Instance.gate_misses_committed' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.commit_misses_committed' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.joint_colors_committed' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.not_coloring_distributes_on_path' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.service_compounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Instance.gate_separated' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.commit_separated' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.path_separated' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.deployments_frontier' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.trimmed_rejected' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Instance.empty_submission_rejected' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Instance.full_kept' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Instance.cost_does_not_excuse_behavior_drop' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.request_two_uncovered' does not depend on any axioms
+'SoftwareIsQuantifiable.Instance.path_requests_covered' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axisLe_refl' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axisLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axisLe_antisymm' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_axisLt_self' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axisLt_trans_le' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axisLe_trans_lt' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axisLt_le' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLe_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.axesLe_length' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Interface.axesLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLe_antisymm' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLt_le' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLt_irrefl' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_axesLt_of_short_vector' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLt_trans_le' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLe_trans_lt' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.axesLe_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.axesLt_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.measuresLe_aligned' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Interface.measuresLe_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.measuresLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.measuresLe_antisymm_readings' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.behaviorLe_refl' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.behaviorLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.noWorse_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.noWorse_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.noWorse_antisymm' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_strictlyBetter_self' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_dominates_self' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.dominates_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.dominates_noWorse' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.not_dominates_from_measures' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.behaviorLe_append' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Interface.measuresLe_append_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.noWorse_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.not_noWorse_append_converse' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.dominates_append_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.dominates_append_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.dominates_append_of_halves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.not_dominates_append_splits' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.uniqueSymbols_append' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Interface.profilesAligned_append' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Interface.releaseLe_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.releaseLe_trans' does not depend on any axioms
+'SoftwareIsQuantifiable.Interface.releaseLe_append' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Interface.releaseDominates_append_left' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Interface.releaseDominates_append_right' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Interface.not_index_aligned_preorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Interface.duplicate_candidate_not_releaseLe' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Interface.repeated_profile_not_releaseLe' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SoftwareIsQuantifiable.Interface.misaligned_addition_not_releaseLe' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SoftwareIsQuantifiable.Interface.frontier_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Interface.frontier_antichain' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Interface.misaligned_not_on_frontier' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.dominates_trans' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.separated_sound' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.separated_of_refined' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.exists_undominated_aux' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.frontier_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.frontier_not_dominated' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.and_eq_true' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.noQualifiedBehaviorLost_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.not_per_execution_dominance' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.max_le_max' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.max_lt_max' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.separated_sum' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.separated_parallel' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.not_scalarized' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.weighted_strict' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.scalar_optimum_undominated' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.dominatesB_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.frontier_exact' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.frontier_antichain' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.scalar_frontier_point' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.dominates_add_left' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.dominates_add_right' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.minkowski_frontier_subset' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.not_frontier_minkowski' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.dominates_iff_interface' does not depend on any axioms
+'SoftwareIsQuantifiable.Pareto.frontier_can_regress' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.admitted_noWorse' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.admitted_frontier_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.admitted_frontier_sound' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.acceptsRelease_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.weaklySeparated_sound' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.acceptsReplacement_iff' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.replacement_no_regression' depends on axioms: [propext, Quot.sound]
+'SoftwareIsQuantifiable.Pareto.omitted_qualified_behavior_refused' depends on axioms: [propext]
+'SoftwareIsQuantifiable.Pareto.empty_submission_refused_when_qualified' depends on axioms: [propext]
