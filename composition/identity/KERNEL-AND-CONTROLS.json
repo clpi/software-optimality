@@ -1,0 +1,97 @@
+[
+  {
+    "name": "KERNEL-PROOF",
+    "command": [
+      "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+      "env",
+      "lean",
+      "-DwarningAsError=true",
+      "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality/composition/IdentityRepresentation.lean"
+    ],
+    "start_utc": "2026-11-18T11:44:36.870445+00:00",
+    "end_utc": "2026-11-18T11:44:39.658192+00:00",
+    "elapsed_seconds": 2.787757434998639,
+    "exit_code": 0,
+    "expected_failure": false,
+    "expected_diagnostic_marker": null,
+    "expected_outcome_observed": true,
+    "source_sha256": "9996a284df731331863e336ef8e4eb83838598a61c762b359feb06528d9bd36d",
+    "log": "KERNEL-PROOF.log"
+  },
+  {
+    "name": "NEGATIVE-DROP-ORIGIN",
+    "command": [
+      "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+      "env",
+      "lean",
+      "-DwarningAsError=true",
+      "/workspace/scratch/8ebca4442e3a/origin-integration/identity-formal-verification/NEGATIVE-DROP-ORIGIN.lean"
+    ],
+    "start_utc": "2026-11-18T11:44:39.658969+00:00",
+    "end_utc": "2026-11-18T11:44:42.006621+00:00",
+    "elapsed_seconds": 2.347668551999959,
+    "exit_code": 1,
+    "expected_failure": true,
+    "expected_diagnostic_marker": "tactic 'rfl' failed",
+    "expected_outcome_observed": true,
+    "source_sha256": "3c39add17756fda26a1f18b7dd40de54745d297b1b245dcbf87d0c55f4b3c455",
+    "log": "NEGATIVE-DROP-ORIGIN.log"
+  },
+  {
+    "name": "NEGATIVE-DROP-SELECTED-VALUE",
+    "command": [
+      "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+      "env",
+      "lean",
+      "-DwarningAsError=true",
+      "/workspace/scratch/8ebca4442e3a/origin-integration/identity-formal-verification/NEGATIVE-DROP-SELECTED-VALUE.lean"
+    ],
+    "start_utc": "2026-11-18T11:44:42.007308+00:00",
+    "end_utc": "2026-11-18T11:44:44.523156+00:00",
+    "elapsed_seconds": 2.515882887993939,
+    "exit_code": 1,
+    "expected_failure": true,
+    "expected_diagnostic_marker": "payload := \u27e80,",
+    "expected_outcome_observed": true,
+    "source_sha256": "1de3dc9bb959ab2f90af43dbbe815b6dd65d4c07214fa33302b5e83031fd1105",
+    "log": "NEGATIVE-DROP-SELECTED-VALUE.log"
+  },
+  {
+    "name": "NEGATIVE-DROP-CHANGED-LAW",
+    "command": [
+      "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+      "env",
+      "lean",
+      "-DwarningAsError=true",
+      "/workspace/scratch/8ebca4442e3a/origin-integration/identity-formal-verification/NEGATIVE-DROP-CHANGED-LAW.lean"
+    ],
+    "start_utc": "2026-11-18T11:44:44.523431+00:00",
+    "end_utc": "2026-11-18T11:44:47.079008+00:00",
+    "elapsed_seconds": 2.5555987560073845,
+    "exit_code": 1,
+    "expected_failure": true,
+    "expected_diagnostic_marker": "case mk.changedRule",
+    "expected_outcome_observed": true,
+    "source_sha256": "78047e651f06de25f144391e329b73c2b2afc3a23df8416bb4ab9c232f192ad1",
+    "log": "NEGATIVE-DROP-CHANGED-LAW.log"
+  },
+  {
+    "name": "NEGATIVE-KEEP-DOMINATED",
+    "command": [
+      "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+      "env",
+      "lean",
+      "-DwarningAsError=true",
+      "/workspace/scratch/8ebca4442e3a/origin-integration/identity-formal-verification/NEGATIVE-KEEP-DOMINATED.lean"
+    ],
+    "start_utc": "2026-11-18T11:44:47.080211+00:00",
+    "end_utc": "2026-11-18T11:44:49.491755+00:00",
+    "elapsed_seconds": 2.4116254830005346,
+    "exit_code": 1,
+    "expected_failure": true,
+    "expected_diagnostic_marker": "fixtureCertificate = true\nis false",
+    "expected_outcome_observed": true,
+    "source_sha256": "99e9efb6a81afe22595e027165a158156b4805ce005b4bfa2f1c9248b6cf22a1",
+    "log": "NEGATIVE-KEEP-DOMINATED.log"
+  }
+]

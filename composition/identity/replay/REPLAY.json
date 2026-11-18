@@ -1,0 +1,204 @@
+{
+  "script_sha256": "c91a74d384a1031ab3eb15558a082fbd08a35240ad4b6a15a8772ab9ecc72b77",
+  "source_sha256": "9996a284df731331863e336ef8e4eb83838598a61c762b359feb06528d9bd36d",
+  "dependency_commit": "f370992611d8c722e4897e67dbb8eaecf3d872ed",
+  "runs": [
+    {
+      "name": "TOOLCHAIN",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:24.558232+00:00",
+      "end_utc": "2026-11-18T11:52:26.225891+00:00",
+      "elapsed_seconds": 1.6676670060114702,
+      "exit_code": 0,
+      "expected_failure": false,
+      "expected_diagnostic_marker": null,
+      "expected_outcome_observed": true,
+      "classification": "passed",
+      "source_sha256": null,
+      "log": "TOOLCHAIN.log",
+      "log_sha256": "5362a246ce2545424db10a77de8fd4694f4cf8b0170dfd43fa727acf7f7f259b"
+    },
+    {
+      "name": "BUILD",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "build",
+        "composition.IdentityRepresentation"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:26.226362+00:00",
+      "end_utc": "2026-11-18T11:52:26.738876+00:00",
+      "elapsed_seconds": 0.512528780993307,
+      "exit_code": 0,
+      "expected_failure": false,
+      "expected_diagnostic_marker": null,
+      "expected_outcome_observed": true,
+      "classification": "passed",
+      "source_sha256": null,
+      "log": "BUILD.log",
+      "log_sha256": "c8e421e8030c4802ac8f4764331348d713fa74e32fd544977493e6407151bd13"
+    },
+    {
+      "name": "DEPENDENCY",
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality/.lake/packages/software-is-quantifiable",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:26.739454+00:00",
+      "end_utc": "2026-11-18T11:52:26.744640+00:00",
+      "elapsed_seconds": 0.005188201001146808,
+      "exit_code": 0,
+      "expected_failure": false,
+      "expected_diagnostic_marker": null,
+      "expected_outcome_observed": true,
+      "classification": "passed",
+      "source_sha256": null,
+      "log": "DEPENDENCY.log",
+      "log_sha256": "d94a65182bcab43a54429ce55808d501fa312080dc2a1137c56cac4d87f4d3c1"
+    },
+    {
+      "name": "DEPENDENCY-CLEAN",
+      "command": [
+        "git",
+        "-C",
+        "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality/.lake/packages/software-is-quantifiable",
+        "diff",
+        "HEAD",
+        "--exit-code"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:26.745316+00:00",
+      "end_utc": "2026-11-18T11:52:26.752654+00:00",
+      "elapsed_seconds": 0.007338708994211629,
+      "exit_code": 0,
+      "expected_failure": false,
+      "expected_diagnostic_marker": null,
+      "expected_outcome_observed": true,
+      "classification": "passed",
+      "source_sha256": null,
+      "log": "DEPENDENCY-CLEAN.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "KERNEL",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "composition/IdentityRepresentation.lean"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:26.753072+00:00",
+      "end_utc": "2026-11-18T11:52:30.706508+00:00",
+      "elapsed_seconds": 3.9534483540046494,
+      "exit_code": 0,
+      "expected_failure": false,
+      "expected_diagnostic_marker": null,
+      "expected_outcome_observed": true,
+      "classification": "passed",
+      "source_sha256": "9996a284df731331863e336ef8e4eb83838598a61c762b359feb06528d9bd36d",
+      "log": "KERNEL.log",
+      "log_sha256": "6eae07e346af20cc7977dc98715dd85af7d23bb08ff741eefe5569b401715b46"
+    },
+    {
+      "name": "NEGATIVE-DROP-ORIGIN",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "composition/identity/NEGATIVE-DROP-ORIGIN.lean"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:30.707438+00:00",
+      "end_utc": "2026-11-18T11:52:33.831441+00:00",
+      "elapsed_seconds": 3.1240110350045143,
+      "exit_code": 1,
+      "expected_failure": true,
+      "expected_diagnostic_marker": "tactic 'rfl' failed",
+      "expected_outcome_observed": true,
+      "classification": "expected_proof_rejection",
+      "source_sha256": "3c39add17756fda26a1f18b7dd40de54745d297b1b245dcbf87d0c55f4b3c455",
+      "log": "NEGATIVE-DROP-ORIGIN.log",
+      "log_sha256": "bdba37740a3f1a948631a6ea0948e137a826d699fbccd226a2944eb1962bb862"
+    },
+    {
+      "name": "NEGATIVE-DROP-SELECTED-VALUE",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "composition/identity/NEGATIVE-DROP-SELECTED-VALUE.lean"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:33.832309+00:00",
+      "end_utc": "2026-11-18T11:52:36.554860+00:00",
+      "elapsed_seconds": 2.7225582060054876,
+      "exit_code": 1,
+      "expected_failure": true,
+      "expected_diagnostic_marker": "payload := \u27e80,",
+      "expected_outcome_observed": true,
+      "classification": "expected_proof_rejection",
+      "source_sha256": "1de3dc9bb959ab2f90af43dbbe815b6dd65d4c07214fa33302b5e83031fd1105",
+      "log": "NEGATIVE-DROP-SELECTED-VALUE.log",
+      "log_sha256": "38885d4e9b5cd1db7ee0bf64c8c64344d0658f57ffb76845e259443efa464041"
+    },
+    {
+      "name": "NEGATIVE-DROP-CHANGED-LAW",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "composition/identity/NEGATIVE-DROP-CHANGED-LAW.lean"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:36.555748+00:00",
+      "end_utc": "2026-11-18T11:52:39.045944+00:00",
+      "elapsed_seconds": 2.490207041002577,
+      "exit_code": 1,
+      "expected_failure": true,
+      "expected_diagnostic_marker": "case mk.changedRule",
+      "expected_outcome_observed": true,
+      "classification": "expected_proof_rejection",
+      "source_sha256": "78047e651f06de25f144391e329b73c2b2afc3a23df8416bb4ab9c232f192ad1",
+      "log": "NEGATIVE-DROP-CHANGED-LAW.log",
+      "log_sha256": "58ef1e080ab1654d0f917045352926ed008c32db9afe786601f3efb35c9e638b"
+    },
+    {
+      "name": "NEGATIVE-KEEP-DOMINATED",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lake",
+        "env",
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "composition/identity/NEGATIVE-KEEP-DOMINATED.lean"
+      ],
+      "cwd": "/workspace/scratch/8ebca4442e3a/formal-certification/software-optimality",
+      "start_utc": "2026-11-18T11:52:39.047886+00:00",
+      "end_utc": "2026-11-18T11:52:41.459681+00:00",
+      "elapsed_seconds": 2.411805857991567,
+      "exit_code": 1,
+      "expected_failure": true,
+      "expected_diagnostic_marker": "fixtureCertificate = true\nis false",
+      "expected_outcome_observed": true,
+      "classification": "expected_proof_rejection",
+      "source_sha256": "99e9efb6a81afe22595e027165a158156b4805ce005b4bfa2f1c9248b6cf22a1",
+      "log": "NEGATIVE-KEEP-DOMINATED.log",
+      "log_sha256": "027001261205f9a67849e3645cf63fa4c0c7e7893c8bc50b3a0b58b48a28821a"
+    }
+  ],
+  "all_expected_outcomes": true
+}

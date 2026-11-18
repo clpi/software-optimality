@@ -1,0 +1,15 @@
+composition/identity/NEGATIVE-DROP-SELECTED-VALUE.lean:122:81: error: unsolved goals
+case mk
+binding✝ : Binding
+value✝ : Integer
+⊢ { payload := ⟨0, Expanded.Definition.erase._proof_35⟩ } = value✝
+composition/identity/NEGATIVE-DROP-SELECTED-VALUE.lean:125:90: error: unsolved goals
+case mk.literalBindingV1
+binder : Expanded.Binding
+value : Expanded.Integer
+⊢ { payload := ⟨0, Expanded.Definition.erase._proof_35⟩ }.expand = value
+'IdentityRepresentation.erase_eq_iff' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.all_record_observations_preserved' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.deleting_nominal_input_loses_information' does not depend on any axioms
+'IdentityRepresentation.scoped_representation_certificate' depends on axioms: [propext, sorryAx, Quot.sound]
+'IdentityRepresentation.dominated_expanded_frontier_refused' depends on axioms: [propext, Quot.sound]

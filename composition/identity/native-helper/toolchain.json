@@ -1,0 +1,6 @@
+{
+  "url": "https://zig.squirl.dev/zig-x86_64-linux-0.17.0-dev.1567+f0354179a.tar.xz",
+  "archive_sha256": "337b81a6e89e8289d31311fd7cfdd53c8bfcb1b8c4b5cfadf3363eabfb9a6daa",
+  "zig_sha256": "718bb64754baeeb18b5c1e46df051136ae95f882b53ec3269d0b88894ac04994",
+  "zig": "/workspace/home/origin/zig-x86_64-linux-0.17.0-dev.1567+f0354179a/zig"
+}

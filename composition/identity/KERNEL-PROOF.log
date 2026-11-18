@@ -1,0 +1,5 @@
+'IdentityRepresentation.erase_eq_iff' depends on axioms: [propext, Quot.sound]
+'IdentityRepresentation.all_record_observations_preserved' depends on axioms: [propext, Quot.sound]
+'IdentityRepresentation.deleting_nominal_input_loses_information' does not depend on any axioms
+'IdentityRepresentation.scoped_representation_certificate' depends on axioms: [propext, Quot.sound]
+'IdentityRepresentation.dominated_expanded_frontier_refused' depends on axioms: [propext, Quot.sound]

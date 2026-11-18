@@ -1,0 +1,35 @@
+[
+  {
+    "name": "compile",
+    "argv": [
+      "qemu-x86_64",
+      "/workspace/home/origin/zig-x86_64-linux-0.17.0-dev.1567+f0354179a/zig",
+      "test",
+      "src/semantic_identity.zig",
+      "-target",
+      "aarch64-linux",
+      "-fno-lld",
+      "-j2",
+      "--test-no-exec",
+      "--test-filter",
+      "derivation identity",
+      "-femit-bin=/workspace/home/origin/helper-v2-results/helper.test"
+    ],
+    "cwd": "/workspace/home/origin/helper-v2",
+    "exit": 0,
+    "seconds": 55.91389989852905,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "native",
+    "argv": [
+      "/workspace/home/origin/helper-v2-results/helper.test"
+    ],
+    "cwd": "/workspace/home/origin/helper-v2",
+    "exit": 0,
+    "seconds": 0.030152082443237305,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7a9b1f0131cecaabda29cb0e6f4c36f291313a64d0fddf706581b843e7614ce2"
+  }
+]

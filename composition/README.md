@@ -24,6 +24,11 @@ for this update and [prior interface verification](current/VERIFICATION.md)
 and its [receipt](current/RECEIPT.json) for the exact tested scope. Historical
 checker output and timing results below retain their original dependency pins.
 
+The [fixed-law identity representation certificate](identity/VERIFICATION.md)
+proves exact typed-record erasure and restoration and checks the two executed
+byte-count profiles through this same public frontier interface. Its portable
+replay also checks four intentional proof-breaking mutations.
+
 ## What the entry points establish
 
 | Engineering decision | Executable or theorem | Guarantee and boundary |
