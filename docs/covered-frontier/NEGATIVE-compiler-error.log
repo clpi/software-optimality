@@ -1,0 +1,20 @@
+Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
+'Qualification.least' does not depend on any axioms
+'Qualification.monotone' does not depend on any axioms
+'Qualification.idempotent' does not depend on any axioms
+'Qualification.compounding' does not depend on any axioms
+'Qualification.order_independent' does not depend on any axioms
+'Qualification.soundness' does not depend on any axioms
+'Qualification.withdrawal_no_new_support' does not depend on any axioms
+'Qualification.surviving_subsystem' does not depend on any axioms
+'Qualification.no_bootstrap' does not depend on any axioms
+'FiniteQualification.candidates_length' depends on axioms: [propext]
+'FiniteQualification.candidates_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiniteQualification.qualify_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+[[true, false, true]]
+FiniteQualification.lean:39:17: error: type mismatch
+  "deliberate compiler error"
+has type
+  String : Type
+but is expected to have type
+  Nat : Type

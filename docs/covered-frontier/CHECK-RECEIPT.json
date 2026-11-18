@@ -1,0 +1,220 @@
+{
+  "base_commit": "97a5d7f3e68de47cd9eb26221b83e713121673fd",
+  "toolchain": "Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)",
+  "sources": {
+    "ScopedFrontier.lean": "a6883fe38c7230e5283b03d35cda67fb816418da3a4da1cab1281388240d719f",
+    "check.sh": "f38e165d05bc67fbed14ab9d82d18488150862b965808dbfefa37df9b1b3560c",
+    "composition/check.sh": "c9fb37d268b3044c44d7ca948ebeac93ff07fcc3d9a0f1f3c5ab0f6b1cc0ba44",
+    "docs/SCOPED-FRONTIER.md": "c198bbee6cbac77e2bd69a67d3881d6b22f633fe57db4db8c0cd3999603d6bc9",
+    "docs/covered-frontier/Controls.lean": "033226b136177825b2e421f5eedce0bff7bb8eeb9f52ec47f792328298548961",
+    "docs/covered-frontier/Campaign.lean": "079c657e0b27df25a49749f8ecb10e106e12051791d8ce0546ba302d097b3365",
+    "docs/covered-frontier/ArchiveImport.lean": "bfe9008595ed7dac9491e8a6e47b5272d13ae1c3cf629e96498ea99870423053",
+    "docs/covered-frontier/review.py": "4a829376e969ac2619d86e76f5f0656cb140f4c97fa581c10507cd2aaedcf082"
+  },
+  "archived_campaign": {
+    "archive_git_blob": "d74b58fe93dd9454a1feae8aff6035d8872c6b99",
+    "archive_sha256": "5f2e3f1ce568e59e2bf1dbdc8703113f22bbef7c5358f14552917504f421075e",
+    "qualification_sha256": "037ce2972cbf5bb72de79e24e3c914b4254406a488696a5e4e9f7b00eff50b73",
+    "policy_sha256": "44faa39b813fe8ff0571957fa2f535d2d6d022ebd765cf8c0d95296ef5d40416",
+    "source_commit": "97a5d7f3e68de47cd9eb26221b83e713121673fd",
+    "fresh_measurements": false,
+    "objective": [
+      {
+        "name": "max_observed_elapsed_ns",
+        "direction": "min"
+      }
+    ],
+    "units": "nanoseconds as declared by elapsed_ns and policy",
+    "baseline": "O1",
+    "candidate_ids": [
+      "O1",
+      "O2",
+      "R2"
+    ],
+    "rounds": 3,
+    "hard_constraints": {
+      "exact_node_ids": true,
+      "exact_phase_outcomes_including_skip_reasons": true,
+      "process_exit_zero": true,
+      "per_paired_round_elapsed_ns_lte_baseline": true,
+      "tolerance_ns": 0
+    },
+    "recorded_candidates": [
+      {
+        "id": "O1",
+        "admitted": true,
+        "times_ns": [
+          10769189848,
+          7296152413,
+          7966428370
+        ],
+        "caps_ns": [
+          10769189848,
+          7296152413,
+          7966428370
+        ],
+        "metrics": [
+          10769189848
+        ],
+        "worker_allocation": 1
+      },
+      {
+        "id": "O2",
+        "admitted": true,
+        "times_ns": [
+          5429128102,
+          6128442901,
+          6240471073
+        ],
+        "caps_ns": [
+          10769189848,
+          7296152413,
+          7966428370
+        ],
+        "metrics": [
+          6240471073
+        ],
+        "worker_allocation": 2
+      },
+      {
+        "id": "R2",
+        "admitted": true,
+        "times_ns": [
+          9146680841,
+          6480720115,
+          6777395883
+        ],
+        "caps_ns": [
+          10769189848,
+          7296152413,
+          7966428370
+        ],
+        "metrics": [
+          9146680841
+        ],
+        "worker_allocation": 2
+      }
+    ],
+    "scope": "Four pinned upstream test subsets, fresh subprocess jobs, same host, three recorded paired rounds. No prediction of future timings or universal semantic preservation."
+  },
+  "checks": [
+    {
+      "name": "PUBLISHER-CHECK",
+      "command": [
+        "sh",
+        "check.sh"
+      ],
+      "exit_code": 0,
+      "expected_success": true,
+      "accepted": true,
+      "log_sha256": "c72e592418d1fe0e8a3d03bb62bb3ae62f400bf755c7e543d3aa020463d0f2a9"
+    },
+    {
+      "name": "NEGATIVE-missing-generator",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "99fac21a421a88255132be2bd3e7284a3dd0f33749346ecd2800ba5b600c7a29"
+    },
+    {
+      "name": "NEGATIVE-discarded-tie",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "89f665c0b07fecaff921e0c23dd8e08e9758a01a9ced7ab197756f004e327677"
+    },
+    {
+      "name": "NEGATIVE-empty-axes",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "c65fef0652d2d87c9548072f6778fa26b22cdac7d4f3bc009cdedfbb63eb9966"
+    },
+    {
+      "name": "NEGATIVE-empty-replacement",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "168517722251aeea53b2865140d5eab5e2ceffb5e9d2487e2f3952bc74b21a79"
+    },
+    {
+      "name": "NEGATIVE-tradeoff-replacement",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "602270768e07ea0b29e3d9b582b7a44aec440c1d1bea2f58bc606f72f9a773b3"
+    },
+    {
+      "name": "NEGATIVE-unknown-feasible-cost",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "7b3fcff79d7ecc7ac7c5a46fb9e7c6ac308c724bcbf0a7b7db18e37ab788df67"
+    },
+    {
+      "name": "NEGATIVE-joint-premise",
+      "command": [
+        "/workspace/scratch/08a674553f4b/topology/toolchains/lean-4.19.0-linux/bin/lean",
+        "-DwarningAsError=true",
+        "/tmp/covered-frontier-unifdaj9/FalseClaim.lean"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "161b7f799b9c1466cb439b39c1c7dccd7f8fc7c1337524ad3fc57dc62e2e215d"
+    },
+    {
+      "name": "NEGATIVE-admission",
+      "command": [
+        "sh",
+        "check.sh"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "62a01c1ab5743ce9d1e76ccfcd072afeb927ddea5be9d3cf05f34e2f9d706272"
+    },
+    {
+      "name": "NEGATIVE-compiler-error",
+      "command": [
+        "sh",
+        "check.sh"
+      ],
+      "exit_code": 1,
+      "expected_success": false,
+      "accepted": true,
+      "log_sha256": "01a3c8687ba0cc00a7ec6cb81150150de2d92bad2baf4b73c7b0a3b839a77052"
+    }
+  ],
+  "scope": "Parameterized checked theorem and finite imported-data certificates; no whole-Idol or physical global optimality claim."
+}

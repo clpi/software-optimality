@@ -115,6 +115,67 @@ unioning independently normalized live sets is not substituted. These results
 are congruence through the existing decoder, not proof that arbitrary decoders or
 receipt projections correctly interpret physical measurements.
 
+## Coverage beyond a supplied catalogue
+
+`certified_generator_exact` lifts the existing exact catalogue certificate to a
+declared generator. `covers` requires that every catalogue member belongs to that
+generator and that every omitted admitted generator member has a strict admitted
+dominator in the catalogue. `dominates_trans` uses the existing no-worse-on-every-axis
+and strict-on-at-least-one comparator to discharge outside-catalogue challengers.
+The result preserves every nondominated identity, including ties. The generator
+need not be finite, but its coverage premise must be proved. Search exhaustion,
+an estimate, or a descending chain of omitted candidates cannot supply it: every
+coverage witness must land in the named catalogue.
+
+`checkCoverage` executes that obligation for a declared finite domain through
+the existing `FrontierComposition.checkCover` owner, with admitted lists and an
+additional check that all catalogue identities belong to the declared domain.
+`certifyCovered` additionally checks the contract and existing retained-frontier
+certificate. It rejects an empty-axis contract even when an empty result would
+make a bare catalogue claim vacuous. The result is exact for **admitted** domain
+members. A candidate without required measurements is not admitted; that fact
+does not establish its infeasibility or exclusion from the physical search space.
+
+`certified_feasible_generator_exact` provides the stronger boundary. The caller
+supplies an independently specified feasible predicate and proves qualification
+sound and complete for it throughout the generator. Therefore every feasible
+candidate has admitted comparable cost evidence; absence of a measurement cannot
+hide a feasible challenger. `checkQualification`, `certifyFeasible`, and
+`certified_feasible_frontier` execute and establish this check for a finite domain.
+The external feasible predicate cannot acquire its intended meaning merely by
+being defined as receipt admission. A later pruning scheme using proved cost
+bounds instead of complete observations must discharge its own coverage and
+comparison obligations; the present checker does not invent missing values.
+
+`certifyReplacement` adds a named admitted incumbent in the domain, a chosen
+retained identity, the existing `noRegression` predicate, and strict improvement.
+Its soundness theorem gives exact admitted-frontier membership and no-worse cost
+on all declared axes with a strict win on one. `certifyFeasibleReplacement` adds
+qualification completeness and yields the corresponding feasible-frontier
+statement. An empty result, an equal-cost tie, or an incomparable tradeoff cannot
+pass these replacement boundaries. These checks concern the named comparison
+contract; physical observation authenticity and authorization remain external.
+
+`incremental_generator_exact` and `incremental_feasible_generator_exact` compose
+the respective claims with full-premise old/new hypergraph qualification.
+`certifyClosed` is an executable adapter to `ExecutableClosure.checkedClose` and
+the existing scoped finite certificate. `certifyClosed_exact` proves that the
+computed membership predicate equals the incremental semantics and that the
+retained set is the exact admitted-domain frontier. The obligation-witness
+theorem retains the original scoped receipt/round/cap checks. The supplied input
+projection must still interpret those facts soundly; an arbitrary projection
+does not authenticate measurements. This adapter calls the exhaustive reference
+closure, not a faster incremental implementation, and makes no cost claim.
+
+The checks in `docs/covered-frontier/` include an actual archived-data case:
+the original O1/O2/R2 campaign, its original maximum-observed-wall-time objective,
+and the three prescribed rounds. `review.py` binds the archive, policy, and
+qualification report to their pinned hashes and checks the Lean constants
+against the report. `Campaign.lean` proves exhaustive coverage of that closed
+recorded-candidate type and its exact qualified frontier. This is a replay of
+imported observations, not a new experiment, an instance of an authenticated
+hypergraph importer, or evidence about Idol performance.
+
 ## Executed synthetic controls
 
 Module guards distinguish a declared millisecond profile from a nanosecond
