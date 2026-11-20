@@ -1,0 +1,7 @@
+'OracleSlice.identity' does not depend on any axioms
+'OracleSlice.eta' does not depend on any axioms
+'OracleSlice.proofs' does not depend on any axioms
+'OracleSlice.quotient' does not depend on any axioms
+'OracleSlice.dependent' does not depend on any axioms
+'OracleSlice.walk_correct' depends on axioms: [propext]
+12
