@@ -1,0 +1,19 @@
+test_all_statuses (test_hoist.Tests.test_all_statuses) ... ok
+test_byte_provenance_and_withdrawal (test_hoist.Tests.test_byte_provenance_and_withdrawal) ... ok
+test_change_is_only_hoist (test_hoist.Tests.test_change_is_only_hoist) ... ok
+test_changed_authority_invalidates_id (test_hoist.Tests.test_changed_authority_invalidates_id) ... ok
+test_context_refusals (test_hoist.Tests.test_context_refusals) ... ok
+test_full_projections_scale (test_hoist.Tests.test_full_projections_scale) ... ok
+test_hash_work_count (test_hoist.Tests.test_hash_work_count) ... ok
+test_refusals (test_hoist.Tests.test_refusals) ... ok
+test_stale_digest_counterfactual (test_hoist.Tests.test_stale_digest_counterfactual) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.055s
+
+OK
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.040s
+
+OK

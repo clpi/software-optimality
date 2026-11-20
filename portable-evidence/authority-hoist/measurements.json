@@ -1,0 +1,127 @@
+{
+  "cases": {
+    "1": {
+      "authority_sha256": "451795ee523003acf9c0fbb04c9c20047b8074067f8ec6ea98185c6d654a0852",
+      "import_authority_digest_evaluations": {
+        "baseline": 1,
+        "hoisted": 1
+      },
+      "median_ns": {
+        "baseline": 161605,
+        "hoisted": 161036
+      },
+      "projection_sha256": "d012f206328378a2273d248c0f928f4bfd6516134c141e81379156f88de54add",
+      "ratio_baseline_over_hoisted": 1.0035333714200552,
+      "records": 1,
+      "samples_ns": {
+        "baseline": [
+          160484,
+          143252,
+          165696,
+          171460,
+          161605,
+          366853,
+          250036,
+          137426,
+          125756
+        ],
+        "hoisted": [
+          174877,
+          154026,
+          164370,
+          141644,
+          223389,
+          161036,
+          146661,
+          168259,
+          129902
+        ]
+      },
+      "source_sha256": "f3b11ffc1359620001da21beb1716cb605abf4d2da8c236efdfc8182df99fbec"
+    },
+    "100": {
+      "authority_sha256": "d8a00d198687f07337ef6f4ee6fb1fb84d6712b58b57b7418eba33abe327b98d",
+      "import_authority_digest_evaluations": {
+        "baseline": 100,
+        "hoisted": 1
+      },
+      "median_ns": {
+        "baseline": 9686331,
+        "hoisted": 3894079
+      },
+      "projection_sha256": "fcadcd64c932c99624c5fe3a5b9519075308076aa543bcc3de1c73e22a7e9735",
+      "ratio_baseline_over_hoisted": 2.487451076364912,
+      "records": 100,
+      "samples_ns": {
+        "baseline": [
+          8963646,
+          9044819,
+          10045210,
+          10427563,
+          11698601,
+          9686331,
+          9420908,
+          11537973,
+          9430533
+        ],
+        "hoisted": [
+          4076680,
+          3525877,
+          3611133,
+          3596704,
+          5373547,
+          6948595,
+          3894079,
+          3910650,
+          3564628
+        ]
+      },
+      "source_sha256": "0e01505bc57834be69c83d1a8f98098dfacac5d676d5db295a24e6eae0abd177"
+    },
+    "1000": {
+      "authority_sha256": "920f6f543e02aeb4ae193ebf3ef8e27e6039a2ac8bacf40f702e74be1c90baf9",
+      "import_authority_digest_evaluations": {
+        "baseline": 1000,
+        "hoisted": 1
+      },
+      "median_ns": {
+        "baseline": 619611163,
+        "hoisted": 76177277
+      },
+      "projection_sha256": "52e0e194270c447d313680906d7853c879fec78e6b10a295184dd14844a13edf",
+      "ratio_baseline_over_hoisted": 8.133805609775209,
+      "records": 1000,
+      "samples_ns": {
+        "baseline": [
+          582554850,
+          559141494,
+          596145725,
+          561989986,
+          1166442249,
+          1030886762,
+          682725440,
+          619611163,
+          961417982
+        ],
+        "hoisted": [
+          68589140,
+          71346858,
+          63298602,
+          65457715,
+          142138158,
+          137851305,
+          95353005,
+          76177277,
+          135333369
+        ]
+      },
+      "source_sha256": "0938437c636408eaa2a2fb9e2d7270f23d950600946f3d2606f5843054f8ce6c"
+    }
+  },
+  "clock": "perf_counter_ns",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "repetitions": 9,
+  "schema": "authority-hoist-measurements/v1",
+  "timed_region": "complete build, excluding synthetic fixture construction and output equality check"
+}
