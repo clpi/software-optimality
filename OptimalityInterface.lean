@@ -143,14 +143,9 @@ theorem paretoMaximal_exact (candidates : List Point) (x : Point) :
 
 /-- Corresponds to `SoftwareIsQuantifiable.Pareto.frontier_nonempty`. -/
 theorem paretoMaximal_nonempty (candidates : List Point) (h : candidates ≠ []) :
-    ∃ y, y ∈ paretoMaximal candidates := by
-  cases candidates with
-  | nil => exact absurd rfl h
-  | cons x xs =>
-    have hx : x ∈ x :: xs := List.mem_cons_self
-    rcases frontier_covers [0, 1] pointCost (x :: xs) x hx with hf | ⟨y, hy, _⟩
-    · exact ⟨x, (paretoMaximal_mem_iff (x :: xs) x).mpr hf⟩
-    · exact ⟨y, (paretoMaximal_mem_iff (x :: xs) y).mpr hy⟩
+    ∃ y, y ∈ paretoMaximal candidates :=
+  let ⟨y, hy⟩ := FiniteFrontier.pareto_frontier_nonempty [0, 1] pointCost candidates h
+  ⟨y, (paretoMaximal_mem_iff candidates y).mpr hy⟩
 
 /-- Corresponds to `SoftwareIsQuantifiable.Pareto.frontier_not_dominated`. -/
 theorem paretoMaximal_not_dominated (candidates : List Point) (out inc : Point)

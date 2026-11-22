@@ -543,34 +543,16 @@ theorem exists_minimal {A : Type} {d : A → A → Bool}
     than itself. -/
 theorem strictPareto_irrefl {A : Type} {axes : List Nat}
     {cost : A → Nat → Int} (x : A) :
-    FiniteFrontier.strictPareto axes cost x x = false := by
-  cases h : FiniteFrontier.strictPareto axes cost x x with
-  | false => rfl
-  | true =>
-    exfalso
-    obtain ⟨_, _, _, hlt⟩ :=
-      (FiniteFrontier.pareto_exact axes cost x x).mp h
-    omega
+    FiniteFrontier.strictPareto axes cost x x = false :=
+  FiniteFrontier.strictPareto_irrefl axes cost x
 
 /-- The strict Pareto comparator is transitive on its positive steps. -/
 theorem strictPareto_trans {A : Type} {axes : List Nat}
     {cost : A → Nat → Int} {x y z : A}
     (hxy : FiniteFrontier.strictPareto axes cost x y = true)
     (hyz : FiniteFrontier.strictPareto axes cost y z = true) :
-    FiniteFrontier.strictPareto axes cost x z = true := by
-  apply (FiniteFrontier.pareto_exact axes cost x z).mpr
-  obtain ⟨hxy_le, i, hi_axes, hi_lt⟩ :=
-    (FiniteFrontier.pareto_exact axes cost x y).mp hxy
-  obtain ⟨hyz_le, _⟩ :=
-    (FiniteFrontier.pareto_exact axes cost y z).mp hyz
-  constructor
-  · intro j hj
-    have h₁ : cost x j ≤ cost y j := hxy_le j hj
-    have h₂ : cost y j ≤ cost z j := hyz_le j hj
-    omega
-  · refine ⟨i, hi_axes, ?_⟩
-    have h₂ : cost y i ≤ cost z i := hyz_le i hi_axes
-    omega
+    FiniteFrontier.strictPareto axes cost x z = true :=
+  FiniteFrontier.strictPareto_trans axes cost x y z hxy hyz
 
 /-- Frontier completeness for the strict Pareto comparator: every member
     of a finite candidate list is either itself in the frontier or is
@@ -581,45 +563,8 @@ theorem frontier_complete {A : Type} {axes : List Nat}
         (fun y z => FiniteFrontier.strictPareto axes cost y z) ∨
       ∃ y, y ∈ FiniteFrontier.frontier L
           (fun y z => FiniteFrontier.strictPareto axes cost y z) ∧
-        FiniteFrontier.strictPareto axes cost y x = true := by
-  obtain ⟨m, hmS, hm_min⟩ :=
-    @exists_minimal A (fun y z => FiniteFrontier.strictPareto axes cost y z)
-      (fun v => strictPareto_irrefl v)
-      (fun p q r hpq hqr => strictPareto_trans hpq hqr)
-      (x :: L.filter (fun y => FiniteFrontier.strictPareto axes cost y x))
-      (by simp)
-  have hmL : m ∈ L := by
-    rcases List.mem_cons.mp hmS with rfl | hm_tail
-    · exact hx
-    · exact (List.mem_filter.mp hm_tail).1
-  have hmx : m = x ∨ FiniteFrontier.strictPareto axes cost m x = true := by
-    rcases List.mem_cons.mp hmS with rfl | hm_tail
-    · exact Or.inl rfl
-    · exact Or.inr (List.mem_filter.mp hm_tail).2
-  have hm_frontier : m ∈ FiniteFrontier.frontier L
-      (fun y z => FiniteFrontier.strictPareto axes cost y z) := by
-    apply (FiniteFrontier.frontier_exact L
-      (fun y z => FiniteFrontier.strictPareto axes cost y z) m).mpr
-    refine ⟨hmL, ?_⟩
-    intro y hyL
-    cases hym : FiniteFrontier.strictPareto axes cost y m with
-    | false => rfl
-    | true =>
-      exfalso
-      have hyx : FiniteFrontier.strictPareto axes cost y x = true := by
-        rcases hmx with rfl | hdmx
-        · exact hym
-        · exact strictPareto_trans hym hdmx
-      have hyS : y ∈ x :: L.filter
-          (fun y => FiniteFrontier.strictPareto axes cost y x) :=
-        List.mem_cons_of_mem x (List.mem_filter.mpr ⟨hyL, hyx⟩)
-      have hyf : FiniteFrontier.strictPareto axes cost y m = false :=
-        hm_min y hyS
-      rw [hym] at hyf
-      exact Bool.noConfusion hyf
-  rcases hmx with rfl | hdmx
-  · exact Or.inl hm_frontier
-  · exact Or.inr ⟨m, hm_frontier, hdmx⟩
+        FiniteFrontier.strictPareto axes cost y x = true :=
+  FiniteFrontier.pareto_frontier_complete axes cost L x hx
 
 
 /-- A concrete cost vector for the executable guards: axis `0` costs

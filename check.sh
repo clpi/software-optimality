@@ -29,6 +29,7 @@ run_lean FiniteQualification.lean
 run_lean -o ExecutableClosure.olean ExecutableClosure.lean
 run_lean -o WorklistClosure.olean WorklistClosure.lean
 run_lean -o FiniteFrontier.olean FiniteFrontier.lean
+run_lean FrontierObligationsControls.lean
 run_lean -o FrontierComposition.olean FrontierComposition.lean
 run_lean -o FiniteSchedules.olean FiniteSchedules.lean
 run_lean -o StrictSchedules.olean StrictSchedules.lean
