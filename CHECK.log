@@ -25,6 +25,19 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'ExecutableClosure.close_contains_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ExecutableClosure.close_order_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
 [0, 1, 2, 3]
+'ClosureStrength.compounding_family' does not depend on any axioms
+'ClosureStrength.compounding_sources' does not depend on any axioms
+'ClosureStrength.derives_congr' does not depend on any axioms
+'ClosureStrength.sources_of_family' does not depend on any axioms
+'ClosureStrength.compounding_of_sources' depends on axioms: [propext]
+'ClosureStrength.union_without_reclosure_fails' depends on axioms: [propext]
+'ClosureStrength.per_source_input_differs' depends on axioms: [propext]
+'ClosureStrength.close_monotone' depends on axioms: [propext, Quot.sound]
+'ClosureStrength.executable_monotone_of_free' depends on axioms: [propext, Quot.sound]
+'ClosureStrength.close_order_independent_free' depends on axioms: [propext, Quot.sound]
+'ClosureStrength.close_exact_needs_roots' depends on axioms: [propext, Quot.sound]
+'ClosureStrength.close_exact_needs_heads' depends on axioms: [propext, Quot.sound]
+'ClosureStrength.close_monotone_strict' depends on axioms: [propext, Quot.sound]
 'WorklistClosure.wclose_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WorklistClosure.worklist_agrees_checked' depends on axioms: [propext, Classical.choice, Quot.sound]
 'FiniteFrontier.frontier_exact' depends on axioms: [propext, Quot.sound]
@@ -146,6 +159,18 @@ Lean (version 4.19.0, x86_64-unknown-linux-gnu, commit 6caaee842e94, Release)
 'HypergraphIncremental.retracted_cycles_do_not_bootstrap' depends on axioms: [propext, Classical.choice, Quot.sound]
 'HypergraphIncremental.patchedInteraction_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
 'HypergraphIncremental.incrementalFrontier_exact' depends on axioms: [propext, Quot.sound]
+'ExecutableIncremental.saturate_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.dirty_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.new_arcs_suffice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.update_reference_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.update_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.full_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.update_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.reachable_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.reachable_length_eq_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.advance_same_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.reachable_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ExecutableIncremental.frontier_eq_full' depends on axioms: [propext, Classical.choice, Quot.sound]
 'ContextualDominance.retained_pareto_is_original' does not depend on any axioms
 'ContextualDominance.replacement_trans' does not depend on any axioms
 'ContextualDominance.monotone_context_replacement' does not depend on any axioms
