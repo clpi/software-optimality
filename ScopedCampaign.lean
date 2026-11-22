@@ -44,6 +44,17 @@ theorem scoped_selection :
 theorem scoped_selection_reordered :
     ScopedSelection.selectAll [.R2,.O1,.O2] scopedPolicy scopedReceipts scalarCost = [.O2] := by decide
 
+-- Structural cross-check of the certificate above: it follows from the scalar
+-- selection through Obligation S on the one supplied axis, with no second
+-- kernel evaluation of the dominance certificate.
+theorem scoped_nondominated_from_selection :
+    ScopedSelection.certificate catalogue scopedPolicy scopedReceipts [0]
+      EligibleCampaign.cost .O2 = true :=
+  ScopedSelection.selected_all_certified catalogue scopedPolicy scopedReceipts [0]
+    EligibleCampaign.cost scalarCost .O2
+    (fun y _ h => FiniteFrontier.axis_strict 0 EligibleCampaign.cost y .O2 h)
+    (by rw [scoped_selection]; exact List.mem_singleton_self _)
+
 theorem selected_obligations_have_witnesses :
     ∀ q, q ∈ (scopedPolicy .O2).required →
       ∃ r, r ∈ scopedReceipts .O2 ∧ r.scope = q.scope ∧ r.round = q.round ∧
@@ -61,6 +72,7 @@ theorem foreign_configuration_rejected :
 #print axioms all_scoped_admitted
 #print axioms scoped_nondominated_under_supplied_integer_cost
 #print axioms scoped_selection
+#print axioms scoped_nondominated_from_selection
 #print axioms scoped_selection_reordered
 #print axioms selected_obligations_have_witnesses
 #print axioms reused_round_rejected

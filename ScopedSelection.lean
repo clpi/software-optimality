@@ -68,8 +68,45 @@ theorem selected_all_order_independent (xs ys : List T)
   intro x
   simp only [List.mem_filter,same]
 
+-- Obligation S, scoped: a qualified minimizer of a score that is strictly
+-- better on each qualified strict Pareto dominator of it carries a valid
+-- nondominance certificate. Scalar selection needs no separate dominance check.
+private theorem certificate_iff_frontier (candidates : List T)
+    (policies : T → ScopedEvidence.Policy) (evidence : T → List ScopedEvidence.Receipt)
+    (axes : List Nat) (cost : T → Nat → Int) (x : T) :
+    certificate candidates policies evidence axes cost x = true ↔
+      x ∈ FiniteFrontier.frontier (candidates.filter (gate policies evidence))
+        (FiniteFrontier.strictPareto axes cost) := by
+  rw [certificate, EligibleSchedules.admittedNondominatedUnderSuppliedIntegerCost,
+    FiniteSchedules.nondominatedInSuppliedFiniteList_exact, FiniteFrontier.frontier_exact]
+  rfl
+
+theorem selected_all_certified (candidates : List T) (policies : T → ScopedEvidence.Policy)
+    (evidence : T → List ScopedEvidence.Receipt) (axes : List Nat)
+    (cost : T → Nat → Int) (score : T → Int)
+    (x : T)
+    (strict : ∀ y, y ∈ candidates.filter (gate policies evidence) →
+      FiniteFrontier.strictPareto axes cost y x = true → score y < score x) (h : x ∈ selectAll candidates policies evidence score) :
+    certificate candidates policies evidence axes cost x = true := by
+  obtain ⟨hx, hmin⟩ := (LinearSelection.allMinima_exact score _ x).mp h
+  exact (certificate_iff_frontier candidates policies evidence axes cost x).mpr
+    (FiniteFrontier.minimizer_on_frontier _ _ score x hx (fun y hy _ => hmin y hy) strict)
+
+theorem selected_certified (candidates : List T) (policies : T → ScopedEvidence.Policy)
+    (evidence : T → List ScopedEvidence.Receipt) (axes : List Nat)
+    (cost : T → Nat → Int) (score : T → Int)
+    (x : T)
+    (strict : ∀ y, y ∈ candidates.filter (gate policies evidence) →
+      FiniteFrontier.strictPareto axes cost y x = true → score y < score x) (h : select candidates policies evidence score = some x) :
+    certificate candidates policies evidence axes cost x = true := by
+  obtain ⟨hx, hmin⟩ := LinearSelection.selected_minimum score _ x h
+  exact (certificate_iff_frontier candidates policies evidence axes cost x).mpr
+    (FiniteFrontier.minimizer_on_frontier _ _ score x hx (fun y hy _ => hmin y hy) strict)
+
 #print axioms selected_all_exact
 #print axioms selected_all_order_independent
 #print axioms certified_scoped_nondominated_under_supplied_integer_cost
 #print axioms selected_scoped_minimum
+#print axioms selected_all_certified
+#print axioms selected_certified
 end ScopedSelection

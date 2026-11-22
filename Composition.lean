@@ -345,24 +345,15 @@ theorem axisSum_lt (axes : List Nat) (f g : Nat → Int) (k : Nat)
       exact Int.lt_of_lt_of_le h1 h2
 
 theorem strictPareto_irrefl {α : Type} (axes : List Nat) (cost : α → Nat → Int) (x : α) :
-    FiniteFrontier.strictPareto axes cost x x = false := by
-  cases h : FiniteFrontier.strictPareto axes cost x x with
-  | false => rfl
-  | true =>
-    obtain ⟨_, ⟨i, _, hlt⟩⟩ := (FiniteFrontier.pareto_exact axes cost x x).mp h
-    exact absurd hlt (Int.lt_irrefl _)
+    FiniteFrontier.strictPareto axes cost x x = false :=
+  FiniteFrontier.strictPareto_irrefl axes cost x
 
 theorem strictPareto_trans {α : Type} (axes : List Nat) (cost : α → Nat → Int)
     (x y z : α)
     (hxy : FiniteFrontier.strictPareto axes cost x y = true)
     (hyz : FiniteFrontier.strictPareto axes cost y z = true) :
-    FiniteFrontier.strictPareto axes cost x z = true := by
-  have hxy' := (FiniteFrontier.pareto_exact axes cost x y).mp hxy
-  have hyz' := (FiniteFrontier.pareto_exact axes cost y z).mp hyz
-  apply (FiniteFrontier.pareto_exact axes cost x z).mpr
-  refine ⟨fun i hi => Int.le_trans (hxy'.1 i hi) (hyz'.1 i hi), ?_⟩
-  obtain ⟨i, hi, hlt⟩ := hxy'.2
-  exact ⟨i, hi, Int.lt_of_lt_of_le hlt (hyz'.1 i hi)⟩
+    FiniteFrontier.strictPareto axes cost x z = true :=
+  FiniteFrontier.strictPareto_trans axes cost x y z hxy hyz
 
 def minAxisSum {α : Type} (axes : List Nat) (cost : α → Nat → Int) : List α → Int
   | [] => 0
@@ -399,54 +390,8 @@ theorem frontier_covers {α : Type} (axes : List Nat) (cost : α → Nat → Int
     (candidates : List α) (x : α) (hx : x ∈ candidates) :
     x ∈ FiniteFrontier.frontier candidates (FiniteFrontier.strictPareto axes cost) ∨
       ∃ y, y ∈ FiniteFrontier.frontier candidates (FiniteFrontier.strictPareto axes cost) ∧
-        FiniteFrontier.strictPareto axes cost y x = true := by
-  classical
-  let dom := FiniteFrontier.strictPareto axes cost
-  let sum : α → Int := fun z => axisSum axes (cost z)
-  let amin := minAxisSum axes cost candidates
-  have hmin : ∀ z, z ∈ candidates → amin ≤ sum z :=
-    fun z hz => minAxisSum_le axes cost candidates z hz
-  let debt : α → Nat := fun z => (sum z - amin).toNat
-  have debt_lt : ∀ y x, y ∈ candidates → x ∈ candidates → dom y x = true →
-      debt y < debt x := by
-    intro y x hy hx hdom
-    have hsum : sum y < sum x := axisSum_lt_of_pareto axes cost y x hdom
-    have hy0 : amin ≤ sum y := hmin y hy
-    have hpos : 0 < sum x - amin := by omega
-    have hdiff : sum y - amin < sum x - amin := by omega
-    exact (Int.toNat_lt_toNat hpos).mpr hdiff
-  suffices ∀ n x, x ∈ candidates → debt x ≤ n →
-      x ∈ FiniteFrontier.frontier candidates dom ∨
-        ∃ y, y ∈ FiniteFrontier.frontier candidates dom ∧ dom y x = true from
-    this (debt x) x hx (Nat.le_refl _)
-  intro n
-  induction n with
-  | zero =>
-    intro x hx hdebt
-    left
-    rw [FiniteFrontier.frontier_exact]
-    refine ⟨hx, ?_⟩
-    intro y hy
-    cases hdom : dom y x with
-    | false => rfl
-    | true =>
-      exact absurd (Nat.lt_of_lt_of_le (debt_lt y x hy hx hdom) hdebt) (Nat.not_lt_zero _)
-  | succ n ih =>
-    intro x hx hdebt
-    by_cases hsome : ∃ y, y ∈ candidates ∧ dom y x = true
-    · obtain ⟨y, hy, hyd⟩ := hsome
-      have hdy : debt y ≤ n :=
-        Nat.lt_succ_iff.mp (Nat.lt_of_lt_of_le (debt_lt y x hy hx hyd) hdebt)
-      rcases ih y hy hdy with hf | ⟨z, hz, hzd⟩
-      · exact Or.inr ⟨y, hf, hyd⟩
-      · exact Or.inr ⟨z, hz, strictPareto_trans axes cost z y x hzd hyd⟩
-    · left
-      rw [FiniteFrontier.frontier_exact]
-      refine ⟨hx, ?_⟩
-      intro y hy
-      cases hdom : dom y x with
-      | false => rfl
-      | true => exact False.elim (hsome ⟨y, hy, hdom⟩)
+        FiniteFrontier.strictPareto axes cost y x = true :=
+  FiniteFrontier.pareto_frontier_complete axes cost candidates x hx
 
 def pruningOK_prop {α : Type} (candidates kept : List α) (selected : α)
     (dominates : α → α → Bool) : Prop :=
@@ -698,9 +643,10 @@ theorem one_axis_strict {α : Type} (cost : α → Int) (y x : α) :
 theorem scalar_frontier_iff_allMinima {α : Type} (cost : α → Int) (xs : List α) (x : α) :
     x ∈ FiniteFrontier.frontier xs (FiniteFrontier.strictPareto [0] (fun a _ => cost a)) ↔
       x ∈ LinearSelection.allMinima cost xs := by
-  rw [FiniteFrontier.frontier_exact, LinearSelection.allMinima_exact]
+  rw [LinearSelection.allMinima_exact]
   constructor
-  · rintro ⟨hx, h⟩
+  · intro hf
+    obtain ⟨hx, h⟩ := (FiniteFrontier.frontier_exact _ _ x).mp hf
     refine ⟨hx, ?_⟩
     intro y hy
     have hnot : ¬ cost y < cost x := by
@@ -710,13 +656,7 @@ theorem scalar_frontier_iff_allMinima {α : Type} (cost : α → Int) (xs : List
       simp [ht] at hf
     exact Int.not_lt.mp hnot
   · rintro ⟨hx, hmin⟩
-    refine ⟨hx, ?_⟩
-    intro y hy
-    cases ht : FiniteFrontier.strictPareto [0] (fun a _ => cost a) y x with
-    | false => rfl
-    | true =>
-      have hlt := (one_axis_strict cost y x).mp ht
-      exact absurd (Int.lt_of_lt_of_le hlt (hmin y hy)) (Int.lt_irrefl _)
+    exact FiniteFrontier.axis_minimizer_on_frontier 0 (fun a _ => cost a) xs x hx hmin
 
 inductive ComplexityClass where
   | linearScalar

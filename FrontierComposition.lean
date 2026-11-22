@@ -90,46 +90,13 @@ theorem Cover.flatMap {d : A → A → Bool} {e : B → B → Bool} {xs ys : Lis
       · exact Or.inl (List.mem_flatMap.mpr ⟨y, hy, hs⟩)
       · exact Or.inr ⟨c, List.mem_flatMap.mpr ⟨y, hy, hc⟩, he⟩
 
-private theorem bestBelow (d : A → A → Bool) (tr : Transitive d)
-    (irr : ∀ a, d a a = false) (x : A) (xs : List A) :
-    ∃ y, (y = x ∨ y ∈ xs) ∧ (y = x ∨ d y x = true) ∧
-      ∀ z ∈ xs, d z y = false := by
-  induction xs with
-  | nil => exact ⟨x, Or.inl rfl, Or.inl rfl, by simp⟩
-  | cons a rest ih =>
-    obtain ⟨y, hy, hbelow, hmin⟩ := ih
-    cases ha : d a y with
-    | false =>
-      refine ⟨y, hy.imp id (List.mem_cons_of_mem a), hbelow, ?_⟩
-      intro z hz
-      rcases List.mem_cons.mp hz with rfl | hz
-      · exact ha
-      · exact hmin z hz
-    | true =>
-      refine ⟨a, Or.inr List.mem_cons_self, Or.inr ?_, ?_⟩
-      · rcases hbelow with rfl | hd
-        · exact ha
-        · exact tr ha hd
-      · intro z hz
-        rcases List.mem_cons.mp hz with rfl | hz
-        · exact irr _
-        · cases hza : d z a with
-          | false => rfl
-          | true =>
-            have ht := tr hza ha
-            simp [hmin z hz] at ht
 
 theorem frontier_covers (d : A → A → Bool) (tr : Transitive d)
     (irr : ∀ a, d a a = false) (xs : List A) :
-    Cover d xs (FiniteFrontier.frontier xs d) := by
-  refine ⟨fun x hx => ((FiniteFrontier.frontier_exact _ _ x).mp hx).1, ?_⟩
-  intro x hx
-  obtain ⟨y, hy, hd, hn⟩ := bestBelow d tr irr x xs
-  have hm : y ∈ xs := hy.elim (fun h => h ▸ hx) id
-  have hf := (FiniteFrontier.frontier_exact _ _ y).mpr ⟨hm, hn⟩
-  rcases hd with rfl | hd
-  · exact Or.inl hf
-  · exact Or.inr ⟨y, hf, hd⟩
+    Cover d xs (FiniteFrontier.frontier xs d) :=
+  ⟨fun x hx => ((FiniteFrontier.frontier_exact _ _ x).mp hx).1,
+   FiniteFrontier.frontier_complete_of_strict xs d (fun a _ => irr a)
+     (fun _ _ _ _ _ _ hab hbc => tr hab hbc)⟩
 
 /-- For a genuine subset of a finite catalogue this certificate is complete:
     every deletion preserving the entire frontier has a retained witness. -/

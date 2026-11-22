@@ -18,6 +18,7 @@ lean_lib SoftwareOptimality where
     `ExecutableIncremental,
     `WorklistClosure,
     `FiniteFrontier,
+    `FrontierObligationsControls,
     `FiniteSchedules,
     `StrictSchedules,
     `ForeignCampaign,
