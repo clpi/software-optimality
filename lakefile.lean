@@ -14,6 +14,7 @@ lean_lib SoftwareOptimality where
     `Qualification,
     `FiniteQualification,
     `ExecutableClosure,
+    `ClosureStrength,
     `ExecutableIncremental,
     `WorklistClosure,
     `FiniteFrontier,
